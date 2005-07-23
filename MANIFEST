@@ -1,0 +1,27 @@
+Changes
+IT.pm
+Makefile.PL
+MANIFEST
+README
+resources/glossario.pod
+resources/lineeguida.pod
+t/00base.t
+META.yml                                 Module meta-data (added by MakeMaker)
+IT/perlboot.pod
+IT/perlfork.pod
+IT/perlrequick.pod
+IT/perlstyle.pod
+IT/perlthrtut.pod
+IT/perlfaq1.pod
+IT/perlfaq2.pod
+IT/perlfaq3.pod
+IT/perlfaq4.pod
+IT/perlfaq5.pod
+IT/perlfaq6.pod
+IT/perlfaq7.pod
+IT/perlfaq8.pod
+IT/perlfaq9.pod
+IT/perlfunc.pod
+IT/perluniintro.pod
+IT/perlembed.pod
+IT/perllol.pod
