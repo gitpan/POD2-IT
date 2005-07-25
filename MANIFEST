@@ -3,6 +3,7 @@ IT.pm
 Makefile.PL
 MANIFEST
 README
+patches/Perldoc.pm-3.14-patch
 resources/glossario.pod
 resources/lineeguida.pod
 t/00base.t

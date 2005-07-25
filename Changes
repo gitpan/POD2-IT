@@ -1,14 +1,20 @@
 Revision history for Perl extension POD2::IT.
 
-0.01  Thu Jun 19 01:29:11 2003
-	- original version; created by h2xs 1.21 with options
-		-A -X -n POD2::IT by Enrico Sorcinelli <bepi@perl.it>
-
-0.02  Wed Jul 16 11:00:00 2003
-	- pod2it new Dump
-
-0.04  Wed Apr 17 16:00:00 2004
-	- perlfunc finished
+0.06  Mon Jul 25 19:00:00 2005
+	+ Added 'search_perlfunc_re' function to POD2::IT.pm in order
+	  to use it with patched version of Pod:.Perldoc. This allow
+	  to use -f and -q perldoc switches.
+	+ Added patches dir containing patches over Pod::Perldoc
 
 0.05  Sat Jul 23 16:00:00 2005
-	- First CPAN release
+	+ First CPAN release
+
+0.04  Wed Apr 17 16:00:00 2004
+	+ perlfunc finished
+
+0.02  Wed Jul 16 11:00:00 2003
+	+ pod2it new Dump
+
+0.01  Thu Jun 19 01:29:11 2003
+	+ original version; created by h2xs 1.21 with options
+		-A -X -n POD2::IT by Enrico Sorcinelli <bepi@perl.it>

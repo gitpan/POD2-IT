@@ -3,10 +3,10 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 use base qw(Exporter);
-our @EXPORT = qw(print_pod print_pods);
+our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
 
 my $pods = {
 	perlboot => '5.8.1',
@@ -45,6 +45,10 @@ sub print_pod {
 			print "\t'$pod' doesn't yet exists\n";
 		}
 	}
+}
+
+sub search_perlfunc_re {
+	return 'Elenco delle funzioni Perl in ordine alfabetico';
 }
 
 1;
