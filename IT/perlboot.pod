@@ -16,7 +16,7 @@ Partiamo dunque con un approccio differente, non assumendo a priori
 alcuna esperienza con gli oggetti.
 PuE<ograve> aiutare la conoscenza delle subroutine (L<perlsub>), dei riferimenti
 (L<perlref> e seguenti), e dei package (L<perlmod>), dunque se non la possedete 
-giE<agrave>, conviene che via familiarizzate con questi argomenti.
+giE<agrave>, conviene che vi familiarizzate con questi argomenti.
 
 =head2 Se potessimo parlare con gli animali...
 
@@ -60,8 +60,8 @@ Questo produce:
     la Pecora fa beee!
     la Pecora fa beee!
 
-Urca. Questa deferenziazione di un riferimento simbolico a codice E<egrave> 
-piuttosto brutta. Stiamo considerando il comportamento dato da C<no strict subs>, 
+Urca. Questa dereferenziazione di un riferimento simbolico a codice E<egrave> 
+piuttosto brutta. Ci stiamo affidando al comportamento dato da C<no strict subs>, 
 che non E<egrave> certamente raccomandato per programmi di una certa dimensione.
 E perchE<eacute> era necessario? PerchE<eacute> il nome del package sembra essere
 inseparabile dal nome della subroutine che vogliamo invocare all'interno
@@ -107,7 +107,7 @@ nell'esempio del cortile:
     sub Mucca::parla {
       print "la Mucca fa muuuu!\n";
     }
-    sub Cavllo::parla {
+    sub Cavallo::parla {
       print "il Cavallo fa hiiii!\n";
     }
     sub Pecora::parla {
@@ -243,8 +243,8 @@ che si ottiene al primo tentativo senza esaminare C<@ISA>. Vittoria!
 
 =head2 Qualche nota su @ISA
 
-Questa magica variabile chiamata C<@ISA> (si pronuncia "is a"
-[E<egrave> un/una, NdT] non "Isa"), ha dichiarato che C<Mucca>
+Questa magica variabile chiamata C<@ISA> (da "is a"
+[E<egrave> un/una, NdT]), ha dichiarato che C<Mucca>
 "E<egrave> un" C<Animale>.  Da notare che questa E<egrave> un array,
 non un singolo valore, visto che in rare occasioni ha senso cercare i
 metodi mancanti in piE<ugrave> di una classe madre.
@@ -404,7 +404,7 @@ in C<@ISA>:
     }
 
 Dunque, C<SUPER::parla> significa cercare C<parla> nell'C<@ISA> del package 
-corrente, invocando il primo trovato.
+corrente, invocando il primo trovato. Va notato che I<non> guarda nell'C<@ISA> di C<$classe>.
 
 =head2 A che punto siamo arrivati...
 
@@ -550,7 +550,7 @@ producendo C<Sig. Ed>, e con questo siamo a posto. Il risultato E<egrave>:
 
 =head2 Come costruire un cavallo
 
-Naturalmente, se costruiamo tutto il nostro cavallo a mano, molto
+Naturalmente, se costruiamo tutti i nostri cavalli a mano, molto
 probabilmente faremo degli errori di tanto in tanto.
 Inoltre, stiamo violando una delle proprietE<agrave> della programmazione
 orientata agli oggetti, in quanto le "interiora" di un C<Cavallo>
@@ -727,7 +727,7 @@ dell'elenco dei parametri. Quindi la prima invocazione E<egrave> come se fosse:
 
 =head2 Istanze piE<ugrave> interessanti
 
-Cosa succede se un istanza ha bisogno di piE<ugrave> dati? Le istanze piE<ugrave>
+Cosa succede se un'istanza ha bisogno di piE<ugrave> dati? Le istanze piE<ugrave>
 interessanti sono fatte da molte voci, ognuna delle quali puE<ograve> essere a sua volta
 un riferimento o anche un altro oggetto. La maniera piE<ugrave> semplice per
 memorizzarli E<egrave> spesso all'interno di un hash.

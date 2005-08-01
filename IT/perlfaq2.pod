@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq2 - Ottenere ed Imparare Perl ($Revision: 1.8 $, $Date: 2004/01/12 14:39:33 $)
+perlfaq2 - Ottenere ed Imparare Perl ($Revision: 1.9 $, $Date: 2005/07/28 00:58:15 $)
 
 =head1 DESCRIZIONE
 
@@ -11,7 +11,7 @@ collegate a questi argomenti.
 =head2 Quali macchine supportano Perl? Dove posso ottenerlo?
 
 La distribuzione Perl standard (quella mantenuta dal gruppo di sviluppo del
-perl) viene distribuita nel solo formato sorgente. E<Eacute> reperibile su
+perl) viene distribuita nel solo formato sorgente. E<Egrave> reperibile su
 http://www.cpan.org/src/latest.tar.gz , quest'ultimo E<egrave> un formato
 standard di internet (un archivio in formato tar POSIX compresso con gzip).
 
@@ -97,10 +97,10 @@ per ogni dato sistema o architettura.
 
 =head2 Quali moduli ed estensioni sono disponibili per il Perl? Cos'E<egrave> CPAN? Cosa significa CPAN/src/... ?
 
-CPAN significa Comprehensive Perl Archive Network, un archivio di circa
-700mb replicato su circa 200 macchine in tutto il mondo. CPAN contiene
-codice sorgente, port non nativi, documentazione, script, e molti moduli
-di terze parti ed estensioni, progettati per qualsiasi cosa a partire da
+CPAN significa Comprehensive Perl Archive Network [Rete Esaustiva di Archiviazione riguardante Perl, NdT], 
+un archivio di circa 700mb replicato su circa 200 macchine in tutto il mondo. 
+CPAN contiene codice sorgente, port non nativi, documentazione, script, e molti 
+moduli di terze parti ed estensioni, progettati per qualsiasi cosa a partire da
 interfacce per database commerciali fino a controlli per tastiera/schermo
 fino a navigazione web e script CGI. Il sito web principale di CPAN E<egrave>
 http://www.cpan.org e c'E<egrave> il CPAN Multiplexer a
@@ -138,7 +138,7 @@ Visitate http://www.cpan.org/modules/00modlist.long.html oppure
 http://search.cpan.org/ per una lista piE<ugrave> completa dei moduli
 divisi per categoria.
 
-CPAN non E<egrave> affiliato con O'Reilly and Associates.
+CPAN non E<egrave> affiliato con O'Reilly Media.
 
 =head2 Esiste una versione del Perl certificata ISO o ANSI?
 
@@ -240,50 +240,50 @@ di una richiesta.
 
 Sono disponibili dei libri sul Perl e/o sulla programmazione CGI. Alcuni
 di questi sono buoni, altri sono OK, ma molti non valgono i vostri soldi.
-Tom Christiansen mantiene una lista di questi libri, alcuni con un'estesa
-recensione su http://www.perl.com/perl/critiques/index.html .
+C'E<egrave> un elenco di questi libri, alcuni con un'esauriente recensione, su
+http://books.perl.org/ .
 
 L'incontestabile e definitivo manuale di riferimento sul Perl, scritto dal
-creatore del Perl, E<egrave> ora (luglio 2000) alla sua terza edizione:
+creatore del Perl, E<egrave> ora (settembre 2004) alla sua terza edizione:
 
-    Programming Perl (il "Camel Book" ["Libro del cammello", NdT]):
+	Programming Perl (il "Camel Book" ["Libro del cammello", NdT]):
         di Larry Wall, Tom Christiansen, and Jon Orwant
         ISBN 0-596-00027-8 [3a edizione luglio 2000]
         http://www.oreilly.com/catalog/pperl3/
-    (In inglese, sono anche disponibli traduzioni in diverse altre lingue)
+    	(In inglese, sono anche disponibli traduzioni in diverse altre lingue)
 
 Il volume di complemento al Camel, contenente migliaia di esempi concreti,
 mini tutorial e programmi completi, E<egrave>:
 
-    The Perl Cookbook (il "Ram Book" ["Libro dell'ariete", NdT]):
+    	The Perl Cookbook (il "Ram Book" ["Libro dell'ariete", NdT]):
         di Tom Christiansen e Nathan Torkington, 
             con prefazione di Larry Wall
-        ISBN 1-56592-243-3 [1a Edizione agosto 1998]
-        http://perl.oreilly.com/cookbook/
+        ISBN 0-596-00313-7 [1a Edizione agosto 1998]
+        http://www.oreilly.com/catalog/perlckbk2/
 
 Se siete dei programmatori stagionati allora potrebbe essere sufficiente per
 voi imparare il Perl dal Camel. Se non lo siete, acquistate il Llama book
 [Libro del lama, NdT]:
 
-    Learning Perl (the "Llama Book")
+    	Learning Perl (il "Llama Book")
         di Randal L. Schwartz e Tom Phoenix
         ISBN 0-596-00132-0 [3a edizione luglio 2001]
         http://www.oreilly.com/catalog/lperl3/
 
 E per informazioni piE<ugrave> avanzate sulla scrittura di grossi programmi,
 presentato nello stesso stile del Llama book, continuate la vostra preparazione
-con l'Alpaca book:
+con l'Alpaca book [il libro dell'alpaca, NdT]:
 
-    Learning Perl Objects, References, and Modules (the "Alpaca Book")
-        by Randal L. Schwartz, with Tom Phoenix (foreword by Damian Conway)
-        ISBN 0-596-00478-8 [1st edition June 2003]
+    	Learning Perl Objects, References, and Modules (l'"Alpaca Book")
+        di Randal L. Schwartz con Tom Phoenix (prefazione di Damian Conway)
+        ISBN 0-596-00478-8 [1a edizione giugno 2003]
         http://www.oreilly.com/catalog/lrnperlorm/
 
 Se non siete programmatori occasionali ma informatici piE<ugrave> seri
 e possibilmente anche laureati che non hanno bisogno di cosE<igrave>
 tanto aiuto quanto ne cerchiamo di dare nel Llama, acquistate il delizioso
 
-    Perl: The Programmer's Companion
+    	Perl: The Programmer's Companion
         di Nigel Chapman
         ISBN 0-471-97563-X [1997, 3a ristampa primavera 1998]
         http://www.wiley.com/compbooks/catalog/97563-X.htm
@@ -292,7 +292,7 @@ tanto aiuto quanto ne cerchiamo di dare nel Llama, acquistate il delizioso
 Se vi sentite come foste a casa vostra con Windows, E<egrave> disponibile quello
 che segue (benchE<eacute> sfortunatamente piuttosto datato).
 
-    Learning Perl on Win32 Systems (the "Gecko Book" ["Il libro del geco", NdT])
+    	Learning Perl on Win32 Systems (il "Gecko Book" ["Il libro del geco", NdT])
         di Randal L. Schwartz, Erik Olson, e Tom Christiansen,
            con prefazione di Larry Wall
         ISBN 1-56592-324-3 [1a edizione agosto 1997]
@@ -317,103 +317,128 @@ Seguono i libri raccomandati su (o per lo piE<ugrave> su) Perl.
 
 =item Di riferimento
 
-    Programming Perl
+    	Programming Perl
         di Larry Wall, Tom Christiansen e Jon Orwant
         ISBN 0-596-00027-8 [3a edizione luglio 2000]
         http://www.oreilly.com/catalog/pperl3/
 
-    Perl 5 Pocket Reference
+    	Perl 5 Pocket Reference
         di Johan Vromans
         ISBN 0-596-00032-4 [3a edizione maggio 2000]
         http://www.oreilly.com/catalog/perlpr3/
 
-    Perl in a Nutshell
+    	Perl in a Nutshell
         di Ellen Siever, Stephan Spainhour e Nathan Patwardhan
         ISBN 1-56592-286-7 [1a edizione dicembre 1998]
         http://www.oreilly.com/catalog/perlnut/
 
 =item Tutorial
 
-    Elements of Programming with Perl
+	Beginning Perl
+	di James Lee
+	ISBN 1-59059-391-X [2a edizione agosto 2004]
+	http://apress.com/book/bookDisplay.html?bID=344
+
+    	Elements of Programming with Perl
         di Andrew L. Johnson
         ISBN 1-884777-80-5 [1a edizione ottobre 1999]
         http://www.manning.com/Johnson/
 
-    Learning Perl
+    	Learning Perl
         di Randal L. Schwartz e Tom Phoenix
         ISBN 0-596-00132-0 [3a edizione luglio 2001]
         http://www.oreilly.com/catalog/lperl3/
 
-    Learning Perl Objects, References, and Modules
-       di Randal L. Schwartz con Tom Phoenix (prefazione di Damian Conway)
-       ISBN 0-596-00478-8 [1a edizione Giugno 2003]
-       http://www.oreilly.com/catalog/lrnperlorm/
+    	Learning Perl Objects, References, and Modules
+        di Randal L. Schwartz con Tom Phoenix (prefazione di Damian Conway)
+        ISBN 0-596-00478-8 [1a edizione giugno 2003]
+        http://www.oreilly.com/catalog/lrnperlorm/
 
-    Learning Perl on Win32 Systems
+    	Learning Perl on Win32 Systems
         di Randal L. Schwartz, Erik Olson e Tom Christiansen,
         con prefazione di Larry Wall
         ISBN 1-56592-324-3 [1a edizione agosto 1997]
         http://www.oreilly.com/catalog/lperlwin/
 
-    Perl: The Programmer's Companion
+    	Perl: The Programmer's Companion
         di Nigel Chapman
         ISBN 0-471-97563-X [1997, 3a ristampa primavera 1998]
         http://www.wiley.com/compbooks/catalog/97563-X.htm
         http://www.wiley.com/compbooks/chapman/perl/perltpc.html (errata corrige ecc)
 
-    Cross-Platform Perl
+    	Cross-Platform Perl
         di Eric Foster-Johnson
         ISBN 1-55851-483-X [2a edizione settembre 2000]
         http://www.pconline.com/~erc/perlbook.htm
 
-     MacPerl: Power and Ease
+     	MacPerl: Power and Ease
         di Vicki Brown e Chris Nandor, con prefazione di Matthias Neeracher
         ISBN 1-881957-32-2 [1a edizione maggio 1998]
         http://www.macperl.com/ptf_book/
 
 =item Soluzioni per determinati lavori
 
-    The Perl Cookbook
+	Writing Perl Modules for CPAN
+	di Sam Tregar
+	ISBN 1-59059-018-X [1a edizione agosto 2002]
+	http://apress.com/book/bookDisplay.html?bID=14
+
+    	The Perl Cookbook
         di Tom Christiansen e Nathan Torkington con prefazione di Larry Wall
         ISBN 1-56592-243-3 [1a edizione agosto 1998]
         http://www.oreilly.com/catalog/cookbook/
 
-    Effective Perl Programming
+    	Effective Perl Programming
         di Joseph Hall
         ISBN 0-201-41975-0 [1a edizione 1998]
         http://www.awl.com/
 
+	Real World SQL Server Administration with Perl
+	di Linchi Shea
+	ISBN 1-59059-097-X [1a edizione luglio 2003]
+	http://apress.com/book/bookDisplay.html?bID=171
+
 =item Argomenti specifici
 
-    Mastering Regular Expressions
+	Perl 6 Now: The Core Ideas Illustrated with Perl 5
+	di Scott Walters
+	ISBN 1-59059-395-2 [1a edizione dicembre 2004
+	http://apress.com/book/bookDisplay.html?bID=355
+
+    	Mastering Regular Expressions
         di Jeffrey E. F. Friedl
-        ISBN 0-596-00289-0 [2a edizione Luglio 2002]
+        ISBN 0-596-00289-0 [2a edizione luglio 2002]
         http://www.oreilly.com/catalog/regex2/
 
-    Network Programming with Perl
+    	Network Programming with Perl
         di Lincoln Stein
         ISBN 0-201-61571-1 [1a edizione 2001]
         http://www.awlonline.com/
 
-    Object Oriented Perl
+    	Object Oriented Perl
         di Damian Conway con prefazione di Randal L. Schwartz
         ISBN 1-884777-79-1 [1a edizione agosto 1999]
         http://www.manning.com/Conway/
 
-    Data Munging with Perl
+    	Data Munging with Perl
         di Dave Cross
         ISBN 1-930110-00-6 [1a edizione 2001]
         http://www.manning.com/cross
 
-    Mastering Perl/Tk
+    	Mastering Perl/Tk
         di Steve Lidie e Nancy Walsh
         ISBN 1-56592-716-8 [1a edizione gennaio 2002]
         http://www.oreilly.com/catalog/mastperltk/ 
 
-    Extending and Embedding Perl
+    	Extending and Embedding Perl
         di Tim Jenness e Simon Cozens
-        ISBN 1-930110-82-0 [1a edizione Agosto 2002]
+        ISBN 1-930110-82-0 [1a edizione agosto 2002]
         http://www.manning.com/jenness
+
+	Perl Debugger Pocket Reference
+	di Richard Foley
+	ISBN 0-596-00503-2 [1a edizione gennaio 2004]
+	http://www.oreilly.com/catalog/perldebugpr/ 
 
 =back
 
@@ -497,34 +522,6 @@ includono i Perl Resource Kit di O'Reilly (sia nella versione Unix che
 in quella, proprietaria, Microsoft); anche le distribuzioni Unix libere
 sono fornite tutte col Perl.
 
-Alternativamente, si puE<ograve> acquistare un supporto commerciale,
-basato sugli incidenti, attraverso The Perl Clinic. Di seguito E<egrave>
-riportata una loro nota pubblicitaria:
-
-"The Perl Clinic E<egrave> un servizio di supporto commerciale al Perl
-operato da ActiveState Tool Corp. e da The Ingram Group. Gli operatori
-hanno un'esperienza approfondita e di molti anni sulle applicazioni e
-sugli internal del Perl, su un'ampia serie di sistemi.
-
-"Attraverso il nostro gruppo di ingegneri ben preparati e molto esperti,
-faremo del nostro meglio per capire il vostro problema, fornire una
-spiegazione della situazione, ed una raccomandazione su come procedere."
-
-Potete contattare The Perl Clinic a:
-
-    www.PerlClinic.com
-
-    Ora Standard del Nord America Pacifico(GMT-8)
-    Tel:    1 604 606-4611 orario 8am-6pm
-    Fax:    1 604 606-4640
-
-    Europa (GMT)
-    Tel:    00 44 1483 862814
-    Fax:    00 44 1483 862801
-
-Consultate inoltre www.perl.com per aggiornamenti su tutorial, formazione,
-e supporto.
-
 =head2 Dove invio le segnalazioni di bug?
 
 Se dovete segnalare un bug dell'interprete perl o dei moduli distribuiti
@@ -542,38 +539,35 @@ successivo)
 
 =head2 Cos'E<egrave> perl.com? Perl Mongers? pm.org? perl.org? cpan.org?
 
-La Perl Home Page, disponibile all'indirizzo http://www.perl.com/ , E<egrave>
-al momento ospitata da The O'Reilly Network, che E<egrave> parte di O'Reilly
-and Associates.
+Perl.com su http://www.perl.com/ E<egrave> parte di O'Reilly Network, 
+che E<egrave> una sussidiaria di O'Reilly Media.
 
-I Perl Mongers sono un'organizzazione che sostiene il linguaggio Perl, e
-che dispone di un proprio sito alla URL http://www.perl.org/ . Si tratta di
-un sito generico di supporto al Perl.
+La Perl Foundation [Fondazione Perl, NdT] E<egrave> una organizzazione a 
+sostegno del linguaggio Perl che mantiene il sito web http://www.perl.org/ 
+quale sito generico di supporto al Perl. Utilizzano il dominio pm.org per 
+fornire servizi generici di supporto alla comunitE<agrave> Perl, inclusi 
+l'hosting di mailing list, siti web e altri servizi. Il sito http://www.perl.org/ 
+E<egrave> un sito generico di supporto al linguaggio Perl ed esistono molti 
+altri sottodomini dedicati al argomenti specifici, come ad esempio:
+
+	http://learn.perl.org/
+	http://use.perl.org/
+	http://jobs.perl.org/
+	http://lists.perl.org/
 
 I Perl Monger usano il dominio pm.org per fornire servizi relativi agli user
-group (NdT: gruppi di utenti) sul Perl, incluso l'hosting di mailing list e
+group [gruppi di utenti, NdT] sul Perl, inclusi l'hosting di mailing list e 
 siti web. Consultate il sito degli user group Perl all'indirizzo
 http://www.pm.org per maggiori informazioni su come creare, unirisi a, o
 richiedere servizi ad un Perl user group.
 
-I Perl Mongers inoltre utilizzano il dominio perl.org per fornire un
-supporto generico alla comunitE<agrave> Perl, incluso l'hosting di mailing
-list, siti web, ed altri servizi. Il sito http://www.perl.org/ E<egrave>
-un sito generico di supporto al linguaggio Perl, ed esistono molti altri
-sottodomini dedicati al argomenti specifici, come ad esempio:
-
-    http://bugs.perl.org/
-    http://history.perl.org/
-    http://lists.perl.org/
-    http://use.perl.org/
-
 http://www.cpan.org E<egrave> il Comprehensive Perl Archive Network, un
 archivio replicato in tutto il mondo contenente software Perl. Consultate
-la domanda I<Cos'E<egrave> CPAN?> piE<ugrave> in alto in questo documento.
+la domanda I<Cos'E<egrave> CPAN?> precedentemente in questo documento.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it

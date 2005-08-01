@@ -3,27 +3,27 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
 
 my $pods = {
-	perlboot => '5.8.1',
+	perlboot => '5.8.7',
 	perlembed => '5.8.6',
-	perlfaq1 => '5.8.1',
-	perlfaq2 => '5.8.1',
-	perlfaq3 => '5.8.1',
-	perlfaq4 => '5.8.1',
-	perlfaq5 => '5.8.1',
-	perlfaq6 => '5.8.1',
-	perlfaq7 => '5.8.1',
-	perlfaq8 => '5.8.1',
-	perlfaq9 => '5.8.1',
+	perlfaq1 => '5.8.7',
+	perlfaq2 => '5.8.7',
+	perlfaq3 => '5.8.7',
+	perlfaq4 => '5.8.7',
+	perlfaq5 => '5.8.7',
+	perlfaq6 => '5.8.7',
+	perlfaq7 => '5.8.7',
+	perlfaq8 => '5.8.7',
+	perlfaq9 => '5.8.7',
 	perlfork => '5.8.1',
-	perlfunc => '5.8.3',
+	perlfunc => '5.8.7',
 	perllol => '5.8.6',
-	perlrequick => '5.8.1',
+	perlrequick => '5.8.7',
 	perlstyle => '5.8.1',
 	perlthrtut => '5.8.1',
 	perluniintro => '5.8.1',
@@ -109,7 +109,9 @@ L<http://pod2it.sourceforge.net/pods/responsibles.html>
 =head1 AUTHORS
 
 pod2it is a larger translation project owned by larsen, dree, dada, arthas, 
-dakkar, bepi & others.
+dakkar, bepi, shishii, frodo72, alberto-re, kral, osfameron, oha, TheHobbit 
+& others.
+
 See L<http://pod2it.sourceforge.net> for more detalis.
 First POD2::IT package released by Enrico Sorcinelli <bepi at perl.it>
 

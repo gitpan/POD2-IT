@@ -1,9 +1,21 @@
-POD2::IT version 0.06
+POD2::IT version 0.07
 =====================
 
-POD2::IT - Italian translation of Perl core documentation
+POD2::IT - Italian translation of Perl core documentation.
 
-See 'perldoc POD2::IT' for more info
+See 'perldoc POD2::IT' for more info.
+
+See pod2it.sf.net for more details about the project.
+
+CHANGES FROM PREVIOUS VERSION
+
+	! Updated perlboot.pod to 5.8.7 [osfameron]
+	! Updated perlfunc.pod to 5.8.7 [dree]
+	! Updated perlfaq[1..9] to 5.8.7 [dree]
+	! Updated perlrequick to 5.8.7 [dree]
+	! Added all nicknames contributors to Changes/README and so on [bepi]
+
+See 'Changes' file for complete history revisions.
 
 INSTALLATION
 
@@ -16,14 +28,16 @@ To install this module type the following:
 
 DEPENDENCIES
 
-This module doen't requires other modules and libraries
+This module doesn't require other modules and libraries.
+
+AUTHORS
+
+larsen, dree, dada, arthas, dakkar, bepi, shishii, frodo72, alberto-re, 
+kral, osfameron, oha, TheHobbit & others.
 
 COPYRIGHT AND LICENCE
 
-dree, larsen, dada, arthas, dakkar, bepi, ...
-See pod2it.sf.net for more details
-
-Copyright (C) 2004 Perl.it / Perl Mongers Italia
+Copyright (C) 2004,2005 Perl.it / Perl Mongers Italia
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

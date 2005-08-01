@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq1 - Domande Generali Sul Perl ($Revision: 1.14 $, $Date: 2005/05/19 15:36:04 $)
+perlfaq1 - Domande Generali Sul Perl ($Revision: 1.16 $, $Date: 2005/07/26 20:15:17 $)
 
 =head1 DESCRIZIONE
 
@@ -51,51 +51,107 @@ Perl non E<egrave> nE<eacute> prodotto nE<eacute> mantenuto dalla Free Software
 Foundation. Inoltre, i termini di licenza di Perl sono piE<ugrave> aperti di quanto 
 quelli del software GNU tendano ad essere.
 
-Se lo desiderate E<egrave> possibile ottenere supporto commerciale per il
+Se lo desiderate, E<egrave> possibile ottenere supporto commerciale per il
 Perl, benchE<eacute> per la maggior parte degli utenti il supporto informale
 sia piE<ugrave> che sufficiente. Consultate la risposta a "Dove posso acquistare
 versioni commerciali di Perl?" per maggiori informazioni.
 
 =head2 Quale versione di Perl devo usare?
 
-Dovrebbe essere senz'altro usata la versione 5. La versione 4 E<egrave>
-vecchia, limitata, e non piE<ugrave> mantenuta; la sua ultima patch (4.036)
-risale al 1992, molto tempo fa. Certo, E<egrave> stabile, ma come lo E<egrave>
-qualsiasi cosa morta; in realtE<agrave>, perl4 E<egrave> stato dichiarato una
-carcassa di cammello morta e divorata dagli insetti. La piE<ugrave> recente
-release di produzione E<egrave> la 5.8.3 (benchE<eacute> la 5.005_03 e la 5.6.1 
-siano ancora supportate). La release contenente gli ultimissimi sviluppi E<egrave> 
-la 5.9. Ulteriori riferimenti al linguaggio Perl in questo documento si
-riferiscono alla release di produzione, salvo diversamente specificato. Nel
-momento in cui leggete questo, ci possono essere state una o piE<ugrave>
-release di correzione dei bug, e forse anche qualche versione sperimentale
-in vista della prossima release. Tutte le release anteriori alle 5.004 erano 
-soggette a buffer overrun, un grave problema di sicurezza.
+(contributo di brian d foy)
+
+E<Egrave> spesso una questione opinabile e di gusto e non c'E<egrave> una sola 
+risposta che va bene a tutti. In generale, dovreste usare o la versione stabile 
+corrente oppure la versione stabile immediatamente prima ad essa. Al momento, 
+queste sono rispettivamente perl5.8.x e perl5.6.x.
+
+Al di lE<agrave> di questo, dovete considerare diverse cose e decidere quale 
+sia la migliore per voi.
+
+=over 4
+
+=item *
+
+Se le cose funzionano, aggiornare il perl potrebbe renderle non funzionanti 
+(o perlomeno dare origine a nuovi warning).
+
+=item *
+
+Le ultime versioni del perl hanno un maggior numero di bug corretti.
+
+=item *
+
+La comunitE<agrave> Perl E<egrave> attrezzata al supporto delle versioni 
+piE<ugrave> recenti, dunque troverete piE<ugrave> facilmente dell'aiuto 
+per queste versioni.
+
+=item *
+
+Le versioni precedenti al perl5.004 hanno seri problemi di sicurezza con i 
+buffer overflow e in alcuni casi hanno dei CERT advisory [Avvisi di sicurezza del CERT, NdT] 
+(per esempio http://www.cert.org/advisories/CA-1997-17.html ).
+
+=item *
+
+Le versioni piE<ugrave> recenti sono probabilmente le meno utilizzate e testate a fondo, 
+dunque se siete maldisposti a rischiare, potreste preferir aspettare qualche mese dopo il loro rilascio 
+e vedere quali problemi ha dato ad altri.
+
+=item *
+
+Le versioni immediatamente precedenti (cioE<egrave> perl5.6.x) di solito vengono mantenuti per un certo 
+periodo di tempo, benchE<eacute> non allo stesso livello delle versioni correnti.
+
+
+=item *
+
+Nessuno sta supportando attivamente perl4.x. Cinque anni fa era 
+una carcassa di cammello morto (secondo questo documento). Ora E<egrave> 
+a malapena uno scheletro per via delle sue ossa imbiancate o erose.
+
+=item *
+
+Non ci sarE<agrave> un perl6.x per il prossimo paio d'anni. Restate sintonizzati, 
+ma non abbiate timore di dover cambiare presto la versione di maggior importanza del 
+Perl (cioE<egrave> prima del 2006).
+
+=item *
+
+Ci sono davvero due vie dello sviluppo del perl: una versione di manutenzione ed una 
+versione sperimentale. Le versioni di manutenzione sono stabili ed hanno un numero 
+pari quale numero di versione minore (cioE<egrave> perl5.8.x, dove 8 E<egrave> la 
+versione di second'ordine). Le versioni sperimentali possono includere caratteristiche 
+che non E<egrave> detto saranno presenti nelle versioni stabili ed hanno un numero dispari quale numero 
+di versione minore (cioE<egrave> perl5.9.x, dove 9 E<egrave> la versione di second'ordine).
+
+=back
+
 
 =head2 Cosa sono perl4 e perl5?
 
-Perl4 e perl5 sono nomi informali per versioni diverse del linguaggio Perl.
-E<Egrave> piE<ugrave> facile dire "perl5" che "la versione 5(.004) del Perl",
-ma qualcuno l'ha interpretato come il fatto che esista un linguaggio chiamato
-"perl5", il che non ha alcun fondamento. Perl5 E<egrave> semplicemente il nome
-popolare per la quinta versione (Ottobre 1994), mentre perl4 E<egrave> stata
-la quarta (Marzo 1991). Ci sono stati anche perl1 (Gennnaio 1988), perl2
-(Giugno 1988) e perl3 (Ottobre 1989).
+(contributo di brian d foy)
 
-La versione 5.0 E<egrave> essenzialmente una riscrittura dalle basi del codice
-originale del perl dalla versione 1 alla 4. E<Egrave> stato modularizzato,
-reso orientato agli oggetti, manipolato, ricucito, ottimizzato al punto
-che non assomiglia per niente al vecchio codice. L'interfaccia, comunque,
-E<egrave> rimasta fondamentalmente la stessa, e la compatibilitE<agrave> con
-le versioni precedenti E<egrave> molto alta. Si veda la sezione
-L<perltrap/"Perl4 to Perl5 Traps">.
+In breve, perl4 E<egrave> il passato, perl5 il presente e perl6 il futuro.
 
-Per evitare la confusione sul "che linguaggio E<egrave> perl5?", alcuni 
-preferiscono utilizzare semplicemente "perl" per riferirsi all'ultima versione 
-disponibile ed evitano di chiamarla "perl5".
-Non che faccia poi molta differenza, in ogni caso.
+Il numero dopo perl (cioE<egrave> il 5 dopo perl5) E<egrave> la versione piE<ugrave> 
+importante dell'interprete perl cosE<igrave> come la versione del linguaggio.
+Ogni versione di maggiore importanza ha delle differenze significative che le versioni 
+precedenti non supportano.
 
-Consultate la pagina L<perlhist> per la storia delle versioni del Perl.
+La versione di maggior importanza del Perl E<egrave> perl5 e fu rilasciata nel 1994.
+PuE<ograve> eseguire script della precedente versione principale, perl4 (Marzo 1991), 
+ma ha differenze significative. Introduce il concetto dei riferimenti, strutture dati 
+complesse e moduli. L'interprete perl5 fu una completa riscrittura dei precedenti 
+codici sorgenti del perl.
+
+Perl6 E<egrave> la successiva versione di maggior importanza ma E<egrave> ancora in 
+sviluppo, sia per quanto riguarda la sintassi quanto per il design. I lavori sono partiti 
+nel 2002 e sono ancora in corso. Molte delle caratteristiche piE<ugrave> interessanti sono 
+state messe in luce nelle ultime versioni di perl5 e alcuni moduli per perl5 vi permettono di 
+utilizzare parte della sintassi di Perl6 nei vostri programmi. Potete saperne di piE<ugrave> 
+sul Perl6 su http://dev.perl.org/perl6/ .
+
+Consultate L<perlhist> per la storia delle versioni del Perl.
 
 =head2 Cos'E<egrave> Ponie?
 
@@ -293,6 +349,12 @@ perl", NdT] con cui diverse persone firmano i loro messaggi. Le ha rese
 famose Randal Schwartz. Circa 100 dei piE<ugrave> recenti sono disponibili su
 http://www.cpan.org/misc/japh .
 
+
+=head2 Where can I get a list of Larry Wall witticisms?
+
+Over a hundred quips by Larry, from postings of his or source code,
+can be found at http://www.cpan.org/misc/lwall-quotes.txt.gz .
+
 =head2 Come posso convincere il mio amministratore di sistema/supervisore/dipendenti ad usare la versione 5/5.6.1/Perl al posto di qualche altro linguaggio?
 
 Se il proprio dirigente o i dipendenti sono diffidenti verso il software non
@@ -319,14 +381,14 @@ documentazione, inclusa questa FAQ.
 
 Si veda http://www.perl.org/advocacy/ per maggiori informazioni.
 
-Se affrontate della riluttanza nell'aggiornare una versione vecchia
+Se vi trovate di fronte a della riluttanza nell'aggiornare una versione vecchia
 di Perl, allora fate notare che la versione 4 E<egrave> completamente non
 mantenuta e non supportata dal Perl Development Team. Un altro grande
 punto a favore di Perl5 E<egrave> il vasto numero di moduli ed estensioni che
 riducono drasticamente il tempo di sviluppo per qualsiasi dato compito.
 Si menzioni inoltre che la differenza tra la versione 4 e la 5 di Perl
 E<egrave> come la differenza tra awk e C++. (Beh, OK, forse non E<egrave>
-proprio cosE<igrave> grande, ma rende l'idea.) Se si desidera supporto ed
+proprio cosE<igrave> grande, ma rende l'idea). Se si desidera supporto ed
 una ragionevole garanzia che ciE<ograve> che si sviluppa continuerE<agrave>
 a funzionare in futuro, E<egrave> necessario utilizzare la versione
 supportata. Al Gennaio 2003, ciE<ograve> probabilmente significa usare o
@@ -353,8 +415,8 @@ quella di aggiornare almeno a Perl 5.6.1.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997, 1998, 1999, 2000, 2001 Tom Christiansen e Nathan
-Torkington. Tutti i diritti riservati.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it
 ( http://pod2it.sourceforge.net/ )

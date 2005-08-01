@@ -14,17 +14,17 @@ la comprensione, la creazione e l'uso delle espressioni regolari
 =head2 Il semplice match di una parola
 
 La regex piE<ugrave> semplice E<egrave> semplicemente una parola, o piE<ugrave> in generale,
-una stringa di caratteri.  Una regex che consiste in una parola, 
+una stringa di caratteri. Una regex che consiste in una parola, 
 matcha ogni stringa che contiente quella parola:
 
     "Ciao Mondo" =~ /Mondo/;  # matcha
 
 In questa asserzione (statement), C<Mondo> E<egrave> una regex e il C<//> che racchiude
-C</Mondo/> dice a perl di cercare una stringa per un match.  L'operatore
+C</Mondo/> dice a perl di cercare una stringa per un match. L'operatore
 C<=~> associa la stringa con il match della regex e produce un valore vero
-se la regex matcha, o falso se la regex non matcha.  Nel
+se la regex matcha, o falso se la regex non matcha. Nel
 nostro caso, C<Mondo> matcha la seconda parola in C<"Ciao Mondo">, quindi
-l'espressione E<egrave> vera.  Questa idea ha diverse varianti.
+l'espressione E<egrave> vera. Questa idea ha diverse varianti.
 
 Le espressioni come questa sono molto utili nei condizionali:
 
@@ -53,16 +53,16 @@ sostituiti con delimitatori arbitrari, utilizzando un C<'m'> out front:
                                  # '/' diventa un carattere qualsiasi
 
 Le regex devono effettuare un match della parte di una stringa I<esattamente>
-affinchE<egrave>�l'asserzione (statement) sia vera:
+affinchE<eacute> l'asserzione (statement) sia vera:
 
     "Ciao Mondo" =~ /mondo/;  # non matcha, case sensitive
-    "Ciao Mondo" =~ /o M/;    # matcha, ' ' E<egrave> un carattere qualsiasi
-    "Ciao Mondo" =~ /Mondo /; # non matcha, non c'E<egrave> un ' ' alla fine
+    "Ciao Mondo" =~ /o M/;    # matcha, ' ' e` un carattere qualsiasi
+    "Ciao Mondo" =~ /Mondo /; # non matcha, non c'e` un ' ' alla fine
 
-perl effettuerE<agrave> sempre un match nel punto piE<ugrave> remoto/lontano della stringa:
+perl effettuerE<agrave> sempre un match nel punto della stringa piE<ugrave> vicino:
 
-    "Ciao Mondo" =~ /o/;        # matcha 'o' in 'Mondo'
-    "That hat is red" =~ /hat/; # matches 'hat' in 'That'
+    "Ciao Mondo" =~ /o/;        # matcha 'o' in 'Ciao'
+    "That hat is red" =~ /hat/; # matcha 'hat' in 'That' [Questo cappello e` rosso, NdT]
 
 Non tutti i caratteri possono essere usati 'letteralmente' in un match.
 Alcuni caratteri chiamati B<metacaratteri>, sono riservati per utilizzarli
@@ -73,8 +73,8 @@ I metacaratteri sono
 
 Un metacarattere puE<ograve> essere matchato inserendo un backslash prima di lui:
 
-    "2+2=4" =~ /2+2/;    # non matcha, + E<egrave> un metacarattere
-    "2+2=4" =~ /2\+2/;   # matcha, \+ E<egrave> trattato come un semplice +
+    "2+2=4" =~ /2+2/;    # non matcha, + e` un metacarattere
+    "2+2=4" =~ /2\+2/;   # matcha, \+ e` trattato come un semplice +
     'C:\WIN32' =~ /C:\\WIN/;                       # matcha
     "/usr/bin/perl" =~ /\/usr\/local\/bin\/perl/;  # matcha
 
@@ -84,12 +84,12 @@ la regex.
 
 I caratteri ASCII non stampabili sono rappresentati da B<sequenze di escape>.
 Esempi comuni sono C<\t> per il tab, C<\n> per il newline, e C<\r>
-per il carriage return.  I byte arbitrari sono rappresentati da sequenze
+per il carriage return. I byte arbitrari sono rappresentati da sequenze
 di escape ottali, ad es., C<\033>, o sequenze di escape esadecimali,
 ad es., C<\x1B>:
 
     "1000\t2000" =~ m(0\t2)        # matcha
-    "cat"        =~ /\143\x61\x74/ # matcha, ma E<egrave> un modo bizzarro per pronunciare gatto
+    "cat"        =~ /\143\x61\x74/ # matcha, ma e` un modo bizzarro per pronunciare gatto
 
 Le regex sono trattate principalmente come stringhe tra doppi apici,
 quindi funziona la sostituzione di variabile:
@@ -100,9 +100,9 @@ quindi funziona la sostituzione di variabile:
 
 In tutte le regex viste sopra, se la regex matcha ovunque nella stringa,
 viene considerato un match. Per speficicare I<dove> dovrE<agrave> effettuare il match,
-useremo i metacaratteri B<ancora> C<^> e C<$>.  L'ancora C<^> indica che il match
+useremo i metacaratteri B<ancora> C<^> e C<$>. L'ancora C<^> indica che il match
 sarE<agrave> effettuato all'inizio della stringa e l'ancora C<$> indica il match alla fine
-della stringa, o prima di un newline alla fine della stringa.  Alcuni esempi:
+della stringa, o prima di un newline alla fine della stringa. Alcuni esempi:
 
     "donna di casa" =~ /casa/;         	# matcha
     "donna di casa" =~ /^casa/;        	# non matcha
@@ -115,7 +115,7 @@ della stringa, o prima di un newline alla fine della stringa.  Alcuni esempi:
 Una B<classe di caratteri> permette ad un insieme di possibili caratteri, piuttosto 
 che un solo singolo carattere, di essere matchati ad un punto particolare in una regex.
 Le classi di caratteri sono denotate da parentesi quadre C<[...]>, con all'interno 
-l'insieme di caratteri che possono essere matchati.  Qui c'E<egrave> qualche esempio:
+l'insieme di caratteri che possono essere matchati. Qui c'E<egrave> qualche esempio:
 
     /gatto/;            # matcha 'gatto'
     /[pgr]atto/;        # matcha 'patto', 'gatto', or 'ratto'
@@ -129,18 +129,20 @@ E<egrave> C<'a'>.
                     # 'yes', 'Yes', 'YES', etc.
     /yes/i;         # anche questo matcha 'yes' in modalitE<agrave> case-insensitive way
 
+[sE<igrave>, NdT]
+
 L'ultimo esempio mostra una match con un B<modificatore> C<'i'>, che rende
 il match case-insensitive.
 
 Le classi di caratteri possiedono sia caratteri normali (ordinary) che speciali,
 ma gli insiemi di caratteri normali e speciali all'interno di una classe di
 caratteri sono differenti rispetto a quelli al di fuori di una classe di
-caratteri.  I caratteri speciali per una classe di caratteri sono C<-]\^$> e
+caratteri. I caratteri speciali per una classe di caratteri sono C<-]\^$> e
 sono matchati usando un escape:
 
    /[\]c]def/; # matcha ']def' or 'cdef'
    $x = 'bcr';
-   /[$x]at/;   # matcha 'bat, 'cat', or 'rat'
+   /[$x]at/;   # matcha 'bat, 'cat', or 'rat' [pipistrello, gatto, ratto, NdT]
    /[\$x]at/;  # matcha '$at' or 'xat'
    /[\\$x]at/; # matcha '\at', 'bat, 'cat', or 'rat'
 
@@ -156,8 +158,8 @@ viene trattato come un carattere normale.
 
 Il carattere speciale C<^> nella prima posizione di una classe di caratteri
 denota una B<classe di caratteri negata>, che matcha ogni carattere ad esclusione di
-quelli tra le parentesi quadre.  Sia C<[...]> che C<[^...]> devono matchare un 
-carattere, o il match fallisce.  Dunque
+quelli tra le parentesi quadre. Sia C<[...]> che C<[^...]> devono matchare un 
+carattere, o il match fallisce. Dunque
 
     /[^a]at/;  # non matcha 'aat' or 'at', ma matcha
                # tutti gli altri 'bat', 'cat, '0at', '%at', etc.
@@ -199,20 +201,20 @@ Il punto '.' matcha ogni carattere ad esclusione del "\n"
 =back
 
 Le abbreviazioni C<\d\s\w\D\S\W> possono essere usate sia all'interno che all'esterno delle 
-classi di caratteri.  Qui ci sono alcuni utilizzi:
+classi di caratteri. Qui ci sono alcuni utilizzi:
 
     /\d\d:\d\d:\d\d/; # matcha un formato tempo hh:mm:ss
     /[\d\s]/;         # matcha ogni numero o spazio
     /\w\W\w/;         # matcha un carattere normale, seguito
                       # da un carattere di formattazione, seguito da un carattere normale
     /..rt/;           # matcha due caratteri qualunque, seguiti da 'rt'
-    /end\./;          # matcha 'end.'
+    /end\./;          # matcha 'end.' [fine, NdT]
     /end[.]/;         # stessa cosa, matcha 'end.'
 
 L'S<B<ancora di parola> > C<\b> matcha un confine tra un carattere di parola
 e un carattere di non-parola C<\w\W> o C<\W\w>:
 
-    $x = "Housecat catenates house and cat";
+    $x = "Housecat catenates house and cat"; [Casagatto concatena casa e gatto, NdT]
     $x =~ /\bcat/;    # matcha cat in 'catenates'
     $x =~ /cat\b/;  	 # matcha cat in 'housecat'
     $x =~ /\bcat\b/;  # matcha 'cat' alla fine della stringa
@@ -223,15 +225,15 @@ confine di parola.
 =head2 Matchare questo o quello
 
 Possiamo effettuare il match di differenti stringhe di caratteri con il
-metacarattere C<'|'>.  Per effettuare il match di C<cane> o C<gatto>, formiamo la regex
-C<cane|gatto>.  Come prima, perl cercherE<agrave> di effettuare il match della regex
-al primissimo punto possibile nella stringa.  Ad ogni posizione di un cartattere,
-perl cercherE<agrave> prima di effettuare il macht della prima alternativa, C<cane>.  Se
+metacarattere C<'|'>. Per effettuare il match di C<cane> o C<gatto>, formiamo la regex
+C<cane|gatto>. Come prima, perl cercherE<agrave> di effettuare il match della regex
+al primissimo punto possibile nella stringa. Ad ogni posizione di un cartattere,
+perl cercherE<agrave> prima di effettuare il macht della prima alternativa, C<cane>. Se
 C<cane> non matcha, perl tenterE<agrave> allora la seconda alternativa, C<gatto>.
 Se C<gatto> non matcha ancora, allora il match fallisce e perl si sposterE<agrave>
-alla prossima posizione nella stringa.  Alcuni esempi:
+alla prossima posizione nella stringa. Alcuni esempi:
 
-    "cats and dogs" =~ /cat|dog|bird/;  # matcha "cat"
+    "cats and dogs" =~ /cat|dog|bird/;  # matcha "cat" [cani e gatti, cane|gatto|uccello, NdT]
     "cats and dogs" =~ /dog|cat|bird/;  # matcha "cat"
 
 Anche se C<cane> E<egrave> la prima alternativa nella seconda regex,
@@ -248,9 +250,9 @@ cosE<igrave> la prima di esse matcha per prima.
 =head2 Raggruppamenti di cose e match gerarchico
 
 I metacaratteri di B<raggruppamento> C<()> permettono ad una parte di regex 
-di essere trattata come una singola unitE<agrave>.  Parti di una regex sono raggruppati 
-racchiudendole tra parentesi tonde.  La regex C<house(cat|keeper)> ha il significto di
-effettuare il match di C<house> seguito o da C<cat> o da C<keeper>.  Ulteriori esempio 
+di essere trattata come una singola unitE<agrave>. Parti di una regex sono raggruppati 
+racchiudendole tra parentesi tonde. La regex C<house(cat|keeper)> ha il significto di
+effettuare il match di C<house> seguito o da C<cat> o da C<keeper>. Ulteriori esempio 
 sono
 
     /(a|b)b/;    # matcha 'ab' o 'bb'
@@ -258,10 +260,10 @@ sono
 
     /house(cat|)/;  # matcha sia 'housecat' che 'house'
     /house(cat(s|)|)/;  # matcha sia 'housecats' sia 'housecat' sia
-                        # 'house'.  Nota che i raggruppamenti possono essere annidati.
+                        # 'house'. Va notato che i raggruppamenti possono essere annidati.
 
     "20" =~ /(19|20|)\d\d/;  # matcha l'alternativa nulla '()\d\d',
-                             # perchE<egrave> '20\d\d' non puE<ograve> matchare
+                             # perche' '20\d\d' non puo` matchare
 
 =head2 L'estrazione di match
 
@@ -278,21 +280,21 @@ Esse possono essere usate proprio come variabili ordinarie:
     $secondi = $3;
 
 In un contesto di lista, un match C</regex/> con raggruppamenti, 
-restituirE<agrave> la lista dei valori matchati C<($1,$2,...)>.  
+restituirE<agrave> la lista dei valori matchati C<($1,$2,...)>. 
 Dunque potremmo riscriverla come
 
     ($ore, $minuti, $secondi) = ($tempo =~ /(\d\d):(\d\d):(\d\d)/);
 
 Se i raggruppamenti in una regex sono nidificati, C<$1> prende il gruppo
 con le parentesi aperte piE<ugrave> a sinistra, C<$2> la seguente parentesi aperta
-ecc.  Per esempio, qui c'E<egrave> una complessa regex e le variabili di match
+ecc. Per esempio, qui c'E<egrave> una complessa regex e le variabili di match
 indicate sotto ad essa:
 
     /(ab(cd|ef)((gi)|j))/;
      1  2      34
 
 Associati con le variabili di match C<$1>, C<$2>, ... sono le
-B<backreferences> C<\1>, C<\2>, ...  Le backreferences sono
+B<backreference> C<\1>, C<\2>, ... Le backreference sono
 variabili di match che possono essere usate I<dentro> una regex:
 
     /(\w\w\w)\s\1/; # trova le sequenze tipo 'uno uno' nella stringa
@@ -304,8 +306,8 @@ C<\2>, ... solo dentro una regex.
 
 I metacaratteri B<quantificatori> C<?>, C<*>, C<+>, e C<{}> ci permettono
 di determinare il numero di ripetizioni di una regex che consideriamo essere
-un match.  I quantificatori vengono messi immediatamente dopo il carattere,
-la classe di carattere, o il raggruppamento che vogliamo specificare.  Essi
+un match. I quantificatori vengono messi immediatamente dopo il carattere,
+la classe di carattere, o il raggruppamento che vogliamo specificare. Essi
 hanno i seguenti significati:
 
 =over 4
@@ -347,9 +349,9 @@ Qui ci sono alcuni esempi:
     $year =~ /\d{4}|\d{2}/;    # un match migliore; scarta date con 3 cifre
 
 Questi quantificatori cercano di matchare piE<ugrave> stringa possibile,
-mentre si sta ancora permettendo alla regex di mathcare.  Dunque abbiamo
+mentre si sta ancora permettendo alla regex di mathcare. Dunque abbiamo
 
-    $x = 'the cat in the hat';
+    $x = 'the cat in the hat'; [il gatto nel cappello, NdT]
     $x =~ /^(.*)(at)(.*)$/; # matcha,
                             # $1 = 'the cat in the h'
                             # $2 = 'at'
@@ -363,16 +365,16 @@ piE<ugrave> stringa alla sua sinistra, dunque esso matcha 0 volte.
 =head2 Ulteriore matching
 
 Ci sono ancora alcune cose che si devono conoscere sugli operatori 
-di matching.  Nel codice
+di matching. Nel codice
 
     $pattern = 'Seuss';
     while (<>) {
         print if /$pattern/;
     }
 
-perl deve ri-valutare ogni volta C<$pattern> all'interno del loop.  Se
+perl deve ri-valutare ogni volta C<$pattern> all'interno del loop. Se
 C<$pattern> non sarE<agrave> cambiato, si usi il modificatore C<//o>, per eseguire la
-sostituzione di variabile una volta sola.  Se non si vuole del tutto alcuna
+sostituzione di variabile una volta sola. Se non si vuole del tutto alcuna
 sostituzione. si usi lo speciale delimitatore C<m''>:
 
     $pattern = 'Seuss';
@@ -393,17 +395,17 @@ Per esempio,
 stampa
 
     La parola cat, finisce alla posizione 3
-    Word is dog, finisce alla posizione 7
-    Word is house, finisce alla posizione 13
+    La parola dog, finisce alla posizione 7
+    La parola house, finisce alla posizione 13
 
 Un match fallito o il cambiamento della stringa obiettivo, resetta la posizione.
 Se non si vuole che la posizione venga resettata dopo il fallimento del match, si
 aggiunga la C<//c>, come in C</regex/gc>.
 
 In un contesto di lista, C<//g> restituisce una lista di reggruppamenti matchati, o se
-non ci sono raggruppamenti, una lista di match all'intera regex.  CosE<igrave>
+non ci sono raggruppamenti, una lista di match all'intera regex. CosE<igrave>
 
-    @words = ($x =~ /(\w+)/g);  # matches,
+    @words = ($x =~ /(\w+)/g);  # matcha,
                                 # $word[0] = 'cat'
                                 # $word[1] = 'dog'
                                 # $word[2] = 'house'
@@ -412,16 +414,16 @@ non ci sono raggruppamenti, una lista di match all'intera regex.  CosE<igrave>
 
 La ricerca e la sostituzione sono effettuate usando C<s/regex/sostituzione/modificatori>.
 La C<sostituzione> E<egrave> una stringa Perl double quoted che sostituisce nella stringa 
-qualsiasi cosa sia matchata con la C<regex>.  L'operatore C<=~>, qui E<egrave> anche usato
-per associare una stringa con C<s///>.  Se il match E<egrave> verso C<$_>, la S<C<$_ =~> > 
-puE<ograve> essere omessa.  
+qualsiasi cosa sia matchata con la C<regex>. L'operatore C<=~>, qui E<egrave> anche usato
+per associare una stringa con C<s///>. Se il match E<egrave> verso C<$_>, la S<C<$_ =~> > 
+puE<ograve> essere omessa. 
 Se c'E<egrave> un match,C<s///> restituisce il numero delle sostituzioni fatte, altrimenti 
 restituisce falso.
 Qui di seguito alcuni esempi:
 
-    $x = "Time to feed the cat!";
+    $x = "Time to feed the cat!"; [E` ora di dar da mangiare al gatto, NdT]
     $x =~ s/cat/hacker/;   # $x contiene "Time to feed the hacker!"
-    $y = "'quoted words'";
+    $y = "'quoted words'"; [parole tra doppie virgolette, NdT]
     $y =~ s/^'(.*)'$/$1/;  # elimina gli apici singoli,
                            # $y contiene "quoted words"
 
@@ -430,12 +432,12 @@ sono immediatamente disponibili per l'uso nell'espressione di sostituzione.
 Con il modificatore globale, C<s///g> cercherE<agrave> e sostituirE<agrave> tutte le 
 occorrenze della regex nella stringa:
 
-    $x = "I batted 4 for 4";
+    $x = "I batted 4 for 4"; [Ho fatto 4 battute su 4, NdT]
     $x =~ s/4/four/;   # $x contiene "I batted four for 4"
     $x = "I batted 4 for 4";
     $x =~ s/4/four/g;  # $x contiene "I batted four for four"
 
-Il modificatore di valutazione C<s///e> wrappa un C<eval{...}> attorno alla stringa
+Il modificatore di valutazione C<s///e> pone un C<eval{...}> attorno alla stringa
 di sostituzione e il risultato valutato viene sostituito alla sottostringa matchata.
 Ecco alcuni esempi:
 
@@ -444,23 +446,24 @@ Ecco alcuni esempi:
     $x =~ s/(\w+)/reverse $1/ge;   # $x contains "eht tac ni eht tah"
 
     # converte una percentuale in decimale
-    $x = "A 39% hit rate";
+    $x = "A 39% hit rate"; [Una percentuale di battuta del 39%, NdT]
     $x =~ s!(\d+)%!$1/100!e;       # $x contains "A 0.39 hit rate"
 
 L'ultimo esempio mostra che C<s///> puE<ograve> usare altri delimitatori, quali
-C<s!!!> e C<s{}{}>, ed anche C<s{}//>.  Se vengono utilizzate le virgolette singole
-C<s'''>, allora la regex e la sostituzione sono trattate come single quoted strings.
+C<s!!!> e C<s{}{}>, ed anche C<s{}//>. Se vengono utilizzate le virgolette singole
+C<s'''>, allora la regex e la sostituzione sono trattate come stringhe single quoted.
+[delimitate da virgolette singole, NdT]
 
 =head2 L'operatore split
 
 C<split /regex/, stringa> divide la C<stringa> in una lista di sottostringhe
 e restituisce tale lista. La regex determina la sequenza di caratteri
-per i quali la C<stringa> �divisa.  Per esempio, per dividere una stringa in parole, 
+per i quali la C<stringa> �divisa. Per esempio, per dividere una stringa in parole, 
 si usi
 
     $x = "Calvin and Hobbes";
     @word = split /\s+/, $x;  # $word[0] = 'Calvin'
-                              # $word[1] = 'and'
+                              # $word[1] = 'and' [e, NdT]
                               # $word[2] = 'Hobbes'
 
 Per estrarre una lista di numeri separati da virgola, si usi
@@ -484,14 +487,13 @@ matchata e anche gli elementi divisori:
 Dato che il primo carattere di $x matcha la regex, C<split> prepone
 un elemento iniziale vuoto alla lista.
 
-
 =head1 BUG
 
 Nessuno.
 
 =head1 VEDI ANCHE
 
-Questa E<egrave> solo una guida rapida.  Per un corso piE<ugrave> approfondito sulle
+Questa E<egrave> solo una guida rapida. Per un corso piE<ugrave> approfondito sulle
 regex, guardate L<perlretut> e per la pagina di reference, guardate L<perlre>.
 
 =head1 AUTORE E COPYRIGHT
@@ -504,7 +506,7 @@ Questo documento puE<ograve> essere distribuito secondo gli stessi termini del P
 =head2 Riconoscimenti
 
 L'autore vuole ringraziare Mark-Jason Dominus, Tom Christiansen,
-Ilya Zakharevich, Brad Hughes, e Mike Giroux per tutti i loro utili commenti.
+Ilya Zakharevich, Brad Hughes e Mike Giroux per tutti i loro utili commenti.
 
 =cut
 

@@ -83,7 +83,7 @@ consistenza.
 
 Un array dotato di nome, in un contesto scalare E<egrave> piuttosto 
 differente da quella che a prima vista potrebbe apparire come una lista in un
-contesto scalare. Non potete fare in modo che una lista come "(1, 2, 3)" 
+contesto scalare. Non potete fare in modo che una lista come C<(1,2,3)> 
 si trovi in un contesto scalare, poichE<eacute> il compilatore conosce il
 contesto al momento della compilazione. Genererebbe l'operatore scalare virgola, 
 non l'operatore virgola che costruisce una lista. 
@@ -92,10 +92,10 @@ CiE<ograve> significa che quella non era una lista nemmeno in partenza.
 In generale, le funzioni Perl che fungono da wrapper [involucro, interfaccia 
 tra un programma ed un altro, NdT] per le chiamate di sistema che hanno lo 
 stesso nome (come chown(2), fork(2), closedir(2), ecc.) restituiscono tutte 
-vero quando hanno successo e "undef" in caso contrario, come viene solitamente 
+vero quando hanno successo e C<undef> in caso contrario, come viene solitamente 
 menzionato nelle descrizioni che seguono. CiE<ograve> differisce dall'interfaccia 
-C, che restituisce "-1" in caso di fallimento. Le eccezioni a questa regola sono 
-"wait", "waitpid" e"syscall". Le chiamate di sistema inoltre impostano la variabile
+C, che restituisce C<-1> in caso di fallimento. Le eccezioni a questa regola sono 
+C<wait>, C<waitpid> e C<syscall>. Le chiamate di sistema inoltre impostano la variabile
 speciale C<$!> in caso di fallimento. Altre funzioni non lo fanno,
 se non accidentalmente.
 
@@ -347,7 +347,7 @@ puE<ograve> produrre risultati piE<ugrave> accurati di quelli ottenibili con
 un semplice stat(). Con la direttiva C<use filetest 'access'> in uso, gli 
 operatori sopra citati verificheranno i permessi utilizzando la famiglia di
 chiamate a sistema operativo access(). Va notato inoltre che quando questa
-direttiva E<egrave> in uso, gli operatori C<-x> e <-X> potrebbero restituire il
+direttiva E<egrave> in uso, gli operatori C<-x> e C<-X> potrebbero restituire il
 valore booleano vero anche se i bit di esecuzione non sono impostati sui
 file (cosE<igrave> come potrebbe accadere anche se nessun ulteriore permesso di
 eseguibilitE<agrave> E<egrave> stato garantito da una ACL). Queste stranezze sono 
@@ -355,7 +355,7 @@ dovute alle definizioni del sistema operativo su cui operano. Leggete la
 documentazione di C<filetest> per avere maggiori informazioni.
 
 Va notato che C<-s/a/b/> non E<egrave> la negazione di una sostituzione. 
-Scrivere C<-exp($foo)> funziona sempre come ci si aspetta che faccia, solo le
+Scrivere C<-exp($pippo)> funziona sempre come ci si aspetta che faccia, solo le
 lettere singole che seguono un segno meno sono interpretate come test sui file.
 
 Gli operatori C<-T> e C<-B> funzionano nel modo seguente. Il primo blocco 
@@ -409,7 +409,7 @@ Se VALORE viene omesso, abs() usa C<$_>.
 Accetta una connessione in entrata su un socket, proprio come fa la 
 chiamata di sistema accept(2). Se ha successo restituisce l'indirizzo 
 compattato, falso altrimenti. Date un'occhiata all'esempio in 
-L<perlipc/"Sockets: Client/Server Communication"> [Socket: Comunicazione Client/Server", NdT].
+L<perlipc/"Sockets: Client/Server Communication"> ["Socket: Comunicazione Client/Server", NdT].
 
 Su sistemi che, sui file, supportano un flag chiuso-su-esecuzione, tale flag sarE<agrave> 
 impostato per il piE<ugrave> recente descrittore di file aperto, come stabilito dal valore 
@@ -450,7 +450,7 @@ internamente con C<alarm>)
 Se volete utilizzare C<alarm> per far scadere una chiamata di sistema,
 dovrete utilizzare una coppia C<eval>/C<die>. Non potete contare
 sul fatto che alarm faccia fallire la chiamata di sistema impostando
-C<!> a C<EINTR>, poichE<eacute> in alcuni sistemi Perl imposta i gestori
+C<$!> a C<EINTR>, poichE<eacute> in alcuni sistemi Perl imposta i gestori
 dei segnali in modo che riavviino le chiamate di sistema. La soluzione
 che prevede l'uso di C<eval>/C<die> funziona sempre, a meno degli avvertimenti
 indicati in L<perlipc/"Signals"> ["Segnali", NdT].
@@ -486,7 +486,7 @@ Collega un indirizzo di rete ad un socket, proprio come fa la chiamata di
 sistema bind. Restituisce vero se ha successo, falso altrimenti. 
 NOME dovrebbe essere un indirizzo compattato del tipo appropriato per 
 il socket. Date un'occhiata agli esempi in 
-L<perlipc/"Sockets: Client/Server Communication"> [Socket: Comunicazione Client/Server", NdT]..
+L<perlipc/"Sockets: Client/Server Communication"> ["Socket: Comunicazione Client/Server", NdT]..
 
 =item binmode FILEHANDLE, STRATO
 
@@ -515,14 +515,14 @@ Quando STRATO E<egrave> presente, usare binmode sui file di testo ha un senso.
 Se STRATO viene omesso o specificato come C<:raw>, il filehandle viene reso adatto a 
 trasferire dati binari. CiE<ograve> include la disabilitazione di tutte le eventuali 
 conversioni di CRLF, e la marcatura dei dati come byte (e non caratteri Unicode). 
-Va notato che, a differenza di quanto si possa dedurre leggendo C<"Programming Perl"> 
+Va notato che, a differenza di quanto si possa dedurre leggendo I<"Programming Perl"> 
 [Programmare Perl, NdT] (il libro del Cammello) o altro, C<:raw> I<non> E<egrave> 
-semplicemente l'inverso di C<:crlf>, anche gli altri strati che potrebbero influire 
+semplicemente l'inverso di C<:crlf>, I<anche> gli altri strati che potrebbero influire 
 sulla natura binaria del file vengono disabilitati. Consultate L<PerlIO>, L<perlrun> 
 e la discussione sulla variabile d'ambiente PERLIO.
 
 Le direttive C<:bytes>, C<:crlf>, C<:utf8> e qualsiasi altra direttiva nella forma 
-C<:...>, sono chiamate L<strati> di I/O. Per stabilire gli strati di I/O predefiniti, 
+C<:...>, sono chiamate I<strati> di I/O. Per stabilire gli strati di I/O predefiniti, 
 E<egrave> possibile utilizzare la direttiva C<open>. Si veda L<open>.
 
 I<Il parametro STRATO di binmode() E<egrave> descritto come "DISCIPLINE" 
@@ -655,7 +655,7 @@ C<die>.
 
 Cambia i permessi di una lista di file. Il primo elemento della lista deve essere la 
 modalitE<agrave> numerica, che deve probabilmente essere un numero ottale, e che 
-sicuramente non deve essere una stringa di cifre ottali: C<0644> va bene, C<'0644'> no. 
+sicuramente I<non> deve essere una stringa di cifre ottali: C<0644> va bene, C<'0644'> no. 
 Restituisce il numero di file modificati con successo. Consultate anche L</oct>, se tutto 
 ciE<ograve> che avete a disposizione E<egrave> una stringa.
 
@@ -707,6 +707,11 @@ un'espressione, NdT], incluso un assegnamento:
 
 Se usate chomp() su una lista, viene effettuato il chomp di ogni elemento, e viene restituito il 
 numero totale di caratteri rimossi.
+
+Se la direttiva C<encoding> E<egrave> nello scope, allora
+le lunghezze che vengono restituite sono calcolate a partire dalla lunghezza di C<$/> in
+caratteri Unicode che non E<egrave> sempre la stessa cosa della lunghezza di C<$/> nella
+codifica nativa.
 
 Va notato che le parentesi sono necessarie quando usate chomp() su qualsiasi cosa che non sia una 
 variabile semplice. CiE<ograve> deriva dal fatto che C<chomp $cwd = `pwd`;> E<egrave> 
@@ -811,9 +816,9 @@ un'altra C<open> sul filehandle perchE<eacute> C<open> lo chiuderE<agrave> per v
 il contatore di linea (C<$.>), mentre non lo farE<agrave> la close implicita fatta da C<open>.
 
 Se il filehandle proviene da una open su pipe, C<close> restituirE<agrave> in aggiunta falso se 
-fallisce una delle altre chiamate di sistema coinvolte oppure se il programma esce con uno stato 
+fallisce una delle altre chiamate di sistema coinvolte, oppure se il programma esce con uno stato 
 non-zero. (Se il solo problema E<egrave> che il programma sia uscito come non-zero, C<$!> 
-verrE<agrave> settato a C<0>). Anche chiudere una pipe fa attendere che il processo in 
+verrE<agrave> impostato a C<0>). Anche chiudere una pipe fa attendere che il processo in 
 esecuzione su quella pipe sia completato, nel caso vogliate esaminare successivamente l'output 
 della pipe, e implicitamente pone in C<$?> il valore di stato dell'uscita di quel comando.
 
@@ -853,7 +858,7 @@ il socket. Date un'occhiata gli esempi in L<perlipc/"Sockets: Client/Server Comm
 =item continue BLOCCO
 
 In realtE<agrave>, E<egrave> un'istruzione per il controllo di flusso 
-piuttosto che una funzione. Se c'E<egrave> un C<continue BLOCCO> associato 
+piuttosto che una funzione. Se c'E<egrave> un C<continue> BLOCCO associato 
 ad un BLOCCO (generalmente in un C<while> o in un C<foreach>), questo 
 viene eseguito appena prima che la condizione venga valutata nuovamente, 
 come la terza parte di un ciclo C<for> in C. PuE<ograve> quindi essere 
@@ -902,7 +907,7 @@ di sicurezza). Questa funzione puE<ograve> risultare utile, tra le
 altre cose, per cercare password poco sicure nei file delle password. 
 Solo i ragazzi con il cappello bianco dovrebbero cimentarsi con crypt().
 
-Va notato che C<crypt> E<egrave> intesa come una funzione a senso unico, 
+Va notato che L<crypt|/crypt> E<egrave> intesa come una funzione a senso unico, 
 un po' come il rompere le uova per fare la frittata. Non c'E<egrave> 
 (tra quelle conosciute) nessuna funzione decrypt (in altre parole, 
 crypt() E<egrave> una funzione hash a senso unico). A causa di 
@@ -913,7 +918,7 @@ piE<ugrave> vicino).
 Quando effetuate la verifica di una stringa cifrata dovete usare il 
 testo cifrato come seme (ad esempio C<crypt($chiaro, $cifrato) eq 
 $cifrato>). Questo fa sE<igrave> che il vostro codice funzioni sia con 
-la C<crypt> standard che con implementazioni piE<ugrave> esotiche. 
+la L<crypt|/crypt> standard che con implementazioni piE<ugrave> esotiche. 
 In altre parole, non presumete nulla sulla stringa restituita, o su 
 quanti byte siano siano significativi nella stringa cifrata.
 
@@ -960,11 +965,11 @@ un'occhiata alle directory F<by-module/Crypt> e a F<by-module/PGP>
 sul vostro mirror CPAN preferito per un mucchio di moduli 
 potenzialmente utili.
 
-Se usate C<crypt()> su una stringa Unicode (che I<potenzialmente> 
+Se usate crypt() su una stringa Unicode (che I<potenzialmente> 
 contiene caratteri con codice superiore a 255), Perl cerca di dare 
 un senso alla situazione cercando di riportare (una copia de) la 
 stringa ad una stringa a otto bit prima di chiamare crypt() (su 
-quella copia). Se ciE<ograve> funziona, bene. Altrimenti, C<crypt()> 
+quella copia). Se ciE<ograve> funziona, bene. Altrimenti, crypt() 
 termina con C<Wide character in crypt> [crypt su carattere esteso, NdT]
 
 =item dbmclose HASH
@@ -1102,14 +1107,6 @@ diminuirE<agrave> fino al massimo elemento per il
 quale la condizione exists() E<egrave> vera (oppure fino
 a 0, se tale elemento non esiste).
 
-Restituisce ciascun elemento cancellato oppure 
-il valore indefinito se non esiste tale elemento.
-Cancellare elementi di C<$ENV{}> causa una modifica
-dell'ambiente. Cancellare da una hash legata ad un file
-DBM cancella il record dal file stesso. Cancellare 
-da un hash o da un array legato non deve necessariamente
-restituire qualcosa.
-
 Restituisce una lista con lo stesso numero di elementi che 
 si E<egrave> tentato di eliminare. Ogni elemento di questa 
 lista consiste o nel valore dell'elemento eliminato, oppure 
@@ -1118,7 +1115,7 @@ il valore restituito E<egrave> il valore dell'ultimo elemento
 eliminato (o il valore indefinito se quell'elemento non 
 esisteva).
 
-    %hash = (foo => 11, bar => 22, baz => 33);
+    %hash = (pippo => 11, pluto => 22, paperino => 33);
     $scalare = delete $hash{pippo};               # $scalare e` 11
     $scalare = delete @hash{qw(pippo pluto)};     # $scalare e` 22
     @array   = delete @hash{qw(pippo pluto paperino)}; # @array e` (undef,undef,33)
@@ -1227,7 +1224,7 @@ Se LISTA E<egrave> vuota e C<$@> contiene un oggetto che ha un metodo
 C<PROPAGATE>, questo metodo sarE<agrave> chiamato con il nome del file 
 e il numero di riga come parametri aggiuntivi. In questo caso, il 
 valore restituito rimpiazza il valore in C<$@>, ossia come se fosse 
-stato chiamato C<<$@ = eval { $@->PROPAGATE(__FILE__, __LINE__) };>>.
+stato chiamato C<<$@ = eval { $@->PROPAGATE(__FILE__, __LINE__) }; >>.
 
 Se C<$@> E<egrave> vuoto, viene utilizzata la stringa C<"Died"> 
 [terminato, NdT].
@@ -1271,7 +1268,7 @@ casi, mettere un
 
 	die @_ if $^S;
 
-come prima linea della funzione (vedere L<perlvar/$^S>).  PoichE<eacute>
+come prima linea della funzione (si veda L<perlvar/$^S>). PoichE<eacute>
 questo puE<ograve> causare effetti collaterali non desiderati, questo
 comportamento non intuitivo potrebbe essere modificato in una versione
 successiva.
@@ -1296,8 +1293,7 @@ Una forma deprecata di chiamata di subroutine. Consultate L<perlsub>.
 =item do ESPR
 
 Utilizza il valore di ESPR come un nome di file ed esegue il contenuto del 
-file come fosse uno script Perl. Il suo uso primario E<egrave> quello di 
-includere subrotuine da una libreria di subroutine Perl.
+file come fosse uno script Perl.
 
     do 'stat.pl';
 
@@ -1306,7 +1302,7 @@ E<egrave> proprio come
     eval `cat stat.pl`;
 
 eccetto che E<egrave> piE<ugrave> efficiente e concisa, tiene traccia del 
-nome file corrente per i messaggi d'errore, ricerca le librerie in @INC e 
+nome file corrente per i messaggi d'errore, ricerca directory di @INC e 
 aggiorna C<%INC> se il file viene trovato. Consultate 
 L<perlvar/Predefined Names> [Nomi predefiniti, NdT] per queste varabili. 
 Differisce anche per il fatto che il codice valutato con C<do NOMEFILE> 
@@ -1349,8 +1345,8 @@ linea di comando B<-u> in L<perlrun>, che fa la stessa cosa. Principalmente
 E<egrave> fatta in modo che possiate usare il programma B<undump> (non 
 fornito) per trasformare il vostro core dump in un eseguibile binario, 
 dopo aver inzializzato tutte le vostre variabili all'inizio del programma. 
-Quando il nuovo binario viene eseguito, inzierE<agrave> con l'eseguire un
- C<goto ETICHETTA> (con tutte le restrizioni di cui soffre C<goto>). 
+Quando il nuovo binario viene eseguito, inzierE<agrave> con l'eseguire un 
+C<goto ETICHETTA> (con tutte le restrizioni di cui soffre C<goto>). 
 Pensate ad esso come ad un goto con un core dump nel mezzo, e poi una 
 reincarnazione. Se C<ETICHETTA> viene omesso, ricomincia il programma da 
 capo.
@@ -1388,7 +1384,10 @@ apparentemente casuale. L'effettivo ordine casuale
 E<egrave> soggetto a cambiamenti nelle future versioni
 di Perl, ma E<egrave> garantito essere lo stesso ordine
 che la funzione C<keys> o C<values> produrrebbero dallo
-stesso hash (non modificato).
+stesso hash (non modificato). A partire dalla versione 5.8.1 di Perl,
+per questioni di sicurezza l'ordinamento E<egrave> differente anche tra 
+differenti esecuzioni di Perl (si consulti L<perlsec/"Algorithmic Complexity Attacks"> 
+["Attacchi di ComplessitE<agrave> Algoritmica", NdT]).
 
 Quando l'hash E<egrave> stato letto interamente, 
 in contesto di lista viene restituito un array null
@@ -1432,7 +1431,7 @@ Restituisce 1 se la successiva lettura su FILEHANDLE restituirE<agrave>
 la fine del file oppure se FILEHANLDE non E<egrave> aperto. FILEHANDLE 
 puE<ograve> essere un'espressione il cui valore restituisce il filehandle 
 effettivo. (Va notato che questa funzione legge realmente un carattere e 
-poi esegue una C<ungetc>s su di esso, dunque ciE<ograve> non E<egrave> 
+poi esegue una C<ungetc> su di esso, dunque ciE<ograve> non E<egrave> 
 molto utile in un contesto interattivo). Non leggete da un file di 
 terminale (oppure non chiamate C<eof(FILEHANDLE)> su di esso) dopo che 
 si E<egrave> raggiunta la fine-del-file. Se lo fate, i tipi di file 
@@ -1447,7 +1446,7 @@ un C<eof()> prima che venga usato un C<< <> >> farE<agrave> sE<igrave>
 che venga esaminato C<@ARGV> per determinare se sia disponibile l'input. 
 In maniera analoga, un C<eof()> dopo che C<< <> >> abbia restituito 
 fine-del-file, presupporrE<agrave> che stiate elaborando un'altra lista 
-di C<@ARGV>, e se non avete settato C<@ARGV>, esso leggerE<agrave> 
+di C<@ARGV>, e se non avete impostato C<@ARGV>, esso leggerE<agrave> 
 l'input da C<STDIN>; consultate L<perlop/"I/O Operators"> 
 ["Operatori di I/O", NdT].
 
@@ -1515,7 +1514,6 @@ essere valutata la valutazione del contesto.
 Se ci fosse un errore di sintassi o un errore a tempo di esecuzione oppure 
 se venisse eseguita un'istruzione C<die>, C<eval> restituisce un valore 
 indefinito e in C<$@> viene posto il messaggio d'errore.
-
 Se non ci fossero errori, C<$@> viene garantito essere una stringa nulla. 
 Fate attenzione al fatto che utilizzare C<eval> non impedisce al perl di 
 stampare gli avvertimenti su STDERR, nE<eacute> tantomeno il testo degli 
@@ -1600,8 +1598,14 @@ eccetto che in questa particolare situazione, potete invece semplicemente
 usare i riferimenti simbolici, proprio come nel caso 6.
 
 C<eval BLOCCO> I<non> viene considerata come un ciclo, dunque le 
-istruzioni di controllo di un ciclo C<next>, C<last>, o C<redo> non 
+istruzioni di controllo di un ciclo C<next>, C<last> o C<redo> non 
 possono essere usate per lasciare o reiniziare il blocco.
+
+Va notato che come caso davvero speciale, un C<eval ''> eseguito all'interno del 
+package C<DB> non vede l'usuale scope lessicale che lo circonda ma piuttosto lo scope 
+del primo pezzo di codice che non appartiene al package DB che l'ha chiamato. Di norma, 
+non si ha bisogno di preoccuparsi di questo a meno che non si stia scrivendo un 
+debugger del Perl.
 
 =item exec LISTA
 
@@ -2262,10 +2266,9 @@ La libreria Socket rende questo un po' piE<ugrave> facile:
 
 Se siete stanchi di tenere a mente quali valori corrispondono a quali elementi della lista 
 restituita, vengono fornite delle interfaccie per nome nei moduli standard: C<File::stat>, 
-C<Net::hostent>, C<Net::netent>,
-C<Net::protoent>, C<Net::servent>, C<Time::gmtime>, C<Time::localtime> e C<User::grent>. 
-Queste si sovrappongono alle normali funzioni interne, fornendo versioni che restituiscono oggetti 
-con i nomi appropriati per ogni campo. Per esempio:
+C<Net::hostent>, C<Net::netent>, C<Net::protoent>, C<Net::servent>, C<Time::gmtime>, C<Time::localtime> 
+e C<User::grent>. Queste si sovrappongono alle normali funzioni interne, fornendo versioni che 
+restituiscono oggetti con i nomi appropriati per ogni campo. Per esempio:
 
    use File::stat;
    use User::pwent;
@@ -2289,7 +2292,34 @@ hanno diversi differenti IP a cui la connessione potrebbe partecipare.
 
 =item getsockopt SOCKET,LIVELLO,NOMEOPZ
 
-Restituisce l'opzione del socket richiesta, o undef se si verifica un errore.
+Consulta l'opzione di nome NOMEOPZ associata al SOCKET ad un dato LIVELLO.
+Le opzioni possono esistere su livelli di protocollo multipli a seconda del 
+tipo di socket, ma esisterE<agrave> almeno il livello di socket piE<ugrave> 
+elevato SOL_SOCKET (definito nel modulo C<Socket>). Per consultare le opzioni 
+ad un altro livello, dovrebbe venir fornito il numero di protocollo dell'appropriato 
+protocollo che controlla l'opzione. Per esempio, per indicare che un'opzione sarE<agrave>  
+interpretata dal protocollo TCP, LIVELLO dovrE<agrave> essere impostato come numero di 
+protocollo di TCP, che potete ottenere usando getprotobyname.
+
+La chiamata restituisce una stringa compattata che rappresenta l'opzione del socket richiesta, 
+oppure C<undef> se c'E<egrave> un errore (il motivo dell'errore sarE<agrave> in $!). Quello che 
+c'E<egrave> esattamente nella stringa compattata dipende da LIVELLO e NOMEOPZ, consultate la 
+vostra documentazione di sistema per i dettagli. Comunque, un caso molto comune E<egrave> che 
+l'opzione sia un intero, nel qual caso il risultato sarE<agrave> un intero compattato che 
+potete decodificare usando unpack con il formato C<i> (o C<I>).
+
+Un esempio che testa se l'algoritmo di Nagle sia attivato su di un socket:
+
+    use Socket qw(:all);
+
+    defined(my $tcp = getprotobyname("tcp"))
+	or die "Non posso determinare il numero di protocollo per tcp";
+    # my $tcp = IPPROTO_TCP; # Alternativo
+    my $compattato = getsockopt($socket, $tcp, TCP_NODELAY)
+	or die "Non posso interrogare l'opzione TCP_NODELAY del socket: $!";
+    my $senzaritardo = unpack("I", $compattato);
+    print "L'algoritmo di Nagle e`", $senzaritardo ? "non attivato\n" : "attivato\n";
+
 
 =item glob ESPR
 
@@ -2307,7 +2337,7 @@ E<egrave> discusso in maggiore dettaglio in L<perlop/"I/O Operators">
 
 A partire dalla versione 5.6.0, questo operatore E<egrave> implementato 
 utilizzato l'estensione standard C<File::Glob>. Consultate 
-L<File::Glob> per maggiori dettagli.
+L<File::Glob> per i dettagli.
 
 =item gmtime ESPR
 
@@ -2315,56 +2345,47 @@ Converte l'ora restituita dalla funzione time in una lista di 9 elementi,
 con l'ora localizzata al fuso orario locale. E<egrave> tipicamente usato 
 come segue:
 
-    #  0    1    2     3     4    5     6     7     8
-    ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    #  0    1    2     3     4     5     6     7     8
+    ($sec,$min,$ore,$giom,$mese,$anno,$gios,$gioa,$oraleg) =
 						gmtime(time);
 
 Tutti gli elementi della lista sono numerici, e derivano direttamente dalla 
-'struct tm' del C. $sec, $min e $hour sono i secondi, i minuti, e le ora 
-dell'orario specificato. $mday E<egrave> il giorno del mese, e $mon E<egrave> 
+'struct tm' del C. $sec, $min e $ore sono i secondi, i minuti e le ore 
+dell'orario specificato. $giom E<egrave> il giorno del mese, e $mese E<egrave> 
 il mese stesso, nell'intervallo C<0..11>, in cui 0 indica Gennaio e 11 Dicembre. 
-$year E<egrave> il numero di anni a partire dal 1900. CiE<ograve> significa che 
-$year E<egrave> 123 nel 2023. $wday E<egrave> il giorno della settimana, con 0 
-che indica Domenica e 3 MercoledE<igrave>. $yday E<egrave> il giorno dell'anno, 
+$anno E<egrave> il numero di anni a partire dal 1900. CiE<ograve> significa che 
+$anno E<egrave> C<123> nel 2023. $gios E<egrave> il giorno della settimana, con 0 
+che indica Domenica e 3 MercoledE<igrave>. $gioa E<egrave> il giorno dell'anno, 
 nell'intervallo C<0..364> (o <0..365> negli anni bisestili).
 
-Va notato che l'elemento $year I<non> contiene semplicemente le ultime due cifre 
+Va notato che l'elemento $anno I<non> contiene semplicemente le ultime due cifre 
 dell'anno. Se assumete ciE<ograve>, allora vi ritrovate a creare programmi non 
 compatibili con l'anno 2000 (Y2K), e non volete fare ciE<ograve>, vero?
 
-La via corretta per ottenere un anno a 4 cifre E<egrave> semplicemente:
+Il modo corretto per ottenere un anno a 4 cifre E<egrave> semplicemente:
 
-	$year += 1900;
+	$anno += 1900;
 
-E per ottenere le ultime due cifre dell'anno (es. '01' nel 2001) potete scrivere:
+E per ottenere le ultime due cifre dell'anno (ad esempio '01' nel 2001) potete scrivere:
 
-	$year = sprintf("%02d", $year % 100);
+	$anno = sprintf("%02d", $anno % 100);
 
 Se ESPR viene omessa, C<gmtime()> usa l'ora correte (C<gmtime(time)>).
 
 In contesto scalare, C<gmtime()> restituisce il valore di ctime(3):
 
-    $stringa_adesso = gmtime;  # es. "Thu Oct 13 04:54:34 1994"
+    $stringa_diadesso = gmtime;  # es. "Thu Oct 13 04:54:34 1994"
 
+Se vi serve il tempo locale invece del GMT, usate la funzione L</localtime> che E<egrave>
+integrata in Perl.
 Consultate anche la funzione C<timegm> fornita dal modulo C<Time::Local>, 
-e la funzione strftime(4) disponibile attraverso il modulo POSIX.
+e le funzioni strftime(3) e mktime(3) disponibili attraverso il modulo L<POSIX>.
 
 Questo valore scalare B<non> dipende dal locale (consultate L<perllocale>), 
-ma E<egrave> interno a Perl. Consultate anche il modulo C<Time::Local> 
-(per riconvertire secondi, minuti, ore, ... nel numero di secondi trascorsi 
-dallo scoccare della mezzanotte del 1o Gennaio 1970, il valore restituito 
-da time()), e le funzioni strftime(3) e mktime(3) disponibili 
-attraverso il modulo POSIX. Per ottenere stringhe di data simili, ma 
-dipendenti dal locale, impostate le vostre varaibili d'ambiente relative 
-al locale in maniera appropriata (consultate L<perllocale>) e provate ad 
-esempio:
+ma E<egrave> interno a Perl. Per ottenere stringhe di data simili, ma dipendenti dal locale, 
+consultate gli esempi in L</localtime>.
 
-    use POSIX qw(strftime);
-    $stringa_diadesso = strftime "%a %b %e %H:%M:%S %Y", gmtime;
-
-Va notato che gli escape C<%a> e C<%b>, che rappresentano la forma abbreviata 
-del giorno della settimana e del mese dell'anno, possono non essere 
-necessariamente lunghi tre caratteri in tutti i locale.
+Si consulti L<perlport/gmtime> per ciE<ograve> che concerne la portabilitE<agrave>.
 
 =item goto ETICHETTA
 
@@ -2455,7 +2476,7 @@ risultati del BLOCCO o dell'ESPR.
 =item hex
 
 Interpreta ESPR come una stringa esadecimale, e ne restituisce il valore 
-corrispondente. (Per convertire stringhe che iniziano con 0, 0x, o 0b, 
+corrispondente. (Per convertire stringhe che iniziano con C<0>, C<0x> o C<0b>, 
 date un'occhiata a L</oct>). Se ESPR viene omessa, hex() usa C<$_>.
 
     print hex '0xAf'; # stampa '175'
@@ -2464,7 +2485,8 @@ date un'occhiata a L</oct>). Se ESPR viene omessa, hex() usa C<$_>.
 Le stringhe esadecimali possono rappresentare solo numeri interi. Le 
 stringhe che causerebbero un overflow generano un avvertimento. A 
 differenza di oct(), hex() non rimuove eventuali spazi bianchi ad inizio 
-stringa.
+stringa. Per mostrare qualcosa come esadecimale, si dia un'occhiata a L</printf>,
+L</sprintf> o L</unpack>.
 
 =item import
 
@@ -2484,9 +2506,9 @@ una ricerca tramite regular expression. Essa restituisce la posizione
 della prima occorrenza di SUBSTR in STR, a partire da POSIZIONE. Se 
 POSIZIONE viene omessa, index() inizia a cercare dall'inizio della stringa. 
 Il valore restituito indica la posizione a partire da C<0> (o qualsiasi 
-valore a cui abbiate impostato la variabile C<$[>--ma non fatelo). Se la 
+valore a cui abbiate impostato la variabile C<$[>, ma non fatelo). Se la 
 sottostringa non viene trovato, index() restituisce un'unitE<agrave> meno 
-della base, cioE<egrave> solitamente -1.
+della base, cioE<egrave> solitamente C<-1>.
 
 =item int ESPR
 
@@ -2540,7 +2562,7 @@ valore restituito dal sistema operativo:
     $valorerit = ioctl(...) || -1;
     printf "Il sistema ha restituito %d\n", $valorerit;
 
-La stringa speciale "C<0> ma vera" non risente delle proteste
+La stringa speciale C<"0 ma vero"> non risente delle proteste
 di B<-w> sulla conversione impropria dei numeri.
 
 =item join ESPR, LISTA
@@ -2558,12 +2580,19 @@ Fate il confronto con L</split>.
 =item keys HASH
 
 Restituisce una lista contenente tutte le chiavi dell'hash indicato. 
-(In contesto scalare, restituisce il numero di chiavi). Le chiavi sono 
-restituite in ordine apparentemente casuale. Tale ordine casuale 
+(In contesto scalare, restituisce il numero di chiavi). 
+
+Le chiavi sono restituite in ordine apparentemente casuale. Tale ordine casuale 
 sarE<agrave> soggetto a cambiamenti nelle future versioni di perl, ma 
 E<egrave> garantito essere lo stesso che restituiscono le funzioni 
-C<values> e C<each> (ponendo che l'hash non sia stato modificato). 
-Come effetto collaterale, la funzione reimposta l'iteratore dell'HASH.
+C<values> e C<each> (ponendo che l'hash non sia stato modificato).
+Per ragioni di sicurezza, a partire dal Perl 5.8.1 l'ordinamento 
+E<egrave> differente anche tra diverse esecuzioni di Perl (consultate 
+L<perlsec/"Algorithmic Complexity Attacks"> ["Attacchi di ComplessitE<agrave> Algoritmica", NdT]).
+
+Come effetto collaterale, la chiamata a keys() reimposta l'iteratore interno dell'HASH,
+si veda L</each>. (In particolare, una chiamata a keys() in un contesto vuoto, reimposta 
+l'iteratore senza alcun costo computazionale aggiuntivo).
 
 Ecco ancora un altro modo per stampare le variabili d'ambiente:
 
@@ -2693,7 +2722,7 @@ Se ESPR viene omessa, la funzione usa C<$_>.
 
 =item length
 
-Restituisce la lunghezza in caratteri del valore di ESPR. Se ESPR viene 
+Restituisce la lunghezza in I<caratteri> del valore di ESPR. Se ESPR viene 
 omessa, restituisce la lunghezza di C<$_>. Va notato che questa funzione 
 non puE<ograve> essere usata su interi array o hash per scoprire quanti 
 elementi essi abbiano. Per questo, usate rispettivamente C<scalar @array> 
@@ -2712,14 +2741,14 @@ Restituisce vero in caso di successo, falso altrimenti.
 
 Fa la stessa cosa di quello che fa la chiamata di sistema listen. Restituisce 
 vero se ha successo, falso altrimenti. Si veda l'esempio in 
-L<perlipc/"Sockets: Client/Server Communication"> ["Comunicazione Client/Server", NdT].
+L<perlipc/"Sockets: Client/Server Communication"> ["Socket: Comunicazione Client/Server", NdT].
 
 =item local ESPR
 
 In realtE<agrave> desiderate probabilmente usare C<my>, poichE<eacute> 
 C<local> non E<egrave> ciE<ograve> che la maggior parte delle persone 
 intendono come "locale". Consultate L<perlsub/"Private Variables via my()">
-[Variabili private tramite my()", NdT] per dettagli.
+["Variabili private tramite my()", NdT] per dettagli.
 
 Local modifica le variabili indicate e le rende locali al blocco, file o eval 
 che include la chiamata. Se viene indicato piE<ugrave> di un valore, la lista 
@@ -2729,58 +2758,69 @@ relative agli array ed agli hash legati [con C<tie>, NdT].
 
 =item localtime ESPR
 
+=item localtime
+
 Converte l'ora restituita dalla funzione time in una lista di 9 elementi, 
 con l'ora localizzata al fuso orario locale. E<egrave> tipicamente usato 
 come segue:
 
-    #  0    1    2     3     4    5     6     7     8
-    ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    #  0    1    2     3     4     5     6     7     8
+    ($sec,$min,$ore,$giom,$mese,$anno,$gios,$gioa,$oraleg) =
 						localtime(time);
 
 Tutti gli elementi della lista sono numerici, e derivano direttamente dalla 
-'struct tm' del C. $sec, $min e $hour sono i secondi, i minuti, e le ore 
-dell'orario specificato. $mday E<egrave> il giorno del mese, e $mon E<egrave> 
-il mese stesso, nell'intervallo C<0..11>, in cui 0 indica Gennaio e 11 Dicembre. 
-$year E<egrave> il numero di anni a partire dal 1900. CiE<ograve> significa che 
-$year E<egrave> 123 nel 2023. $wday E<egrave> il giorno della settimana, con 0 
-che indica Domenica e 3 MercoledE<igrave>. $yday E<egrave> il giorno dell'anno, 
-nell'intervallo C<0..364> (o <0..365> negli anni bisestili). $isdst assume valore 
-vero se l'orario specificato cade durante l'ora legale, e valore falso altrimenti.
+'struct tm' del C. C<$sec>, C<$min> e C<$ore> sono i secondi, i minuti e le ore 
+dell'orario specificato.
 
-Va notato che l'elemento $year I<non> contiene semplicemente le ultime due cifre 
-dell'anno. Se assumete ciE<ograve>, allora vi ritrovate a creare programmi non 
-compatibili con l'anno 2000 (Y2K), e non volete fare ciE<ograve>, vero?
+C<$giom> E<egrave> il giorno del mese, e $mese E<egrave> il mese stesso, 
+nell'intervallo C<0..11>, in cui 0 indica Gennaio e 11 Dicembre.
+CiE<ograve> rende facile ottenere il nome di un mese da una lista:
 
-La via corretta per ottenere un anno a 4 cifre E<egrave> semplicemente:
+    my @abbr = qw( Gen Feb Mar Apr Mag Giu Lug Ago Set Ott Nov Dic );
+    print "$abbr[$mese] $giom";
+    # $mese=9, $giom=18 fornisce "Ott 18"
 
-	$year += 1900;
+C<$anno> E<egrave> il numero di anni a partire dal 1900, non solo le ultime due cifre
+dell'anno. CiE<ograve> significa che C<$anno> E<egrave> C<123> nel 2023. Il modo corretto per
+ottenere un anno a quattro cifre E<egrave> semplicemente:
 
-E per ottenere le ultime due cifre dell'anno (es. '01' nel 2001) potete scrivere:
+    $anno += 1900;
 
-	$year = sprintf("%02d", $year % 100);
+Per ottenere le ultime due cifre dell'anno (ad esempio, '01' in 2001) fate:
+
+    $anno = sprintf("%02d", $anno % 100);
+
+C<$gios> E<egrave> il giorno della settimana, con 0 che indica Domenica e 3 MercoledE<igrave>. 
+C<$gioa> E<egrave> il giorno dell'anno, nell'intervallo C<0..364> (o <0..365> negli anni bisestili). 
+
+C<$oraleg> assume valore vero se l'orario specificato cade durante l'ora legale, 
+valore falso altrimenti.
 
 Se ESPR viene omessa, C<localtime()> usa l'ora correte (C<localtime(time)>).
 
 In contesto scalare, C<localtime()> restituisce il valore di ctime(3):
 
-    $stringa_adesso = localtime;  # es. "Thu Oct 13 04:54:34 1994"
+    $stringa_diadesso = localtime;  # es. "Thu Oct 13 04:54:34 1994"
 
-Questo valore scalare B<non> dipende dal locale (consultate L<perllocale>), 
-ma E<egrave> interno a Perl. Consultate anche il modulo C<Time::Local> 
-(per riconvertire secondi, minuti, ore, ... nel numero di secondi trascorsi 
-dallo scoccare della mezzanotte del 1o Gennaio 1970, il valore restituito 
-da time()), e le funzioni strftime(3) e mktime(3) disponibili 
-attraverso il modulo POSIX. Per ottenere stringhe di data simili, ma 
-dipendenti dal locale, impostate le vostre varaibili d'ambiente relative 
-al locale in maniera appropriata (consultate L<perllocale>) e provate ad 
-esempio:
+Questo valore scalare B<non> dipende dal locale ma E<egrave> interno a Perl. 
+Per il GMT invece del tempo locale, utilizzate la funzione interna L</gmtime>.
+Consultate anche il modulo C<Time::Local> (per riconvertire secondi, minuti, ore, ... 
+nel valore intero restituito da time()) e le funzioni strftime(3) e mktime(3) del modulo L<POSIX>. 
+
+Per ottenere stringhe di data simili, ma dipendenti dal locale, impostate le 
+vostre variabili d'ambiente relative al locale in maniera appropriata 
+(consultate L<perllocale>) e provate ad esempio:
 
     use POSIX qw(strftime);
     $stringa_diadesso = strftime "%a %b %e %H:%M:%S %Y", localtime;
+    # oppure per il GMT formattato in maniera appropriata per il vostro locale:
+    $stringa_diadesso = strftime "%a %b %e %H:%M:%S %Y", gmtime;
 
 Va notato che gli escape C<%a> e C<%b>, che rappresentano la forma abbreviata 
 del giorno della settimana e del mese dell'anno, possono non essere 
 necessariamente lunghi tre caratteri.
+
+Si consulti L<perlport/localtime> per ciE<ograve> che concerne la portabilitE<agrave>.
 
 =item lock COSA
 
@@ -2819,6 +2859,7 @@ Fa le stesse cose della funzione C<stat> (compreso il settare lo speciale
 filehandle C<_>) ma esegue C<stat> su di un link simbolico invece che sul 
 file al quale il link simbolico punta. Se sul vostro sistema i link 
 simbolici non sono implementati, viene eseguita una normale C</stat>.
+Per informazioni molto piE<ugrave> dettagliate, consultate la documentazione di L</stat>.
 
 Se ESPR viene omessa, esegue C<stat> su C<$_>.
 
@@ -2868,7 +2909,7 @@ la valutazione del BLOCCO o dell'ESPR produce un valore
 vero.
 
 Con C<{> cominciano sia i blocchi che i riferimenti a
-hash, quindi C<map {...> puE<ograve> essere sia l'inizio
+hash, quindi C<map { ...> puE<ograve> essere sia l'inizio
 di map BLOCK LIST che l'inizio di map EXPR, LIST.
 PoichE<aacute> perl non guarda avanti alla ricerca della
 C<}> di chiusura, deve formulare una congettura a 
@@ -3016,7 +3057,7 @@ C<next> e C<redo>.
 
 =item no Modulo
 
-Si veda la funzione L</use>, della quale C<no> E<egrave> l'opposto.
+Si veda la funzione C<use>, della quale C<no> E<egrave> l'opposto.
 
 =item oct ESPR
 
@@ -3024,7 +3065,7 @@ Si veda la funzione L</use>, della quale C<no> E<egrave> l'opposto.
 
 Interpreta ESPR come una stringa ottale, e restituisce il valore 
 corrispondente. (Se per caso ESPR inizia con C<0x>, viene interpretata come 
-una stringa esadecimale. Se ESPR inizia con X<0x>, viene interpretata come 
+una stringa esadecimale. Se ESPR inizia con C<0b>, viene interpretata come 
 una stringa binaria. Qualsiasi spazio bianco che faccia da prefisso viene 
 ingnorato in tuti e tre i casi). Il seguente codice E<egrave> in grado di 
 gestire decimali, binari, ottali ed esacimali nella notazione standard di 
@@ -3101,11 +3142,22 @@ usare C<< '<' >>.
 Se il FILENAME inizia per C<'|'> verrE<agrave> interpretato come un comando 
 al quale gli verrE<agrave> inviato dell'output come pipe, e se FILENAME 
 finisce per C<'|'> verrE<agrave> interpretato come un comando che invierE<agrave> 
-il suo output a noi. Consultate L<perlipc/"Using open() for IPC"> per altri 
-esempi su questo caso. (Non E<egrave> ammesso l'uso di C<open> per eseguire un 
-comando e accedervi in scrittura e lettura, consultate L<IPC::Open2>, 
+il suo output a noi. Consultate L<perlipc/"Using open() for IPC"> ["Usare open() per IPC", NdT] 
+per altri esempi su questo caso. (Non E<egrave> ammesso l'uso di C<open> per eseguire un 
+comando e accedervi in scrittura I<e> in lettura, consultate L<IPC::Open2>, 
 L<IPC::Open3> e L<perlipc/"Bidirectional Communication with Another Process"> 
 ["Comunicazioni bidirezionali con un altro processo", NdT] per delle alternative).
+
+Per tre o piE<ugrave> argomenti, se MODO E<egrave> C<'|-'>, il nome del file viene 
+interpretato come un comando al quale gli verrE<agrave> inviato dell'output come pipe e se
+MODO E<egrave> C<'-|'>, il nome del file verrE<agrave> interpretato come un comando che 
+invierE<agrave> il suo output a noi. Nel caso della versione a 2 argomenti (e 1 argomento), si 
+dovrebbe sostituire il trattino (C<'-'>) con il comando.
+Consultate L<perlipc/"Using open() for IPC"> ["Usare open() per IPC", NdT] 
+per altri esempi su questo caso. (Non E<egrave> ammesso l'uso di C<open> per eseguire un 
+comando e accedervi in scrittura I<e> in lettura, consultate L<IPC::Open2>, 
+L<IPC::Open3> e L<perlipc/"Bidirectional Communication"> 
+["Comunicazioni bidirezionali", NdT] per delle alternative).
 
 Nel caso della versione a tre o piE<ugrave> argomenti della apertura delle pipe, se 
 LIST E<egrave> specificato (ulteriore parametro dopo il nome comando) allora 
@@ -3128,8 +3180,8 @@ ulteriori dettagli). Per esempio
 
 aprirE<agrave> il file codificato UTF-8 contenente caratteri Unicode, 
 si veda L<perluniintro>. (Va notato che se lo strato E<egrave> specificato 
-nel caso di tre parametri, gli strati impostati di default da C<open> vengono 
-ignorati).
+nel caso di tre parametri, gli strati impostati di default dalla direttiva 
+C<open> vengono ignorati).
 
 Open restituisce un valore diverso da zero in caso di successo, il valore 
 indefinito diversamente. Se la C<open> presenta una pipe, il valore restituito 
@@ -3161,16 +3213,17 @@ che apre un filehandle su un file temporaneo anonimo. Inoltre, l'utilizzo di
 qualcosa sul file temporaneo. Avrete la necessitE<egrave> di utilizzare seek() 
 per effettuare la lettura.
 
-I filehandle possono essere aperti in file "in memoria" contenuti in 
-scalari Perl, mediante:
+A partire dalla version 5.8.0, il perl E<egrave> stato compilato usando PerlIO di default.
+A meno che voi non abbiate cambiato questo aspetto (cioE<egrave> Configure -Uuseperlio),
+potete aprire i filehandle in file "in memoria" mantenuti entro scalari Perl tramite:
 
-    open($fh, '>', \$variable) || ..
+    open($fh, '>', \$variabile) || ..
 
 Tuttavia, se volete riaprire C<STDOUT> oppure C<STDERR> come file 
 "in memoria", prima dovete chiuderli:
 
     close STDOUT;
-    open STDOUT, '>', \$variable or die "Impossibile aprire STDOUT: $!";
+    open STDOUT, '>', \$variabile or die "Impossibile aprire STDOUT: $!";
 
 Esempio:
 
@@ -3193,7 +3246,7 @@ Esempio:
     open(ARTICLE, "caesar <$article |")		# piu` rapidamente
 	or die "Impossibile avviare caesar: $!";
 
-    open(EXTRACT, "|sort >/tmp/Tmp$$")		# $$ e` il pid del nostro processo
+    open(EXTRACT, "|sort >Tmp$$")		# $$ e` il pid del nostro processo
 	or die "Impossibile avviare sort: $!";
 
     # in memory files
@@ -3225,10 +3278,12 @@ Esempio:
 	}
     }
 
+Consultate L<perliol> per informazioni dettagliate su PerlIO.
+
 Inoltre potete, nella tradizione della Bourne shell, specificare un EXPR 
 che inizia con C<< '>&' >>, nel qual caso il resto della stringa viene 
 interpretato come un filehandle (o descrittore di file, se E<egrave> numerico) 
-per essere duplicato e aperto. Potete usare C<&> dopo C<< > >>, C<<< >> >>>, 
+per essere duplicato (come L<dup(2)>) e aperto. Potete usare C<&> dopo C<< > >>, C<<< >> >>>, 
 C<< < >>, C<< +> >>, C<<< +>> >>> e C<< +< >>. La modalitE<agrave> che 
 specificate deve essere uguale alla modalitE<agrave> del filehandle originale. 
 (Duplicare un filehandle non entra nel merito dell'esistenza di precedenti buffer 
@@ -3251,9 +3306,6 @@ diversi metodi:
     print STDOUT "stdout 1\n";	# questo funziona
     print STDERR "stderr 1\n"; 	# anche per sottoprocessi
 
-    close STDOUT;
-    close STDERR;
-
     open STDOUT, ">&", $vecchioout or die "Impossibile duplicare \$vecchioout: $!";
     open STDERR, ">&VECCHIOERR"    or die "Impossibile duplicare VECCHIOERR: $!";
 
@@ -3266,7 +3318,7 @@ C<fdopen> su quel descrittore di file (e non chiamerE<agrave> L<dup(2)>); questo
 E<egrave> un modo d'uso piE<ugrave> parsimonioso dei descrittori di file. 
 Per esempio:
 
-    # aopertura in input, riutilizzando il fileno di $fd
+    # apertura in input, riutilizzando il fileno di $fd
     open(FILEHANDLE, "<&=$df")
 
 oppure
@@ -3328,8 +3380,8 @@ equivalenti:
 
 Nell'ultimo esempio, in ogni blocco di codice viene mostrata la pipe come 
 "list form" [un elenco di parametri, NdT], non supportato da alcuna 
-piattaforma. Una buona regola E<egrave>: se il tuo sistema operativo 
-ha una vera C<fork()> (in altre parole, se E<egrave> UNIX) puoi usare la 
+piattaforma. Una buona regola E<egrave>: se il vostro sistema operativo 
+ha una vera C<fork()> (in altre parole, se E<egrave> UNIX) putete usare la 
 list form.
 
 Consultate L<perlipc/"Safe Pipe Opens"> ["Apertura sicura di pipe", NdT] 
@@ -3343,7 +3395,7 @@ English) oppure chiamare il metodo C<autoflush()> di C<IO::Handle> su ogni handl
 aperto.
 
 Su sistemi che supportano i flag close-on-exec ["chiuso-su-esecuzione", NdT], 
-il flag sarE<agrave> settato per ogni nuovo descrittore di file aperto, come 
+il flag sarE<agrave> impostato per ogni nuovo descrittore di file aperto, come 
 determinato dal valore di $^F. Si veda L<perlvar/$^F>.
 
 Chiudere uno qualsiasi dei filehandle di pipe provoca l'attesa del processo 
@@ -3518,6 +3570,10 @@ fork() sotto Windows, o incapsulando perl in un'applicazione
 multi-threaded. L'attributo C<unique> non fa nulla in tutti gli altri 
 ambienti.
 
+Attenzione: l'attuale implementazione di questo attributo opera sui typeglob
+associati con la variabile; questo significa che C<our $x : unique> ha anche l'effetto
+di C<our @x : unique; our %x : unique>. Questo potrebbe essere soggetto a cambiamenti.
+
 =item pack TEMPLATE,LISTA
 
 Prende una LISTA di valori e la converte in una stringa utilizzando 
@@ -3603,7 +3659,8 @@ ed il tipo dei valori, come indicato di seguito:
     U	Un numero di carattere Unicode. Internamente, e` codificato in UTF-8.
 	(o UTF-EBCDIC su sistemi EBCDIC).
 
-    w	Un intero compresso BER. I suoi byte rappresentano un
+    w	Un intero compresso BER (non un BER ASN.1, si consulti perlpacktut per
+	dettagli). I suoi byte rappresentano un
         intero senza segno in base 128, con la cifra piu`
         significativa per prima, e con il minore numero di cifre
         possibile. L'ottavo bit (il bit alto) viene impostato
@@ -3625,7 +3682,7 @@ che indica il numero di ripetizioni. Con tutti i tipi tranne C<a>, C<A>,
 C<Z>, C<b>, C<B>, C<h>, C<H>, C<@>, C<x>, C<X> e C<P>, la funziona pack 
 preleverE<agrave> quel numero di valori da LISTA. Un C<*> come numero di 
 ripetizioni indica di usare tutti gli elementi rimasti, tranne che per 
-C<@>, C<x>, C<x>, dove equivale a C<0>, e C<u>, dove equivale a 1 (o 45, 
+C<@>, C<x>, C<X>, dove equivale a C<0>, e C<u>, dove equivale a 1 (o 45, 
 che E<egrave> lo stesso). Il numero di ripetizioni puE<ograve> essere 
 racchiuso tra parentesi quadre, come in C<pack 'C[80]', @arr>.
 
@@ -3667,9 +3724,9 @@ circostanza.
 Allo stesso modo, i campi C<b> e C<B> compattano una stringa lunga il 
 numero di bit specificato. Ciascun byte dell'input di pack() genera un 
 bit del risultato. Ogni bit del risultato E<egrave> basato sul bit meno 
-significativo del byte di input corrispondente, ad esempio con 
+significativo del byte di input corrispondente, cioE<egrave> con 
 C<ord($byte)%2>. In particolare i byte C<"0"> e C<"1"> generato i bit 
-0 e 1, e cosE<igrave> fanno anche i byte C<"\0"> e C<"\1">.
+0 e 1, e cosE<igrave> fanno i byte C<"\0"> e C<"\1">.
 
 A partire dall'inizio della stringa in input a pack(), ciascun gruppo 
 di 8 byte viene convertito in 1 byte di output. Con il formato C<b>, il 
@@ -3697,7 +3754,7 @@ nybble (gruppi di 4 bit, rappresentati come cifre esadecimali,
 
 Ciascun byte in input a pack() genera 4 bit del risultato. Per i 
 byte non alfabetici, il risultato E<egrave> basato sui 4 bit meno 
-significativi del byte in input, come ad esempio in C<ord($byte)%16>. 
+significativi del byte in input, cioE<egrave> come in C<ord($byte)%16>. 
 In particolare, i byte C<"0"> e C<"1"> generano nybble 0 e 1, 
 cosE<igrave> come i byte C<"\0"> e C<"\1">. Per i byte C<"a".."f"> 
 e C<"A".."F"> il risultato E<egrave> compatibile con le solite cifre 
@@ -3735,21 +3792,22 @@ Un comportamento simile si ha con unpack().
 
 =item *
 
-Il template C</userdefined>  permette di compattare e scompattare 
+Il template C</>  permette di compattare e scompattare 
 stringhe in cui la struttura compattata contiene un conteggio di 
 byte seguito dalla stringa stessa. Dovete scrivere 
-I<lunghezza-elemento>C</userdefined>>I<stringa-elemento>.
+I<lunghezza-elemento>C</>I<stringa-elemento>.
 
 La I<lunghezza-elemento> puE<ograve> essere qualsiasi lettera di 
 template di C<pack>, e descrive come E<egrave> compattato il valore 
 di lunghezza. Quelle di utilizzo piE<ugrave> frequente sono quelle di 
-compattamento degli interi, quali C<n> (per stringhe Java), c<W> 
+compattamento degli interi, quali C<n> (per stringhe Java), c<w> 
 (per ASN.1 o SNMP) e C<N> (per Sun, XDR).
 
-La I<stringa-elemento> deve, al momento, essere C<"A*">, C<"a*"> 
+Per C<pack>, la I<stringa-elemento> deve, al momento, essere C<"A*">, C<"a*"> 
 oppure C<"Z*">. Con C<unpack> la lunghezza della stringa E<egrave> 
 ottenuta da I<lunghezza-elemento>, ma se inserite il carattere '*' 
-viene ingorata.
+viene ingorata. Per tutti gli altri codici, C<unpack> applica il valore della 
+lunghezza all'elemento successivo, che non deve avere un conteggio delle ripetizioni.
 
     unpack 'C/a', "\04Gurusamy";        restituisce 'Guru'
     unpack 'a3/A* A*', '007 Bond  J ';  restituisce (' Bond','J')
@@ -3766,7 +3824,7 @@ che Perl non considera legali all'interno delle stringhe numeriche.
 
 =item *
 
-I tipi interi C<s>, C<S>, C<l>, e C<L> possono essere immediatamente 
+I tipi interi C<s>, C<S>, C<l> e C<L> possono essere immediatamente 
 seguiti da un suffisso C<!>, che indica che essi sono short o long 
 nativi, come potete vedere sopra, ad esempio un C<l> solitario indica 
 esattamente 32 bit, mentre il C<long> nativo (come E<egrave> 
@@ -3796,7 +3854,7 @@ vostro sistema non supporta i long lon).
 
 =item *
 
-I formati interi C<s>, C<S>, C<i>, C<I>, C<l>, C<L>, C<j>, e C<J> 
+I formati interi C<s>, C<S>, C<i>, C<I>, C<l>, C<L>, C<j> e C<J> 
 sono intrinsecamente non portabili tra diversi processori e sistemi 
 operativi, poichE<eacute> essi obbediscono all'ordine dei byte ed 
 al tipo di endian locali. Per esempio, un intero di 4 byte 0x12345678 
@@ -4005,7 +4063,7 @@ del vostro programma, o persino un crash in alcune versioni di Perl.
 La forma senza SPAZIONOMI E<egrave> considerata obsoleta, e 
 verrE<agrave> rimossa a partire da una versione a venire.
 
-Consultate L<perlmod/"Package"> per maggiori informazioni sui 
+Consultate L<perlmod/"Packages"> per maggiori informazioni sui 
 package, sui moduli, e sulle classi. Consultate L<perlsub> per 
 ulteriori informazioni sullo scope.
 
@@ -4048,13 +4106,16 @@ nelle subroutine, proprio come C<shift>.
 =item pos
 
 Restituisce la posizione per la variabile in questione, per la 
-quale l'ultima ricerca C<m//g> ha trovato qualcosa (se la varaibile 
-non E<egrave> specificata, viene usata C<$_>. Il valore che determina 
-la posizione puE<ograve> essere modificato. Tale modifica 
-influenzerE<agrave> l'asserzione (lunga zero caratteri) C<\G> nelle 
-espressioni regolari. 
-
-Consultate L<perlre> e L<perlop>.
+quale l'ultima ricerca C<m//g> ha trovato qualcosa (se la variabile 
+non E<egrave> specificata, viene usata C<$_>). Va notato che 0 E<egrave>
+un valido scostamento del match, mentre C<undef> indica che la posizione della
+ricerca E<egrave> stata reimpostata (di solito a causa del fallimento di un match ma puE<ograve> 
+anche essere perchE<eacute> non E<egrave> stato ancora effettuato alcun match sullo scalare).
+C<pos> accede direttamente alla locazione usata dal motore delle espressioni regolari per 
+immagazzinare lo scostamento, dunque fare un assegnamento a C<pos> cambierE<agrave> lo
+scostamento e influenzerE<agrave> la C<\G> zero-width assertion [asserzione di ampiezza zero, NdT]
+nelle espressioni regolari. Il match non reimposta lo scostamento a cusa di un C<m//gc> fallito,
+il ritorno da C<pos> non cambierE<agrave> nemmeno in questo caso. Consultate L<perlre> e L<perlop>.
 
 =item print FILEHANDLE LISTA
 
@@ -4201,16 +4262,17 @@ numero sbagliato di RANDBITS).
 Tenta di leggere LUNGHEZZA I<caratteri> di dati nella variabile 
 SCALARE dal FILEHANDLE specificato. Restituisce il numero di caratteri 
 che sono stati letti, C<0> alla fine del file, o il valore indefinito 
-se si E<egrave> verificato un errore. La lunghezza di SCALARE 
-sarE<agrave> aumentata o diminuita della lunghezza di caratteri letta.
+se si E<egrave> verificato un errore (in quest'ultimo caso, viene anche impostata 
+C<$!>). La lunghezza di SCALARE sarE<agrave> aumentata o diminuita in maniera che 
+l'ultimo carattere effettivamente letto sia l'ultimo carattere dello scalare dopo 
+la lettura.
 
 PuE<ograve> essere indicato uno SCOSTAMENTO per posizionare i dati 
 letti in qualche altro posto in SCALARE piuttosto che all'inizio. 
-
 Un OFFSET negativo indica la posizione specificata da tanti caratteri 
 quanti quelli specificati, contando all'indietro a partire dalla fine 
 della stringa. Un OFFSET maggiore della lunghezza di SCALAR fa sE<igrave> 
-che la stringa sia completata con dei byte "\0" fino alla lunghezza 
+che la stringa sia completata con dei byte C<"\0"> fino alla lunghezza 
 richiesta, prima che il risultato della read venga aggiunto in coda.
 
 La chiamata E<egrave> effettivamente implementata in termini di chiamata 
@@ -4220,7 +4282,7 @@ di sistema read(2), si veda C<sysread>.
 Notate i I<caratteri>: a seconda dello stato del filehandle, possono 
 essere letti byte (8-bit) o caratteri. Di default tutti i filehandle operano 
 su byte, ma se ad esempio il filehandle E<egrave> stato aperto con il layer di 
-I/O C<:utf8> (si veda L</open>, o la direttiva C<open>, L<open>), le operazioni di 
+I/O C<:utf8> (si veda L</open> e la direttiva C<open>, L<open>), le operazioni di 
 I/O opereranno su caratteri, non su byte. In maniera analoga per la direttiva 
 C<:encoding>: in quel caso puE<ograve> essere letto pressochE<eacute> qualsiasi
 carattere.
@@ -4263,12 +4325,12 @@ la prima volta, e C<undef> le volte successive.
 Questa E<egrave> la funzione utilizzata internamente 
 dall'implementazione dell'operatore C<< <ESPR> >>, ma puE<ograve> 
 essere usata direttamente. L'operatore C<< <ESPR> >> viene discusso 
-in dettaglio in L<perlop/"I/O Operators"> ["Operatori I/O", NdT].
+in dettaglio in L<perlop/"I/O Operators"> ["Operatori di I/O", NdT].
 
     $line = <STDIN>;
     $line = readline(*STDIN);		# stessa cosa
 
-Se readline incontra un errore del sistema operativo, $! verrE<agrave> 
+Se readline incontra un errore del sistema operativo, C<$!> verrE<agrave> 
 impostato con il messaggio d'errore corrispondente. PuE<ograve> essere 
 utile controllare C<$!> quando state leggendo dai filehandle di cui non 
 vi fidate, come tty, oppure un socket. Il seguente esempio usa 
@@ -4318,7 +4380,7 @@ supporta; altrimenti restituisce una stringa vuota. Se c'E<egrave>
 un errore, restituisce il valore indefinito. Questa chiamata viene 
 effettivamente implementata in termini della chiamata di sistema 
 recvfrom(2). Consultate L<perlipc/"UDP: Message Passing"> 
-["UDP: Passaggio di Messaggi", NdT] per degli esempi.
+["UDP: Passaggio di messaggi", NdT] per degli esempi.
 
 Notate i I<caratteri>: dipendentemente dallo stato del socket, 
 vengono ricevuti sia byte (di 8-bit) che caratteri. Di default, 
@@ -4644,6 +4706,8 @@ stringa con tutti i caratteri in ordine inverso.
     undef $/;			# per maggiore efficienza di <>
     print scalar reverse <>;	# inversione dei caratteri, l'ultima linea diventa la amirp
 
+Utilizzata senza argomenti in un contesto scalare, reverse() inverte C<$_>.
+
 Questo operatore E<egrave> utile anche per invertire un hash, nonostante 
 ci siano alcuni aspetti di cui tenere conto. Se un valore dell'hash 
 originale E<egrave> doppio, solo uno di essi puE<ograve> diventare una 
@@ -4742,7 +4806,7 @@ utile per non muovere la posizione nel file:
 Questo puE<ograve> anche essere utile per applicazioni che simulino il 
 comportamento di C<tail -f>. Una volta raggiunto EOF in lettura del file, 
 potrebbe essere necessario un seek() per rimettere le cose a posto. Il C<seek> 
-non cambia la posizione corrente, I<ma> fa in modo che la condizione di fine 
+non cambia la posizione corrente, ma I<fa> in modo che la condizione di fine 
 del file venga reimpostata, in modo che al prossimo C<< <FILE> >> Perl tenti 
 nuovamente di leggere qualcosa. O almeno cosE<igrave> dovrebbe essere.
 
@@ -4841,7 +4905,23 @@ Potete creare uno sleep di 250 millisecondi in questo modo:
     select(undef, undef, undef, 0.25);
 
 Va notato che il fatto che C<select> venga riavviata dopo un segnale (ad esempio, 
-SIGALRM) dipende dall'implementazione.
+SIGALRM) dipende dall'implementazione. Si veda anche L<perlport> per delle note
+sulla portabilità di C<select>.
+
+In caso di errore, C<select> si comporta come la chiamata di sistema select(2): essa
+restituisce -1 ed imposta C<$!>.
+
+Nota: su alcuni Unix, la chiamata di sistema select(2) potrebbe riferire come 
+"pronto per la lettura" un descrittore di file di un socket, quando in effetti non 
+E<egrave> disponibile alcun dato, con conseguente bloccaggio a causa di una successiva lettura.
+PuE<ograve> essere evitato utilizzando sempre il flag O_NONBLOCK sul socket. Si vedano 
+select(2) and fcntl(2) per ulteriori dettagli.
+
+Note: on some Unixes, the select(2) system call may report a socket file
+descriptor as "ready for reading", when actually no data is available,
+thus a subsequent read blocks. It can be avoided using always the
+O_NONBLOCK flag on the socket. See select(2) and fcntl(2) for further
+details.
 
 B<ATTENZIONE>: Non si dovrebbe tentare di mescolare l'I/O con buffer (come C<read>
 o <FH>) con C<select>, tranne per come viene permesso da POSIX, ed anche in quel 
@@ -4856,12 +4936,11 @@ dichiarare
 
 per ottenere le definzioni di costante corrette. Se CMD E<egrave> IPC_STAT 
 o GETALL, allora ARG deve essere una variabile, che conserverE<agrave> la struttura 
-C<semid_ds> restituita. Restituisce dei valori come fa C<ioctl>: il valore 
+semid_ds restituita o l'array di valori del semaforo. Restituisce dei valori come fa C<ioctl>: il valore 
 indefinito in caso di errore, C<"0 ma vero"> in caso di zero o altrimenti
 l'effettivo valore restituito. ARG deve essere un vettore di interi short nativi, 
 che possono essere creati utilizzando C<pack("s!",(0)x$nsem)>. 
-Consultate anche la documentazione di 
-L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::Semaphore>.
+Consultate anche la documentazione di L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::Semaphore>.
 
 =item semget CHIAVE,NSEM,FLAG
 
@@ -4896,7 +4975,7 @@ destinazione DEST, nel qual caso viene effettuata una C<sendto>.
 Restituisce il numero di caratteri inviati, oppure il valore 
 indefinito in caso di errore. La chiamata di sistema C sendmsg(2) 
 non E<egrave> attualmente implementata. Consultate
-L<perlipc/"UDP: Message Passing"> ["UPD: Trasferimento di messaggi", NdT] 
+L<perlipc/"UDP: Message Passing"> ["UPD: Passaggio di messaggi", NdT] 
 per degli esempi.
 
 Notate i I<caratteri>: a seconda dello stato del socket, possono 
@@ -5001,7 +5080,7 @@ sistema.
 Questo E<egrave> utile nella gestione dei socket quando si 
 vuole far sapere all'altro lato della connessione che si ha 
 finito di scrivere ma non di leggere, o viceversa. E<Egrave> 
-anche una forma di chiusura piE<ugrave> drastica di C<close> 
+anche una forma di chiusura piE<ugrave> drastica di close 
 perchE<eacute> rende invalido il descrittore di file in 
 tutte le copie del processo ottenute tramite C<fork>.
 
@@ -5138,7 +5217,7 @@ avere un comportamento quadratico.
 elementi in input che risultano uguali. BenchE<egrave>
 il tempo d'esecuzione di quicksort sia O(NlogN) in media
 su tutti gli array di lunghezza N, il tempo puE<ograve>
-essere O(N**2), ovvero comportarsi quadraticamente,
+essere O(N**2), ovvero comportarsi I<quadraticamente>,
 per alcuni input). Nella versione 5.7, l'implementazione
 di quicksort E<egrave> stata rimpiazzata da un algoritmo
 mergesort stabile il cui comportamento nel caso
@@ -5150,7 +5229,7 @@ Il suo blando controllo dell'algoritmo sottostante potrebbe
 scomparire nelle prossime versioni di perl, ma 
 l'abilitE<agrave> di caratterizzare l'input e l'output
 in modi indipendenti dall'implementazione probabilmente
-non lo farE<agrave>. Consultate L</use>.
+non lo farE<agrave>. Consultate L<sort>.
 
 Esempi:
 
@@ -5249,7 +5328,7 @@ Esempi:
 
 Se state usando strict, I<non dovete> dichiarare $a e
 $b come lessicali. Sono variabili globali del package.
-Questo significa che se siete nel package main e 
+Questo significa che se siete nel package C<main> e 
 scrivete
 
   @articoli = sort { $b <=> $a } @file;
@@ -5267,10 +5346,10 @@ piE<ugrave> piccolo di C<$x[2]> e a volte il contrario,
 per esempio) i risultati non sono ben definiti.
 
 PoichE<eacute> C<< <=> >> restituisce C<undef> quando uno degli operandi E<egrave> 
-NaN (not-a-number) [non-un-numero, NdT], e poichE<eacute> sort genererE<agrave> 
+C<NaN> (not-a-number) [non-un-numero, NdT], e poichE<eacute> C<sort> genererE<agrave> 
 un errore bloccante a meno che il risultato del confronto sia definito, quando 
 effettuate un ordinamento con una funzione di confronto come C<< $a <=> $b >>, 
-state attenti alle liste che potrebbero contenere NaN. Il seguente esempio sfrutta 
+state attenti alle liste che potrebbero contenere C<NaN>. Il seguente esempio sfrutta 
 il fatto che C<NaN != NaN>, per eliminare ogni C<NaN> dall'input.
 
     @risultati = sort { $a <=> $b } grep { $_ == $_ } @input;
@@ -5322,9 +5401,10 @@ Ad esempio, assumendo che le lunghezze degli array siano passate prima degli arr
 
 =item split
 
-Divide una stringa in una lista di stringhe e restituisce
+Divide la stringa ESPR in una lista di stringhe e restituisce
 tale lista. Di default, i campi vuoti iniziali sono 
-mantenuti, mentre quelli in coda vengono cancellati.
+mantenuti, mentre quelli in coda vengono cancellati (se tutti i campi sono vuoti, 
+vengono considerati essere in coda).
 
 In un contesto scalare, restituisce il numero di campi 
 trovati e mette i risultati della divisione nell'array C<@_>.
@@ -5366,10 +5446,13 @@ punto in cui il PATTERN viene soddisfatto. Ad esempio:
 
 produce l'output 'o:h:i:l:a'.
 
-Il pattern vuoto C<//> corrisponde specificamente 
-alla stringa vuota, e non deve essere confuso con l'uso
-di C<//> per indicare "l'ultimo pattern soddisfatto con
-successo".
+Come caso speciale di C<split>, utilizzare il pattern vuoto C<//> corrisponde specificamente 
+al match della sola stringa vuota, e non deve essere confuso con l'uso di C<//> per indicare "l'ultimo pattern 
+soddisfatto con successo". CosE<igrave>, per C<split>, il seguente:
+
+    print join(':', split(//, 'ohi la'));
+
+produce l'output 'o:h:i: :l:a'.
 
 Quando ci sono dei match di ampiezza positiva all'inizio (o alla fine)
 della stringa, vengono prodotti dei campi vuoti in testa (o in coda);
@@ -5454,7 +5537,7 @@ di libreria C C<sprintf>. Guardate qui sotto per ulteriori dettagli e consultate
 L<sprintf(3)> o L<printf(3)> sul vostro sistema operativo per una spiegazione dei 
 principi generali.
 
-Esempi:
+Per esempio:
 
         # Stampa un numero con fino ad 8 zeri iniziali
         $risultato = sprintf("%08d", $numero);
@@ -5572,7 +5655,7 @@ come delimitatore, utilizzando ad esempio C<*2$v>:
 Di norma, gli argomenti vengono formattati per essere larghi il numero minimo di 
 caratteri richiesti per mostrare il valore fornito. Potete modificare la 
 larghezza dando un numero, o prenderla dal prossimo argomento (con C<*>) o da un 
-argomento specifico (con C<*2$>):
+argomento specifico (con ad esempio C<*2$>):
 
   printf '<%s>', "a";       # stampa "<a>"
   printf '<%6s>', "a";      # stampa "<     a>"
@@ -5703,7 +5786,7 @@ formattare, mentre:
 
   print '<%*1$.*s>', $a, $b;
 
-utilizza C<$a> per la larghezza e la precisione, e C<$b> come valore da formattare.
+utilizza C<$a> per la larghezza e la precisione e C<$b> come valore da formattare.
 
 Di seguito qualche ulteriore esempio; attenzione che utilizzando un indice esplicito, il 
 segno C<$> puE<ograve> aver bisogno di essere protetto:
@@ -5841,13 +5924,14 @@ dei campi:
 
 (L'epoch E<egrave> stato alle 00:00 del 1 gennaio 1970 GMT).
 
-(*) Il campo ctime non E<egrave> portabile, in particolare non ci si puE<ograve> aspettare sia 
+(*) Non tutti i campi sono supportati da tutti i tipi di filesystem. Degno di nota il fatto che 
+il campo ctime non E<egrave> portabile. In particolare non ci si puE<ograve> aspettare esso sia 
 un "tempo di creazione", si veda L<perlport/"Files and Filesystems"> 
 ["File e Filesystem", NdT] per dettagli.
 
-Se a stat viene passato lo speciale filehandle che consiste in un carattere di sottolineatura, 
+Se a C<stat> viene passato lo speciale filehandle che consiste in un carattere di sottolineatura, 
 non viene eseguita alcuna stat ma vengono restituiti i contenuti correnti della struttura di 
-stat provenienti dall'ultima stat o filestat. Ad esempio:
+stat provenienti dall'ultima C<stat>, C<lstat> o C<filestat>. Ad esempio:
 
     if (-x $file && (($d) = stat(_)) && $d < 0) {
 	print "$file E<egrave> un file NFS eseguibile\n";
@@ -5891,7 +5975,7 @@ modalitE<agrave> simboliche, dal modulo Fcntl:
     $e_setuid     =  $mode & S_ISUID;
     $e_setgid     =  S_ISDIR($modalita);
 
-Potete scrivere le ultime due utilizzando gli operatori C<-u> e C<-d>. Le costanti S_IF* 
+Potete scrivere le ultime due utilizzando gli operatori C<-u> e C<-d>. Le costanti C<S_IF*> 
 comunemente disponibili sono
 
     # Permessi: lettura, scrittura, eseczuione, per l'utente, gruppo, altri.
@@ -5913,7 +5997,7 @@ comunemente disponibili sono
 
     S_IREAD S_IWRITE S_IEXEC
 
-e le funzioni S_IF* sono
+e le funzioni C<S_IF*> sono
 
     S_IMODE($modalita)	la parte di $modalita contenente i bit dei permessi
                         e i bit di setuid/setgid/sticky
@@ -5922,7 +6006,7 @@ e le funzioni S_IF* sono
                         che puo` essere fatta oggetto di un and su bit con ad esempio
                         S_IFREG o con le seguenti funzioni
 
-    # Gli operatori -f, -d, -l, -b, -c, -p e -s.
+    # Gli operatori -f, -d, -l, -b, -c, -p e -S.
 
     S_ISREG($modalita) S_ISDIR($modalita) S_ISLNK($modalita)
     S_ISBLK($modalita) S_ISCHR($modalita) S_ISFIFO($modalita) S_ISSOCK($modalita)
@@ -5935,10 +6019,8 @@ e le funzioni S_IF* sono
     S_ISENFMT($modalita) S_ISWHT($modalita)
 
 Consultate la vostra documentazione locale di chmod(2) e stat(2) per maggiori dettagli sulle
-costanti S_* .
-
-Per ottenere le informazioni di stato per un link simbolico invece che del file obiettivo 
-che sta dietro al link, usate la funzione C<lstat>, consultate L</stat>.
+costanti C<S_*>. Per ottenere l'informazione dello stato per un link simbolico, utilizzate la
+funzione C<lstat> invece del file puntato dal link.
 
 =item study SCALARE
 
@@ -5981,7 +6063,7 @@ In generale, e fatta eccezione per i casi patologici, si ottiene un grande
 vantaggio. L'unico problema E<egrave> se viene risparmiato piE<ugrave> tempo 
 di quanto se ne perde inizialmente per costruire la lista linkata.
 
-Notate che se dovete cercare stringhe che non conoscerete se non quando
+Va notato che se dovete cercare stringhe che non conoscerete se non quando
 il programma sarE<agrave> eseguito, potete costruire l'intero loop come una
 stringa, e valutar quest'ultima per evitare la ricompilazione dei
 pattern tutte le volte. Messo assieme alla pratica di rendere indefinito
@@ -6017,7 +6099,7 @@ Senza un BLOCCO E<egrave> semplicemente una dichiarazione a posteriori. Senza un
 una dichiarazione di funzione anonima ed in effetti restituisce un valore: il riferimento al 
 CODICE della chiusura che avete appena creato.
 
-Consultate L<perlsub> e L<perlref> per dettagli sulle subroutine e i riferimenti, L<attributi> 
+Consultate L<perlsub> e L<perlref> per dettagli sulle subroutine e i riferimenti, L<attributes> 
 e L<Attribute::Handlers> per maggiori informazioni sugli attributi.
 
 =item substr ESPR,SCOSTAMENTO,LUNGHEZZA,SOSTITUZIONE
@@ -6028,7 +6110,7 @@ e L<Attribute::Handlers> per maggiori informazioni sugli attributi.
 
 Estrae una sottostringa da ESPR e la restituisce. Il primo carattere E<egrave> a scostamento 
 C<0>, oppure la qualsivoglia impostazione data a C<$[> (ma non E<egrave> consigliabile farlo). 
-Se SCOSTAMENTO E<egrave> un numero negativo (o piE<ugrave> precisamente, minore di C<$]>), viene 
+Se SCOSTAMENTO E<egrave> un numero negativo (o piE<ugrave> precisamente, minore di C<$[>), viene 
 contato dalla fine della stringa. Se LUNGHEZZA viene omesso, restituisce tutto ciE<ograve> che 
 rimane fino alla fine della stringa. Se LUNGHEZZA E<egrave> un numero negativo, rimuove il 
 numero specificato di caratteri dalla fine della stringa.
@@ -6140,12 +6222,17 @@ Perl utilizza il valore ottale C<0666>. Questi valori dei permessi devono essere
 sono modificati dall'C<umask> del processo corrente.
 
 Su molti sistemi, il flag C<O_EXCL> E<egrave> disponibile per aprire i file in modalitE<agrave> 
-esclusiva. Questo C<non> E<egrave> eseguire un lock: l'esclusivitE<agrave> significa in questo 
-contesto che se il file esiste giE<agrave>, sysopen() fallisce. La C<O_EXCL> vince C<O_TRUNC>.
+esclusiva. Questo B<non> E<egrave> eseguire un lock: l'esclusivitE<agrave> significa in questo 
+contesto che se il file esiste giE<agrave>, sysopen() fallisce. C<O_EXCL> potrebbe non funzionare
+su filesystem di rete e non ha effetto a meno che venga impostato anche il flag C<O_CREAT>.
+Impostare C<O_CREAT|O_EXCL> impedisce che il file venga aperto se E<egrave> un link simbolico.
+Questo non offre protezione ai link simbolici nel percorso del file.
 
-Talvolta potreste voler troncare un file giE<agrave> esistente: C<O_TRUNC>.
+Talvolta potreste voler troncare un file giE<agrave> esistente. Questo puE<ograve> essere
+fatto utilizzando il flag C<O_TRUNC>. Il comportamento di C<O_TRUNC> con C<O_RDONLY> E<egrave>
+indefinito.
 
-C<0644> come argomento di sysopen andrebbe usato raramente, se non mai, poichE<eacute> toglie 
+C<0644> come argomento di C<sysopen> andrebbe usato raramente, se non mai, poichE<eacute> toglie 
 all'utente la possibilitE<agrave> di avere una umask piE<ugrave> permissiva. E<Egrave> meglio 
 ometterlo. Consultate la voce perlfunc(1) su C<umask> per maggiori dettagli.
 
@@ -6166,8 +6253,16 @@ FILEHANDLE specificato, utilizzando la chiamata di funzione read(2). Essa aggira
 buffer, dunque mescolarla con altri tipi di read, C<print>, C<write>, C<seek>, C<tell> o C<eof> 
 potrebbe causare confusione visto che il perlio o lo stdio di solito utilizzano un buffer per 
 i dati. Restituisce il numero di caratteri effettivamente letti, C<0> alla fine del file, 
-oppure undef se c'E<egrave> stato un errore. SCALARE verrE<agrave> aumentato o diminuito in 
-maniera che l'ultimo byte effettivamente letto sia l'ultimo byte dello scalare dopo la lettura.
+oppure undef se c'E<egrave> stato un errore (in quest'ultimo caso viene anche impostato C<$!>). 
+SCALARE verrE<agrave> aumentato o diminuito in maniera che l'ultimo byte effettivamente letto sia 
+l'ultimo byte dello scalare dopo la lettura.
+
+Uno SCOSTAMENTO puE<ograve> essere specificato per posizionare i dati letti da qualche 
+parte della stringa che non sia l'inizio. Uno SCOSTAMENTO negativo specifica il posizionamento  
+a quel numero di caratteri, contando a ritroso a partire dalla fine della stringa.
+Uno SCOSTAMENTO positivo maggiore della lunghezza dello SCALARE ha come risultato il riempimento 
+della stringa alla dimensione richiesta con dei byte C<"\0"> prima che il risultato della lettura sia 
+avvenuto.
 
 Non c'E<egrave> una funzione syseof(), il che E<egrave> ok, visto che comunque eof() non 
 funziona molto bene sui file di device (come ttys). Usate sysread() e controllate che il valore 
@@ -6176,7 +6271,7 @@ restituito sia pari a 0 per decidere se si ha concluso.
 Va notato che se il filehandle E<egrave> stato marcato come C<:utf8>, verranno scritti 
 caratteri Unicode invece di byte (la LUNGHEZZA, lo SCOSTAMENTO e il valore restituito da 
 sysread() sono in caratteri Unicode). Lo strato C<:encoding(...)> introduce implicitamente lo 
-strato C<:utf8>. Consultate L</binmode>, L</open> e la direttiva di open, L<open>.
+strato C<:utf8>. Consultate L</binmode>, L</open> e la direttiva di C<open>, L<open>.
 
 =item sysseek FILEHANDLE,POSIZIONE,DA_DOVE
 
@@ -6191,7 +6286,7 @@ Notate l'I<in byte>: anche se il filehandle E<egrave> stato impostato per operar
 non scostamenti di caratteri (visto che implementare questo renderebbe sysseek() molto lenta).
 
 sysseek() aggira il normale IO con buffer, dunque unire questo con i vari read (oltre a 
-C<sysread>, per esempio &gt;&lt oppure read()), C<print>, C<write>, C<seek>, C<tell> o C<eof>, 
+C<sysread>, per esempio C<< <> >> oppure read()), C<print>, C<write>, C<seek>, C<tell> o C<eof>, 
 potrebbe causare confusione.
 
 Per DA_DOVE, si potrebbe anche usare le costanti C<SEEK_SET>, C<SEEK_CUR> e C<SEEK_END> (inizio 
@@ -6203,7 +6298,7 @@ funzione "systell":
 	sub systell { sysseek($_[0], 0, SEEK_CUR) }
 
 Restituisce la nuova posizione oppure il valore indefinito in caso di insuccesso. Un valore di 
-posizione pari a zero viene restituito sotto forma della stringa C<"0 ma vera">; dunque 
+posizione pari a zero viene restituito sotto forma della stringa C<"0 ma vero">; dunque 
 C<sysseek> restituisce vero in caso di successo e falso in caso di insuccesso, tuttavia la 
 nuova posizione puE<ograve> ancora essere determinata facilmente.
 
@@ -6234,7 +6329,7 @@ C<wait>. Per ottenere il valore di uscita corrente, fate uno shift a destra di o
 di seguito). Consultate anche L</exec>. Questo I<non> E<egrave> quello che avete bisogno di 
 usare per catturare l'output da un comando, per questo dovreste usare soltanto le 
 virgolette inverse oppure C<qx//> come descritto in L<perlop/"`STRING`">. Un valore restituito 
-pari a -1 indica un insuccesso nel far eseguire il programma (esaminate $!, per il motivo).
+pari a -1 indica un insuccesso nel far eseguire il programma (esaminate $! per il motivo).
 
 Come C<exec>, C<system> permette di mentire ad un programma riguardo al proprio nome se si usa 
 la sintassi C<system PROGRAMMA LISTA>. Di nuovo, si veda L</exec>.
@@ -6243,9 +6338,13 @@ Dato che C<system> e le virgolette inverse bloccano C<SIGINT> e C<SIGQUIT>, eseg
 kill sul programma che essi stanno eseguendo non interromperE<agrave> realmente il 
 programma.
 
+Visto che C<SIGINT> e C<SIGQUIT> vengono ignorati durante l'esecuzione di C<system>,
+se vi aspettate che il vostro programma termini sulla ricezione di questi segnali,
+avrete bisogno di fare in modo di farlo voi stessi, in base al valore restituito.
+
     @args = ("comando", "arg1", "arg2");
     system(@args) == 0
-	 or die "system @args E<egrave> fallito: $?"
+	 or die "system @args e` fallito: $?"
 
 Potete controllare tutte le possibilitE<agrave> di insuccesso, ispezionando C<$?> come in 
 questo caso:
@@ -6260,7 +6359,6 @@ questo caso:
     else {
 	printf "figlio uscito con valore %d\n", $? >> 8;
     }
-
 
 oppure in maniera piE<ugrave> portabile usando le chiamate W*() dell'estensione POSIX; si 
 veda L<perlport> per maggiori informazioni.
@@ -6281,9 +6379,9 @@ non E<egrave> specificata, scrive l'intero SCALARE. Elude l'IO con buffer, dunqu
 mescolarla con i vari read (oltre a C<sysread()>), C<print>, C<write>, C<seek>, C<tell> o 
 C<eof>, potrebbe causare confusione visto che lo stdio di solito utilizza un buffer per i 
 dati. Restituisce il numero di caratteri effettivamente scritti oppure C<undef> se 
-c'E<egrave> stato un errore. Se la LUNGHEZZA E<egrave> piE<ugrave> grande dei dati 
-disponibili nello scalare dopo lo SCOSTAMENTO, verrE<agrave> scritto solo il maggior 
-numero di dati disponibili.
+c'E<egrave> stato un errore (in questo caso viene anche impostata la variabile errno C<$!>). 
+Se la LUNGHEZZA E<egrave> piE<ugrave> grande dei dati disponibili nello scalare dopo lo SCOSTAMENTO, 
+verrE<agrave> scritto solo il maggior numero di dati disponibili.
 
 Uno SCOSTAMENTO puE<ograve> essere specificato per scrivere i dati a partire da qualche 
 parte della stringa che non sia l'inizio. Uno SCOSTAMENTO negativo specifica la scrittura 
@@ -6295,7 +6393,7 @@ Va notato che se il filehandle E<egrave> stato marcato come C<:utf8>, verranno s
 caratteri Unicode invece di byte (la LUNGHEZZA, lo SCOSTAMENTO e il valore restituito di 
 syswrite() sono in caratteri Unicode codificati UTF-8). Lo strato C<:encoding(...)> 
 introduce implicitamente lo strato C<:utf8>.
-Consultate L</binmode>, L</open> e la direttiva di open, L<open>.
+Consultate L</binmode>, L</open> e la direttiva di C<open>, L<open>.
 
 =item tell FILEHANDLE
 
@@ -6317,11 +6415,9 @@ solito restituisce -1.
 
 Non c'E<egrave> una funzione C<systell>. Per questo, si usi C<sysseek(FH, 0, 1)>.
 
-Non usate tell() su un filehandle che E<egrave> stato aperto usando sysopen(), per 
-questo, usate sysseek() come descritto sopra. PerchE<eacute>? PerchE<eacute> sysopen() 
-crea dei filehandle privi di buffer, "raw" [grezzo, NdT], mentre open() crea dei 
-filehandle con buffer. sysseek() ha senso solo per il primo tipo, tell() ha senso solo 
-per il secondo tipo.
+Non usate tell() (o altre operazione di I/O che usano un buffer) su un filehandle che sia 
+stato manipolato da sysread(), syswrite() o sysseek(). Queste funzioni ignorano l'utilizzo di
+buffer mentre tell() no.
 
 =item telldir DIRHANDLE
 
@@ -6415,7 +6511,7 @@ Non E<egrave> necessario implementare tutti i metodi sopra descritti. Consultate
 L<perltie>, L<Tie::Hash>, L<Tie::Array>, L<Tie::Scalar> e L<Tie::Handle>.
 
 A differenza di C<dbmopen>, la funzione C<tie> non chiamerE<agrave> use o require per 
-voi su un modulo--dovrete farlo voi esplicitamente. Consultate L<DB_File> o il modulo 
+voi su un modulo, dovrete farlo voi esplicitamente. Consultate L<DB_File> o il modulo 
 F<Config> per delle interessanti implementazioni di C<tie>.
 
 Per ulteriori dettagli consultate L<perltie>, L<"tied VARIABLE"> ["VARIABILE legata", NdT].
@@ -6429,11 +6525,12 @@ legata ad un package.
 
 =item time
 
-Restituisce il numero di secondi, senza tenere conto dei I<leap second> 
-[secondi di aggiustamento, NdT], dalla data che il sistema considera essere l'epoch 
-(cioE<egrave> 00:00:00, 1 Gennaio, 1904 su MacOS, e 00:00:00 UTC, Gennaio 1, 1970, sulla 
-maggior parte degli altri sistemi). Tale numero E<egrave> utilizzabile come parametro a 
-C<gmtime> e C<localtime>.
+Restituisce il numero di secondi, senza tenere conto dei leap second 
+[secondi di aggiustamento, NdT], dalla data che il sistema considera essere l'epoch,
+adatto per alimentare C<gmtime> e C<localtime>. Sulla maggior parte dei sistemi, l'epoch
+E<egrave> 00:00:00 UTC, Gennaio 1, 1970; una importante eccezione E<egrave> costituita da 
+Mac OS Classic il quale utilizza come epoch 00:00:00, January 1, 1904 nella zona temporale del 
+locale corrente.
 
 Per misurare il tempo con precisione maggiore di un secondo, potete utilizzare il modulo 
 Time::HiRes (da CPAN e, a partire dal Perl 5.8, parte della distribuzione standard), 
@@ -6445,7 +6542,7 @@ l'interfaccia C<syscall> del Perl. Consultate L<perlfaq8> per dettagli.
 Restituisce una lista di quattro elementi dando il times utente e di sistema, in 
 secondi, per il processo corrente e per i figli di questo processo.
 
-    ($utente,$sistema,$figlioutente,$figliosiatema) = times;
+    ($utente,$sistema,$figlioutente,$figliosistema) = times;
 
 In un contesto scalare, C<times> restituisce C<$utente>.
 
@@ -6532,7 +6629,7 @@ si ha E<egrave> una stringa.
 Rende indefinito il valore di ESPR, che deve essere un lvalue [un valore che puE<ograve> 
 trovarsi a sinistra di un operatore di assegnamento, NdT]. Si usa solo su un valore 
 scalare, un array (utilizzando C<@>), un hash (utilizzando C<%>), una subrotuine 
-(utilizzando C<&>), oppure un typeglob (utilizzando <*>). (C<undef $hash{$chiave}> 
+(utilizzando C<&>), oppure un typeglob (utilizzando C<*>). (C<undef $hash{$chiave}> 
 probabilmente non farE<agrave> ciE<ograve> che ci si aspetta su molte variabili 
 predefinite o valori di liste DBM, dunque non fatelo; si veda L<delete>). 
 Restituisce sempre il valore indefinito. Potete omettere l'ESPR, in tal caso non 
@@ -6725,7 +6822,7 @@ Alcuni di questi pseudomoduli importano le semantiche nel corrente blocco dello 
 simboli nel package corrente (che hanno effetti fino alla fine del file)).
 
 C'E<egrave> un corrispondente comando C<no> che annulla l'importazione di quanto 
-importate da C<use>, cioE<egrave> chiama C<unimport Module LIST> anzichE<eacute> 
+importate da C<use>, cioE<egrave> chiama C<unimport Modulo LISTA> anzichE<eacute> 
 C<import>.
 
     no integer;
@@ -6748,7 +6845,8 @@ Cambia i tempi di accesso e di modifica su ogni file di una lista di file. I pri
 elementi della lista devono essere i tempi NUMERICI di accesso e modifica, in 
 quest'ordine. Restituisce il numero di file modificati con successo. Il tempo di modifica 
 dell'inode di ogni file viene impostato all'istante corrente. Per esempio, questo codice 
-ha lo stesso effetto del comando Unix touch(1) se il file I<esiste giE<agrave>>.
+ha lo stesso effetto del comando Unix touch(1) se il file I<esiste giE<agrave>> ed appartiene
+all'utente che sta eseguendo il programma:
 
     #!/usr/bin/perl
     $tempoa = $tempom = time;
@@ -6757,7 +6855,8 @@ ha lo stesso effetto del comando Unix touch(1) se il file I<esiste giE<agrave>>.
 A partire dal perl 5.7.2, se i primi due elementi della lista sono C<undef>, allora la 
 funzione utime(2) nella libreria C verrE<agrave> chiamata con un secondo argomento null. 
 Sulla maggior parte dei sistemi, questo imposterE<agrave> i tempi di accesso e modifica 
-del file all'istante corrente (equivalente cioE<egrave> al suddetto esempio).
+del file all'istante corrente (equivalente cioE<egrave> al suddetto esempio) e funzionerE<agrave>
+anche sui file di altri utenti dove avrete i permessi di scrittura:
 
     utime undef, undef, @ARGV;
 
@@ -6766,7 +6865,7 @@ Se sussiste un problema di sincronizzazione, allora il server NFS e la macchina 
 date diverse. Il comando Unix touch in effetti userE<agrave> questa forma anzichE<eacute> 
 quella mostrata nel primo esempio.
 
-Va notato che solo passare uno dei primi due elementi come undef risulterE<agrave> equivalente 
+Va notato che solo passare uno dei primi due elementi come C<undef> risulterE<agrave> equivalente 
 al passarlo come 0, e non avrE<agrave> lo stesso effetto descritto quando essi sono entrambi 
 undef. In questo caso verrE<agrave> fatto scattare un avvertimento per il valore indefinito.
 
@@ -6777,14 +6876,14 @@ Restituisce una lista contenente tutti i valori dell'hash passato come parametro
 
 I valori sono restituiti in un ordine apparentemente casuale. Tale ordine casuale 
 sarE<agrave>s oggetto a cambiamenti nelle future versioni di perl, ma E<egrave> garantito 
-essere lo stesso ordine che producono le funzioni C<values> e C<each> sullo stesso 
+essere lo stesso ordine che producono le funzioni C<keys> e C<each> sullo stesso 
 (non modificato) hash. Per ragioni di sicurezza, a partire dal Perl 5.8.1 l'ordinamento 
 E<egrave> differente anche tra diverse esecuzioni di Perl (consultate 
 L<perlsec/"Algorithmic Complexity Attacks"> ["Attacchi di ComplessitE<agrave> Algoritmica", NdT]). 
 
 Come effetto collaterale, la chiamata a values() reimposta l'iteratore interno dell'HASH,
 si veda L</each>. (In particolare, una chiamata a values() in un contesto vuoto, reimposta 
-l'iteratore senza alcun costo computazionale aggiuntivo)
+l'iteratore senza alcun costo computazionale aggiuntivo).
 
 Va notato che i valori non vengono copiati, il che significa che 
 modificare essi modifica i contenuti dell'hash:
@@ -6836,7 +6935,7 @@ byte effettiva e non sulla stringa di caratteri concettuale.
 Le stringhe create con C<vec> possono anche venir manipolate con gli operatori logici 
 C<|>, C<&>, C<^> e C<~>. Questi operatori assumeranno che quando entrambi gli operandi 
 sono stringhe, sarE<agrave> richiesta un'operazione a vettore di bit. Si veda 
-L<perlop/"Bitwise String Operators"> ["Operatori di stringa Bitwise", NdT].
+L<perlop/"Bitwise String Operators"> ["Operatori di stringa bitwise", NdT].
 
 Il codice seguente costruirE<agrave> una stringa ASCII che recita C<'PerlPerlPerl'>.
 I commenti mostrano la stringa dopo ogni passo. Va notato che questo codice funziona nella 
@@ -7059,7 +7158,7 @@ pendenti. Il wait non bloccante E<egrave> disponibile su elaboratori che support
 la chiamata di sistema waitpid(2) che quella wait4(2). Comunque, l'attendere per un 
 particolare pid con FLAG di C<0> E<egrave> implementato ovunque. (Il Perl emula la 
 chiamata di sistema ricordando i valori dello stato dei processi che sono usciti ma che 
-non sono stati ancora raccolti dallo script Perl.)
+non sono stati ancora raccolti dallo script Perl).
 
 Va notato che su alcuni sistemi, un valore restituito pari a C<-1> potrebbe significare che i 
 processi figli sono stati automaticamente raccolti. Consultate L<perlipc> per i dettagli e 
@@ -7067,14 +7166,18 @@ per altri esempi.
 
 =item wantarray
 
-Restituisce vero se il contesto della subroutine attualmente in esecuzione si aspetta un 
-valore di lista. Restituisce falso se il contesto si aspetta uno scalare.
+Restituisce vero se il contesto della subroutine attualmente in esecuzione o C<eval> 
+si aspetta un valore di lista. Restituisce falso se il contesto si aspetta uno scalare.
 Restituisce un valore indefinito se il contesto non si aspetta alcun valore (contesto 
 vuoto).
 
     return unless defined wantarray; # non si disturbi facendo altro
     my @a = calcolo_complesso();
     return wantarray ? @a : "@a";
+
+Il risultato di C<wantarray()> E<egrave> non specificato nello scope di livello
+piE<ugrave> esterno di un file, in un blocco C<BEGIN>, C<CHECK>, C<INIT> o C<END> oppure in un metodo
+C<DESTROY>.
 
 Piuttosto, questa funzione si sarebbe dovuta chiamare wantlist() 
 ["wantarray"="voglio un array" mentre "wantlist"="voglio una lista", NdT].
@@ -7085,8 +7188,8 @@ Genera un messaggio sullo STDERR, esattamente come c<die>, ma non esce e non sol
 un'eccezione.
 
 Se LISTA E<egrave> vuota e C<$@> contiene giE<agrave> un valore (solitamente derivante da 
-un precedente eval), tale valore viene utilizzato dopo aver aggiunto C<"\t...caught"> a 
-C<$@>. Questo E<egrave> utile per rimanere quasi, ma non del tutto, uguali a C<die>.
+un precedente eval), tale valore viene utilizzato dopo aver concatenato C<"\t...caught"> [preso, NdT] 
+a C<$@>. Questo E<egrave> utile per rimanere quasi, ma non del tutto, uguali a C<die>.
 
 Se C<$@> E<egrave> vuota, allora viene utilizzata la stringa 
 C<"Warning: Something's wrong"> ["Attenzione: Qualcosa E<egrave> andato storto", NdT].
@@ -7107,12 +7210,12 @@ L'uso dell'handler C<__WARN__> fornisce un potente metodo per mettere a tacere t
 warning (anche quelli cosiddetti obbligatori). Ad esempio:
 
     # cancella *tutti* i warning della compilazione
-    BEGIN { $SIG{'__WARN__'} = sub { warn $_[0] if $DOWARN } }
+    BEGIN { $SIG{'__WARN__'} = sub { warn $_[0] if $FAIWARN } }
     my $pippo = 10;
     my $pippo = 20;        # nessun warning sul my $pippo duplicato,
                            # ma ehi, lo avete chiesto voi!
     # nessun warning di compilazione o esecuzione prima di questo punto
-    $DOWARN = 1;
+    $FAIWARN = 1;
 
     # warning di esecuzione abilitati dopo questo punto
     warn "\$pippo e` vivo e $pippo!";     # viene mostrato

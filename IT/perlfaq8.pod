@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq8 - Interazione con il Sistema ($Revision: 1.14 $, $Date: 2004/06/15 09:08:33 $)
+perlfaq8 - Interazione con il Sistema ($Revision: 1.15 $, $Date: 2005/07/30 16:05:24 $)
 
 =head1 DESCRIZIONE
 
@@ -426,34 +426,36 @@ gruppo di processi del terminale in foreground, che potete intercettare nel
 vostro processo. I segnali sono documentati nella sezione L<perlipc/"Signals"> ["Segnali", NdT]
 o nella sezione ``Signals'' del Camel.
 
-Tenete presente che pochissime librerie C sono rientranti. Quindi, se provate
-ad utilizzare print() in un handler che E<egrave> stato invocato durante
-un'altra operazione di input/output stdio, la struttura dati interna molto
-probabilmente perderE<agrave> consistenza e il vostro programma morirE<agrave>
-con un coredump. Questo alle volte puE<ograve> essere evitato utilizzando
-syswrite() invece di print().
+Potete impostare i valori dell'hash %SIG in modo che siano le funzioni che 
+volete che si occupano del segnale. Dopo che il perl ha catturato il segnale, 
+cerca in %SIG una chiave con lo stesso nome del segnale, poi chiama il valore 
+della subroutine per quella chiave.
 
-A meno che non siate oltremodo attenti a ciE<ograve> che scrivete, le
-uniche cose sicure da fare in un handler di segnale sono: impostare una 
-variabile ed uscire. E nel primo caso, dovreste impostare una variabile
-soltanto in modo che malloc() non venga chiamata (ad es. modificando una
-variabile che giE<agrave> ha un valore).
+	# come una subroutine anonima
+	
+	$SIG{INT} = sub { syswrite(STDERR, "ahi\n", 5 ) };
+	
+	# oppure un riferimento ad una funzione
+	
+	$SIG{INT} = \&ahi;
+	
+	# oppure il nome della funzione come una stringa
+	
+	$SIG{INT} = "ahi"; 
 
-Per esempio:
-
-        $Interrotto = 0;   # per star sicuri che abbia un valore
-        $SIG{INT} = sub {
-            $Interrotto++;
-            syswrite(STDERR, "ouch", 5);
-        }
-        
-In ogni caso, poichE<eacute> le chiamate di sistema per default
-ricominciano [in inglese "syscalls restart by default", NdT],
-troverete che se vi trovate in una chiamata "lenta", come <FH>,
-read(), connect() o wait(), l'unico modo di terminarla E<egrave>
-con un "longjump" al di fuori; ossia, sollevando un'eccezione.
-Si veda l'handler di time-out per il flock() bloccante in
-L<perlips/"Signals"> ["Segnali", NdT], o la sezione ``Signals'' nel Camel.
+Le versioni di Perl precedenti alla 5.8 avevano nel proprio sorgente C dei gestori 
+di segnali che intercettavano il segnale ed, eventualmente, eseguivano una 
+funzione Perl da voi messa in %SIG. Questo vE<iacute>ola le regole della gestione dei 
+segnali a quel livello causando un core dump del perl. A partire dalla versione 
+5.8.0, il perl cerca in %SIG *dopo* che il segnale E<egrave> stato catturato, 
+piuttosto che nel mentre il segnale venga catturato. Le precendeti versioni di 
+questa domanda erano non corrette.
+Perl versions before 5.8 had in its C source code signal handlers which
+would catch the signal and possibly run a Perl function that you had set
+in %SIG.  This violated the rules of signal handling at that level
+causing perl to dump core. Since version 5.8.0, perl looks at %SIG
+*after* the signal has been caught, rather than while it is being caught.
+Previous versions of this answer were incorrect.
 
 =head2 Come modifico il file delle shadow password su un sistema Unix?
 
@@ -730,8 +732,8 @@ della chiamata:
 
 oppure potete usare la redirezione dei descrittori di file della Bourne shell.
 
-    $output = `$cmd 2>some_file`;
-    open (PIPE, "cmd 2>some_file |");
+    $output = `$cmd 2>un_qualche_file`;
+    open (PIPE, "cmd 2>un_qualche_file |");
 
 Potete anche usare la redirezione dei descrittori di file per rendere STDERR
 un duplicato di STDOUT:
@@ -784,10 +786,10 @@ catturarne lo STDERR lasciando che il suo STDOUT si sostituisca al nostro STDERR
     while (<PH>) { }                            #    con relativa lettura
 
 Per leggere lo STDOUT e lo STDERR di un comando separatamente, E<egrave>
-piE<ugrave> facile e piE<ugrave> sicuro redirigerli su file separatamente,
+piE<ugrave> facile redirigerli su file separatamente,
 e poi leggere da questi file quando il programma E<egrave> terminato:
 
-    system("programma args 1>/tmp/programma.stdout 2>/tmp/programma.stderr");
+    system("programma args 1>programma.stdout 2>programma.stderr");
 
 L'ordine E<egrave> importante in tutti questi esempi, poichE<eacute> la
 shell processa le redirezioni di descrittori di file rigorosamente da
@@ -1094,7 +1096,7 @@ disponibili su CPAN: http://www.cpan.org/modules/by-module/DBD/ .
 Potete leggere di piE<ugrave> riguardo a DBI su http://dbi.perl.org .
 
 Altri moduli che forniscono un accesso piE<ugrave> specifico: Win32::ODBC, 
-Alzabo, iodbc, ed altri che si trovano su CPAN Search: http://search.cpan.org .
+Alzabo, iodbc ed altri che si trovano su CPAN Search: http://search.cpan.org .
 
 =head2 Come faccio a fare uscire una system() su un control-c?
 
@@ -1114,8 +1116,90 @@ soltanto dei flag O_NDELAY oppure O_NONBLOCK dal modulo Fcntl in
 combinazione con sysopen():
 
     use Fcntl;
-    sysopen(FH, "/tmp/unqualchefile", O_WRONLY|O_NDELAY|O_CREAT, 0644)
-        or die "non posso aprire /tmp/unqualchefile: $!";
+    sysopen(FH, "/pippo/unqualchefile", O_WRONLY|O_NDELAY|O_CREAT, 0644)
+        or die "non posso aprire /pippo/unqualchefile: $!";
+
+=head2 Come riconosco la differenza tra errori dalla shell e perl?
+
+(risposta fornita da brian d foy, C<< <bdfoy@cpan.org> >>
+
+Quando eseguite uno script Perl, qualcos'altro sta eseguendo lo script per voi e 
+questo qualcos'altro potrebbe dare in output dei messaggi d'errore. Lo script 
+potrebbe emettere i propri avvertimenti e messaggi d'errore. Per la maggior 
+parte del tempo non potrete distinguere chi sta dicendo cosa.
+
+Probabilmente non potete mettere a posto la cosa che esegue il per ma 
+potete cambiare come il perl manda in output i suoi avvertimenti definendo delle 
+funzioni warning e die su misura.
+
+Considerate questo script che ha un errore che potreste non notare immediatamente.
+
+	#!/usr/locl/bin/perl
+
+	print "Ciao Mondo\n";
+
+Ho ottenuto un errore quando l'ho eseguito dalla shell (si dE<agrave> il caso sia bash).
+Potrebbe sembrare che il perl abbia dimenticato di avere una funzione print(), ma la mia 
+shebang non E<egrave> il percorso al perl, dunque la shell esegue lo script ed ottengo 
+l'errore.
+
+	$ ./test
+	./test: line 3: print: command not found
+
+[./test: linea3: print: comando non trovato, NdT]
+
+Una correzione alla buona implica un po' di codice, ma questo potrebbe essere 
+tutto quello che vi occorre per risolvere il problema.
+
+	#!/usr/bin/perl -w
+	
+	BEGIN {
+	$SIG{__WARN__} = sub{ print STDERR "Perl: ", @_; };
+	$SIG{__DIE__}  = sub{ print STDERR "Perl: ", @_; exit 1};
+	}
+	
+	$a = 1 + undef;
+	$x / 0;
+	__END__
+
+Il messaggio perl viene fuori con davanti "Perl". Il blocco BEGIN 
+funziona a tempo di compilazione cosicchE<eacute> anche tutti gli errori di compilazione e i 
+warning ottengano il prefisso "Perl:".
+
+	Perl: Useless use of division (/) in void context at ./test line 9.
+	Perl: Name "main::a" used only once: possible typo at ./test line 8.
+	Perl: Name "main::x" used only once: possible typo at ./test line 9.
+	Perl: Use of uninitialized value in addition (+) at ./test line 8.
+	Perl: Use of uninitialized value in division (/) at ./test line 9.
+	Perl: Illegal division by zero at ./test line 9.
+	Perl: Illegal division by zero at -e line 3.
+
+[
+	Perl: Utilizzo inutile della divisione (/) in un contesto vuoto in ./test alla linea 9.
+	Perl: Nome "main::a" usato solo una volta: possibile errore di battitura in ./test alla linea 8.
+	Perl: Nome "main::x" usato solo una volta: possibile errore di battitura in ./test alla linea 9.
+	Perl: Uso di un valore non inizializzato nell'addizione (+) in ./test alla linea 8.
+	Perl: Uso di un valore non inizializzato nella divisione (/) in ./test alla linea 9.
+	Perl: Divisione per zero illegale in ./test alla linea 9.
+	Perl: Divisione per zero illegale in ./test alla linea 3.
+
+,NdT]
+
+Se non vedete quel "Perl:", non viene dal perl.
+
+Potreste anche conoscere proprio tutti gli errori del perl e benchE<eacute> 
+ci sia qualcuno che potrebbe conoscerli tutti, probabilmente voi no. Ad ogni modo, 
+dovrebbero essere tutti nella manpage perldiag. Se non vi trovate l'errore, 
+probabilmente non E<egrave> un errore del perl.
+
+Cercare ogni messaggio non E<egrave> la maniera piE<ugrave> semplice, dunque lasciate 
+che il perl lo faccia per voi. Usate la direttiva diagnostics che converte i normali 
+messaggi del per in lunghe discussioni sull'argomento.
+
+	use diagnostics;
+
+Se non ottenete un paragrafo o due due di un'ampia discussione, potrebbe non essere 
+stato un messaggio del perl.
 
 =head2 Come installo un modulo da CPAN?
 
@@ -1126,9 +1210,12 @@ versione del perl 5.004 e successive.
     $ perl -MCPAN -e shell
 
     cpan shell -- CPAN exploration and modules installation (v1.59_54)
-    ReadLine support enabled [*]
+    ReadLine support enabled
 
     cpan> install Unqualche::Modulo
+
+[shell di cpan - esplorazione e installazione di moduli CPAN (v1.59_54).
+Il supporto a Readline E<egrave> abilitato, NdT]
 
 Per installare manualmente il modulo CPAN o comunque qualsiasi modulo di
 CPAN ben educato, seguite questi passaggi:
@@ -1165,9 +1252,6 @@ la vostra estensione linkata in esso.
 Consultate L<ExtUtils::MakeMaker> per maggiori dettagli sulle estensione di
 configurazione. Si veda anche la domanda successiva, ``Qual'E<egrave> la
 differenza tra require e use?''.
-
-[*] shell di cpan - esplorazione e installazione di moduli CPAN (v1.59_54).
-Il supporto a Readline E<egrave> abilitato [NdT]
 
 =head2 Qual'E<egrave> la differenza tra require e use?
 
@@ -1243,7 +1327,7 @@ utilizzano il modulo Socket (C<use Socket;>).
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it

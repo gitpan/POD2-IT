@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq4 - Manipolazione dei dati ($Revision: 1.28 $, $Date: 2004/12/08 10:53:37 $)
+perlfaq4 - Manipolazione dei dati ($Revision: 1.29 $, $Date: 2005/07/28 00:59:14 $)
 
 =head1 DESCRIZIONE
 
@@ -386,7 +386,7 @@ C<intero_a_caso_tra(50,120)>
 
 =head2 Come ottengo la settimana o il giorno dell'anno?
 
-La funzione localtime restituisce il giorno della settimana. Senza alcun 
+La funzione localtime restituisce il giorno dell'anno. Senza alcun 
 argomento, localtime utilizza l'orario attuale.
 
     $giorno_dell_anno = (localtime)[7];
@@ -466,28 +466,28 @@ nei moduli Date::Calc e Date::Manip dal CPAN.
 
 =head2 Come posso trovare il Giorno Giuliano?
 
-Usate il modulo Time::JulianDay (parte del pacchetto Time-modules disponibile
-presso CPAN).
+(contributo di brian d foy e Dave Cross)
 
-Prima di immergersi troppo a fondo in questo argomento, assicuratevi
-di volere davvero il Giorno I<Giuliano>. Vi interessa un metodo per
-ottenere i giorni seriali in modo da poter semplicemente dire quanti giorni
-essi sono distanti o in modo di poter fare anche altra aritmetica sulle
-date? Se vi interessa fare aritmetica con le date,
-questa puE<ograve> essere fatta utilizzando i moduli Date::Manip oppure
-Date::Calc.
+Potete usare il modulo Time::JulianDay disponibile su CPAN. Assicuratevi 
+tuttavia di voler davvero trovare un giorno Giuliano, visto che molte persone 
+hanno idee differenti riguardo ai giorni Giuliani. Per esempio consultate 
+http://www.hermetic.ch/cal_stud/jdn.htm .
 
-Ci sono troppi dettagli e molta confusione su questo argomento per coprirli
-in questa FAQ, ma il termine E<egrave> applicato (correttamente) ad un
-calendario ora soppiantato dal Calendario Gregoriano, poichE<eacute> il
-Calendario Giuliano sbaglia nel corretto aggiustamento per gli anni
-bisestili che cadono sui centenari (assieme ad altri fastidi). Il termine
-E<egrave> inoltre utilizzato (erroneamente) per significare: [1] giorni
-nel Calendario Gregoriano; e [2] giorni trascorsi da una determinata
-partenza o 'epoch', solitamente il 1970 nel mondo Unix ed il 1980 nel
-mondo MS-DOS/Windows. Se si trova che quello realmente desiderato non
-E<egrave> il primo significato, allora si esaminino i moduli Date::Manip
-e Date::Calc. (Grazie a David Cassell per la maggior parte di questo testo)
+Potete anche provare il modulo DateTime che converte una data/istante in un Giorno Giuliano.
+
+  $ perl -MDateTime -le'print DateTime->today->jd'
+  2453401.5
+
+Oppure il Giorno Giuliano modificato
+
+  $ perl -MDateTime -le'print DateTime->today->mjd'
+  53401
+
+Oppure anche il giorno dell'anno (che E<egrave> la cosa che alcune persone 
+pensano sia un Giorno Giuliano)
+
+  $ perl -MDateTime -le'print DateTime->today->doy'
+  31
 
 =head2 Come trovo la data di ieri?
 
@@ -584,7 +584,7 @@ CiE<ograve> non significa che il Perl non puE<ograve> essere usato per creare
 programmi non conformi a Y2K. PuE<ograve>. Ma cosE<igrave> puE<ograve> anche
 la vostra matita. E<Egrave> colpa dell'utente, non del linguaggio. Rischiando
 di offendere l'NRA: "Perl non viola Y2K, la gente lo fa". Consultate
-http://language.perl.com/news/y2k.html per un'esposizione piE<ugrave> lunga.
+http://www.perl.org/about/y2k.html per un'esposizione piE<ugrave> lunga.
 
 =head1 Dati: Stringhe
 
@@ -622,9 +622,6 @@ Per interpolare una chiamata a subroutine (in contesto di lista) in una
 stringa:
 
     print "La mia sub quella volta ha restituito @{[miasub(1,2,3)]} .";
-
-Consultate anche "Come posso espandere le variabili nelle stringhe testuali?" 
-in questa sezione della FAQ.
 
 =head2 Come trovo coppie corrispondenti/annidate di qualcosa?
 
@@ -977,32 +974,25 @@ potete usare qualcosa del tipo:
 
 =head2 Come trovo il valore soundex di una stringa?
 
-Usate il modulo standard Text::Soundex che viene distribuito con il Perl.
-Prima di fare questo, potreste voler determinare se il 'soundex' sia
-effettivamente quello che pensate esso sia. L'algoritmo soundex di Knuth
-comprime le parole in un piccolo spazio e quindi non distingue
-necessariamente tra due parole che vorreste presentare separatamente.
-Per esempio, i cognomi 'Knuth' e 'Kant' sono entrambi mappati al codice
-soundex K530. Se Text::Soundex non fa quello che cercate, potreste 
-voler prendere in considerazione il modulo String::Approx disponibile
-su CPAN.
+(contributo di brian d foy)
+
+Potete usare il modulo Text::Soundex. Se volete fare un match fuzzy o preciso, 
+potreste provare i moduli String::Approx, Text::Metaphone e Text::DoubleMetaphone.
 
 =head2 Come si espandono le variabili nelle stringhe di testo?
 
-Assumete di avere una stringa come:
+Assumete di avere una stringa che contengono delle variabili segnaposto:
 
-    $testo = 'questa ha contiene un $pippo e un $pluto';
+    $testo = 'questa contiene un $pippo e un $pluto';
 
-Se queste fossero entrambe variabili globali, allora questo sarebbe
-sufficiente:
+Potete usare una sostituzione con una doppia valutazione. Il primo /e 
+converte C<$1> in C<$pippo> e il secondo /e converte C<$pippo> nel suo 
+valore. Potreste volerlo racchiudere in un C<eval>: se provate ad 
+ottenere il valore di una variabile non dichiarata mentre si E<egrave> in 
+esecuzione sotto C<use strict>, otterrete un errore bloccante.
 
-    $testo =~ s/\$(\w+)/${$1}/g;  # /e non e` necessario
-
-Visto che le variabili sono probabilmente lessicali, o almeno potrebbero
-esserlo, dovreste fare cosE<igrave>:
-
-    $testo =~ s/(\$\w+)/$1/eeg; # serve /ee, non solo /e
-    die if $@; 
+    eval { $testo =~ s/(\$\w+)/$1/eeg };
+    die if $@;
 
 Probabilmente E<egrave> meglio, in generale, considerare queste variabili
 come elementi di qualche hash apposito. Per esempio:
@@ -1012,9 +1002,6 @@ come elementi di qualche hash apposito. Per esempio:
         pluto  => 19,
     );
     $testo =~ s/\$(\w+)/$def_utente{$1}/g;
-
-Si veda anche "Come espando le chiamate a funzione in una stringa?''
-in questa sezione delle FAQ.
 
 =head2 Cosa c'E<egrave> di sbagliato nel racchiudere sempre le "$varabili" tra virgolette?
 
@@ -1785,21 +1772,14 @@ dell'ordinamento delle chiavi come mostrato in un quesito precedente.
 
 =head2 Cosa succede se aggiungo o rimuovo chiavi da un hash mentre sto iterando su di esso?
 
-Non fatelo. :-)
+(contributo di brian d foy)
 
-[lwall] In Perl 4, non era affatto permesso modificare un hash mentre si
-strava iterando su di esso. In Perl 5 potete cancellare elementi da esso,
-ma non potete aggiungerne, poichE<eacute> ciE<ograve> potrebbe causare
-una duplicazione della tabella dell'hash, in cui metE<agrave> delle voci
-vengono copiate nella nuova metE<agrave> alta della tabella; a quel punto
-avrete completamente confuso il codice che itera sull'hash. Anche se la
-tabella non dovesse duplicarsi, non E<egrave> possibile determinare se
-la vostra nuova voce verrE<agrave> inserita prima oppure dopo la posizione
-corrente dell'iteratore.
+La risposta facile E<egrave> "Non fatelo!"
 
-La cosa migliore E<egrave> memorizzare da qualche parte i cambiamenti, e farli
-quando l'iterazione finisce, oppure utilizzare C<keys> per ottenere tutte
-le vecchie chiavi in un colpo solo, ed iterare sulla lista delle chiavi.
+Se iterate attraverso l'hash con each(), potete tranquillamente cancellare la chiave restituita 
+piE<ugrave> recentemente. Se cancellate o aggiungete altre chiavi, l'iteratore potrebbe saltarle 
+o passarci due volte poichE<eacute> perl puE<ograve> riarrangiare la tabella dell'hash. 
+Consultate la voce C<each()> in L<perlfunc>.
 
 =head2 Come si cerca un elemento di un hash per valore?
 
@@ -1815,7 +1795,7 @@ efficiente, dal punto di vista dello spazio, usare:
 	$per_valore{$valore} = $chiave;
     }
 
-Se il vostro hash avesse dei valori ripetuti, i metodi sopra troveranno
+Se il vostro hash avesse dei valori ripetuti, i metodi qui sopra troveranno
 solo una delle chiavi associate. Questo potrebbe infastidirvi, o anche no.
 Nel caso vi crei problemi, potete sempre invertire l'hash
 in un hash di array:
@@ -2170,7 +2150,7 @@ semplice l'esecuzione di calcoli pesanti.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it

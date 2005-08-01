@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.12 $, $Date: 2004/04/12 00:18:15 $)
+perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.14 $, $Date: 2005/07/30 16:04:45 $)
 
 =head1 DESCRIZIONE
 
@@ -37,7 +37,7 @@ sono specificatori di tipo:
     <> sono usate per leggere un record da un filehandle.
     \  ottiene un riferimento a qualcosa.
 
-Notate che <FILE> non E<egrave> uno specificatore di tipo per i file e nemmeno
+Va notato che <FILE> non E<egrave> uno specificatore di tipo per i file e nemmeno
 il nome dell'handle. E<egrave> l'operatore C<< <> >> applicato all'handle FILE
 Legge una linea (o meglio, un record--consultate la voce $/ in L</perlvar/$/>)
 dall'handle FILE se in un contesto scalare, oppure tutte le linee se in un
@@ -48,7 +48,7 @@ corrette: C<eof(FH)>, C<seek(FH, 0, 2)> e "copiare da STDIN a FILE".
 
 =head2 Devo sempre/non devo mai mettere tra virgolette le mie stringhe, oppure usare i punti e virgola o le virgole?
 
-Normalmente, una parola non posta tra virgolette puE<ograve> rimanere tale, ma
+Di norma, una parola non posta tra virgolette puE<ograve> rimanere tale, ma
 in molti casi probabilmente dovrebbe essere posta tra virgolette (e deve esserlo se C<use strict> 
 E<egrave> attivo). La chiave di un hash che consiste in una semplice parola 
 (che non E<egrave> il nome di una subroutine definita) e l'operando sinistro
@@ -57,8 +57,8 @@ virgolette:
 
     Questo                  e` come questo
     ------------            ---------------
-    $pippo{linea}           $pippo{"linea"}
-    pluto => roba           "pluto" => roba
+    $pippo{linea}           $pippo{'linea'}
+    pluto => roba           'pluto' => roba
 
 Il punto e virgola finale in un blocco E<egrave> opzionale, cosE<igrave> come
 la virgola finale in una lista. E<egrave> buono stile (vedete L<perlstyle>)
@@ -80,12 +80,17 @@ metterli, fatta eccezione per il codice costituito da una sola linea:
 Un modo E<egrave> quello di trattare i valori di ritorno come una lista e di
 indicizzarla:
 
-    $dir = (getpwnam($utente))[7];
+	$dir = (getpwnam($utente))[7];
 
 Un'altra maniera E<egrave> quella di usare undef come elemento nella parte
 sinistra, come in:
 
     ($dev, $ino, undef, undef, $uid, $gid) = stat($file);
+
+Potete anche usare uno slice di lista per selezionare solo gli elementi che 
+vi servono:
+
+	($dev, $ino, $uid, $gid) = ( stat($file) )[0,1,4,5];
 
 =head2 Come posso disabilitare temporaneamente i warning?
 
@@ -98,8 +103,18 @@ Consultate L<perllexwarn> per ulteriori dettagli.
 	$a = $b + $c;         # questi potrebbero essere undef
     }
 
-Se avete una versione piE<ugrave> vecchia Perl, la variabile '$^W'
-(documentata in perlvar) controlla, al momento dell'esecuzione, i warning
+In aggiunta, potete abilitare e disabilitare categorie di warning.
+Potete togliere le categorie che volete ignorare e potete ancora 
+ottenere altre categorie di warning. Consultate L<perllexwarn> per i 
+dettagli completi, inclusi i nomi delle categorie e gerarchie.
+
+	{
+	no warnings 'uninitialized';
+	$a = $b + $c;
+	}
+
+Se avete una versione piE<ugrave> vecchia di Perl, la variabile '$^W'
+(documentata in L<perlvar>) controlla, al momento dell'esecuzione, i warning
 per un blocco:
 
     {
@@ -107,7 +122,7 @@ per un blocco:
 	$a = $b + $c;         # questi potrebbero essere undef
     }
 
-E<eacute> da notare che, come per tutte le variabili speciali [quelle
+E<Egrave> da notare che, come per tutte le variabili speciali [quelle
 il cui nome E<egrave> un segno di punteggiatura, NdT], non E<egrave> possibile
 usare my() su '$^W' ma solo local().
 
@@ -172,21 +187,24 @@ Se cercate qualcosa un po' piE<ugrave> rigoroso, provate L<perltoot>.
 
 =head2 Come si crea un modulo?
 
-Un modulo E<egrave> un package che risiede in un file che ha lo stesso nome.
-Per esempio, il modulo Eccoci::Qua risiede in Eccoci/Qua.pm . Per avere
-maggiori dettagli leggete L<perlmod>. Troverete utile anche L<Exporter>.
-Se state scrivendo un modulo in C o uno misto di C e Perl,
-allora dovreste studiare L<perlxstut>.
+(contributed by brian d foy)
 
-C<h2xs> E<egrave> un programma che crea per voi una traccia di tutto il
-necessario.
+L<perlmod>, L<perlmodlib>, L<perlmodstyle> spiegano i moduli in tutti i 
+sanguinolenti particolari. L<perlnewmod> dE<agrave> una breve panoramica del 
+processo insieme con un paio di suggerimenti sullo stile.
 
-   % h2xs -XA -n Mio::Modulo
+Se avete la necessitE<agrave> di includere del codice C o delle librerie di 
+interfaccia C nei vostri moduli, avrete bisogno di h2xs. h2xs creerE<agrave> la 
+struttura della distribuzione del modulo e gli iniziali file di interfaccia che 
+vi servirranno. L<perlxs> e L<perlxstut> spiegano i dettagli.
 
-Il parametro C<-X> indica a C<h2xs> che non si sta usando codice d'estensione
-C<XS>. Il parametro C<-A> indica a C<h2xs> che non si sta usando AutoLoader 
-e il parametro C<-n> specifica il nome del modulo. Consultate L<h2xs> per
-maggiori dettagli.
+Se non avete bisogno di usare del codice C, altri strumenti quali 
+ExtUtils::ModuleMaker e Module::Starter potrebbero aiutarvi a creare uno 
+scheletro di distribuzione del modulo.
+
+Potreste anche voler dare un'occhiata al libro di Sam Tregar 
+"Writing Perl Modules for CPAN" ( http://apress.com/book/bookDisplay.html?bID=14 ) 
+che E<egrave> la migliore guida pratica per la creazione di distribuizioni di moduli.
 
 =head2 Come faccio a creare una classe?
 
@@ -222,7 +240,7 @@ E<egrave> un linguaggio che non solo supporta, ma incoraggia l'uso di chiusure.
 Ecco una classica funzione che genera una funzione:
 
     sub generatore_di_funzione_somma {
-        return sub { shift + shift };
+        return sub { shift() + shift() };
     }
 
     $funzione_somma = generatore_di_funzione_somma();
@@ -243,7 +261,7 @@ stata creata.
 
     sub crea_sommatore {
         my $addendo = shift;
-        return sub { shift + $addendo };
+        return sub { shift() + $addendo };
     }
 
     $f1 = crea_sommatore(20);
@@ -335,7 +353,8 @@ che trattare come ogni altro scalare.
 
 Prima del Perl 5.6, dovevate usare le notazioni C<*FH> oppure C<\*FH> .
 Queste sono "typeglob"--per maggiori informazioni, consultate 
-L<perldata/"Typeglobs and Filehandles"> e in modo particolare L<perlsub/"Pass by Reference">.
+L<perldata/"Typeglobs and Filehandles"> ["Typglob e Filehandle", NdT] e in modo 
+particolare L<perlsub/"Pass by Reference"> ["Passato per Riferimento", NdT].
 
 =item Passaggio di espressioni regolari
 
@@ -354,7 +373,7 @@ essere verificata con una espressione regolare, usando C<qr//>:
     }
     $corrispondenza = verifica("old McDonald", qr/d.*D/i);
 
-Notate che C<qr//> permette di usare i flag alla fine. Quel pattern viene
+Va notato che C<qr//> permette di usare i flag alla fine. Quel pattern viene
 compilato a tempo di compilazione, benchE<eacute> venga eseguito
 successivamente.
 La notazione C<qr//> non E<egrave> stata introdotta che con la versione 5.005.
@@ -494,7 +513,7 @@ Ad esempio:
     dinamica();      		# scrive locale
     lessicale();      		# scrive globale
 
-Si noti come il valore "privata" non viene mai scritto. CiE<ograve>
+Si noti come il valore "privata" non venga mai scritto. CiE<ograve>
 perchE<eacute> tale valore di $var E<egrave> visibile solo all'interno
 del blocco della funzione lessicale() e non nella subroutine chiamata.
 
@@ -548,7 +567,7 @@ varaibili lessicali (cioE<egrave> quelle create con my()). Ad ogni modo,
 le variabili dinamiche (dette anche globali, locali, o variabili package)
 sono effettivamente fatte oggetto di shallow binding. Considerate questa
 un'ulteriore ragione per non usarle. Guardate la risposta a
-L<"Cos'E<egrave> una chiusura?>
+L<"Cos'E<egrave> una chiusura?">
 
 =head2 PerchE<eacute> "my($pippo) = <FILE>;" non funziona bene?
 
@@ -678,7 +697,7 @@ tipo di riferimento memorizzato in $ref:
       }
 
 Consultate L<perlsyn/"Basic BLOCKs and Switch Statements> ["BLOCK di Base e Istruzioni Switch", NdT] 
-per trovare molti altri esempi di questo stile.
+per trovare molti altri esempi in questo stile.
 
 A volte potreste dover modificare la posizione della costante e della
 variabile. Ad esempio, poniamo che vogliate sapere quale tra tante risposte
@@ -767,17 +786,22 @@ stato compilato):
 
 =head2 Come posso commentare un vasto blocco di codice perl?
 
-Potete usare il POD incluso nel codice per mettere quest'ultimo da parte.
-La direttiva =for dura fino al paragrafo che segue (due ritorni a capo consecutivi).
+Potete usare il POD incorporato nel codice per mettere quest'ultimo da parte.
+Racchiudete i blocchi che volete commentare tra etichette POD. La direttiva 
+<=begin> contrassegna una sezione per uno specifico formattatore. Usate il 
+formato C<comment>, che nessun formattatore dovrebbe pretendere di saper capire 
+(per scelta). Contrassegnate la fine del blocco con <=end>.
 
     # il programma e` qui
 
-    =for nessuno
+    =begin comment
 
     Tutte queste cose
 
     qui saranno ignorate
     da tutti
+
+    	=end comment
 
     =cut
 
@@ -799,15 +823,15 @@ Usate questo codice, fornito da Mark-Jason Dominus:
         die "Non si dovrebbe eliminare il package main"
             if $pack eq "" || $pack eq "main";
         my $stash = *{$pack . '::'}{HASH};
-        my $name;
+        my $nome;
         foreach $name (keys %$stash) {
-            my $fullname = $pack . '::' . $name;
+            my $nomecompleto = $pack . '::' . $nome;
             # Elimino tutto con quel nome
-            undef $$fullname;
-            undef @$fullname;
-            undef %$fullname;
-            undef &$fullname;
-            undef *$fullname;
+            undef $$nomecompleto;
+            undef @$nomecompleto;
+            undef %$nomecompleto;
+            undef &$nomecompleto;
+            undef *$nomecompleto;
         }
      }
 
@@ -845,7 +869,7 @@ usando l'hash che contiene la tabella dei simboli del package
 come C<%main::>) anzichE<eacute> un hash definito dall'utente. La soluzione
 E<egrave> usare un hash vostro oppure un riferimento vero e proprio.
 
-    $VARIABILI_UTENTE{ fred } = 23;
+    $VARIABILI_UTENTE{"fred"} = 23;
     $nome_variabile = "fred";
     $VARIABILI_UTENTE{ $nome_variabile }++;  # non $$nome_variabile++
 
@@ -892,7 +916,7 @@ problemi elencati sopra. Sarebbe di gran lungo meglio scrivere:
     $gente{"fred"}{MOGLIE}   = "wilma";
     $gente{"barney"}{MOGLIE} = "betty";
 
-E usare solo un hash a piE<ugrave> livelli.
+E usate solo un hash a piE<ugrave> livelli.
 
 Le uniche occasioni in cui I<dovete> assolutamente usare i riferimenti
 simbolici sono quelle in cui ci si deve riferire alla tabella dei simboli.
@@ -922,17 +946,22 @@ di solito per le subroutine --, probabilmente volete usare solo hard reference.
 
 =head2 Cosa significa "bad interpreter" ["interprete non valido", NdT]?
 
+(contributed by brian d foy)
+
 Il messaggio "bad interpreter" deriva dalla shell, non dal perl. Il messaggio
 vero e proprio puE<ograve> variare a seconda della vostra piattaforma, shell e
 impostazione del locale.
 
-Se vedete "If you see "bad interpreter - no such file or directory" ["interprete 
+Se vedete "bad interpreter - no such file or directory" ["interprete 
 non valido - file o directory non presente", NdT], la prima linea nel vostro
 script perl (la "shebang") non contiene il corretto percorso al perl (oppure
 qualsiasi altro programma in grado di eseguire degli script).
 Talvota questo avviene quando spostate lo script da una macchina ad un'altra e
 ogni macchina ha un differente percorso al perl---per esempio /usr/bin/perl
-piuttosto che /usr/local/bin/perl .
+piuttosto che /usr/local/bin/perl per esempio. Potrebbe anche indicare che la 
+macchina sorgente abbia terminatori di linea del tipo CRLF e la macchina 
+destinazione abbia solo i LF: la shell cerca di trovare /usr/bin/perl<CR>, 
+ma non ci riesce.
 
 Se vedete "bad interpreter: Permission denied" [interprete non valido: Permesso 
 negato", NdT], avete bisogno di rendere eseguibile il vostro script.
@@ -949,8 +978,8 @@ sarE<agrave> necessario modificare la vostra shebang.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan
-Torkington. Tutti i diritti riservati.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it
 ( http://pod2it.sourceforge.net/ )

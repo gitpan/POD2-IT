@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq3 - Strumenti di Programmazione ($Revision: 1.14 $, $Date: 2004/10/10 03:12:37 $)
+perlfaq3 - Strumenti di Programmazione ($Revision: 1.16 $, $Date: 2005/07/30 16:04:04 $)
 
 =head1 DESCRIZIONE
 
@@ -238,30 +238,35 @@ Se utilizzate Unix, avete giE<agrave> un IDE--Unix. La filosofia UNIX E<egrave>
 la filosofia di diversi piccoli strumenti che singolarmente fanno una cosa e la
 fanno bene. E<eacute> una sorta di cassetta degli attrezzi di un falegname.
 
-Se volete un IDE, date un'occhiata a quelli che seguono:
+Se volete un IDE, date un'occhiata a quelli che seguono (in ordine alfabetico, 
+non in ordine di preferenza):
 
 =over 4
 
+=item Eclipse
+
+L'Eclipse Perl Integration Project [Progetto per l'Integrazione di Perl ed Eclipse, NdT] 
+integra funzioni di editing/debugging con Eclipse.
+
+Il sito web del progetto E<egrave> http://e-p-i-c.sf.net/
+
 =item Komodo
 
-L'IDE multi piattaforma e multi linguaggio di Activestate (dall'aprile 2001 Windows e
-Linux), ha il supporto Perl, include un debugger di espressioni regolari e un
-debugging remoto (http://www.ActiveState.com/Products/Komodo/index.html ).
-(Visual Perl, un plug-in Visual Studio.NET E<egrave> attualmente (della prima
-parte del 2001) in beta
-( http://www.ActiveState.com/Products/VisualPerl/index.html )).
-
-=item The Object System
-
-( http://www.castlelink.co.uk/object_system/ ) E<egrave> un IDE per lo
-sviluppo di applicazioni web in Perl, apparentemente per qualunque
-piattaforma su cui gira Perl.
+L'IDE multi piattaforma e multi linguaggio di Activestate (dall'ottobre 2004 per Windows, 
+Linux e Solaris), ha il supporto Perl, include un debugger di espressioni regolari e un
+debugging remoto ( http://www.ActiveState.com/Products/Komodo/ ).
 
 =item Open Perl IDE
 
 ( http://open-perl-ide.sourceforge.net/ ) Open Perl IDE E<egrave> un ambiente
 integrato di sviluppo per scrivere e fare il debugging di script in Perl
 mediante l'ActivePerl sotto Windows 95/98/NT/2000.
+
+=item OptiPerl
+
+( http://www.optiperl.com/ ) E<egrave> un IDE Windows con un ambiente CGI
+simulato, include un debugger e un editor syntax highlighting [evidenziatore 
+di sintassi, NdT].
 
 =item PerlBuilder
 
@@ -272,11 +277,10 @@ sviluppo per Windows che supporta lo sviluppo Perl.
 
 ( http://helpconsulting.net/visiperl/ ) da Help Consulting, per Windows.
 
-=item OptiPerl
+=item Visual Perl
 
-( http://www.optiperl.com/ ) E<egrave> un IDE Windows con un ambiente CGI
-simulato, include un debugger e un editor syntax highlighting [evidenziatore 
-di sintassi, NdT].
+( http://www.activestate.com/Products/Visual_Perl/ )
+Visual Perl E<egrave> un plugin per Visual Studio.NET da ActiveState.
 
 =back
 
@@ -299,7 +303,7 @@ fra gli altri.
 Se state usando MacOS, valgono le stesse considerazioni. Con MacPerl
 (per un ambiente Classic) c'E<eacute> un semplice editor. Editor esterni
 popolari sono BBEdit ( http://www.bbedit.com/ ) o Alpha
-( http://www.kelehers.org/alpha/ ). Anche gli utenti di MacOS X possono
+( http://www.his.com/~jguyer/Alpha/Alpha8.html ). Anche gli utenti di MacOS X possono
 usare gli editor Unix.
 
 =over 4
@@ -360,7 +364,7 @@ Perl:
 
 =item Codewright
 
-http://www.starbase.com/
+http://www.borland.com/codewright/
 
 =item MultiEdit
 
@@ -410,7 +414,7 @@ E<egrave> irrilevante se si utilizza Perl). Cygwin, MKs, e U/WIN contengono
 tutti (oltre alle shell) un insieme molto vasto di utility standard UNIX .
 
 Se state trasferendo file di testo da Unix a Windows usando FTP, accertatevi
-di trasferirli in modalita' ASCII, cosE<igrave> i terminatori di riga
+di trasferirli in modalitE<agrave> ASCII, cosE<igrave> i terminatori di riga
 saranno convertiti in modo appropiato.
 
 Su Mac OS, con il MacPerl Application viene incluso un semplice text editor
@@ -420,16 +424,21 @@ come fosse un editor (senza il limite di 32k).
 
 =over 4
 
-=item BBEdit and BBEdit Lite
+=item Affrus
 
-sono text editors per Mac OS che hanno un Perl sensitivity mode 
-( http://web.barebones.com/ ).
+E<egrave> un completo ambiente di sviluppo Perl con un pieno supporto al debug
+( http://www.latenightsw.com ).
 
 =item Alpha
 
 E<egrave> un editor, scritto estendibile in Tcl, che non di meno ha un
 supporto incorporato per diversi popolari linguaggi di markup e
-programmazione incluso il Perl e HTML ( http://alpha.olm.net/ ).
+programmazione inclusi il Perl e l'HTML ( http://www.his.com/~jguyer/Alpha/Alpha8.html ).
+
+=item BBEdit and BBEdit Lite
+
+sono text editors per Mac OS che hanno un Perl sensitivity mode 
+( http://web.barebones.com/ ).
 
 =back
 
@@ -480,16 +489,10 @@ Entrambe sono disponibili su CPAN. Si veda la web directory:
 http://www.cpan.org/modules/by-category/08_User_Interfaces/
 
 Inestimabili per i programmatori Perl/Tk sono le FAQ del Perl/Tk su
-http://w4.lns.cornell.edu/%7Epvhp/ptk/ptkTOC.html , la Guida di riferimento
+http://phaseit.net/claird/comp.lang.perl.tk/ptkFAQ.html , la Guida di riferimento
 del Perl/Tk disponibile su http://www.cpan.org/authors/Stephen_O_Lidie/
 e le pagine del manuale che si trovano online su
 http://www-users.cs.umn.edu/%7Eamundson/perl/perltk/toc.html .
-
-=head2 Come posso generare un semplice menE<ugrave> senza usare CGI o TK?
-
-In questo vi potrebbe aiutare il modulo
-http://www.cpan.org/authors/id/SKUNZ/perlmenu.v4.0.tar.gz , che E<egrave>
-basato su curses.
 
 =head2 Come posso rendere piE<ugrave> veloce il mio programma scritto in Perl?
 
@@ -577,7 +580,7 @@ al posto di questo:
     #
     # Cattiva Idea
     #
-    @data = ;
+    @dati = ;
     foreach (@dati) {
        # ...
     }
@@ -671,7 +674,15 @@ dunque tutto si risolverE<agrave> in maniera appropriata.
 
 =head2 Come posso liberare un array o un hash in modo che il mio programma si riduca (in memoria)?
 
-Di solito non si puE<ograve>. Sulla maggior parte dei sistemi operativi, la
+(contributo di Michael Carman)
+
+Di solito non si puE<ograve>. La memoria allocata ai lessicali (cioE<egrave> le variabili my()) 
+non poE<ograve> essere recuperata o riutilizzata anche se le variabili vanno al di fuori dello scope. 
+La memoria E<egrave> riservata nel caso che le variabili ritornito nello scope. La memoria allocata 
+alle variabili globali puE<ograve> essere riutilizzata (all'interno del vostro programma) utilizzando 
+undef() e/o delete().
+
+Sulla maggior parte dei sistemi operativi, la
 memoria allocata ad un programma non puE<ograve> essere restituita al sistema.
 Questo E<egrave> il motivo per cui i programmi di lunga esecuzione talvolta
 si ri-eseguono. Alcuni sistemi operativi (da rimarcare, i sistemi che usano
@@ -679,6 +690,11 @@ mmap(2) per allocare grosse porzioni di memoria) possono chiedere la
 restituzione della memoria che non viene piE<igrave> usata, ma, su tali
 sistemi, perl deve essre configurato e compilato affinchE<eacute> usi il
 malloc del sistema operativo e non quello del perl.
+
+In generale, l'allocazione di memoria e la deallocazione, in Perl non sono qualcosa 
+di cui possiate o che dobbiate preoccuparvi molto.
+
+Consultate anche "Come posso fare affinchE<eacute> i miei programmi in Perl occupino meno memoria?"
 
 Ad ogni modo, un uso giudizioso di my() sulle vostre variabili vi
 aiuterE<agrave> ad assicurarvi la loro uscita dallo scope in maniera che
@@ -781,57 +797,49 @@ Se siete preoccupati che le persone traggano profitto dal vostro
 codice, allora la conclusione E<egrave> che niente darE<agrave> piE<ugrave>
 sicurezza legale di una licenza restrittiva. Fornite una licenza al vostro
 software e tempestatelo di frasi minacciose del tipo ``Questo E<egrave>
-software inedito di proprietE<agrave> della dittta XYZ. L'accesso ad esso
+software inedito di proprietE<agrave> della ditta XYZ. L'accesso ad esso
 non vi dE<agrave> il permesso di usarlo bla bla bla.'' Non siamo avvocati
 naturalmente, dunque dovreste consultare un legale per essere sicuri
 che la stesura della vostra licenza reggerE<agrave> in tribunale.
 
 =head2 Come posso compilare programmi Perl in C o in bytecode?
 
-Malcolm Beattie aveva scritto un backend multifunzionale del compilatore,
-disponibile su CPAN, che poteva fare entrambe le cose. E<egrave> incluso
-in perl5.005, ma E<egrave> ancora considerato sperimentale. Questo significa
-che E<egrave> divertente giocarci se siete programmatori, ma non lo E<egrave>
-se state cercando una soluzione chiavi in mano.
+(contributo di brian d foy)
 
-La compilazione in linguaggio C non garantisce di per sE<egrave>  che il
-vostro codice vada piE<ugrave> veloce. CiE<ograve> E<egrave> dovuto al fatto
-che a parte i casi fortunati nei quali si possono fare molte deduzioni sui
-tipi nativi, il normale run-time Perl sarE<agrave> comunque presente, e il
-vostro programma impiegherE<agrave> lo stesso tempo di esecuzione e
-avrE<agrave> le stesse dimensioni. Parecchi programmi risparmiano poco
-piE<ugrave> del tempo di compilazione, diventando solo il 10-30% piE<ugrave>
-veloci. Una minoranza di programmi in effetti traggono un significativo
-beneficio (arrivando ad essere alcune volte piE<ugrave> veloci), ma questo
-richiede un pE<ograve> di messa a punto del codice.
+In generale, non potete farlo. Ci sono comunque alcune cose che possono 
+funzionare per il vostro caso. Le persone di solito pongono questa domanda 
+perchE<eacute> vogliono distribuire i propri lavori senza regalare il codice 
+sorgente e la maggior parte delle soluzioni sacrifica l'occupazione su disco 
+per la convenienza. Probabilmente non vedrete nemmeno questo gran incremento di 
+velocitE<agrave> visto che la maggior parte delle soluzioni semplicemente 
+ingloba un interprete Perl nel prodotto finale (ma consultate
+L<Come posso rendere piE<ugrave> veloce il mio programma scritto in Perl?>).
 
-Rimarrete probabilmente sbalorditi nell'apprendere che l'attuale compilatore
-genera una versione compilata del vostro script il cui eseguibile E<egrave>
-grande quanto l'eseguibile perl originale. E<egrave> dovuto al fatto che,
-per come sono scritti adesso, tutti i programmi vengono preparati per essere
-eseguiti all'interno di una istruzione eval(). Potete ridurre tremendamente
-questo costo in termini di spazio creando una libreria I<libperl.so>
-condivisa e usandola poi per il linking. Per i dettagli consultate il pod
-F<INSTALL> presente nella distribuzione dei sorgenti di Perl. Se linkate ad
-essa il vostro file binario perl principale, lo renderete minuscolo. Ad
-esempio, sul sistema di uno degli autori, F</usr/bin/perl> E<egrave>
-grande solo 11k!
+Il Perl Archive Toolkit (http://par.perl.org/index.cgi) E<egrave> l'analogo Perl 
+del JAR di Java. E<Egrave> disponibile gratuitamente su CPAN (http://search.cpan.org/dist/PAR/).
 
-In generale, il compilatore non farE<agrave> nulla per rendere un programma
-Perl piE<ugrave> piccolo, piE<ugrave> veloce, piE<ugrave> portabile o
-piE<ugrave> sicuro. In effetti, puE<ograve> peggiorare la situazione.
-L'eseguibile risulterE<agrave> piE<ugrave> grande, il vostro sistema
-potrebbe metterci di piE<ugrave> a caricare tutto, il binario E<egrave>
-fragile e difficile da correggere, e la compilazione non ha mai impedito la
-pirateria sotto forma di cracker, virus e scopiazzatori. Il vero vantaggio
-del compilatore E<egrave> puramente la possibilitE<agrave> di costruire
-pacchetti, ma una volta che avrete visto le loro dimensioni (beh, a meno
-che non usiate una I<libperl.so> condivisa), vorrete probabilmente
-un'installazione Perl completa.
+Lo spazio dei nomi B::*, spesso chiamato "il compilatore Perl", in realtE<agrave> E<egrave> un 
+modo per i programmatori Perl di sbirciare nelle proprie interiora piuttosto che creare versioni 
+precompilate dei vostri programmi. Ad ogni modo, il modulo B::Bytecode puE<ograve> convertire i vostri 
+script in un formato bytecode che potrebbe essere caricato successivamente dal modulo ByteLoader ed 
+eseguito come un usuale script Perl.
+
+Ci sono anche alcuni prodotti commerciali che vi potrebbero andar bene, 
+sebbene ne dobbiate acquistare una licenza.
+
+Il Perl Dev Kit (http://www.activestate.com/Products/Perl_Dev_Kit/) da 
+ActiveState puE<ograve> "Turn your Perl programs into ready-to-run
+executables for HP-UX, Linux, Solaris and Windows." [Convertire i vostri programmi 
+Perl in eseguibili pronti da usare per HP-UX, Linux, Solaris e Windows,", NdT]
+
+Perl2Exe (http://www.indigostar.com/perl2exe.htm) E<egrave> un programma a linea di 
+comando per convertire degli script perl in file eseguibili. Produce eseguibili per le 
+piattaforme Windows e unix.
+
 
 =head2 Come si puE<ograve> compilare il Perl dentro Java?
 
-Con il Perl Resource Kit della O'Reilly e Associates sarete in
+Con il Perl Resource Kit della O'Reilly Media sarete in
 grado di integrare Java e Perl. Consultate
 http://www.oreilly.com/catalog/prkunix/ .
 
@@ -861,12 +869,15 @@ Oltre ad associare C<.pl> all'interprete, gli utilizzatori di NT possono
 usare C<SET PATHEXT=%PATHEXT%.PL> per essere in grado di lanciare programmi
 come C<install-linux.pl> semplicemente digitando C<install-linux>.
 
-I programmi Perl sotto Macintosh hanno gli appropriati Creator e Type, quindi
-un doppio click su essi causa l'invocazione dell'applicazione Perl.
+I programmi Perl sotto MacOS "Classico" hanno gli appropriati Creator e Type, quindi
+un doppio click su di essi causa l'invocazione dell'applicazione Perl.
+Sotto Mac OS X, le applicazioni cliccabili possono essere fatte a partire da 
+qualsiasi script di tipo C<#!> utilizzando l'utility DropScript di Wil
+Sanchez: http://www.wsanchez.net/software/ .
 
 I<IMPORTANTE!>: Qualunque cosa facciate, PER FAVORE, non fate la pazzia di
-copiare l'interprete perl nella vostra directory cg-bin, al fine di far
-si che i vostri programmi funzionino bene sotto un web server. Questo
+copiare l'interprete perl nella vostra directory cgi-bin, al fine di far
+sE<igrave> che i vostri programmi funzionino bene sotto un web server. Questo
 E<egrave> un rischio di sicurezza ESTRAMAMENTE grande. Prendetevi il tempo
 necessario per capire come fare le cose in maniera corretta.
 
@@ -1008,7 +1019,7 @@ modulo di estensione. Per maggiori informazioni vedete ExtUtils::MakeMaker.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it

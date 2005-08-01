@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq5 - File e Formati ($Revision: 1.16 $, $Date: 2004/05/12 22:44:17 $)
+perlfaq5 - File e Formati ($Revision: 1.18 $, $Date: 2005/07/30 16:04:45 $)
 
 =head1 DESCRIZIONE
 
@@ -106,9 +106,31 @@ Questo blocco modifica tutti i file C<.c> nella directory corrente,
 lasciando una copia del dato originale da qualunque file in un nuovo 
 file C<.c.orig>.
 
+=head2 Come posso copiare un file?
+
+(contributo di brian d foy)
+
+Usate il modulo File::Copy. E<Egrave> disponibile con il Perl e puE<ograve> 
+fare una copia effettiva attraverso i filesystem e fa la sua magia in maniera 
+portabile.
+
+	use File::Copy;
+
+	copy( $originale, $nuova_copia ) or die "Copia fallita: $!";
+
+Se non potete usare File::Copy, dovrete farlo voi stessi: aprire 
+il file originale, aprire il file di destinazione, poi scrivere 
+sul file di destinazione quello che avete letto nell'originale.
+
 =head2 Come si crea un file temporaneo?
 
-Usate il modulo File::Temp, per maggiori informazioni consultate L<File::Temp>.
+Se non vi serve conoscere il nome del file, potete usare C<open()> con 
+C<undef> al posto del nome del file. La funzione C<open()> crea un file 
+temporaneo anonimo.
+
+	open my $tmp, '+>', undef or die $!;
+	
+Altrimenti, potete usare il modulo File::Temp.
 
   use File::Temp qw/ filetemp dirtemp /;
 
@@ -165,22 +187,23 @@ di un normale ps stile Berkeley:
 
     # esempio di linea in input
     #   15158 p5  T      0:00 perl /home/larsen/script/
-    $PS_T = 'A6 A4 A7 A5 A*';
-    open(PS, "ps|");
-    print scalar <PS>;
-    while (<PS>) {
-    ($pid, $tt, $stat, $time, $comando) = unpack($PS_T, $_);
-    for $var (qw!pid tt stat time comando!) {
-        print "$var: <$$var>\n";
-    }
-    print 'line=', pack($PS_T, $pid, $tt, $stat, $time, $comando),
-        "\n";
+    my $PS_T = 'A6 A4 A7 A5 A*';
+    open my $ps, '-|', 'ps';
+    print scalar <$ps>;
+    my @campi = qw( pid tt stat time command );
+    while (<$ps>) {
+        my %processo;
+        @processo{@campi} = unpack($PS_T, $_);
+	for my $campo ( @campi ) {
+	    print "$campo: <$processo{$campo}>\n";
+	}
+	print 'line=', pack($PS_T, @processo{@campi} ), "\n";
     }
 
-Abbiamo usato C<$$var> in una maniera proibita da C<use strict 'refs'>.
-Abbiamo cioE<egrave> promosso una stringa a variabile scalare usando i
-riferimenti simbolici. Va bene nei piccoli programmi, ma non scala bene.
-Inoltre funziona solo con le variabili globali, non con le variabili lessicali.
+Abbiamo usato uno hash slice in maniera da manipolare facilmente i campi di ogni 
+riga. Immagazzinare le chiavi in un array significa che E<egrave> facile operarvi 
+come gruppo oppure interarvi con un for. Evita anche di inquinare il programma con 
+variabili globali e l'utilizzo di riferimenti simbolici.
 
 =head2 Come posso rendere un filehandle locale ad una subroutine? Come faccio a passare filehandle tra subroutine? Come faccio a creare un array di filehandle?
 
@@ -189,23 +212,23 @@ directory sotto forma di riferimenti se gli viene passata una variabile
 scalare non inizializzata. Potete poi passare tali riferimenti come qualunque
 altro scalare, e usarli al posto degli handle dotati di nome.
 
-    open my    $fh, $nome_file;
+	open my    $fh, $nome_file;
 
-    open local $fh, $nome_file;
+	open local $fh, $nome_file;
 
-    print $fh "Salve Mondo!\n";
+	print $fh "Salve Mondo!\n";
 
-    processa_file( $fh );
+	processa_file( $fh );
 
 Prima della versione 5.6, dovevate avere a che fare con vari idiomi che
 usavano i typeglob e che potete vedere nel codice meno recente.
 
-    open FILE, "> $nomefile";
-    processa_typeglob(   *FILE );
-    processa_riferimento( \*FILE );
+	open FILE, "> $nomefile";
+	processa_typeglob(   *FILE );
+	processa_riferimento( \*FILE );
 
-    sub processa_typeglob    { local *FH = shift; print FH  "Typeglob!" }
-    sub processa_riferimento { local $fh = shift; print $fh "Riferimento!" }
+	sub processa_typeglob    { local *FH = shift; print FH  "Typeglob!" }
+	sub processa_riferimento { local $fh = shift; print $fh "Riferimento!" }
 
 Se volete creare molti handle anonimi, dovreste controllare i moduli Symbol
 e IO::Handle.
@@ -260,8 +283,8 @@ Entrambi gli stili funzionano sia con oggetti che con typeglob che con
 filehandle reali. (Potrebbero anche funzionare con stringhe in alcune
 circostanze, ma la cosa E<egrave> rischiosa.)
 
-  accept_fh(*STDOUT);
-  accept_fh($handle);
+    accept_fh(*STDOUT);
+    accept_fh($handle);
 
 Negli esempi sopra riportati, abbiamo assegnato il filehandle ad una variabile
 scalare prima di utilizzarlo. CiE<ograve> accade perchE<eacute> solo le
@@ -279,9 +302,9 @@ consentito, ed il programma non compilerE<agrave> nemmeno:
 Con C<print> e C<printf> potete aggirare ciE<ograve> servendovi di un blocco
 ed un'espressione al posto del filehandle:
 
-    print  { $fd[1] } "cose carina\n";
+    print  { $fd[1] } "cose carine\n";
     printf { $fd[1] } "Peccato per la povera %x.\n", 3_735_928_559;
-    # Peccato per la povera deadbeef.
+    # Peccato per la povera deadbeef. [convenzionalmente, uno schema esadecimale utilizzato per riempire parole di memoria, NdT]
 
 Questo blocco E<egrave> un blocco valido come qualsiasi altro, quindi potete
 inserire codice piE<ugrave> complesso al suo interno. Il codice di seguito
@@ -326,18 +349,27 @@ Internals">.
 migliaia E<egrave> la virgola mentre quello dei decimali E<egrave> il
 punto, NdT]
 
-Questa, di Benjamin Goldberg, lo farE<agrave> per voi:
+Questa subroutine aggiungerE<agrave> le virgole al vostro numero:
+This subroutine will add commas to your number:
+
+	sub virgolante {
+	   local $_  = shift;
+	   1 while s/^([-+]?\d+)(\d{3})/$1,$2/;
+	   return $_;
+	   }
+
+Questa espressione regolare di Benjamin Goldberg, aggiungerE<agrave> virgole ai numeri:
 
     s/(^[-+]?\d+?(?=(?>(?:\d{3})+)(?!\d))|\G\d{3}(?=\d))/$1,/g;
 
-oppure scritta in maniera prolissa:
+E<Egrave> piE<ugrave> semplice vederla con i commenti:
 
     s/(
         ^[-+]?            # l'inizio del numero.
-        \d{1,3}?          # la prima cifra prima della prima virgola
+        \d+?              # la prima cifra prima della prima virgola
         (?=               # seguita da, (ma non incluso nel match):
            (?>(?:\d{3})+) # alcuni multipli positivi di tre cifre.
-           (?!\d)         # un multiplo *esatto*,non x*3+1 o quant'altro.
+           (?!\d)         # un multiplo *esatto*, non x * 3 + 1 o quant'altro.
         )
        |                  # oppure:
         \G\d{3}           # dopo l'ultimo gruppo, prendi 3 cifre
@@ -358,7 +390,7 @@ All'interno di Perl, potete utilizzare direttamente questo codice:
 	  ^ ~             # trova una tilde ad inizio stringa
 	  (               # salva in $1
 	      [^/]        # un carattere diverso da slash
-	            *     # ripetuto una o piE<ugrave> volte (0 significa se stessi)
+	            *     # ripetuto una o piu` volte (0 significa se stessi)
 	  )
 	}{
 	  $1
@@ -470,7 +502,7 @@ solamente in contesto di lista.
 
 =head2 Come posso aprire un file contenente un ">" all'inizio o degli spazi alla fine?
 
-Normalmente perl ignora gli spazi posti alla fine dei nomi dei file, ed
+Di norma perl ignora gli spazi posti alla fine dei nomi dei file, ed
 interpreta in maniera speciale alcuni caratteri posti all'inizio (oppure
 un "|" posto alla fine).
 
@@ -710,9 +742,14 @@ scrittura dal suo primo argomento a tutti i restanti.
 Il controllo degli errori E<egrave>, al solito, lasciato come esercizio per
 il lettore.
 
-Va notato che utime() per ora non funziona correttamente con le versioni di
-Win95/NT. Un bug E<egrave> stato segnalato. Effettutate dei controlli
-accurati prima di usare utime() su queste piattaforme.
+Per utime, perldoc ha anche un esempio che ha lo stesso effetto di touch(1) 
+sui che I<esistono giE<agrave>>.
+
+Alcuni filesystem hanno una limitata abilitE<agrave> di immagazzinare gli 
+istanti di un file al livello di precisione che ci si aspetta. Per esempio, 
+i filsystem FAT e HPFS non sono in grado di creare le date sui file con una 
+granularitE<agrave> piE<ugrave> fine di due secondi. Questa E<egrave> una 
+limitazione dei filesystem, non di utime().
 
 [1] Con il termine 'timestamp' si intende in generale l'orario di qualcosa:
 in questo caso, come viene spiegato nel testo della FAQ, l'orario di accesso,
@@ -732,8 +769,10 @@ volta.
 
 Potete usare il modulo File::Slurp per fare questo in un solo passo.
 
-    $tutto_quanto = read_file($nomefile); # l'intero file in uno scalare
-    @tutte_le_linee = read_file($nomefile); # una linea per elemento
+	use File::Slurp;
+
+	$tutto_quanto = read_file($nomefile); # l'intero file in uno scalare
+    	@tutte_le_linee = read_file($nomefile); # una linea per elemento
 
 L'approccio proprio del Perl per svolgere un'operazione su tutte le linee
 di un file, consiste nel farlo una linea alla volta:
@@ -789,7 +828,7 @@ per esempio, viene trattato come se fossero due paragrafi e non tre),
 oppure a C<"\n\n"> per accettare paragrafi vuoti.
 
 Notate che una linea vuota non deve contenere spazi. Dunque
-S<C<"fred\n \nstuff\n\n">> E<egrave> un paragrafo, ma C<"fred\n\nstuff\n\n">
+S<C<"fred\n \nvariecose\n\n">> E<egrave> un paragrafo, ma C<"fred\n\nvariecose\n\n">
 sono due.
 
 =head2 Come posso leggere un singolo carattere da un file? E dalla tastiera?
@@ -917,7 +956,7 @@ circolazione:
 E poi inserire direttamente il valore nel vostro programma, lasciando la
 portabilitE<agrave> come esercizio per i vostri posteri.
 
-    $FIONREAD = 0x4004667f;         # XXX: dipendente dal OS
+    $FIONREAD = 0x4004667f;         # XXX: dipendente dal sistema operativo
 
     $dim = pack("L", 0);
     ioctl(FH, $FIONREAD, $dim)     or die "Errore in ioctl: $!\n";
@@ -1083,7 +1122,7 @@ Se il vostro array contiene delle linee, stampatele e basta:
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it

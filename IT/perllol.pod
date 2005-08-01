@@ -323,6 +323,6 @@ Tom Christiansen <F<tchrist@perl.com>>
 Last update: Thu Jun  4 16:16:23 MDT 1998
 
 Traduzione italiana a cura del progetto pod2it
-( http://pod2it.sourceforge.it )
+( http://pod2it.sourceforge.net )
 
 =cut

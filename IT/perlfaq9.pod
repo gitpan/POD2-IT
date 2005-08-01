@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq9 - Programmazione di rete ($Revision: 1.14 $, $Date: 2004/05/22 01:11:41 $)
+perlfaq9 - Programmazione di rete ($Revision: 1.15 $, $Date: 2005/07/30 16:22:48 $)
 
 =head1 DESCRIZIONE
 
@@ -232,6 +232,10 @@ ma, come lynx, possono sfruttare i proxy:
 
 =head2 Come automatizzo l'invio di una form HTML?
 
+Se state facendo qualcosa di complesso come muoversi attraverso molte pagine e 
+form o in un sito web, potete usare C<WWW::Mechanize>. Consultate la sua documentazione 
+per tutti i dettagli.
+
 Se state inviando i valori della form usando il metodo GET, create una URL
 e codificate la form utilizzando il metodo "query_form":
 
@@ -358,39 +362,39 @@ MailTools).
 
 =head2 Come faccio a decodificare una form CGI?
 
-Usate un modulo standard, solitamente CGI.pm. Non dovete tentare di farlo
-a mano in nessuna circostanza!
+(contributo di brian d foy)
 
-Avrete a che fare con un sacco di programmi CGI che ciecamente, per i POST,
-leggono da STDIN un numero di byte pari a CONTENT_LENGTH, o prendono la
-stringa QUERY_STRING per decodificare i GET. Questi programmi sono scritti
-molto male. Funzionano soltanto a volte. Tipicamente dimenticano di
-controllare il valore di ritorno della chiamata di sistema read(), che
-E<egrave> un peccato capitale. Non gestiscono le richieste HEAD. Non
-gestiscono i moduli multipart usati per il caricamento dei file. Non
-gestiscono le combinazioni GET/POST in cui i campi della richiesta stanno
-in piE<ugrave> di un posto. Non gestiscono le parole chiave nella stringa
-che contiene la richiesta.
+Usate il modulo CGI.pm che trovate nel Perl. E<Egrave> veloce e facile ed 
+effettivamente svolge un bel po' di lavoro er garantire che le cose avvengano in 
+maniera corretta. Si occupano delle richieste GET, POST ed HEAD, form multipart, campi 
+multivalore, stringhe di interrogazione, combinazioni di messaggi del body e molte altre 
+cose di cui probabilmente non vorreste starci a pensare.
 
-In breve, sono fatti coi piedi. Resistete ad ogni costo. Non fatevi tentare
-dal reinventare la ruota. Usate CGI.pm o CGI_Lite.pm, invece (disponibili
-su CPAN); oppure, se siete intrappolati nelle lande senza moduli di
-perl1 .. perl4, date un'occhiata a cgi-lib.pl (disponibile a questo
-indirizzo: http://cgi-lib.stanford.edu/cgi-lib/ ).
+Niente di piE<ugrave> semplice: il modulo CGI effettua il parsing [analisi sintattica, NdT] 
+dell'input e rende disponibile ogni valore attraverso la funzione C<param()>.
 
-Assicuratevi di sapere quando usare GET o POST nella vostra form. GET
-dovrebbe essere usata soltanto quando lo stato del server non viene
-modificato. In caso contrario potreste ritrovarvi con database manomessi
-e messaggi di feedback ripetuti. Una bella parola per indicare tutto
-questo E<egrave> "idempotenza". Vuole semplicemente dire che non
-dovrebbe esserci alcuna differenza nel fare una sola volta una richiesta
-GET per una certa URL, o nel farla piE<ugrave> volte. Questo perchE<eacute>
-la definizione del protocollo HTTP dice che una richiesta GET puE<ograve>
-essere messa in cache dal browser, dal server o da un proxy. Le richieste
-di tipo POST non posso essere messe in cache, poichE<eacute> ogni richiesta
-E<egrave> indipendente e conta come unica. Tipicamente, le richieste di
-tipo POST dipendono dallo stato del server (fare una richiesta ad un database
-o aggiornarlo, inviare una mail, comprare un computer). 
+	use CGI qw(:standard);
+	
+	my $totale = param( "prezzo" ) + param( "spedizione" );
+	
+	my @items = param( "oggetto" ); # valori multipli, stesso nome del campo
+
+Se volete un approccio orientato agli oggetti, CGI.pm puE<ograve> fare pure questo.
+
+	use CGI;
+	
+	my $cgi = CGI->new();
+	
+	my $total = $cgi->param( "prezzo" ) + $cgi->param( "spedizione" );
+	
+	my @items = $cgi->param( "oggetto" );
+
+Potreste anche provare CGI::Minimal che E<egrave> una versione leggera della stessa cosa.
+Anche altri moduli del tipo CGI::*, disponibili su CPAN, potrebbero fare un lavoro migliore per voi.
+
+Molte persone tentano di scrivere il proprio decodificatore (o copiare quello di un altro programma) 
+e poi incappare in una o molte problematiche di questo tipo di compito. E<Egrave> molto piE<ugrave> 
+semplice e meno seccante usare CGI.pm.
 
 =head2 Come si fa a verificare la validitE<agrave> di un indirizzo di posta elettronica?
 
@@ -577,7 +581,7 @@ Mail::Internet (contenuto nel pacchetto MailTools), spesso un modulo
 E<egrave> eccessivo. Ecco un programma che ordina i messaggi.
 
     #!/usr/bin/perl
-    # bysub1 - semplice ordinamento secondo il soggetto
+
     my(@msgs, @sub);
     my $msgno = -1;
     $/ = '';                    # legge paragrafo per paragrafo
@@ -623,7 +627,7 @@ Naturalmente, questo implica diverse assunzioni a proposito della vostra
 configurazione di resolv.conf. Ad esempio, che esista.
 
 (Non abbiamo ancora a dispozione un buon sistema di riconoscimento dei nomi
-a dominio per i sistemi non unix)
+a dominio per i sistemi non Unix).
 
 =head2 Come prelevo una news o la lista dei newsgroup attivi?
 
@@ -650,7 +654,7 @@ modulo RPC::ONC.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2002 Tom Christiansen e Nathan Torkington.
+Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 La traduzione in italiano E<egrave> a cura del progetto pod2it
