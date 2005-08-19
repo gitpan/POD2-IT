@@ -1,4 +1,4 @@
-POD2::IT version 0.07
+POD2::IT version 0.08
 =====================
 
 POD2::IT - Italian translation of Perl core documentation.
@@ -9,11 +9,10 @@ See pod2it.sf.net for more details about the project.
 
 CHANGES FROM PREVIOUS VERSION
 
-	! Updated perlboot.pod to 5.8.7 [osfameron]
-	! Updated perlfunc.pod to 5.8.7 [dree]
-	! Updated perlfaq[1..9] to 5.8.7 [dree]
-	! Updated perlrequick to 5.8.7 [dree]
-	! Added all nicknames contributors to Changes/README and so on [bepi]
+	+ Added perlintro.pod (5.8.7) translation [gmax]
+	+ Added perlreref.pod (5.8.7) tranlsation [dree,larsen]
+	+ Minor fixes to perlfaq1, perlfaq7 perlfaq8 and perlfaq9 [dree]
+	! Improved IT.pm pod docs [bepi]
 
 See 'Changes' file for complete history revisions.
 
@@ -32,7 +31,7 @@ This module doesn't require other modules and libraries.
 
 AUTHORS
 
-larsen, dree, dada, arthas, dakkar, bepi, shishii, frodo72, alberto-re, 
+larsen, dree, dada, arthas, dakkar, bepi, shishii, frodo72, gmax, alberto-re, 
 kral, osfameron, oha, TheHobbit & others.
 
 COPYRIGHT AND LICENCE

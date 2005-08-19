@@ -1,13 +1,13 @@
 =head1 NOME
 
-perlfaq9 - Programmazione di rete ($Revision: 1.15 $, $Date: 2005/07/30 16:22:48 $)
+perlfaq9 - Programmazione di rete ($Revision: 1.16 $, $Date: 2005/08/01 10:36:07 $)
 
 =head1 DESCRIZIONE
 
 Questa sezione tratta le domande relative alla programmazione di
 rete, in internet, e qualche domanda sul web.
 
-=head2 Qual'E<egrave> la forma corretta di risposta da uno script CGI
+=head2 Qual E<egrave> la forma corretta di risposta da uno script CGI
 
 (Risponde Alan Flavell <flavell+www@a5.ph.gla.ac.uk> ...)
 

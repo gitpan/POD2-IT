@@ -3,7 +3,7 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
@@ -22,8 +22,10 @@ my $pods = {
 	perlfaq9 => '5.8.7',
 	perlfork => '5.8.1',
 	perlfunc => '5.8.7',
+	perlintro => '5.8.7',
 	perllol => '5.8.6',
 	perlrequick => '5.8.7',
+	perlreref => '5.8.7',
 	perlstyle => '5.8.1',
 	perlthrtut => '5.8.1',
 	perluniintro => '5.8.1',
@@ -60,18 +62,91 @@ POD2::IT - Italian translation of Perl core documentation
 
 =head1 SYNOPSIS
 
-  %> perldoc POD2::IT::perl*
+  %> perldoc POD2::IT::<podname>  
 
   use POD2::IT;
   print print_pods();
   print print_pod('pod_foo', 'pod_baz', ...); 
 
+  %> perl -MPOD2::IT -e print_pods
+  %> perl -MPOD2::IT -e print_pod <podname1> <podname2> ...
+
 =head1 DESCRIPTION
+
+pod2it is the italian translation project of core Perl pods. This has been (and
+currently still is) a very big work! :-) 
+
+See http://pod2it.sf.net for more details about the project. 
+
+Once the package has been installed, the translated documentation can be
+accessed with: 
+
+  %> perldoc POD2::IT::<podname>
+
+
+=head1 EXTENDING perldoc
+
+However the C<perldoc>'s C<-f> and C<-q> switches don't work no longer.
+
+So, we made a simple patch to F<Pod/Perldoc.pm> 3.14 in order to allow also the
+syntax: 
+
+  %> perldoc -L IT <podname>
+  %> perldoc -L IT -f <function>
+  %> perldoc -L IT -q <FAQregex>
+ 
+You can apply the patch with: 
+
+  %> patch -p0 `perl -MPod::Perldoc -e 'print $INC{"Pod/Perldoc.pm"}'` < /path/to/Perldoc.pm-3.14-patch
+
+The patch lives under F<./patches/Perldoc.pm-3.14-patch> shipped in this
+distribution.
+
+The patch adds the C<-L> switch that allows to define language code for desired
+language translation. If C<POD2::E<lt>codeE<gt>> package doesn't exists, the
+effect of the switch will be ignored. 
+
+Note that the patch is for version 3.14 of L<Pod::Perldoc|Pod::Perldoc>
+(included into Perl 5.8.7). If you have a previous Perl distro (but E<gt>=
+5.8.1) and you are impatient to apply the patch, please upgrade your
+L<Pod::Perldoc|Pod::Perldoc> module to 3.14! ;-) 
+
+See C<search_perlfunc_re> API for more information.
+
+=head1 API
+
+The package exports following functions:
+
+=over 4
+
+=item * print_pods
+
+Prints all translated pods and relative Perl original version.
+
+=item * print_pod
+
+Prints relative Perl original version of all pods passed as arguments.
+
+=item * search_perlfunc_re
+
+Since F<Pod/Perldoc.pm>'s C<search_perlfunc> method uses hard coded string
+"Alphabetical Listing of Perl Functions" (as regexp) to skip introduction, in
+order to make the patch to work with other languages with the option C<-L>,we
+used a simple plugin-like mechanism. 
+
+C<POD2::E<lt>codeE<gt>> language package must export C<search_perlfunc_re> that
+returns a localized translation of the paragraph string above. This string will
+be used to skip F<perlfunc.pod> intro. Again, if
+C<POD2::E<lt>codeE<gt>-E<gt>search_perlfunc_re> fails (or doesn't exist), we'll
+come back to the default behavoiur. This mechanism allows to add additional
+POD2::* translations without need to patch F<Pod/Perldoc.pm> every time.
+
+=back
+
+=head1 Come funziona il progetto
 
 pod2it è la traduzione in italiano della documentazione in lingua inglese 
 che viene distribuita assieme al Perl.
-
-=head1 Come funziona il progetto
 
 L'ultima versione delle traduzioni e` disponibile a tutti,
 in lettura, su un server CVS.
@@ -79,7 +154,7 @@ in lettura, su un server CVS.
 =head2 Accedere al server CVS
 
   cvs -d:pserver:anonymous@cvs.pod2it.sourceforge.net:/cvsroot/pod2it login
-  
+
   cvs -z3 -d:pserver:anonymous@cvs.pod2it.sourceforge.net:/cvsroot/pod2it co modulename
 
 Soltanto un piccolo numero di sviluppatori
@@ -109,11 +184,12 @@ L<http://pod2it.sourceforge.net/pods/responsibles.html>
 =head1 AUTHORS
 
 pod2it is a larger translation project owned by larsen, dree, dada, arthas, 
-dakkar, bepi, shishii, frodo72, alberto-re, kral, osfameron, oha, TheHobbit 
-& others.
+dakkar, bepi, shishii, frodo72, gmax, alberto-re, kral, osfameron, oha, 
+TheHobbit & others.
 
 See L<http://pod2it.sourceforge.net> for more detalis.
-First POD2::IT package released by Enrico Sorcinelli <bepi at perl.it>
+
+POD2::IT package is currently maintained by Enrico Sorcinelli <bepi at perl.it>
 
 =head1 SEE ALSO
 

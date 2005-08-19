@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq8 - Interazione con il Sistema ($Revision: 1.15 $, $Date: 2005/07/30 16:05:24 $)
+perlfaq8 - Interazione con il Sistema ($Revision: 1.16 $, $Date: 2005/08/01 10:35:43 $)
 
 =head1 DESCRIZIONE
 
@@ -1250,10 +1250,10 @@ con B<make perl> e otterrete una nuova versione binaria di F<perl> con
 la vostra estensione linkata in esso.
 
 Consultate L<ExtUtils::MakeMaker> per maggiori dettagli sulle estensione di
-configurazione. Si veda anche la domanda successiva, ``Qual'E<egrave> la
+configurazione. Si veda anche la domanda successiva, ``Qual E<egrave> la
 differenza tra require e use?''.
 
-=head2 Qual'E<egrave> la differenza tra require e use?
+=head2 Qual E<egrave> la differenza tra require e use?
 
 Perl offre parecchi modi diversi per includere in un file il codice contenuto
 in un altro file. Ecco le differenze fra i vari costrutti di inclusione:

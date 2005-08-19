@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq1 - Domande Generali Sul Perl ($Revision: 1.16 $, $Date: 2005/07/26 20:15:17 $)
+perlfaq1 - Domande Generali Sul Perl ($Revision: 1.17 $, $Date: 2005/08/01 10:34:56 $)
 
 =head1 DESCRIZIONE
 
@@ -295,7 +295,7 @@ per la sicurezza di impianti nucleari o per il controllo di neurochirurgia.
 Inoltre Larry dormirE<agrave> tranquillamente--i programmi per Wall Street 
 invece non sono un problema. :-)
 
-=head2 Qual'E<egrave> la differenza tra "perl e "Perl"?
+=head2 Qual E<egrave> la differenza tra "perl e "Perl"?
 
 Un bit. Ah, non parlavate in ASCII? :-) Larry ora usa "Perl" per indicare
 il linguaggio vero e proprio, e "perl" per l'implementazione di esso,

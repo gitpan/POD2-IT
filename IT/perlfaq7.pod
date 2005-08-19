@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.14 $, $Date: 2005/07/30 16:04:45 $)
+perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.15 $, $Date: 2005/08/01 10:35:20 $)
 
 =head1 DESCRIZIONE
 
@@ -476,7 +476,7 @@ ma un altro file con lo stesso package non potrebbe accederle.
 Consultate L<perlsub/"Persistent Private Variables"> ["Variabili Private Persistenti", NdT]
 per dettagli.
 
-=head2 Qual'E<egrave> la differenza tra visibilitE<agrave> dinamica e visibilitE<agrave> lessicale (o statica)? Qual'E<egrave> la differenza tra local() e my()?
+=head2 Qual E<egrave> la differenza tra visibilitE<agrave> dinamica e visibilitE<agrave> lessicale (o statica)? Qual E<egrave> la differenza tra local() e my()?
 
 C<local($x)> salvaguarda il vecchio valore della variabile globale C<$x> e
 le assegna un nuovo valore per la durata della subroutine. I<Tale valore
@@ -556,7 +556,7 @@ portare una variabile dinamica nello scope lessicale corrente.
 	  print "globale e` $var\n";
 	}
 
-=head2 Qual'E<egrave> la differenza tra il deep binding (legame profondo) e lo shallow binding (legame superficiale)?
+=head2 Qual E<egrave> la differenza tra il deep binding (legame profondo) e lo shallow binding (legame superficiale)?
 
 Nel deep binding, le variabili lessicali che vengono nominate nelle procedure
 anonime sono le stesse che si trovavano nello scope quando la procedura
@@ -611,7 +611,7 @@ L<overload>.
 Se state parlando di oscure chiamate a metodi in classi genitore, consultate
 L<perltoot/"Overridden Methods"> ["Metodi Sovrapposti", NdT].
 
-=head2 Qual'E<egrave> la differenza tra il chiamare una funzione con &pippo e con pippo()?
+=head2 Qual E<egrave> la differenza tra il chiamare una funzione con &pippo e con pippo()?
 
 Quando chiamate una funzione come C<&pippo>, permettete che la funzione
 acceda ai valori correnti contenuti in @_ ed evitate di prendere in
@@ -750,7 +750,7 @@ Alcune ragioni possibili: il meccanismo dell'ereditarietE<agrave> si E<egrave>
 confuso, avete scritto male il nome del metodo, oppure l'oggetto E<egrave>
 del tipo sbagliato. Fate riferimento a L<perltoot> per dettagli su ciascuno
 dei casi menzionati. Potreste inoltre usare C<print ref($object)> per sapere
-qual'E<egrave> la classe nella quale C<$oject> E<egrave> stato sottoposto
+qual E<egrave> la classe nella quale C<$oject> E<egrave> stato sottoposto
 alla funzione bless().
 
 Un'altra possibile fonte di problemi E<egrave> l'uso della sintassi

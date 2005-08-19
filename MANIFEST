@@ -10,6 +10,7 @@ t/00base.t
 META.yml                                 Module meta-data (added by MakeMaker)
 IT/perlboot.pod
 IT/perlfork.pod
+IT/perlintro.pod
 IT/perlrequick.pod
 IT/perlstyle.pod
 IT/perlthrtut.pod
@@ -26,3 +27,4 @@ IT/perlfunc.pod
 IT/perluniintro.pod
 IT/perlembed.pod
 IT/perllol.pod
+IT/perlreref.pod
