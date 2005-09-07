@@ -108,7 +108,7 @@ trovare
 Pattern matching e` la ricerca di un pattern (vedi voce, sopra),
 match a pattern e` trovare un pattern secondo me [Arthas]
 
-(dakkar) corrispondere?
+(dakkar) corrispondere? IMHO a volte anche "corrispondenza di modelli" va bene [dree]
 
 =item memory leak
 
@@ -155,13 +155,13 @@ impacchettamento
 
 =item pattern
 
-pattern, schema
+pattern, schema, modello
 
 lasciarlo cosi`, o tradurlo in schema a seconda del contesto.
 
 =item pattern matching
 
-ricerca di pattern
+ricerca di pattern, corrispondenza di modelli
 
 Secondo me pattern e` meglio lasciarlo cosi` (o tradurlo con schema, a
 seconda del contesto), matching in questo caso puo` diventare ricerca, ma
@@ -199,6 +199,10 @@ Espressione regolare
 impostare
 
 Non usare "settare" please! ;-)
+
+=item statement
+
+istruzione.
 
 =item system call
 

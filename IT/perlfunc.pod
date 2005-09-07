@@ -4906,7 +4906,7 @@ Potete creare uno sleep di 250 millisecondi in questo modo:
 
 Va notato che il fatto che C<select> venga riavviata dopo un segnale (ad esempio, 
 SIGALRM) dipende dall'implementazione. Si veda anche L<perlport> per delle note
-sulla portabilità di C<select>.
+sulla portabilitE<agrave> di C<select>.
 
 In caso di errore, C<select> si comporta come la chiamata di sistema select(2): essa
 restituisce -1 ed imposta C<$!>.

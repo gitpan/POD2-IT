@@ -6,9 +6,17 @@ Legenda:
    * = incompatible changes
    - = removed feature
 
+0.09  Wed Sep 09 18:00:00 2005
+	+ Added perlunicode.pod translation [dakkar]
+	+ Added resources/podenc.pl script in order to encode 
+	  italian characters with E<> sequence [dakkar, bepi]
+	! Updated E<> pod entities [bepi]
+	! Updated IT.pm pod documentation [bepi]
+	! Fixed Changes and README typos [bepi]
+
 0.08  Fri Aug 19 10:00:00 2005
-	+ Added perlintro.pod (5.8.7) translation [gmax]
-	+ Added perlreref.pod (5.8.7) tranlsation [dree,larsen]
+	+ Added perlreref.pod (5.8.7) translation [gmax]
+	+ Added perlintro.pod (5.8.7) tranlsation [dree, larsen]
 	+ Minor fixes to perlfaq1, perlfaq7 perlfaq8 and perlfaq9 [dree]
 	! Improved IT.pm pod documentation [bepi]
 

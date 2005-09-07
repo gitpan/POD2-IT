@@ -6,6 +6,7 @@ README
 patches/Perldoc.pm-3.14-patch
 resources/glossario.pod
 resources/lineeguida.pod
+resources/podenc.pl
 t/00base.t
 META.yml                                 Module meta-data (added by MakeMaker)
 IT/perlboot.pod
@@ -25,6 +26,7 @@ IT/perlfaq8.pod
 IT/perlfaq9.pod
 IT/perlfunc.pod
 IT/perluniintro.pod
+IT/perlunicode.pod
 IT/perlembed.pod
 IT/perllol.pod
 IT/perlreref.pod

@@ -3,7 +3,7 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
@@ -28,7 +28,8 @@ my $pods = {
 	perlreref => '5.8.7',
 	perlstyle => '5.8.1',
 	perlthrtut => '5.8.1',
-	perluniintro => '5.8.1',
+	perlunicode => '5.8.2',
+	perluniintro => '5.8.2',
 };
 
 sub print_pods {
@@ -39,7 +40,7 @@ sub print_pod {
 	my @args = @_ ? @_ : @ARGV;
 
 	while (@args) {
-		my $pod = lc(shift @args);
+		(my $pod = lc(shift @args)) =~ s/\.pod$//;
 		if ( exists $pods->{$pod} ) {
 			print "\t'$pod' translated from Perl $pods->{$pod}\n";
 		}
@@ -65,8 +66,8 @@ POD2::IT - Italian translation of Perl core documentation
   %> perldoc POD2::IT::<podname>  
 
   use POD2::IT;
-  print print_pods();
-  print print_pod('pod_foo', 'pod_baz', ...); 
+  print_pods();
+  print_pod('pod_foo', 'pod_baz', ...); 
 
   %> perl -MPOD2::IT -e print_pods
   %> perl -MPOD2::IT -e print_pod <podname1> <podname2> ...
@@ -86,7 +87,8 @@ accessed with:
 
 =head1 EXTENDING perldoc
 
-However the C<perldoc>'s C<-f> and C<-q> switches don't work no longer.
+With the translated pods, unfortunately, the useful C<perldoc>'s C<-f> and C<-q> 
+switches don't work no longer.
 
 So, we made a simple patch to F<Pod/Perldoc.pm> 3.14 in order to allow also the
 syntax: 
@@ -94,6 +96,18 @@ syntax:
   %> perldoc -L IT <podname>
   %> perldoc -L IT -f <function>
   %> perldoc -L IT -q <FAQregex>
+
+The patch adds the C<-L> switch that allows to define language code for desired
+language translation. If C<POD2::E<lt>codeE<gt>> package doesn't exists, the
+effect of the switch will be ignored.
+
+If you are particularly lazy you can add a system alias like:
+
+  perldoc-it="perldoc -L IT "
+
+in order to avoid to write the C<-L> switch every time and to type directly:
+
+  %> perldoc-it -f map 
  
 You can apply the patch with: 
 
@@ -101,10 +115,6 @@ You can apply the patch with:
 
 The patch lives under F<./patches/Perldoc.pm-3.14-patch> shipped in this
 distribution.
-
-The patch adds the C<-L> switch that allows to define language code for desired
-language translation. If C<POD2::E<lt>codeE<gt>> package doesn't exists, the
-effect of the switch will be ignored. 
 
 Note that the patch is for version 3.14 of L<Pod::Perldoc|Pod::Perldoc>
 (included into Perl 5.8.7). If you have a previous Perl distro (but E<gt>=
@@ -119,15 +129,15 @@ The package exports following functions:
 
 =over 4
 
-=item * print_pods
+=item * C<print_pods>
 
 Prints all translated pods and relative Perl original version.
 
-=item * print_pod
+=item * C<print_pod>
 
 Prints relative Perl original version of all pods passed as arguments.
 
-=item * search_perlfunc_re
+=item * C<search_perlfunc_re>
 
 Since F<Pod/Perldoc.pm>'s C<search_perlfunc> method uses hard coded string
 "Alphabetical Listing of Perl Functions" (as regexp) to skip introduction, in
@@ -139,7 +149,7 @@ returns a localized translation of the paragraph string above. This string will
 be used to skip F<perlfunc.pod> intro. Again, if
 C<POD2::E<lt>codeE<gt>-E<gt>search_perlfunc_re> fails (or doesn't exist), we'll
 come back to the default behavoiur. This mechanism allows to add additional
-POD2::* translations without need to patch F<Pod/Perldoc.pm> every time.
+C<POD2::*> translations without need to patch F<Pod/Perldoc.pm> every time.
 
 =back
 
