@@ -6,6 +6,16 @@ Legenda:
    * = incompatible changes
    - = removed feature
 
+0.10 Sat Nov 19 12:00:00 2005
+	+ Added perlmod.pod translation [frodo72]
+	+ Added perldata.pod translation [frodo72]
+	+ Added perlnewmod.pod translation [dree]
+	+ Added perlxstut.pod translation [frodo72]
+	! resources/podenc.pl fixes [frodo72]
+	! Minor fixes to perlfaq4, perlfaq7, perlfunc, perlreref
+	! Added 'TRANSLATION' section to all pods, containing
+	  some infos about pod translator(s) and reviewer(s) [bepi]
+
 0.09  Wed Sep 09 18:00:00 2005
 	+ Added perlunicode.pod translation [dakkar]
 	+ Added resources/podenc.pl script in order to encode 

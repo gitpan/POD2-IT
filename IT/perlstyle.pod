@@ -290,3 +290,22 @@ Siate coerenti.
 Comportatevi bene.
 
 =back
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlsytle
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Aldo Calpini.
+
+=head2 Revisore
+
+Revisione a cura di dree.

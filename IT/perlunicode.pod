@@ -1315,4 +1315,23 @@ usato con dati UTF-8.
 L<perluniintro>, L<encoding>, L<Encode>, L<open>, L<utf8>, L<bytes>,
 L<perlretut>, L<perlvar/"${^WIDE_SYSTEM_CALLS}">
 
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlunicode
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Gianni Ceccarelli.
+
+=head2 Revisore
+
+Revisione a cura di Enrico Sorcinelli.
+
 =cut

@@ -322,7 +322,23 @@ Tom Christiansen <F<tchrist@perl.com>>
 
 Last update: Thu Jun  4 16:16:23 MDT 1998
 
-Traduzione italiana a cura del progetto pod2it
-( http://pod2it.sourceforge.net )
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perllol
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Flavio Poletti.
+
+=head2 Revisore
+
+Revisione a cura di dree.
 
 =cut

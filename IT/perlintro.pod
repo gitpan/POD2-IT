@@ -684,3 +684,22 @@ vi darE<agrave> buoni consigli.
 
 Kirrily "Skud" Robert <skud@cpan.org>, tradotto da
 Stefano Rodighiero <larsen@perlmonk.org>
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlintro
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Stefano Rodighiero E<lt>larsen at perlmonk.orgE<gt>.
+
+=head2 Revisore
+
+Revisione a cura di Stefano Rodighiero E<lt>larsen at perlmonk.orgE<gt>.

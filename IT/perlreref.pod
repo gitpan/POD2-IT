@@ -4,45 +4,44 @@ perlreref - Guida di riferimento rapida alle Espressioni regolari in Perl
 
 =head1 Note del traduttore
 
-Le espressioni regolari sono difficili per un italiano sia perché 
+Le espressioni regolari sono difficili per un italiano sia perchE<eacute> 
 trattano una materia poco nota alla maggiornanza dei programmatori,
-sia perché introducono termini che non hanno corrispondente esatto
+sia perchE<eacute> introducono termini che non hanno corrispondente esatto 
 in italiano.
 
-Una menzione particolare merita il vetbo "to match", che significa
-"trovare una corrispondenza". È diverso dal semplice "trovare un testo",
-e questo è parte del mistero che circonda le espressioni regolari,
-perché non (sempre) viene trovato un testo definito in mezzo a un testo
-più grande, ma spesso si tratta di verificare la corrispondenza di un
+Una menzione particolare merita il verbo "to match", che significa
+"trovare una corrispondenza". E<Egrave> diverso dal semplice "trovare un testo",
+e questo E<egrave> parte del mistero che circonda le espressioni regolari,
+perchE<eacute> non (sempre) viene trovato un testo definito in mezzo a un testo
+piE<ugrave> grande, ma spesso si tratta di verificare la corrispondenza di un
 testo a uno dato schema (pattern).
 Pertanto, quando il testo inglese usa "match", usiamo "corrispondere" o "trovare" 
 per definire l'azione, e "corrispondenza" quando si intende un risultato.
 
-Un "pattern" è uno schema composto da caratteri e/o simboli che ne
-indicano la composizione. Per esempio:, "casa" è un pattern semplice
-composto da 4 caratteri; "[Cc]asa" è un pattern più complesso che indica
+Un "pattern" E<egrave> uno schema composto da caratteri e/o simboli che ne
+indicano la composizione. Per esempio: "casa" E<egrave> un pattern semplice
+composto da 4 caratteri; "[Cc]asa" E<egrave> un pattern piE<ugrave> complesso che indica
 un carattere a scelta fra 'c' e 'C', seguito da tre caratteri. "\b\w{4}\b"
-è un pattern che cerca quattro caratteri alfanumerici che compongono una parola.
+E<egrave> un pattern che cerca quattro caratteri alfanumerici che compongono una parola.
 
 "case-sensitive" e "case-insensitive" non hanno corrispondente in italiano.
 Bisognerebbe dire "considerando (o ignorando) maiuscole e minuscole", ma
-è più oscuro che lasciare l'originale, ed è appunto quello che abbiamo
+E<egrave> piE<ugrave> oscuro che lasciare l'originale, ed E<egrave> appunto quello che abbiamo
 deciso di fare.
 
-Un carattere di "escape" è un carattere che cambia il significato del
+Un carattere di "escape" E<egrave> un carattere che cambia il significato del
 carattere che lo segue. Il verbo "to escape" indica l'applicazione di un
 tale carattere di escape.
 
-Il "backtracking" è un'operazione compiuta da una regex quando, nella
+Il "backtracking" E<egrave> un'operazione compiuta da una regex quando, nella
 ricerca di condizioni composte, dopo aver soddisfatto una delle condizioni,
 torna indietro per cercare di soddisfare la seguente.
 
 =head1 DESCRIZIONE
 
-Questa è una guida di riferimento rapida alle espressioni 
+Questa E<egrave> una guida di riferimento rapida alle espressioni 
 regolari (regex) in Perl. Per maggiori informazioni vedete  
-L<perlre> e L<perlop>, 
-e la sezione L</"VEDI ANCHE"> 
+L<perlre> e L<perlop>, e la sezione L</"SI VEDA ANCHE">
 
 =head2 OPERATORI
 
@@ -53,7 +52,7 @@ e la sezione L</"VEDI ANCHE">
 
   !~ determina la variabile su cui si applica la regex
      e inverte il risultato dell'operazione. Restituisce
-     false se c'è una corrispondenza, vero se non la si trova.
+     falso se c'e` una corrispondenza, vero se non la si trova.
 
        $var !~ /foo/;
 
@@ -62,13 +61,13 @@ e la sezione L</"VEDI ANCHE">
 
         i  case-Insensitive
         g  Globale - tutte le occorrenze
-        m  Modo multi-riga - ^ and $ trovano inizio e fine righeinterne
+        m  Modo multi-riga - ^ and $ trovano inizio e fine righe interne
         s  Cerca in una riga sinola. - . trova \n
         o  compila l'espressione solo una volta
-        x  leggibilità estesa. Spazi e commenti ammessi
+        x  leggibilita`� estesa. Spazi e commenti ammessi
         c  non azzera pos dopo una mancata corrispondenza quando si usa /g
 
-     Se 'pattern' è una stringa vuota, viene usata l'ultima regex
+     Se 'pattern' e` una stringa vuota, viene usata l'ultima regex
      I<che ha trovato corrispondenza>.
      Per questo operatore e i successivi si possono usare delimitatori
      diversi da '/'.
@@ -83,23 +82,23 @@ e la sezione L</"VEDI ANCHE">
 
         e  valuta "testo sostituito" come un'espressione Perl
 
-     'e' può essere specificata più volte. "testo sostituito" 
+     'e' puo` essere specificata piu` volte. "testo sostituito" 
      viene interpretato come una stringa tra virgolette doppie
      a meno che vengano usate virgolette semplici (') come
      delimitatore.
 
-  ?pattern? è come m/pattern/ ma trova la corrispondenza una sola volta.
+  ?pattern? e` come m/pattern/ ma trova la corrispondenza una sola volta.
       Non si possono usare delimitatori alternativi. Deve essere azzerata
       con la funzione L<reset|perlfunc/reset>.
 
 =head2 SYNTASSI
 
    \       Tratta come normale (escaped) il carattere seguente
-   .       Indica in un singolo carattere tranne newline (se non viene usato /s) 
+   .       Indica un singolo carattere tranne newline (se non viene usato /s) 
    ^       Indica l'inizio della stringa (o della riga, se viene usato /m)
    $       Indica la fine della stringa (o riga, se viene usato /m)
-   *       0 o più occorrenze dell'elemento che precede 
-   +       1 o più occorrenze dell'elemento che precede
+   *       0 o piu` occorrenze dell'elemento che precede 
+   +       1 o piu` occorrenze dell'elemento che precede
    ?       rende opzionale l'elemento che precede (0 o una occorrenza)
    {...}   Specifica una gamma di occorrenze dell'elemento che precede
    [...]   Trova corrispondenza in uno dei caratteri fra parentesi quadre 
@@ -129,25 +128,25 @@ Queste sequenze funzionano anche in stringhe normali.
    \L  Trasforma in minuscolo fino a \E
    \U  Trasforma in maiuscolo fino a \E
    \Q  Disabilita i caratteri speciali (metacaratteri) fino a \E
-   \E  Fine della modifica apportata da \L, \U, \Q.
+   \E  Fine della modifica apportata da \L, \U, \Q
 
 Per Titlecase, si veda la sezione L<Titlecase>   
    
-Questa sequenza è diversa dalle stringhe normali:
+Questa sequenza E<egrave> diversa dalle stringhe normali:
 
-   \b  Un delimitatore di parola, non un backspace, tranne quando è dentro una classe di caratteri.
+   \b  Un delimitatore di parola, non un backspace, tranne quando e` dentro una classe di caratteri.
 
 =head2 CLASSI DI CARATTERI
 
    [amy]    Trova 'a', 'm' o 'y'
    [f-j]    Il trattino identifica una sequenza (da 'f' a 'j')
-   [f-j-]   Il trattino con escape o messo all'inizio o alla fine identifica se stesso.
+   [f-j-]   Il trattino con escape o messo all'inizio o alla fine identifica se stesso
    [^f-j]   Il segno di omissione (^) indica "trova qualsiasi carattere ECCETTO questi"
 
 Le sequenze che seguono funzionano sia dentro che fuori da una classe di caratteri.
 Le prime sei si uniformano alle impostazioni locali. Tutte le sequenze supportano Unicode.
 Sono indicate le classi di caratteri di default.
-vedete L<perllocale> e L<perlunicode> per maggiori dettagli.
+Vedete L<perllocale> e L<perlunicode> per maggiori dettagli.
 
    \d      Un numero                     [0-9]
    \D      Un non-numero (inverso di \d) [^0-9]
@@ -157,10 +156,10 @@ vedete L<perllocale> e L<perlunicode> per maggiori dettagli.
    \S      L'inverso di \s               [^ \t\n\r\f]
 
    \C      Trova un byte (conUnicode, '.' trova un carattere)
-   \pP     Trova una proprietà Unicode con nome
-   \p{...} Trova una proprietà Unicode con nome lungo
-   \PP     Trova una non-proprietà Unicode
-   \P{...} Trova un'entità senza nome lungo Unicode
+   \pP     Trova una proprieta`�Unicode con nome
+   \p{...} Trova una proprieta`�Unicode con nome lungo
+   \PP     Trova una non-proprieta`�Unicode
+   \P{...} Trova un'entita`�senza nome lungo Unicode
    \X      Trova una sequenza estesa di Unicode
 
 Classi di caratteri POSIX e i loro equivalenti Unicode e Perl:
@@ -178,7 +177,7 @@ Classi di caratteri POSIX e i loro equivalenti Unicode e Perl:
    space   IsSpace  [\s\ck]     Spazio
            IsSpacePerl   \s     Definizione di spazio di Perl
    upper   IsUpper              carattere minuscolo (anche secondo impostazioni locali e unicode)
-   word    IsWord   \w          Alfa-numerico più _ (estensione Perl)
+   word    IsWord   \w          Alfa-numerico piu` _ (estensione Perl)
    xdigit  IsXDigit [0-9A-Fa-f] Numero esadecimale
 
 All'interno di una classe di caratteri:
@@ -194,7 +193,7 @@ Sono tutte asserzioni di lunghezza zero.
    ^  Trova corrispondenza all'inizio della stringa (o riga, se viene usato /m)
    $  Trova corrispondenza alla fine della stringa (o riga, se viene usato /m) o prima di un newline
    \b Trova corrispondenza al confine di una parola (fra \w e \W)
-   \B Trova corrispondenza dove non c'è un \b (fra \w e \w o fra \W e \W)
+   \B Trova corrispondenza dove non c'e` un \b (fra \w e \w o fra \W e \W)
    \A Trova corrispondenza all'inizio della stringa (senza considerare /m)
    \Z Trova corrispondenza alla fine della stringa (o prima di un newline)
    \z Trova corrispondenza alla fine della stringa (in maniera assoluta)
@@ -202,15 +201,15 @@ Sono tutte asserzioni di lunghezza zero.
 
 =head2 QUANTIFICATORI
 
-I quantificatori sono avidi (greedy) per dafult -- trovano il testo B<più lungo> e più a sinistra.
+I quantificatori sono avidi (greedy) per dafult -- trovano il testo B<piE<ugrave> lungo> e piE<ugrave> a sinistra.
 
    Massimo Minimo  Gamma di applicazione
    ------- ------- ---------------------
-   {n,m}   {n,m}?  Almeno n volte e non più di m volte
+   {n,m}   {n,m}?  Almeno n volte e non piu` di m volte
    {n,}    {n,}?   Almeno n volte
    {n}     {n}?    Esattamente n volte
-   *       *?      0 o più volte (come {0,})
-   +       +?      1 o più volte (come {1,})
+   *       *?      0 o piu` volte (come {0,})
+   +       +?      1 o piu` volte (come {1,})
    ?       ??      0 o 1 volte (come {0,1})
 
 Non esiste un quantificatore {,n} -- viene interpretato come una stringa letterale
@@ -223,16 +222,16 @@ Non esiste un quantificatore {,n} -- viene interpretato come una stringa lettera
    (?!...)          Asserzione negativa in avanti di lunghezza zero
    (?<=...)         Asserzione negativa indietro di lunghezza zero
    (?<!...)         Asserzione negativa indietro di lunghezza zero
-   (?>...)          Trova corrispondenza in tutto quello che può proibendo il backtracking
+   (?>...)          Trova corrispondenza in tutto quello che puo` proibendo il backtracking
    (?{ code })      Codice Perl incluso. Il valore restituito diventa $^R
    (??{ code })     Regex dinamica. Il valore restituito viene usato come regex
-   (?(cond)sì|no)   in cui "cond" è un intero corrispondente a una parentesi che ha catturato
-   (?(cond)yes)        o a un'asserzione di lunghezza zero (avanti o indietro)
+   (?(cond)si`|no)  in cui "cond" e` un intero corrispondente a una parentesi che ha catturato
+   (?(cond)si`)        o a un'asserzione di lunghezza zero (avanti o indietro)
 
 =head2 VARIABILI
 
    $_    Varibile di default su cui agiscono gli operatori
-   $*    Abilita ricerche su righe multiple (deprecato: not sarà più supportato a partire dalla 5.9.0)
+   $*    Abilita ricerche su righe multiple (deprecato: not sara` piu` supportato a partire dalla 5.9.0)
 
    $&    L'intero testo trovato
    $`    Tutto quel che precede il testo trovato 
@@ -245,7 +244,7 @@ non rallenta l'esecuzione. Vedete anche L<Devel::SawAmpersand>.
 
    $1, $2 ... contiene il primo, secondo, ennesimo testo catturato
    $+    L'ultimo testo catturato
-   $^N   Contiene il testo del testo catturato più di recente
+   $^N   Contiene il testo del testo catturato piu` di recente
    $^R   Contiene il risultato dell'ultima espressione (?{...})
    @-    posizione dell'inizio dei gruppi catturati $-[0] contiene la posizione iniziale
          dell'intera espressione trovata.
@@ -266,34 +265,32 @@ I gruppi catturati sono numerati secondo la loro rispettiva parentesi B<aperta>.
    reset       azzera lo stato di ?pattern?
    study       analizza una stringa per ottimizzare la ricerca.
 
-   split       Usa una regex per scomporre una stringa in più parti.
+   split       Usa una regex per scomporre una stringa in piu` parti.
 
 Le prime quattro funzioni equivalgono alle sequenze di escape C<\L>, C<\l>,
-C<\U>, e C<\u>.  Per Titlecase, vedete L</Titlecase>.
+C<\U>, e C<\u>. Per Titlecase, vedete L</Titlecase>.
 
 =head2 TERMINOLOGIA
 
 =head3 Titlecase
 
-Si tratta di un concetto di Unicode che è quasi sempre uguale
-a un carattere maiuscolo, ma per certi caratteri come "scharfes s" (&szlig;) in
-tedesco c'è una differenza.
+Si tratta di un concetto di Unicode che E<egrave> quasi sempre uguale
+a un carattere maiuscolo, ma per certi caratteri come "scharfes s" (E<szlig>) in
+tedesco c'E<egrave> una differenza.
 
 =head1 AUTORE
 
 Iain Truskett.
 
-Questo documento può essere distribuito secondo gli stessi termini del Perl.
-Questo documento è a cura del progetto pod2it ( http://pod2it.sourceforge.net ).
-Traduzione di Giuseppe Maxia
+Questo documento puE<ograve> essere distribuito secondo gli stessi termini del Perl.
 
-=head1 VEDI ANCHE
+=head1 SI VEDA ANCHE
 
 =over 4
 
 =item *
 
-L<perlretut> Un tutorial sulle espressioni regolari
+L<perlretut> Un tutorial sulle espressioni regolari.
 
 =item *
 
@@ -305,7 +302,7 @@ L<perlre> Tutti i dettagli.
 
 =item *
 
-L<perlvar> Dettagli sulle variabili
+L<perlvar> Dettagli sulle variabili.
 
 =item *
 
@@ -326,7 +323,7 @@ facilitare il debugging.
 
 =item *
 
-L<perldebug/"Debugging regular expressions">
+L<perldebug/"Debugging regular expressions"> ["Fare il debug di espressioni regolari", NdR]
 
 =item *
 
@@ -350,5 +347,24 @@ Jim Cromie,
 e
 Jeffrey Goff
 per preziosi consigli.
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione � ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlreref
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Giuseppe Maxia.
+
+=head2 Revisore
+
+Revisione a cura di dree.
 
 =cut

@@ -328,11 +328,27 @@ Corporation.
 Questo documento E<egrave> scritto e mantenuto da Gurusamy Sarathy
 E<lt>gsar@activestate.comE<gt>.
 
-La traduzione in italiano E<egrave> a cura di Michele Beltrame e del progetto
-pod2it ( http://pod2it.sourceforge.net ).
-
 =head1 CONSULTATE ANCHE
 
 L<perlfunc/"fork">, L<perlipc>
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlfork
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Michele Beltrame.
+
+=head2 Revisore
+
+Revisione a cura di Michele Beltrame.
 
 =cut

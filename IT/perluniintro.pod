@@ -927,9 +927,25 @@ per i loro preziosi commenti.
 
 Copyright 2001-2002 Jarkko Hietaniemi <jhi@iki.fi>
 
-Tradotto in italiano da dakkar, progetto pod2it
-( http://pod2it.sourceforge.net )
-
 Questo documento puE<ograve> essere distribuito secondo gli stessi termini del Perl.
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlfaq7
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Gianni Ceccarelli.
+
+=head2 Revisore
+
+Revisione a cura di Michele Beltrame.
 
 =cut

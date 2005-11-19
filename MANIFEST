@@ -29,4 +29,8 @@ IT/perluniintro.pod
 IT/perlunicode.pod
 IT/perlembed.pod
 IT/perllol.pod
+IT/perlxstut.pod
 IT/perlreref.pod
+IT/perldata.pod
+IT/perlmod.pod
+IT/perlnewmod.pod

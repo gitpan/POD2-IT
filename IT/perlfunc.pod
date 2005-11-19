@@ -2331,12 +2331,12 @@ shell standard di Unix F</bin/csh>. In contesto scalare, glob itera
 attraverso i risultati di tale espansione, restituendo undef quando 
 la lista E<egrave> esaurita. Questa E<egrave> la funzione interna che 
 implementa l'operatore C<< <*.c> >>, ma potete usarla direttamente. 
-Se ESPR viene omessa, globa() utilizza C<$_>. L'operatore C<< <*.c> >> 
+Se ESPR viene omessa, glob() utilizza C<$_>. L'operatore C<< <*.c> >> 
 E<egrave> discusso in maggiore dettaglio in L<perlop/"I/O Operators"> 
 ["Operatori di I/O", NdT].
 
 A partire dalla versione 5.6.0, questo operatore E<egrave> implementato 
-utilizzato l'estensione standard C<File::Glob>. Consultate 
+utilizzando l'estensione standard C<File::Glob>. Consultate 
 L<File::Glob> per i dettagli.
 
 =item gmtime ESPR
@@ -2360,7 +2360,7 @@ nell'intervallo C<0..364> (o <0..365> negli anni bisestili).
 
 Va notato che l'elemento $anno I<non> contiene semplicemente le ultime due cifre 
 dell'anno. Se assumete ciE<ograve>, allora vi ritrovate a creare programmi non 
-compatibili con l'anno 2000 (Y2K), e non volete fare ciE<ograve>, vero?
+compatibili con l'anno 2000 (Y2K), e questo non volete farlo, vero?
 
 Il modo corretto per ottenere un anno a 4 cifre E<egrave> semplicemente:
 
@@ -4219,7 +4219,7 @@ Sono delle virgolette generalizzate. Consultate L<perlop/"Regexp Quote-Like Oper
 =item quotemeta
 
 Restituisce il valore di ESPR, con tutti i caratteri non-"parola" 
-precedeuti da un backslash. (Il che signfica che tutti i caratteri 
+preceduti da un backslash. (Il che signfica che tutti i caratteri 
 che non rientrano in C</[A-Za-z_0-9]/> saranno preceduti da un 
 backslash nella stringa restituita, indipendentemente da qualsiasi 
 settaggio del locale). Questa E<egrave> la funzione interna che 
@@ -7259,3 +7259,22 @@ Va notato che write I<non> E<egrave> l'opposto di C<read>. Sfortunatamente.
 L'operatore di traslitterazione. Lo stesso che C<tr///>. Consultate L<perlop>.
 
 =back
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlfunc
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di dree.
+
+=head2 Revisore
+
+Revisione a cura di dree.

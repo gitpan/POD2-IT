@@ -1213,7 +1213,6 @@ Viene dato permesso di copiare e distribuire traduzioni di questa
 documentazione in altre lingue, soggette alle condizioni suddette per
 le versioni modificate.
 
-
 Si riporta comunque la versione originale inglese della nota di
 Copyright.
 
@@ -1236,5 +1235,23 @@ Permission is granted to copy and distribute translations of this
 documentation into another language, under the above conditions for
 modified versions.
 
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlembed
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Flavio Poletti.
+
+=head2 Revisore
+
+Revisione a cura di dree.
 
 =cut

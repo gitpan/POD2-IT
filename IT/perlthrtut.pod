@@ -1182,9 +1182,6 @@ dei thread.
 Rielaborato lievemente da Jörg Walter E<lt>jwalt@cpan.orgE<gt> affinchE<eacute>
 la parte sulla thread-safety del codice perl risultasse piE<ugrave> concisa.
 
-Tradotto in italiano da Michele Beltrame, progetto pod2it
-( http://pod2it.sourceforge.net ).
-
 =head1 Copyright
 
 La versione originale di questo articolo E<egrave> apparsa originariamente
@@ -1195,3 +1192,21 @@ stesso.
 
 Per maggiori informazioni si vedano L<threads> and L<threads::shared>.
 
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlthrtut
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Michele Beltrame.
+
+=head2 Revisore
+
+Revisione a cura di Michele Beltrame.

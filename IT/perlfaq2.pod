@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq2 - Ottenere ed Imparare Perl ($Revision: 1.9 $, $Date: 2005/07/28 00:58:15 $)
+perlfaq2 - Ottenere ed Imparare Perl ($Revision: 1.10 $, $Date: 2005/11/19 00:21:49 $)
 
 =head1 DESCRIZIONE
 
@@ -570,9 +570,6 @@ la domanda I<Cos'E<egrave> CPAN?> precedentemente in questo documento.
 Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
-La traduzione in italiano E<egrave> a cura del progetto pod2it
-( http://pod2it.sourceforge.net/ )
-
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
@@ -582,3 +579,22 @@ incoraggiati a farlo, utilizzare il presente codice o qualunque forma
 derivata da esso nei vostri programmi per divertimento o per profitto.
 Un semplice commento nel codice che dia riconoscimento alle FAQ sarebbe
 cortese ma non E<egrave> obbligatorio.
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlfaq2
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Michele Beltrame.
+
+=head2 Revisore
+
+Revisione a cura di Marco Allegretti.

@@ -508,5 +508,24 @@ Questo documento puE<ograve> essere distribuito secondo gli stessi termini del P
 L'autore vuole ringraziare Mark-Jason Dominus, Tom Christiansen,
 Ilya Zakharevich, Brad Hughes e Mike Giroux per tutti i loro utili commenti.
 
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlrequick
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di dree.
+
+=head2 Revisore
+
+Revisione a cura di Marco Allegretti.
+
 =cut
 

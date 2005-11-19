@@ -1,4 +1,4 @@
-#/usr/bin/perl
+#!/usr/bin/perl
 
 use Getopt::Long ();
 use Pod::Usage ();
@@ -55,8 +55,8 @@ for (@files) {
 }
 
 unless (@files) {
-  binmode STDIN,"<:encoding($options{'input-enc'})";
-  binmode STDOUT,">:encoding($options{'output-enc'})";
+  binmode STDIN,":encoding($options{'input-enc'})";
+  binmode STDOUT,":encoding($options{'output-enc'})";
   while (<STDIN>) {
     s{($pattern)}{$map{$1}}ge; #};
     s{E'}{E<Egrave>}g;

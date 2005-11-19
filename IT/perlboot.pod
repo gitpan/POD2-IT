@@ -865,3 +865,22 @@ Services, Inc. and used with permission.
 
 Portions of this text have been derived from materials originally
 appearing in I<Linux Magazine> and used with permission.
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlboot
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di dree.
+
+=head2 Revisore
+
+Revisione a cura di Gianni Ceccarelli e Hakim Cassimally.

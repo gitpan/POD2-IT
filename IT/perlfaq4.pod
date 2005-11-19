@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq4 - Manipolazione dei dati ($Revision: 1.29 $, $Date: 2005/07/28 00:59:14 $)
+perlfaq4 - Manipolazione dei dati ($Revision: 1.31 $, $Date: 2005/11/19 00:21:49 $)
 
 =head1 DESCRIZIONE
 
@@ -1539,17 +1539,12 @@ deve essere modificato.
 
 Usate la funzione rand() (consultate L<perlfunc/rand>):
 
-     # all'inizio del programma:
-     srand;       # non serve per le versioni 5.004 e successive
-
-     # piu` avanti
      $indice   = rand @array;
      $elemento = $array[$indice];
 
-Assicuratevi I<di richiamare C<srand> al piE<ugrave> una volta nel programma>.
-Se lo chiamate piE<ugrave> di una volta (ad esempio prima di ogni
-chiamata a C<rand>), state quasi certamente facendo una cosa
-sbagliata.
+O semplicemente:
+
+     my $elemento = $array[ rand @array ];
 
 =head2 Come permuto N elementi di una lista?
 
@@ -2153,9 +2148,6 @@ semplice l'esecuzione di calcoli pesanti.
 Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
-La traduzione in italiano E<egrave> a cura del progetto pod2it
-( http://pod2it.sourceforge.net/ )
-
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
@@ -2165,3 +2157,22 @@ incoraggiati a, utilizzare il presente codice o qualunque forma
 derivata da esso nei vostri programmi per divertimento o per profitto.
 Un semplice commento nel codice che dia riconoscimento alle FAQ sarebbe
 cortese ma non E<egrave> obbligatorio.
+
+=head1 TRADUZIONE
+
+=head2 Versione
+
+La versione su cui si basa questa traduzione è ottenibile con:
+
+   perl -MPOD2::IT -e print_pod perlfaq4
+
+Per maggiori informazioni sul progetto di traduzione in italiano si veda
+L<http://pod2it.sourceforge.net/> .
+
+=head2 Traduttore
+
+Traduzione a cura di Michele Beltrame.
+
+=head2 Revisore
+
+Revisione a cura di Gianni Ceccarelli.

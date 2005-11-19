@@ -1,4 +1,4 @@
-POD2::IT version 0.09
+POD2::IT version 0.10
 =====================
 
 POD2::IT - Italian translation of Perl core documentation.
@@ -9,12 +9,14 @@ See pod2it.sf.net for more details about the project.
 
 CHANGES FROM PREVIOUS VERSION
 
-	+ Added perlunicode.pod translation [dakkar]
-	+ Added resources/podenc.pl script in order to encode 
-	  italian characters with E<> sequence [dakkar, bepi]
-	! Updated E<> pod entities [bepi]
-	! Updated IT.pm pod documentation [bepi]
-	! Fixed Changes and README typos [bepi]
+	+ Added perlmod.pod translation [frodo72]
+	+ Added perldata.pod translation [frodo72]
+	+ Added perlnewmod.pod translation [dree]
+	+ Added perlxstut.pod translation [frodo72]
+	! resources/podenc.pl bug fixes [frodo72]
+	! Minor fixes to perlfaq4, perlfaq7, perlfunc, perlreref
+	! Added 'TRANSLATION' section to all pods, containing
+	  some infos about pod translator(s) and reviewer(s) [bepi]
 
 See 'Changes' file for complete history revisions.
 

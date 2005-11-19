@@ -3,13 +3,14 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.09';
+$VERSION = '0.10';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
 
 my $pods = {
 	perlboot => '5.8.7',
+	perldata => '5.8.6',
 	perlembed => '5.8.6',
 	perlfaq1 => '5.8.7',
 	perlfaq2 => '5.8.7',
@@ -24,12 +25,15 @@ my $pods = {
 	perlfunc => '5.8.7',
 	perlintro => '5.8.7',
 	perllol => '5.8.6',
+	perlmod => '5.8.6',
+	perlnewmod => '5.8.7',
 	perlrequick => '5.8.7',
 	perlreref => '5.8.7',
 	perlstyle => '5.8.1',
 	perlthrtut => '5.8.1',
 	perlunicode => '5.8.2',
 	perluniintro => '5.8.2',
+	perlxstut => '5.8.6',
 };
 
 sub print_pods {
@@ -111,7 +115,7 @@ in order to avoid to write the C<-L> switch every time and to type directly:
  
 You can apply the patch with: 
 
-  %> patch -p0 `perl -MPod::Perldoc -e 'print $INC{"Pod/Perldoc.pm"}'` < /path/to/Perldoc.pm-3.14-patch
+  %> patch -p0 `/path/to/perl -MPod::Perldoc -e 'print $INC{"Pod/Perldoc.pm"}'` < /path/to/Perldoc.pm-3.14-patch
 
 The patch lives under F<./patches/Perldoc.pm-3.14-patch> shipped in this
 distribution.
