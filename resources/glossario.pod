@@ -12,7 +12,7 @@ Non ho idee per una traduzione.
 
 Benchmark
 
-Lasciato cosi`.
+Lasciato cosE<igrave>.
 
 =item bottleneck
 
@@ -21,6 +21,11 @@ Collo di bottiglia
 =item closure
 
 chiusura
+
+=item core module
+
+(dakkar) modulo distribuito assieme a perl
+es: The core threads module provides ... - Il modulo threads, distribuito assieme a perl, fornisce ...
 
 =item deadlock
 
@@ -34,7 +39,7 @@ predefinito, oppure direttamente default
 
 terminare le operazioni di I/O in corso
 
-Non c'e` una reale traduzione (credo), quindi va utilizzata una frase
+Non c'E<egrave> una reale traduzione (credo), quindi va utilizzata una frase
 intera...
 
 (dakkar) "flush buffers" -> "svuotare i buffer" (OK, buffer non lo traduco...)
@@ -48,10 +53,10 @@ espansione degli argomenti
 LA hash.
 
 Femminile? Maschile? Voto per femminile causa imprintint in tenera
-eta`.
+etE<agrave>.
 
 (arthas): io voterei per il maschile LO hash, che ho sempre usato,
-come maschile e` anche l'array.
+come maschile E<egrave> anche l'array.
 
 =item HERE document
 
@@ -80,17 +85,17 @@ Meno criptici leap day (29 Febbraio, giorno intercalare) e leap year
 
 linkare, linkato, ecc...
 
-Linkare e` usato nella parlata corrente. Non mi e` noto un verbo
+Linkare E<egrave> usato nella parlata corrente. Non mi E<egrave> noto un verbo
 italiano che si possa usare al posto del neologismo.
 
-(arthas) secondo me la traduzione corretta e` "collegare"
+(arthas) secondo me la traduzione corretta E<egrave> "collegare"
 (dakkar) a Informatica a Pisa si dice comunemente "collegamento di un programma"...
 
 =item literal
 
 Letterale
 
-E` un sostantivo in inglese, ma viene reso in italiano come aggettivo. Esempi:
+E<egrave> un sostantivo in inglese, ma viene reso in italiano come aggettivo. Esempi:
 
 "octal literal" => "ottale letterale"
 "as a literal" => "in maniera letterale"
@@ -99,20 +104,24 @@ E` un sostantivo in inglese, ma viene reso in italiano come aggettivo. Esempi:
 
 Locale
 
-Lasciato cosi`.
+Lasciato cosE<igrave>.
 
 =item to match
 
 trovare
 
-Pattern matching e` la ricerca di un pattern (vedi voce, sopra),
-match a pattern e` trovare un pattern secondo me [Arthas]
+Pattern matching E<egrave> la ricerca di un pattern (vedi voce, sopra),
+match a pattern E<egrave> trovare un pattern secondo me [Arthas]
 
-(dakkar) corrispondere? IMHO a volte anche "corrispondenza di modelli" va bene [dree]
+(dakkar) corrispondere?
+(dree) pattern matching puE<ograve> essere "corrispondenza di modelli",
+"it matches" E<egrave> "verifica la corrispondenza" o anche "effettua un match"
+"it matches the" E<egrave> "trova corrispondenza in"
+"matched" E<egrave> "che verifica la corrispondenza" o "che verifica il match"
 
 =item memory leak
 
-Lasciato cosi`, pero` aggiungendo un NdT "perdita di memoria" tra parentesi.
+Lasciato cosE<igrave>, perE<ograve> aggiungendo un NdT "perdita di memoria" tra parentesi.
 
 =item namespace
 
@@ -129,7 +138,7 @@ vettore di bit...)
 
 overloading degli operatori
 
-Sovraccarico non sembra starci cosi` bene.
+Sovraccarico non sembra starci cosE<igrave> bene.
 
 =item to override
 
@@ -157,15 +166,15 @@ impacchettamento
 
 pattern, schema, modello
 
-lasciarlo cosi`, o tradurlo in schema a seconda del contesto.
+lasciarlo cosE<igrave>, o tradurlo in schema a seconda del contesto.
 
 =item pattern matching
 
 ricerca di pattern, corrispondenza di modelli
 
-Secondo me pattern e` meglio lasciarlo cosi` (o tradurlo con schema, a
-seconda del contesto), matching in questo caso puo` diventare ricerca, ma
-guardate I<to match> piu` sotto per delucidazioni ulteriori.
+Secondo me pattern E<egrave> meglio lasciarlo cosE<igrave> (o tradurlo con schema, a
+seconda del contesto), matching in questo caso puE<ograve> diventare ricerca, ma
+guardate I<to match> piE<ugrave> sotto per delucidazioni ulteriori.
 
 =item pragma
 
@@ -176,7 +185,7 @@ guardate I<to match> piu` sotto per delucidazioni ulteriori.
 
 Profile/profiling
 
-Lasciato cosi`.
+Lasciato cosE<igrave>.
 
 =item prototype, signature
 
@@ -214,7 +223,7 @@ Direi che potremmo usare la stessa traduzione anche per syscall, no?
 
 Dato potenzialmente dannoso
 
-Non si e` trovato niente di meglio che una perifrasi per tradurre
+Non si E<egrave> trovato niente di meglio che una perifrasi per tradurre
 questo termine. Mi pare una traduzione sufficientemente accurata, ma
 non altrettanto malleabile.
 
@@ -233,14 +242,23 @@ sollevare
 legame
 
 Potrebbe non essere chiaro al lettore il riferimento a C<tie()>, al
-limite e` meglio specificare tra parentesi qualche dettaglio. Vedete
+limite E<egrave> meglio specificare tra parentesi qualche dettaglio. Vedete
 anche I<to tie> sotto
 
 =item to tie
 
 Legare
 
-Si veda I<tie>, piu` in alto.
+Si veda I<tie>, piE<ugrave> in alto.
+
+=item tied
+
+hash sottoposto a tie
+hash legato
+
+=item timestamp
+
+(dakkar) marca temporale oppure marcatura temporale
 
 =item token
 
@@ -250,12 +268,12 @@ simbolo
 
 Sterilizzare
 
-Ancora piu` complesso e` il caso di untaint. Se per 'untainted'
-forse si puo` usare "dato non piu` potenzialmente dannoso", il verbo
+Ancora piE<ugrave> complesso E<egrave> il caso di untaint. Se per 'untainted'
+forse si puE<ograve> usare "dato non piE<ugrave> potenzialmente dannoso", il verbo
 "to untaint" inteso come l'esercizio di una delle operazioni che si
 possono effettuare per rendere un dato non potenzialmente dannoso -
-pausa arbitraria cosi` tirate il fiato :) - non so come tradurlo.
-Sterilizzare e` simpatico, abbastanza fedele al significato
+pausa arbitraria cosE<igrave> tirate il fiato :) - non so come tradurlo.
+Sterilizzare E<egrave> simpatico, abbastanza fedele al significato
 letterale e al probabile intento giocoso della scelta del termine
 originale.
 
@@ -266,5 +284,6 @@ scompattare
 Anche se nel vocabolario italiano non esiste... ;)
 
 (dakkar) "spacchettare"?
+(dree) decomprimere
 
 =back

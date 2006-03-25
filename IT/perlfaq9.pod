@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq9 - Programmazione di rete ($Revision: 1.17 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq9 - Programmazione di rete ($Revision: 1.18 $, $Date: 2006/02/11 03:50:44 $)
 
 =head1 DESCRIZIONE
 
@@ -16,12 +16,10 @@ programma ("script CGI") e un server web (HTTPD). Essa non E<egrave> specifica
 del Perl ed ha le proprie FAQ, tutorial e un gruppo usenet,
 comp.infosystems.www.authoring.cgi
 
-La specifica CGI originale si trova su: http://hoohoo.ncsa.uiuc.edu/cgi/
+La specifica CGI originale E<egrave> descritta su un RFC informativo:
+http://www.ietf.org/rfc/rfc3875
 
-La bozza RFC corrente sulle migliori pratiche di utilizzo si trova su:
-http://CGI-Spec.Golux.Com/
-
-Altri documenti rilevanti sono elencati qui:
+Altri documenti rilevanti sono elencati su:
 http://www.perl.org/CGI_MetaFAQ.html
 
 Queste FAQ Perl toccano alcune problematiche CGI in maniera molto selettiva.
@@ -273,6 +271,7 @@ sostituzione:
     s/([^\w()'*~!.-])/sprintf '%%%02x', ord $1/eg;   # codifica
 
     s/%([A-Fa-f\d]{2})/chr hex $1/eg;                # decodifica
+	s/%([[:xdigit:]]{2})/chr hex $1/eg;          # stessa cosa
 
 Comunque sia, la dovreste applicare solo su singoli componenti di URI,
 altrimenti perderete informazione e in generale si ingarbuglieranno
@@ -331,7 +330,7 @@ I moduli HTTPD::UserAdmin e HTTPD::GroupAdmin forniscono un'inferfaccia
 OO consistente a questi file, senza badare al loro formato. I database
 possono essere di testo, dbm, Berkeley DB o un qualsiasi database che abbia
 un driver DBI compatibile. HTTPD::UserAdmin supporta file usati nelle
-autenticazioni 'Basic' e 'Digest'. Di seguito un esempio:
+autenticazioni "Basic" e "Digest". Di seguito un esempio:
 
      use HTTPD::UserAdmin ();
      HTTPD::UserAdmin
@@ -375,9 +374,9 @@ dell'input e rende disponibile ogni valore attraverso la funzione C<param()>.
 
 	use CGI qw(:standard);
 	
-	my $totale = param( "prezzo" ) + param( "spedizione" );
+	my $totale = param( 'prezzo' ) + param( 'spedizione' );
 	
-	my @items = param( "oggetto" ); # valori multipli, stesso nome del campo
+	my @items = param( 'oggetto' ); # valori multipli, stesso nome del campo
 
 Se volete un approccio orientato agli oggetti, CGI.pm puE<ograve> fare pure questo.
 
@@ -385,9 +384,9 @@ Se volete un approccio orientato agli oggetti, CGI.pm puE<ograve> fare pure ques
 	
 	my $cgi = CGI->new();
 	
-	my $total = $cgi->param( "prezzo" ) + $cgi->param( "spedizione" );
+	my $total = $cgi->param( 'prezzo' ) + $cgi->param( 'spedizione' );
 	
-	my @items = $cgi->param( "oggetto" );
+	my @items = $cgi->param( 'oggetto' );
 
 Potreste anche provare CGI::Minimal che E<egrave> una versione leggera della stessa cosa.
 Anche altri moduli del tipo CGI::*, disponibili su CPAN, potrebbero fare un lavoro migliore per voi.
@@ -606,28 +605,36 @@ O, piE<ugrave> brevemente:
     END { print @msg[ sort { $sub[$a] cmp $sub[$b] || $a <=> $b } (0 .. $#msg) ] }
 
 =head2 Come faccio a sapere il mio hostname, il nome del mio dominio e il mio indirizzo IP?
+X<hostname, domainname, IP address, host, domain, hostfqdn, inet_ntoa,
+gethostbyname, Socket, Net::Domain, Sys::Hostname>
 
-Di solito, la maniera per sapere il vostro hostname E<egrave> chiamare il
-programma C<`hostname`>. BenchE<eacute> rapido, dE<agrave> luogo a qualche
-problema, come il non sapere se si abbia o meno ricevuto il nome canonico. 
-E<Egrave> uno di quei compromessi tra convenienza e portabilitE<agrave>.
+(contributo di brian d foy)
 
-Il modulo Sys::Hostname (parte della distribuzione standard) vi darE<agrave>
-l'hostname attraverso il quale potreste ottenere l'indirizzo IP (posto che
-abbiate un DNS funzionante) con una chiamata a gethostbyname().
+Il modulo Net::Domain, che fa parte della distribuzione standard a partire dal
+perl5.7.3, puE<ograve> farvi ottenere il fully qualified domain name (FQDN)
+[nome di dominio completo, NdT], il nome dell'host oppure il nome del dominio.
 
-     use Socket;
-     use Sys::Hostname;
-     my $host = hostname();
-     my $indi = inet_ntoa(scalar gethostbyname($host || 'localhost'));
+	use Net::Domain qw(hostname hostfqdn hostdomain);
 
-Probabilmente il modo piE<ugrave> semplice per conoscere il vostro nome a
-dominio E<egrave> dedurlo da /etc/resolv.conf, almeno in ambiente Unix.
-Naturalmente, questo implica diverse assunzioni a proposito della vostra
-configurazione di resolv.conf. Ad esempio, che esista.
+	my $host = hostfqdn();
 
-(Non abbiamo ancora a dispozione un buon sistema di riconoscimento dei nomi
-a dominio per i sistemi non Unix).
+Anche il modulo C<Sys::Hostname>, incluso nella della distribuzione standard a partire dal
+perl5.6, puE<ograve> ottenere il nome dell'host.
+
+	use Sys::Hostname;
+
+	$host = hostname();
+
+Per ottenere l'indirizzo IP, potete usare la funzione interna C<gethostbyname> per
+cambiare il nome in un numero. Per cambiare quel numero nella forma ad ottetto puntata
+(a.b.c.d) che la maggior parte delle persone si aspetta, usate la funzione C<inet_ntoa>
+dal modulo C<Socket>, anch'esso distribuito con il perl.
+
+    use Socket;
+
+    my $indirizzo = inet_ntoa(
+    	scalar gethostbyname( $host || 'localhost' )
+    	);
 
 =head2 Come prelevo una news o la lista dei newsgroup attivi?
 
@@ -646,15 +653,14 @@ complessa ma puE<ograve> inviare oltre che prelevare.
 
 =head2 Come faccio a chiamare procedure remote in Perl? ["Remote Procedure Call", abbreviato in RPC, NdT]
 
-Un modulo chiamato DCE::RPC E<egrave> in fase di sviluppo (benchE<eacute>
-ancora non disponibile) e sarE<agrave> rilasciato come parte del pacchetto
-DCE-Perl (disponibile su CPAN). La suite rpcgen, disponibile presso
-CPAN/authors/id/JAKE/, E<egrave> un generatore di stub RPC e include il
-modulo RPC::ONC.
+(Contributo di brian d foy)
+
+Utilizzate uno dei moduli su RPC che potete trovare su CPAN (
+http://search.cpan.org/search?query=RPC&mode=all ).
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
@@ -671,7 +677,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq9
 
@@ -685,3 +691,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di dree.
+
+=cut

@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq1 - Domande Generali Sul Perl ($Revision: 1.18 $, $Date: 2005/11/19 00:18:23 $)
+perlfaq1 - Domande Generali Sul Perl ($Revision: 1.20 $, $Date: 2006/02/09 04:30:02 $)
 
 =head1 DESCRIZIONE
 
@@ -415,7 +415,7 @@ quella di aggiornare almeno a Perl 5.6.1.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
@@ -432,7 +432,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq1
 
@@ -446,3 +446,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di Marco Allegretti.
+
+=cut

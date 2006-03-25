@@ -1,4 +1,5 @@
 =head1 NOME
+X<funzione>
 
 perlfunc - Le funzioni integrate in Perl
 
@@ -29,8 +30,8 @@ con LISTA come argomento. Tale lista puE<ograve> essere costituita
 da una combinazione qualunque di argomenti scalari o valori
 di lista; i valori di lista saranno inclusi nella lista come
 se ogni singolo elemento fosse interpolato in quel punto,
-formando un valore di lista unico, piE<ugrave> lungo. Gli elementi
-di LISTA dovrebbero essere separati da virgole.
+formando un valore di lista unico, piE<ugrave> lungo.
+Delle virgole dovrebbero separare gli elementi della LISTA.
 
 Ogni funzione dell'elenco sottostante puE<ograve> essere usata o 
 meno con parentesi attorno ai propri argomenti. (La
@@ -80,6 +81,7 @@ valore nella lista. Alcuni restituiscono l'ultimo. Alcuni operatori
 restituiscono il conto delle operazioni eseguite con successo.
 In generale, fanno quello che volete, a meno che non vogliate la
 consistenza.
+X<contesto>
 
 Un array dotato di nome, in un contesto scalare E<egrave> piuttosto 
 differente da quella che a prima vista potrebbe apparire come una lista in un
@@ -100,6 +102,7 @@ speciale C<$!> in caso di fallimento. Altre funzioni non lo fanno,
 se non accidentalmente.
 
 =head2 Elenco delle funzioni Perl per categoria
+X<funzione>
 
 Ecco le funzioni del Perl (incluse certe cose che assomigliano a funzioni,
 come alcune parole chiave e operatori dotati di nome) ordinate per
@@ -108,33 +111,40 @@ categoria. Alcune funzioni appaiono in piE<ugrave> di una posizione.
 =over 4
 
 =item Funzioni per SCALARI o stringhe
+X<scalare> X<stringa> X<carattere>
 
 C<chomp>, C<chop>, C<chr>, C<crypt>, C<hex>, C<index>, C<lc>, C<lcfirst>,
 C<length>, C<oct>, C<ord>, C<pack>, C<q/STRINGA/>, C<qq/STRINGA/>, C<reverse>,
 C<rindex>, C<sprintf>, C<substr>, C<tr///>, C<uc>, C<ucfirst>, C<y///>
 
 =item Espressioni regolari e ricerca di pattern
+X<espressione regolare> X<regex> X<regexp>
 
 C<m//>, C<pos>, C<quotemeta>, C<s///>, C<split>, C<study>, C<qr//>
 
 =item Funzioni numeriche
+X<numerico> X<numero> X<trigonometrico> X<trigonometria>
 
 C<abs>, C<atan2>, C<cos>, C<exp>, C<hex>, C<int>, C<log>, C<oct>, C<rand>,
 C<sin>, C<sqrt>, C<srand>
 
 =item Funzioni per @ARRAY effettivi
+X<array>
 
 C<pop>, C<push>, C<shift>, C<splice>, C<unshift>
 
 =item Funzioni per liste di dati
+X<lista>
 
 C<grep>, C<join>, C<map>, C<qw/STRINGA/>, C<reverse>, C<sort>, C<unpack>
 
 =item Funzioni per %HASH effettivi
+X<hash>
 
 C<delete>, C<each>, C<exists>, C<keys>, C<values>
 
 =item Funzioni di input e output
+X<I/O> X<input> X<output> X<dbm>
 
 C<binmode>, C<close>, C<closedir>, C<dbmclose>, C<dbmopen>, C<die>, C<eof>,
 C<fileno>, C<flock>, C<format>, C<getc>, C<print>, C<printf>, C<read>,
@@ -147,13 +157,15 @@ C<warn>, C<write>
 C<pack>, C<read>, C<syscall>, C<sysread>, C<syswrite>, C<unpack>, C<vec>
 
 =item Funzioni per filehandle, file o directory
+X<file> X<filehandle> X<directory> X<pipe> X<link> X<symlink>
 
 C<-I<X>>, C<chdir>, C<chmod>, C<chown>, C<chroot>, C<fcntl>, C<glob>,
 C<ioctl>, C<link>, C<lstat>, C<mkdir>, C<open>, C<opendir>,
 C<readlink>, C<rename>, C<rmdir>, C<stat>, C<symlink>, C<sysopen>,
 C<umask>, C<unlink>, C<utime>
 
-=item Parole chiave relative al controllo di flusso del vostro programma perl
+=item Parole chiave relative al controllo di flusso del vostro programma Perl
+X<controllo di flusso>
 
 C<caller>, C<continue>, C<die>, C<do>, C<dump>, C<eval>, C<exit>,
 C<goto>, C<last>, C<next>, C<redo>, C<return>, C<sub>, C<wantarray>
@@ -168,38 +180,45 @@ C<defined>, C<dump>, C<eval>, C<formline>, C<local>, C<my>, C<our>, C<reset>,
 C<scalar>, C<undef>, C<wantarray>
 
 =item Funzioni per processi e gruppi di processi
+X<processo> X<pid> X<id di processo>
 
 C<alarm>, C<exec>, C<fork>, C<getpgrp>, C<getppid>, C<getpriority>, C<kill>,
 C<pipe>, C<qx/STRINGA/>, C<setpgrp>, C<setpriority>, C<sleep>, C<system>,
 C<times>, C<wait>, C<waitpid>
 
 =item Parole chiave relative ai moduli perl
+X<modulo>
 
 C<do>, C<import>, C<no>, C<package>, C<require>, C<use>
 
 =item Parole chiave relative alle classi e al campo dell'orientamento agli oggetti
+X<oggetto> X<classe> X<package>
 
 C<bless>, C<dbmclose>, C<dbmopen>, C<package>, C<ref>, C<tie>, C<tied>,
 C<untie>, C<use>
 
 =item Funzioni di basso livello per i socket
+X<socket> X<sock>
 
 C<accept>, C<bind>, C<connect>, C<getpeername>, C<getsockname>,
 C<getsockopt>, C<listen>, C<recv>, C<send>, C<setsockopt>, C<shutdown>,
 C<socket>, C<socketpair>
 
 =item Funzioni di comunicazione tra processi di System V
+X<IPC> X<System V> X<semaforo> X<memoria condivisa> X<memoria> X<messaggio>
 
 C<msgctl>, C<msgget>, C<msgrcv>, C<msgsnd>, C<semctl>, C<semget>, C<semop>,
 C<shmctl>, C<shmget>, C<shmread>, C<shmwrite>
 
 =item Recupero delle informazioni dell'utente e del gruppo
+X<user> X<group> X<password> X<uid> X<gid> X<passwd> X</etc/passwd>
 
 C<endgrent>, C<endhostent>, C<endnetent>, C<endpwent>, C<getgrent>,
 C<getgrgid>, C<getgrnam>, C<getlogin>, C<getpwent>, C<getpwnam>,
 C<getpwuid>, C<setgrent>, C<setpwent>
 
 =item Recupero delle informazioni di rete
+X<rete> X<protocollo> X<host> X<nome dell'host> X<IP> X<indirizzo> X<servizio>
 
 C<endprotoent>, C<endservent>, C<gethostbyaddr>, C<gethostbyname>,
 C<gethostent>, C<getnetbyaddr>, C<getnetbyname>, C<getnetent>,
@@ -208,10 +227,12 @@ C<getservbyname>, C<getservbyport>, C<getservent>, C<sethostent>,
 C<setnetent>, C<setprotoent>, C<setservent>
 
 =item Funzioni relative al tempo
+X<tempo> X<data>
 
 C<gmtime>, C<localtime>, C<time>, C<times>
 
 =item Nuove funzioni in perl5
+X<perl5>
 
 C<abs>, C<bless>, C<chomp>, C<chr>, C<exists>, C<formline>, C<glob>,
 C<import>, C<lc>, C<lcfirst>, C<map>, C<my>, C<no>, C<our>, C<prototype>,
@@ -228,6 +249,7 @@ C<dbmclose>, C<dbmopen>
 =back
 
 =head2 PortabilitE<agrave>
+X<portabilita`> X<Unix> X<portabile>
 
 Perl E<egrave> nato su Unix e dunque puE<ograve> accedere a tutte le normali 
 chiamate di sistema Unix. In ambienti non-Unix, le funzionalitE<agrave> di 
@@ -240,7 +262,7 @@ C<dbmclose>, C<dbmopen>, C<dump>, C<endgrent>, C<endhostent>,
 C<endnetent>, C<endprotoent>, C<endpwent>, C<endservent>, C<exec>,
 C<fcntl>, C<flock>, C<fork>, C<getgrent>, C<getgrgid>, C<gethostbyname>,
 C<gethostent>, C<getlogin>, C<getnetbyaddr>, C<getnetbyname>, C<getnetent>,
-C<getppid>, C<getprgp>, C<getpriority>, C<getprotobynumber>,
+C<getppid>, C<getpgrp>, C<getpriority>, C<getprotobynumber>,
 C<getprotoent>, C<getpwent>, C<getpwnam>, C<getpwuid>,
 C<getservbyport>, C<getservent>, C<getsockopt>, C<glob>, C<ioctl>,
 C<kill>, C<link>, C<lstat>, C<msgctl>, C<msgget>, C<msgrcv>,
@@ -262,6 +284,8 @@ specifica per una data piattaforma.
 =over 8
 
 =item -X FILEHANDLE
+X<-r>X<-w>X<-x>X<-o>X<-R>X<-W>X<-X>X<-O>X<-e>X<-z>X<-s>X<-f>X<-d>X<-l>X<-p>
+X<-S>X<-b>X<-c>X<-t>X<-u>X<-g>X<-k>X<-T>X<-B>X<-M>X<-A>X<-C>
 
 =item -X EXPR
 
@@ -279,8 +303,6 @@ della stranezza dei nomi, valgono le stesse regole di precedenza di ogni
 altro operatore unario, e l'argomento puE<ograve> essere racchiuso fra parentesi
 come per qualsiasi altro operatore. L'operatore puE<ograve> essere uno qualsiasi
 fra quelli seguenti:
-X<-r>X<-w>X<-x>X<-o>X<-R>X<-W>X<-X>X<-O>X<-e>X<-z>X<-s>X<-f>X<-d>X<-l>X<-p>
-X<-S>X<-b>X<-c>X<-t>X<-u>X<-g>X<-k>X<-T>X<-B>X<-M>X<-A>X<-C>
 
     -r	Il file e` leggibile da parte del uid/gid effettivo.
     -w	Il file e` scrivibile da parte del uid/gid effettivo.
@@ -362,7 +384,7 @@ Gli operatori C<-T> e C<-B> funzionano nel modo seguente. Il primo blocco
 (piE<ugrave> o meno) del file viene esaminato alla ricerca di caratteri
 strani come ad esempio codici di controllo o caratteri con il bit alto
 impostato. Se vengono individuati troppi caratteri strani (>30%),
-l'operatore C<-B> restituisce vero, altrimenti restituirE<agrave> vero
+l'operatore C<-B> restituisce vero; altrimenti restituirE<agrave> vero
 l'operatore C<-T>. Inoltre, un qualunque file che contiene un carattere
 "null" nel primo blocco E<egrave> considerato binario. Se C<-T> o C<-B> vengono
 usati su un filehandle, viene esaminato il buffer di IO corrente, e non
@@ -398,6 +420,7 @@ Esempio:
     print "File binario\n" if -B _;
 
 =item abs VALORE
+X<abs> X<assoluto>
 
 =item abs
 
@@ -405,6 +428,7 @@ Restituisce il valore assoluto del suo argomento.
 Se VALORE viene omesso, abs() usa C<$_>.
 
 =item accept NUOVOSOCKET,GENERICOSOCKET
+X<accept>
 
 Accetta una connessione in entrata su un socket, proprio come fa la 
 chiamata di sistema accept(2). Se ha successo restituisce l'indirizzo 
@@ -416,6 +440,9 @@ impostato per il piE<ugrave> recente descrittore di file aperto, come stabilito 
 di $^F. Consultate L<perlvar/$^F>.
 
 =item alarm SECONDI
+X<alarm>
+X<SIGALRM>
+X<timer>
 
 =item alarm
 
@@ -472,6 +499,7 @@ indicati in L<perlipc/"Signals"> ["Segnali", NdT].
 Per maggiori informazioni consultate L<perlipc>.
 
 =item atan2 Y,X
+X<atan2> X<arcotangente> X<tan> X<tangente>
 
 Restituisce l'arcotangente di Y/X nell'intervallo da -PI a PI.
 
@@ -480,7 +508,10 @@ o la consueta relazione:
 
     sub tan { sin($_[0]) / cos($_[0])  }
 
+Si noti che atan2(0, 0) non E<egrave> ben definito.
+
 =item bind SOCKET,NOME
+X<bind>
 
 Collega un indirizzo di rete ad un socket, proprio come fa la chiamata di 
 sistema bind. Restituisce vero se ha successo, falso altrimenti. 
@@ -489,6 +520,7 @@ il socket. Date un'occhiata agli esempi in
 L<perlipc/"Sockets: Client/Server Communication"> ["Socket: Comunicazione Client/Server", NdT]..
 
 =item binmode FILEHANDLE, STRATO
+X<binmode> X<binario> X<testo> X<DOS> X<Windows>
 
 =item binmode FILEHANDLE
 
@@ -578,6 +610,7 @@ L<perlvar> per capire come fare ad impostare manualmente le vostre sequenze di
 terminatori di linea per l'input e l'output.
 
 =item bless RIF,NOMECLASSE
+X<bless>
 
 =item bless RIF
 
@@ -585,19 +618,20 @@ La funzione dice al qualcosa referenziato da RIF che ora E<egrave> un oggetto ne
 package NOMECLASSE. Se NOMECLASSE viene omesso, viene usato il package corrente. Visto 
 che un C<bless> [letteralmente benedizione, consacrazione, NdT] E<egrave> spesso l'ultima 
 cosa in un costruttore, restituisce per convenienza il riferimento. Usate sempre la versione 
-a due argomenti se la funzione che effettua il bless potrebbe essere ereditta da una classe 
-derivata. Consultate L<perltoot> e L<perlobj> per maggiori dettagli sull'operazione di bless 
+a due argomenti se una classe derivata potrebbe ereditare la funzione che effettua il bless.
+Consultate L<perltoot> e L<perlobj> per maggiori dettagli sull'operazione di bless 
 (e i blessing) degli oggetti.
 
 Prendete sempre in considerazione il fatto di effettuare il bless di oggetti nelle 
 NOMECLASSE che utilizzano sia maiuscole che minuscole. I namespace con tutte le lettere 
 minuscole sono considerati riservati per le direttive del Perl. I tipi interni hanno tutti i 
-nomi maiuscoli dunque, per prevenire la confusione, potete pure evitare tali nomi di 
+nomi maiuscoli. Per prevenire la confusione, potete pure evitare tali nomi di 
 package. Assicuratevi che NOMECLASSE sia un valore vero.
 
 Consultate L<perlmod/"Perl Modules">  ["Moduli Perl", NdT].
 
 =item caller ESPR
+X<caller> X<call stack> X<stack> X<stack trace>
 
 =item caller
 
@@ -642,6 +676,14 @@ C<< N > 1 >>. In particolare, C<@DB::args> potrebbe avere l'informazione dalla v
 precedente che C<caller> E<egrave> stato chiamato.
 
 =item chdir ESPR
+X<chdir>
+X<cd>
+
+=item chdir FILEHANDLE
+
+=item chdir DIRHANDLE
+
+=item chdir
 
 Cambia la directory corrente facendola diventare ESPR, se possibile. Se ESPR viene 
 omessa, cambia la directory corrente in quella specificata in C<$ENV{HOME}>, se 
@@ -651,7 +693,12 @@ Se nessuna di queste variabili E<egrave> impostata, C<chdir> non ha alcun effett
 Restituisce vero in caso di successo, falso negli altri casi. Consultate l'esempio in 
 C<die>.
 
+Su sistemi che supportano fchdir, potreste passare come argomenti un file handle oppure
+un directory handle. Su sistemi che non supportano fchdir, passare gli handle
+produce un errore fatale a tempo di esecuzione.
+
 =item chmod LISTA
+X<chmod> X<permesso> X<modalita`>
 
 Cambia i permessi di una lista di file. Il primo elemento della lista deve essere la 
 modalitE<agrave> numerica, che deve probabilmente essere un numero ottale, e che 
@@ -666,6 +713,14 @@ ciE<ograve> che avete a disposizione E<egrave> una stringa.
     $modalita = '0644'; chmod oct($modalita), 'pippo'; # questo e` meglio
     $modalita = 0644;   chmod $modalita, 'pippo';      # questo e` il migliore
 
+Su sistemi che supportano fchmod, potreste passare i file handle tra i file.
+Su sistemi che non supportano fchmod, passare file handle
+produce un errore fatale a tempo di esecuzione.
+
+    open(my $fh, "<", "pippo");
+    my $perm = (stat $fh)[2] & 07777;
+    chmod($perm | 0600, $fh);
+
 Potete anche importare le costanti simboliche C<S_I*> dal modulo Fcntl:
 
     use Fcntl ':mode';
@@ -674,6 +729,7 @@ Potete anche importare le costanti simboliche C<S_I*> dal modulo Fcntl:
     # Questo e` identico al chmod 0755 dell'esempio sopra.
 
 =item chomp VARIABILE
+X<chomp> X<INPUT_RECORD_SEPARATOR> X<$/> X<ritorno a capo> X<eol>
 
 =item chomp( LISTA )
 
@@ -720,6 +776,7 @@ vi potreste aspettare. Similmente, C<chomp $a, $b> E<egrave> interpreato come C<
 anzichE<eacute> come C<chomp($a, $b)>.
 
 =item chop VARIABILE
+X<chop>
 
 =item chop( LISTA )
 
@@ -743,6 +800,7 @@ tranne l'ultimo carattere, utilizzate C<substr($stringa, 0, -1)>.
 Si veda anche L</chomp>.
 
 =item chown LISTA
+X<chown> X<owner> X<user> X<group>
 
 Cambia il proprietario (ed il gruppo) di una lista di file. I primi due elementi della lista 
 devono essere uid e gid I<numerici>, nell'ordine indicato. Un valore di -1 in una di queste due 
@@ -751,6 +809,10 @@ di non alterare tale valore. Restituisce il numero di file modificati con succes
 
     $cnt = chown $uid, $gid, 'pippo', 'pluto';
     chown $uid, $gid, @nomifile;
+
+Su sistemi che supportano fchown, potreste passare i file handle tra i file.
+Su sistemi che non supportano fchmod, passare file handle
+produce un errore fatale a tempo di esecuzione.
 
 Di seguito E<egrave> riportato un esempio che risolve le uid non numeriche servendosi del file 
 passwd:
@@ -776,6 +838,7 @@ portabile. Sui sistemi POSIX, potete verificare questa condizione in questo modo
     $chown_possibile = not sysconf(_PC_CHOWN_RESTRICTED);
 
 =item chr NUMERO
+X<chr> X<carattere> X<ASCII> X<Unicode>
 
 =item chr
 
@@ -793,6 +856,7 @@ Va notato che mediante la direttiva C<bytes>, il NUMERO viene mascherato dagli o
 Consultate L<perlunicode> e L<encoding> per maggiori informazioni su Unicode.
 
 =item chroot NOMEFILE
+X<chroot> X<root>
 
 =item chroot
 
@@ -803,6 +867,7 @@ Per motivi di sicurezza, questa chiamata E<egrave> riservata al superuser. Se NO
 omesso, esegue un C<chroot> su C<$_>.
 
 =item close FILEHANDLE
+X<close>
 
 =item close
 
@@ -843,11 +908,13 @@ FILEHANDLE puE<ograve> essere un'espressione i cui valori possono essere usati c
 un filehandle indiretto, solitamente il nome effettivo del filehanlde.
 
 =item closedir DIRHANDLE
+X<closedir>
 
 Chiude una directory aperta da C<opendir> e restituisce l'esito di 
 quella chiamata di sistema.
 
 =item connect SOCKET,NOME
+X<connect>
 
 Tenta di connettersi ad un socket remoto, proprio come fa la chiamata 
 di sistema connect. Restituisce vero se ha successo, falso altrimenti. 
@@ -856,8 +923,9 @@ il socket. Date un'occhiata gli esempi in L<perlipc/"Sockets: Client/Server Comm
 ["Socket: Comunicazione Client/Server", NdT].
 
 =item continue BLOCCO
+X<continue>
 
-In realtE<agrave>, E<egrave> un'istruzione per il controllo di flusso 
+C<continue> in realtE<agrave> E<egrave> un'istruzione per il controllo di flusso 
 piuttosto che una funzione. Se c'E<egrave> un C<continue> BLOCCO associato 
 ad un BLOCCO (generalmente in un C<while> o in un C<foreach>), questo 
 viene eseguito appena prima che la condizione venga valutata nuovamente, 
@@ -887,6 +955,7 @@ ad utilizzarne una vuota, logico quanto basta. In questo caso, C<next>
 porta direttamente alla valutazione della condizione all'inizio del ciclo.
 
 =item cos ESPR
+X<cos> X<cosine> X<acos> X<arccosine>
 
 =item cos
 
@@ -899,33 +968,44 @@ C<Math::Trig::acos()>, oppure questa relazione:
     sub acos { atan2( sqrt(1 - $_[0] * $_[0]), $_[0] ) }
 
 =item crypt TESTOINCHIARO,SEME
+X<crypt> X<digest> X<hash> X<salt> X<plaintext> X<password>
+X<decrypt> X<cryptography> X<passwd>
 
-Cifra una stringa esattamente come fa la funzione crypt(3) della 
-libreria C (assumendo che abbiate a disposizione una versione di 
-quest'ultima che non sia stata privata di tale funzione per questioni 
-di sicurezza). Questa funzione puE<ograve> risultare utile, tra le 
-altre cose, per cercare password poco sicure nei file delle password. 
-Solo i ragazzi con il cappello bianco dovrebbero cimentarsi con crypt().
+Crea una stringa digest [riassunto, NdT] proprio come fa la funzione
+crypt(3) nella libreria C (assumendo che ce ne abbiate davvero una, che
+non sia stata estirpata quale potenziale armamento).
 
-Va notato che L<crypt|/crypt> E<egrave> intesa come una funzione a senso unico, 
-un po' come il rompere le uova per fare la frittata. Non c'E<egrave> 
-(tra quelle conosciute) nessuna funzione decrypt (in altre parole, 
-crypt() E<egrave> una funzione hash a senso unico). A causa di 
-ciE<ograve>, queata funzione non E<egrave> molto utile per la 
-crittografia. (Per quest'ultima, consultate il vostro mirror CPAN 
-piE<ugrave> vicino).
+crypt() E<egrave> una funzione non invertibile. TESTOINCHIARO e SEME sono
+convertiti in una breve stringa, chiamata digest, che viene restituita.
+I medesimi TESTOINCHIARO e SEME restituiranno sempre la stessa stringa,
+ma non c'E<egrave> nessun modo (conosciuto) per ottenere il TESTOINCHIARO
+dall'hash. Piccoli cambiamenti nel TESTOINCHIARO o nel SEME ha come
+risultato dei grandi cambiamenti nel digest.
 
-Quando effetuate la verifica di una stringa cifrata dovete usare il 
-testo cifrato come seme (ad esempio C<crypt($chiaro, $cifrato) eq 
-$cifrato>). Questo fa sE<igrave> che il vostro codice funzioni sia con 
-la L<crypt|/crypt> standard che con implementazioni piE<ugrave> esotiche. 
+Non c'E<egrave> una funzione di decifratura. Questa funzione non E<egrave>
+per nulla utile alla crittografia (per questa cosa, date un'occhiata ai moduli
+F<Crypt> sul vostro mirror CPAN piE<ugrave> vicino) e il nome "crypt" [cripta, NdT]
+E<egrave> un po' un termine improprio. Il suo uso principale E<Egrave> invece
+quello di controllare se due parti di testo sono le stessem senza dover
+trasmettere o immagazzinare il testo stesso. Un esempio E<egrave> controllare
+se viene fornita una password corretta. E<Egrave> il digest della password ad
+essere immagazzinato e non la password stessa. L'utente digita una password
+che viene sottoposta a crypt() con il medesimo digest memorizzato quale seme.
+Se i due digest corrispondono, la password E<egrave> corretta.
+
+Quando effetuate la verifica di una stringa digest esistente, dovreste usare il 
+digest come seme (come C<crypt($chiaro, $digest) eq $digest>). La parte 
+SEME usata per creare il digest E<egrave> visibile come parte del digest.
+Questo assicura che crypt() calcolerE<agrave> l'hash della nuova stringa
+con lo stesso seme del digest. Questo fa sE<igrave> che il vostro codice funzioni
+sia con la L<crypt|/crypt> standard che con implementazioni piE<ugrave> esotiche. 
 In altre parole, non presumete nulla sulla stringa restituita, o su 
-quanti byte siano siano significativi nella stringa cifrata.
+quanti byte siano siano significativi nel digest.
 
 Tradizionalmente, il risultato E<egrave> una stringa di 13 byte: i 
 primi due sono il seme, e sono seguiti da 11 byte appartenenti 
 all'insieme C<[./0-9A-Za-z]>, e solo i primi otto byte della stringa 
-cifrata sono significativi; tuttavia, schemi di hashing alternativi 
+digest sono significativi; tuttavia, schemi di hashing alternativi 
 (come MD5), schemi di sicurezza di livello piE<ugrave> elevato 
 (come C2) ed implementazioni su piattaforme non-UNIX, possono 
 generare stringhe diverse.
@@ -958,27 +1038,28 @@ programma conosca la propria password:
 Chiaramente, scrivere la vostra password a chiunque ve la richieda 
 non E<egrave> saggio.
 
-La funzione L<crypt|/crypt> non E<egrave> adatta per cifrare grandi 
-quantitE<agrave> di dati, non del tutto almeno, perchE<eacute> non 
-potete ottenere le vostre informazioni di nuovo in chiaro. Date 
-un'occhiata alle directory F<by-module/Crypt> e a F<by-module/PGP> 
-sul vostro mirror CPAN preferito per un mucchio di moduli 
-potenzialmente utili.
+La funzione L<crypt|/crypt> non E<egrave> adatta per calcolare il
+valore di hash per grandi quantitE<agrave> di dati, non del tutto
+almeno, perchE<eacute> non potete ottenere le vostre informazioni
+di nuovo in chiaro. Date un'occhiata al modulo L<Digest> per ulteriori
+robusti algoritmi.
 
-Se usate crypt() su una stringa Unicode (che I<potenzialmente> 
-contiene caratteri con codice superiore a 255), Perl cerca di dare 
-un senso alla situazione cercando di riportare (una copia de) la 
-stringa ad una stringa a otto bit prima di chiamare crypt() (su 
-quella copia). Se ciE<ograve> funziona, bene. Altrimenti, crypt() 
+Se usate crypt() su una stringa Unicode (che I<potenzialmente>
+contiene caratteri con codice superiore a 255), Perl cerca di dare
+un senso alla situazione cercando di riportare (una copia de) la
+stringa ad una stringa a otto bit prima di chiamare crypt() (su
+quella copia). Se ciE<ograve> funziona, bene. Altrimenti, crypt()
 termina con C<Wide character in crypt> [crypt su carattere esteso, NdT]
 
 =item dbmclose HASH
+X<dbmclose>
 
 [Questa funzione E<egrave> stata ampiamente soppiantata dalla funzione C<untie>].
 
 Rompe il legame tra un file DBM ed un hash.
 
 =item dbmopen HASH,NOMEDB,MASCHERA
+X<dbmopen> X<dbm> X<ndbm> X<sdbm> X<gdbm>
 
 [Questa funzione E<egrave> stata ampiamente soppiantata dalla 
 funzione C<tie>].
@@ -1000,7 +1081,7 @@ ciE<ograve> ricade su sdbm(3).
 Se non avete accesso in scrittura sul file DBM, potete solo 
 leggere i valori dell'hash e non impostarli. Se volete testare la 
 possibilitE<agrave> di scrivere, usate o i test sui file oppure 
-tentate di settare l'elemento di un hash fittizio all'interno di 
+tentate di impostare l'elemento di un hash fittizio all'interno di 
 un C<eval> che catturerE<agrave> l'errore.
 
 Va notato che le funzioni come C<keys> e C<values> possono 
@@ -1027,6 +1108,7 @@ caricamento della libreria prima di richiamare dbmopen():
 	or die "Non e` possibile aprire il file history di netscape: $!";
 
 =item defined ESPR
+X<defined> X<undef> X<undefined>
 
 =item defined
 
@@ -1084,8 +1166,8 @@ esempio, se scrivete:
     "ab" =~ /a(.*)b/;
 
 La ricerca del pattern ha successo, e C<$1> risulta definito, 
-nonostante esso abbia trovato "nulla". Ma non E<egrave> che non ha 
-veramente trovato nulla, piuttosto, ha trovato qualcosa che era 
+nonostante esso abbia trovato "nulla". Non E<egrave> che non ha 
+veramente trovato nulla. Piuttosto, ha trovato qualcosa che era 
 lungo zero caratteri. Tutto ciE<ograve> E<egrave> piuttosto chiaro 
 e corretto. Quando una funzione restituisce un valore indefinito, 
 ammette di non essere in grado di fornire una risposta corretta. 
@@ -1097,6 +1179,7 @@ E<egrave> ciE<ograve> che desiderate.
 Consultate anche L</undef>, L</exists>, L</ref>.
 
 =item delete ESPR
+X<delete>
 
 Data un'espressione che specifica un elemento di
 un hash o di un array, una porzione di hash o di array,
@@ -1128,11 +1211,11 @@ restituire qualcosa.
 Cancellare effettivamente un elemento da un array riporta 
 quella posizione dell'array al suo stato iniziale, non 
 inizializzato. Successive verifiche con exists()
-dello stesso elemento restituiranno falso. Va notato che 
+dello stesso elemento restituiranno falso. Inoltre, 
 cancellare elementi nel mezzo di un array
 non farE<agrave> scorrere in basso l'indice degli 
-elementi successivi, per quello usate splice().
-Consultate L</exists>.
+elementi successivi. Usate splice() per questo.
+Si veda L</exists>.
 
 Il seguente codice cancella (in maniera inefficiente)
 tutti i valori di %HASH e di @ARRAY:
@@ -1145,7 +1228,7 @@ tutti i valori di %HASH e di @ARRAY:
         delete $ARRAY[$indice];
     }
 
-Questi fanno la stessa cose:
+Questi fanno la stessa cosa:
 
     delete @HASH{keys %HASH};
 
@@ -1175,6 +1258,7 @@ un hash o di un array:
     delete @{$ref->[$x][$y]}[$indice1, $indice2, @altriindici];
 
 =item die LISTA
+X<die> X<throw> X<eccezione> X<raise> X<$@> X<abort>
 
 Fuori da un C<eval>, stampa il valore di LISTA su C<STDERR> ed esce 
 dal programma con il valore corrente di C<$!> (errno). Se C<$!> 
@@ -1236,11 +1320,13 @@ eccezioni piE<ugrave> sofisticate, utilizzando degli oggetti che
 possono contenere dati relativi alla natura dell'eccezione. Questo 
 schema E<egrave> a volte preferibile all'utilizzo di espressioni 
 regolari per verificare la presenza di particolari valori nella 
-stringa $@. Un esempio:
+stringa $@. Ecco un esempio:
+
+    use Scalar::Util 'blessed';
 
     eval { ... ; die Unqualche::Modulo::Eccezione->new( PIPPO => "pluto" ) };
     if ($@) {
-        if (ref($@) && UNIVERSAL::isa($@,"Unqualche::Modulo::Eccezione")) {
+        if (blessed($@) && $@->isa("Unqualche::Modulo::Eccezione")) {
             # gestisce Unqualche::Modulo::Eccezione
         }
         else {
@@ -1248,20 +1334,19 @@ stringa $@. Un esempio:
         }
     }
 
-PoichE<eacute> perl converte in stringa i messaggi non gestiti prima 
+PoichE<eacute> perl converte in stringa i messaggi non gestiti prima
 di visualizzarli, potreste implementare un overload dell'operatore di
-conversione a stringa su tali oggetti eccezione. Consultate 
+conversione a stringa su tali oggetti eccezione. Consultate
 L<overload> per maggiori dettagli.
 
-Potete fare in modo che venga chiamata una funzione appena prima che 
-C<die> faccia il suo dovere, impostando un riferimento in C<$SIG{__DIE__}>. 
-La funzione indicata sarE<agrave> chiamata con il testo dell'errore e 
-puE<ograve>, volendo, modificare il messaggio d'errore chiamando 
-nuovamente C<die>. Si veda 
-L<perlvar/$SIG{expr}> per dettagli sull'utilizzo di C<%SIG>, e
-L<"eval BLOCK"> per qualche esempio.  Nonostante questa funzionalitE<agrave>
-sia stata pensata per essere eseguita solo appena prima dell'uscita
-dal programma, attualmente non E<egrave> cosE<igrave> -- la funzione
+Potete fare in modo che venga chiamata una funzione appena prima che
+C<die> faccia il suo dovere, impostando un riferimento in C<$SIG{__DIE__}>.
+La funzione indicata sarE<agrave> chiamata con il testo dell'errore e
+puE<ograve>, volendo, modificare il messaggio d'errore chiamando
+nuovamente C<die>. Si veda L<perlvar/$SIG{expr}> per dettagli sull'utilizzo di
+C<%SIG>, e L<"eval BLOCK"> per qualche esempio. Nonostante questa funzionalitE<agrave>
+dovesse essere eseguita solo immediatamente prima dell'uscita dal programma,
+ma non E<egrave> piE<ugrave> cosE<igrave> -- la funzione
 in C<$SIG{__DIE__}> viene chiamata anche all'interno di blocchi o
 stringhe in eval()! Se si vuole che la funzione non faccia nulla in questi
 casi, mettere un 
@@ -1274,12 +1359,13 @@ comportamento non intuitivo potrebbe essere modificato in una versione
 successiva.
 
 =item do BLOCCO
+X<do> X<blocco>
 
 Non E<egrave> proprio una funzione. Restituisce il valore dell'ultimo 
 comando nella sequenza dei comandi indicati da BLOCCO. Quando viene 
-modificato da un modificatore di ciclo, esegue il BLOCCO una volta prima 
-di testare la condizione del ciclo (Su altre istruzioni, i modificatori 
-di loop testano prima il condizionale).
+modificato da un modificatore di ciclo C<while> o C<until>, esegue il BLOCCO
+una volta prima di testare la condizione del ciclo (Su altre istruzioni, i
+modificatori di loop testano prima il condizionale).
 
 C<do BLOCCO> I<non> conta come un ciclo, dunque le istruzioni di 
 controllo del ciclo C<next>, C<last> o C<redo> non possono essere usati 
@@ -1287,10 +1373,12 @@ per lasciare o ricominciare il blocco. Consultate L<perlsyn> per strategie
 alternative.
 
 =item do SUBROUTINE(LISTA)
+X<do>
 
-Una forma deprecata di chiamata di subroutine. Consultate L<perlsub>.
+Questa formadi chiamata a subroutine E<egrave> deprecata. Consultate L<perlsub>.
 
 =item do ESPR
+X<do>
 
 Utilizza il valore di ESPR come un nome di file ed esegue il contenuto del 
 file come fosse uno script Perl.
@@ -1337,6 +1425,7 @@ questo modo:
     }
 
 =item dump ETICHETTA
+X<dump> X<core> X<undump>
 
 =item dump
 
@@ -1371,6 +1460,7 @@ Potreste prendere in considerazione anche l'autoloading o il selfloading,
 che almeno fanno I<sembrare> piE<ugrave> veloce il vostro programma.
 
 =item each HASH
+X<each> X<hash, iteratore>
 
 Quando viene chiamato in un contesto di lista, restituisce
 una lista di due elementi che costituiscono la chiave
@@ -1422,6 +1512,9 @@ un'ordine differente:
 Consultate anche C<keys>, C<values> e C<sort>.
 
 =item eof FILEHANDLE
+X<eof>
+X<fine del file>
+Xfine-del-file>
 
 =item eof ()
 
@@ -1476,8 +1569,11 @@ di usare C<eof> visto che gli operatori di input restituiscono tipicamente
 C<undef> quando esauriscono i dati o se c'E<egrave> stato un errore.
 
 =item eval ESPR
+X<eval> X<try> X<catch> X<valutare> X<verifica sintattica> X<eseguire>
 
 =item eval BLOCCO
+
+=item eval
 
 Nella prima forma, il valore restituito da ESPR viene analizzato 
 sintatticamente ed eseguito come se fosse un piccolo programma Perl. 
@@ -1487,14 +1583,14 @@ di vista sintattico e, se non ci sono stati errori, eseguito nel
 contesto lessicale del programma Perl corrente, in maniera che tutte 
 le definizioni di formato, le subroutine, e i valori dati alle 
 variabili rimangano intatti. Va notato che il valore viene verificato 
-sintatticamente ogni qualvolta l'eval effettua un'esecuzione. Se ESPR 
+sintatticamente ogni qualvolta l'C<eval> effettua un'esecuzione. Se ESPR 
 viene omessa, esso valuta C<$_>. Questa forma viene usata tipicamente 
 per ritardare la verifica sintattica e la successiva esecuzione del 
 testo di ESPR fino al tempo di esecuzione.
 
 Nella seconda forma, il codice all'interno del BLOCCO viene verificato 
 sintatticamente solo una volta, allo stesso momento in cui il codice che 
-circonda lo stesso eval viene verificato sintatticamente, ed eseguito 
+circonda lo stesso C<eval> viene verificato sintatticamente, ed eseguito 
 all'interno del contesto del programma Perl corrente. Questa forma viene 
 usata tipicamente per catturare le eccezioni in maniera piE<ugrave> 
 efficiente che non la prima (vedete qui sotto), pur fornendo anche il 
@@ -1507,7 +1603,7 @@ In entrambe le forme, il valore restituito E<egrave> il valore dell'ultima
 espressione valutata all'interno del mini-programma; puE<ograve> anche 
 essere usata un'istruzione return, proprio come per le subroutine. 
 L'espressione che fornisce il valore restituito, viene valutata in un 
-contesto vuoto, scalare oppure di lista, a seconda del contesto dell'eval 
+contesto vuoto, scalare oppure di lista, a seconda del contesto dell'C<eval> 
 stesso. Si veda L</wantarray> per maggiori informazioni su come puE<ograve> 
 essere valutata la valutazione del contesto.
 
@@ -1547,10 +1643,10 @@ Esempi:
     # un errore a tempo di esecuzione
     eval '$risposta =';	# imposta $@
 
-A causa del corrente, opinabilmente non corretto, stato degli hook di 
-C<__DIE__>, quando si usa la forma C<eval{}> come una trappola per le 
-eccezioni nelle librerie, si potrebbe non voler innescare alcun hook 
-per C<__DIE__> che il codice utente potrebbe aver installato. Per 
+Usare la forma C<eval{}> per catturare le eccezioni nelle librerie, presenta
+qualche complicanza. A causa del corrente, opinabilmente non corretto, stato degli hook di 
+C<__DIE__>, potreste non voler innescare alcun hook 
+per quei C<__DIE__> che il codice utente potrebbe aver installato. Per 
 questo scopo si puE<ograve> utilizzare il costrutto C<local $SIG{__DIE__}>, 
 come mostrato in questo esempio:
 
@@ -1594,7 +1690,7 @@ altro che restituire il valore di $x. (Il caso 4 E<egrave> preferibile
 solamente per ragioni visuali, ma ha anche il vantaggio di compilare a 
 tempo di compilazione invece che a tempo di esecuzione). Il caso 5 
 E<egrave> un luogo dove, di norma, I<vorreste> usare le virgolette, 
-eccetto che in questa particolare situazione, potete invece semplicemente 
+eccetto che in questa particolare situazione, invece potete semplicemente
 usare i riferimenti simbolici, proprio come nel caso 6.
 
 C<eval BLOCCO> I<non> viene considerata come un ciclo, dunque le 
@@ -1608,6 +1704,7 @@ non si ha bisogno di preoccuparsi di questo a meno che non si stia scrivendo un
 debugger del Perl.
 
 =item exec LISTA
+X<exec> X<eseguire>
 
 =item exec PROGRAMMA LISTA
 
@@ -1693,6 +1790,7 @@ C<END> nE<eacute> invocherE<agrave> nessun metodo C<DESTROY>
 nei vostri oggetti.
 
 =item exists ESPR
+X<exists> X<autovivificazione>
 
 Data un'espressione che specifica un elemento di un hash o di un 
 array, restituisce vero se l'elemento specificato nell'hash o 
@@ -1765,6 +1863,9 @@ come argomento di exists() E<egrave> un errore.
     exists &sub();	# Errore
 
 =item exit ESPR
+X<exit> X<terminate> X<abort>
+
+=item exit
 
 Valuta ESPR ed esce immediatamente con quel valore. Esempio:
 
@@ -1795,6 +1896,7 @@ chiamare C<POSIX:_exit($stato)> per evitare END e il processo di
 distruzione. Consultate L<perlmod> per i dettagli.
 
 =item exp ESPR
+X<exp> X<esponenziale> X<antilog> X<antilogaritmico> X<e>
 
 =item exp
 
@@ -1802,6 +1904,7 @@ Restituisce I<e> (la base naturale del logaritmo) elevato alla potenza
 di ESPR. Se ESPR viene omessa, restituisce C<exp($_)>.
 
 =item fcntl FILEHANDLE,FUNZIONE,SCALARE
+X<fcntl>
 
 Implementa la funzione fcntl(2). Probabilmente prima dovrete dichiarare 
 
@@ -1841,6 +1944,7 @@ voi stessi.
                 or die "Impossibile impostare i flag per il socket: $!\n";
 
 =item fileno FILEHANDLE
+X<fileno>
 
 Restituisce il descrittore di file per un filehandle, o il valore 
 indefinito se il filehandle non E<egrave> aperto. Lo scopo di 
@@ -1862,6 +1966,7 @@ funzionalitE<agrave> di C<open> potrebbero restituire il valore
 indefinito nonostante siano aperti).
 
 =item flock FILEHANDLE,OPERAZIONE
+X<flock> X<lock> X<locking>
 
 Chiama flock(2), o una sua emulazione, su FILEHANDLE.
 Restituisce vero in caso di successo, falso in caso di fallimento. 
@@ -1874,8 +1979,8 @@ Due semantiche di C<flock> potenzialmente non ovvie ma tradizionali
 sono che esso aspetta indefinitamente fino a che il lock non sia 
 assegnato e che i suoi lock sono B<solamente consultivi>. 
 Tali lock discrezionali sono molto flessibili ma offrono minori 
-garanzie. Questo significa che dei file sottoposti a lock con 
-C<flock> possono essere modificati da quei programmi che non usano 
+garanzie. Questo significa che i programmi che non usano anch'essi
+C<flock> possono modificare quei file sottoposti a lock con 
 C<flock>. Per i dettagli consultate L<perlport>, la vostra 
 specifica documentazione sul port oppure le vostre 
 manpage, specifiche del sistema. Se state scrivendo programmi 
@@ -1954,6 +2059,7 @@ lo scrivere server.
 Consultate anche L<DB_File> per altri esempi su flock().
 
 =item fork
+X<fork> X<child> X<parent>
 
 Effettua una chiamata di sistema a fork(2), al fine di creare un nuovo 
 processo che esegua lo stesso programma a partire dal punto della chiamata. 
@@ -1988,6 +2094,7 @@ avete finito. Se ciE<ograve> rappresenta un problema, dovrete riaprire
 tali descrittori verso F</dev/null>.
 
 =item format
+X<format>
 
 Dichiara un formato di descrizione che verrE<agrave> usato dalla 
 funzione C<write>. Per esempio:
@@ -2002,9 +2109,10 @@ funzione C<write>. Per esempio:
     $~ = 'Qualcosa';
     write;
 
-Si veda L<perlform> per molti dettagli ed esempi.
+Consultate L<perlform> per molti dettagli ed esempi.
 
 =item formline DESCRIZIONE,LISTA
+X<formline>
 
 Questa E<egrave> una funzione interna usata dai C<format>, 
 tuttavia potete anche richiamarla. Essa formatta 
@@ -2013,7 +2121,7 @@ con i contenuti di DESCRIZIONE, ponendo l'output
 nell'accumulatore del formato di output, C<$^A> (o 
 C<$ACCUMULATOR> con il modulo English). Infine, quando viene 
 eseguito un C<write>, i contenuti di C<$^A> vengono scritti su 
-qualche filehandle, ma potreste anche leggere C<$^A> da 
+qualche filehandle. Potreste anche leggere C<$^A> da 
 sE<eacute> e poi reimpostare C<$^A> a C<"">. Va notato che un 
 format tipicamente esegue un C<formline> per linea di formato 
 ma la funzione C<formline> di per sE<eacute> non tiene conto di 
@@ -2031,6 +2139,7 @@ C<formline> restituisce sempre vero. Consultate L<perlform>
 per altri esempi.
 
 =item getc FILEHANDLE
+X<getc> X<getchar>
 
 =item getc
 
@@ -2072,6 +2181,7 @@ CPAN; dettagli su CPAN possono essere trovati su
 L<perlmodlib/CPAN>.
 
 =item getlogin
+X<getlogin> X<login>
 
 Implementa la funzione della libreria C che ha lo stesso nome, 
 la quale su molti sistemi restituisce il login corrente da 
@@ -2083,6 +2193,7 @@ Non prendete in considerazione C<getlogin> per l'autenticazione:
 non E<egrave> sicura quanto C<getpwuid>. 
 
 =item getpeername SOCKET
+X<getpeername> X<peer>
 
 Restituisce l'indirizzo compattato (sockaddr) dell'altro capo della 
 connessione SOCKET.
@@ -2094,6 +2205,7 @@ connessione SOCKET.
     $suoindirizzo        = inet_ntoa($indirizzo);
 
 =item getpgrp PID
+X<getpgrp> X<gruppo>
 
 Restituisce il gruppo del processo corrente per il PID specificato.
 Usate un PID di C<0> per ottenere il gruppo del processo corrente 
@@ -2104,6 +2216,7 @@ Va notato che la versione POSIX di C<getpgrp> non accetta un PID
 come argomento, dunque solo C<PID==0> E<egrave> davvero portabile.
 
 =item getppid
+X<getppid> X<genitore> X<pid>
 
 Restituisce l'id del processo genitore.
 
@@ -2116,6 +2229,7 @@ richiamare la funzione C<getppid()> di sistema si puE<ograve> utilizzare
 il modulo CPAN C<Linux::Pid>.
 
 =item getpriority QUALE,CHI
+X<getpriority> X<priorita`> X<nice>
 
 Restituisce la prioritE<agrave> corrente per un processo, un gruppo di 
 processi, o un utente. (Consultate L<getpriority(2)>). SolleverE<agrave> 
@@ -2123,6 +2237,12 @@ un'eccezione bloccante se usata in una macchina che non implementa
 getpriority(2).
 
 =item getpwnam NOME
+X<getpwnam> X<getgrnam> X<gethostbyname> X<getnetbyname> X<getprotobyname>
+X<getpwuid> X<getgrgid> X<getservbyname> X<gethostbyaddr> X<getnetbyaddr>
+X<getprotobynumber> X<getservbyport> X<getpwent> X<getgrent> X<gethostent>
+X<getnetent> X<getprotoent> X<getservent> X<setpwent> X<setgrent> X<sethostent>
+X<setnetent> X<setprotoent> X<setservent> X<endpwent> X<endgrent> X<endhostent>
+X<endnetent> X<endprotoent> X<endservent>
 
 =item getgrnam NOME
 
@@ -2278,6 +2398,7 @@ Anche se sembra che siano gli stessi metodi di chiamata (uid), non lo sono perch
 C<File::stat> E<egrave> diverso da un oggetto C<User::pwent>.
 
 =item getsockname SOCKET
+X<getsockname>
 
 Restituisce l'indirizzo compattato sockaddr di questa estremitE<agrave> 
 della connessione SOCKET nel caso non si conosca l'indirizzo, visto che si 
@@ -2291,6 +2412,7 @@ hanno diversi differenti IP a cui la connessione potrebbe partecipare.
        inet_ntoa($mioind);
 
 =item getsockopt SOCKET,LIVELLO,NOMEOPZ
+X<getsockopt>
 
 Consulta l'opzione di nome NOMEOPZ associata al SOCKET ad un dato LIVELLO.
 Le opzioni possono esistere su livelli di protocollo multipli a seconda del 
@@ -2322,6 +2444,7 @@ Un esempio che testa se l'algoritmo di Nagle sia attivato su di un socket:
 
 
 =item glob ESPR
+X<glob> X<wildcard> X<filename, espansione> X<espandere>
 
 =item glob
 
@@ -2340,6 +2463,9 @@ utilizzando l'estensione standard C<File::Glob>. Consultate
 L<File::Glob> per i dettagli.
 
 =item gmtime ESPR
+X<gmtime> X<UTC> X<Greenwich>
+
+=item gmtime
 
 Converte l'ora restituita dalla funzione time in una lista di 9 elementi, 
 con l'ora localizzata al fuso orario locale. E<egrave> tipicamente usato 
@@ -2356,7 +2482,8 @@ il mese stesso, nell'intervallo C<0..11>, in cui 0 indica Gennaio e 11 Dicembre.
 $anno E<egrave> il numero di anni a partire dal 1900. CiE<ograve> significa che 
 $anno E<egrave> C<123> nel 2023. $gios E<egrave> il giorno della settimana, con 0 
 che indica Domenica e 3 MercoledE<igrave>. $gioa E<egrave> il giorno dell'anno, 
-nell'intervallo C<0..364> (o <0..365> negli anni bisestili).
+nell'intervallo C<0..364> (o <0..365> negli anni bisestili). $isdst
+E<egrave> sempre C<0>.
 
 Va notato che l'elemento $anno I<non> contiene semplicemente le ultime due cifre 
 dell'anno. Se assumete ciE<ograve>, allora vi ritrovate a creare programmi non 
@@ -2388,6 +2515,7 @@ consultate gli esempi in L</localtime>.
 Si consulti L<perlport/gmtime> per ciE<ograve> che concerne la portabilitE<agrave>.
 
 =item goto ETICHETTA
+X<goto> X<jump> X<jmp>
 
 =item goto ESPR
 
@@ -2433,6 +2561,7 @@ essere una variabile scalare contenente un riferimento a codice, oppure un
 blocco che fornisce un riferimento a codice.
 
 =item grep BLOCCO LISTA
+X<grep>
 
 =item grep ESPR, LISTA
 
@@ -2472,6 +2601,7 @@ Consultate anche L</map> per una lista composta dai
 risultati del BLOCCO o dell'ESPR.
 
 =item hex ESPR
+X<hex> X<hexadecimal>
 
 =item hex
 
@@ -2488,7 +2618,8 @@ differenza di oct(), hex() non rimuove eventuali spazi bianchi ad inizio
 stringa. Per mostrare qualcosa come esadecimale, si dia un'occhiata a L</printf>,
 L</sprintf> o L</unpack>.
 
-=item import
+=item import LISTA
+X<import>
 
 Non esiste una reale funzione C<import>. Si tratta semplicemente di un 
 normale metodo (subroutine) definito (o ereditato) dai moduli che 
@@ -2496,21 +2627,25 @@ desiderano esportare dei nomi in un altro modulo. La funzione C<use>
 chiama il metodo C<import> per il package usato. Consultate anche L</use>, 
 L<perlmod> e L<Exporter>.
 
-=item index STR,SUBSTR,POSIZIONE
+=item index STR,SOTTOSTR,POSIZIONE
+X<index> X<indexOf> X<InStr>
 
-=item index STR,SUBSTR
+=item index STR,SOTTOSTR
 
 La funzione index cerca una stringa in un'altra, ma senza comportarsi 
 in maniera simile ad una wildcard [carattere jolly, NdT], come fa invece 
 una ricerca tramite regular expression. Essa restituisce la posizione 
-della prima occorrenza di SUBSTR in STR, a partire da POSIZIONE. Se 
-POSIZIONE viene omessa, index() inizia a cercare dall'inizio della stringa. 
-Il valore restituito indica la posizione a partire da C<0> (o qualsiasi 
-valore a cui abbiate impostato la variabile C<$[>, ma non fatelo). Se la 
-sottostringa non viene trovato, index() restituisce un'unitE<agrave> meno 
-della base, cioE<egrave> solitamente C<-1>.
+della prima occorrenza di SOTTOSTR in STR, a partire da POSIZIONE. Se 
+POSIZIONE viene omessa, C<index> inizia a cercare dall'inizio della stringa. 
+La POSIZIONE prima dell'inizio della stringa oppure dopo la sua fine
+viene trattata come se fosse, rispettivamente, l'inizio o la fine.
+POSIZIONE ed il valore restituito indicano la posizione a partire da C<0> (o 
+qualsiasi valore a cui abbiate impostato la variabile C<$[>, ma non fatelo).
+Se la sottostringa non viene trovato, C<index> restituisce un'unitE<agrave>
+meno della base, cioE<egrave> solitamente C<-1>.
 
 =item int ESPR
+X<int> X<intero> X<troncato> X<trunc>
 
 =item int
 
@@ -2525,13 +2660,14 @@ funzioni  C<sprintf>, C<printf>, o C<POSIX::floor> e C<POSIX::ceil> vi
 saranno piE<ugrave> utili di quanto possa esserlo int().
 
 =item ioctl FILEHANDLE,FUNZIONE,SCALARE
+X<ioctl>
 
 Implementa la funzione di sistema ioctl(2). Probabilmente dovrete prima
 scrivere:
 
-    require "ioctl.ph";    # probabilmente in /usr/local/lib/perl/ioctl.ph
+    require "sys/ioctl.ph";    # probabilmente in $Config{archlib}/sys/ioctl.ph
 
-per ottenere le corrette definizioni delle funzioni. Se F<ioctl.ph>
+per ottenere le corrette definizioni delle funzioni. Se F<sys/ioctl.ph>
 non esiste oppure non contiene le corrette definizioni, dovrete
 scrivervele da soli, basandovi sui file header in C, come ad esempio
 F<< <sys/ioctl.h> >>. (C'E<egrave> uno script Perl chiamato B<h2ph>, 
@@ -2566,6 +2702,7 @@ La stringa speciale C<"0 ma vero"> non risente delle proteste
 di B<-w> sulla conversione impropria dei numeri.
 
 =item join ESPR, LISTA
+X<join>
 
 Unisce le stringhe distinte di LISTA in una singola
 stringa i cui campi sono separati dal valore di ESPR,
@@ -2578,6 +2715,7 @@ C<join> non accetta un pattern come primo argomento.
 Fate il confronto con L</split>.
 
 =item keys HASH
+X<keys> X<key>
 
 Restituisce una lista contenente tutte le chiavi dell'hash indicato. 
 (In contesto scalare, restituisce il numero di chiavi). 
@@ -2590,9 +2728,9 @@ Per ragioni di sicurezza, a partire dal Perl 5.8.1 l'ordinamento
 E<egrave> differente anche tra diverse esecuzioni di Perl (consultate 
 L<perlsec/"Algorithmic Complexity Attacks"> ["Attacchi di ComplessitE<agrave> Algoritmica", NdT]).
 
-Come effetto collaterale, la chiamata a keys() reimposta l'iteratore interno dell'HASH,
-si veda L</each>. (In particolare, una chiamata a keys() in un contesto vuoto, reimposta 
-l'iteratore senza alcun costo computazionale aggiuntivo).
+Come effetto collaterale, la chiamata a keys() reimposta l'iteratore interno dell'HASH
+(si veda L</each>). In particolare, una chiamata a keys() in un contesto vuoto, reimposta 
+l'iteratore senza alcun costo computazionale aggiuntivo.
 
 Ecco ancora un altro modo per stampare le variabili d'ambiente:
 
@@ -2643,6 +2781,7 @@ effetto collaterale).
 Consultate anche C<each>, C<values> e C<sort>.
 
 =item kill SEGNALE, LISTA
+X<kill> X<signal>
 
 Invia un segnale ad un elenco di processi. Restituisce il numero di 
 processi a cui il segnale E<egrave> stato inviato (che non E<egrave> 
@@ -2668,6 +2807,7 @@ Consultate L<perlipc/"Signals"> ["Segnali", NdT] per maggiori
 dettagli.
 
 =item last ETICHETTA
+X<last> X<break>
 
 =item last
 
@@ -2695,6 +2835,7 @@ Consultate anche L</continue> per un esempio di come funzionano C<last>, C<next>
 e C<redo>.
 
 =item lc ESPR
+X<lc> X<lowercase>
 
 =item lc
 
@@ -2707,6 +2848,7 @@ per il locale e l'Unicode.
 Se ESPR viene omessa, lc usa C<$_>.
 
 =item lcfirst ESPR
+X<lcfirst> X<lowercase>
 
 =item lcfirst
 
@@ -2719,6 +2861,7 @@ L<perlunicode> per maggiori dettagli sul supporto per il locale e l'Unicode.
 Se ESPR viene omessa, la funzione usa C<$_>.
 
 =item length ESPR
+X<length> X<dimensione>
 
 =item length
 
@@ -2733,17 +2876,20 @@ numero di caratteri, non il numero di byte. Per ottenere la lunghezza in
 byte, usate C<do { use bytes; length(ESPR) }>, consultate L<bytes>.
 
 =item link VECCHIOFILE,NUOVOFILE
+X<link>
 
 Crea un nuovo nomefile che E<egrave> un link al vecchio nomefile. 
 Restituisce vero in caso di successo, falso altrimenti.
 
 =item listen SOCKET,DIMENSIONECODA
+X<listen>
 
 Fa la stessa cosa di quello che fa la chiamata di sistema listen. Restituisce 
 vero se ha successo, falso altrimenti. Si veda l'esempio in 
 L<perlipc/"Sockets: Client/Server Communication"> ["Socket: Comunicazione Client/Server", NdT].
 
 =item local ESPR
+X<local>
 
 In realtE<agrave> desiderate probabilmente usare C<my>, poichE<eacute> 
 C<local> non E<egrave> ciE<ograve> che la maggior parte delle persone 
@@ -2757,6 +2903,7 @@ deve essere posta tra parentesi. Consultate L<perlsub/"Temporary Values via loca
 relative agli array ed agli hash legati [con C<tie>, NdT].
 
 =item localtime ESPR
+X<localtime>
 
 =item localtime
 
@@ -2823,6 +2970,7 @@ necessariamente lunghi tre caratteri.
 Si consulti L<perlport/localtime> per ciE<ograve> che concerne la portabilitE<agrave>.
 
 =item lock COSA
+X<lock>
 
 Questa funzione pone un lock consultivo su una variabile condivisa oppure 
 su un oggetto referenziato, contenuti in I<COSA>, fino a che il lock non 
@@ -2835,6 +2983,7 @@ dichiarate C<use threads>, lock() E<egrave> sempre una parola chiave).
 Consultate L<threads>.
 
 =item log ESPR
+X<log> X<logaritmo> X<e> X<ln> X<base>
 
 =item log
 
@@ -2852,10 +3001,11 @@ Ad esempio:
 Consultate anche L</exp> per l'operazione inversa.
 
 =item lstat ESPR
+X<lstat>
 
 =item lstat
 
-Fa le stesse cose della funzione C<stat> (compreso il settare lo speciale 
+Fa le stesse cose della funzione C<stat> (compreso impostare lo speciale 
 filehandle C<_>) ma esegue C<stat> su di un link simbolico invece che sul 
 file al quale il link simbolico punta. Se sul vostro sistema i link 
 simbolici non sono implementati, viene eseguita una normale C</stat>.
@@ -2868,6 +3018,7 @@ Se ESPR viene omessa, esegue C<stat> su C<$_>.
 L'operatore di match [corrispondenza, NdT]. Si veda L<perlop>.
 
 =item map BLOCCO LISTA
+X<map>
 
 =item map ESPR, LISTA
 
@@ -2939,6 +3090,7 @@ e otterrete una lista di hash anonimi, ciascuno con
 una sola coppia chiave/valore.
 
 =item mkdir NOMEFILE,MASK
+X<mkdir> X<md> X<directory, creare>
 
 =item mkdir NOMEFILE
 
@@ -2963,6 +3115,7 @@ Perl rimuove in automatico tutti gli slash alla file di NOMEFILE,
 facendo contenti tutti.
 
 =item msgctl ID,CMD,ARG
+X<msgctl>
 
 Chiama la funzione msgctl(2) del System V IPC. Probabilmente dovrete prima scrivere
 
@@ -2975,12 +3128,14 @@ C<"0 ma vero"> in caso di zero, il reale valore restituito negli altri casi. Con
 anche la documentazione di L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::Semaphore>.
 
 =item msgget CHIAVE,FLAG
+X<msgget>
 
 Chiama la funzione msgget(2) del System V IPC. Restituisce l'id della coda dei messaggi, 
 oppure il valore indefinito se si verifica un errore. Consultate anche la documentazione 
 di L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::Msg>.
 
 =item msgrcv ID,VAR,DIMENSIONE,TIPO,FLAG
+X<msgrcv>
 
 Chiama la funzione msgrcv del System V IPC, allo scopo di ricevere un messaggio dalla 
 coda ID e memorizzarlo nella variabile VAR, con una dimensione massima del messaggio di 
@@ -2994,6 +3149,7 @@ Consultate anche la documentazione di L<perlipc/"SysV IPC">, C<IPC::SysV> e
 C<IPC::SysV::Msg>.
 
 =item msgsnd ID,MSG,FLAG
+X<msgsnd>
 
 Chiama la funzione msgsnd del System V IPC, allo scopo di spedire il messaggio MSG nella 
 coda di messaggi ID. MSG deve inziare con un intero long nativo che indica il tipo di 
@@ -3004,6 +3160,7 @@ verifica un errore. Consultate anche la documentazione di C<IPC::SysV> e
 C<IPC::SysV::Msg>.
 
 =item my ESPR
+X<my>
 
 =item my TIPO ESPR
 
@@ -3023,6 +3180,7 @@ modulo C<Attribute::Handlers>. Consultate L<perlsub/"Private Variables via my()"
 L<Attribute::Handlers>.
 
 =item next ETICHETTA
+X<next> X<continue>
 
 =item next
 
@@ -3050,6 +3208,7 @@ Date un'occhiata anche a L</continue> per una delucidazione su come funzionano C
 C<next> e C<redo>.
 
 =item no Modulo VERSIONE LISTA
+X<no>
 
 =item no Modulo VERSIONE
 
@@ -3060,6 +3219,7 @@ C<next> e C<redo>.
 Si veda la funzione C<use>, della quale C<no> E<egrave> l'opposto.
 
 =item oct ESPR
+X<oct> X<ottale> X<hex> X<esadecimale> X<binario> X<bin>
 
 =item oct
 
@@ -3085,6 +3245,7 @@ permessi di un file. (BenchE<eacute> perl converta automaticamente le stringhe
 in numeri quando necessario, questa conversione automatica usa la base 10).
 
 =item open FILEHANDLE,ESPR
+X<open> X<pipe> X<file, aprire> X<fopen>
 
 =item open FILEHANDLE,MODO,ESPR
 
@@ -3179,9 +3340,9 @@ ulteriori dettagli). Per esempio
   open(FH, "<:utf8", "file")
 
 aprirE<agrave> il file codificato UTF-8 contenente caratteri Unicode, 
-si veda L<perluniintro>. (Va notato che se lo strato E<egrave> specificato 
+si veda L<perluniintro>. Va notato che se lo strato E<egrave> specificato 
 nel caso di tre parametri, gli strati impostati di default dalla direttiva 
-C<open> vengono ignorati).
+C<open> vengono ignorati.
 
 Open restituisce un valore diverso da zero in caso di successo, il valore 
 indefinito diversamente. Se la C<open> presenta una pipe, il valore restituito 
@@ -3203,7 +3364,7 @@ problema)) dovreste sempre controllare il valore restituito dalla apertura
 di un file. Fa eccezione il raro caso quando si intende usare un filehandle 
 NON aperto.
 
-Un caso speciale, la versione a tre argomenti in modalitE<agrave> 
+Un caso speciale, la versione a 3 argomenti in modalitE<agrave> 
 lettura/scrittura dove il terzo parametro sia C<undef>:
 
     open(TMP, "+>", undef) or die ...
@@ -3252,7 +3413,7 @@ Esempio:
     # in memory files
     open(MEMORY,'>', \$var)
 	or die "Impossibile aprire il file in memoria: $!";
-    print MEMORY "foo!\n";			# l'output andra` a finire in $var
+    print MEMORY "pippo!\n";			# l'output andra` a finire in $var
 
     # processa la lista degli argomenti dei file insieme con ogni include
 
@@ -3287,7 +3448,7 @@ per essere duplicato (come L<dup(2)>) e aperto. Potete usare C<&> dopo C<< > >>,
 C<< < >>, C<< +> >>, C<<< +>> >>> e C<< +< >>. La modalitE<agrave> che 
 specificate deve essere uguale alla modalitE<agrave> del filehandle originale. 
 (Duplicare un filehandle non entra nel merito dell'esistenza di precedenti buffer 
-di IO). Se usate la versione a tre argomenti, potete passare un numero, il nome di 
+di IO). Se usate la versione a 3 argomenti, potete passare un numero, il nome di 
 un filehandle oppure un normale "riferimento ad un glob".
 
 Ecco uno script che salva, redirige e ripristina C<STDOUT> e C<STDERR> usando 
@@ -3337,7 +3498,7 @@ oppure
 Essere parsimoniosi sui filehandle E<egrave> utile anche (al di 
 lE<agrave> dell'essere parsimoniosi) per esempio quando qualcosa 
 E<egrave> dipendente dai descrittori dei file, come per esempio 
-l'uso di lock tramite flock(). Se semplicemente utilizzate 
+l'uso di lock tramite flock(). Se utilizzate semplicemente
 C<< open(A, '>>&B') >>, il filehandle A non avrE<agrave> lo stesso 
 descrittore di file che ha B e quindi flock(A) non farE<agrave> 
 un flock(B) e viceversa. Ma con C<< open(A, '>>&=B') >> il 
@@ -3390,7 +3551,7 @@ per ulteriori esempi.
 A partire dalla versione 5.6.0, Perl tenta di svuotare i buffer, tutti i file 
 aperti in output prima di qualsiasi operazione che potrebbe effettuare il fork, 
 ma questo potrebbe non essere supportato su qualche piattaforma (si veda 
-L<perlport>). Per essere sicuri, dovreste settare C<$|> ($AUTOFLUSH nel modulo 
+L<perlport>). Per essere sicuri, dovreste impostare C<$|> ($AUTOFLUSH nel modulo 
 English) oppure chiamare il metodo C<autoflush()> di C<IO::Handle> su ogni handle 
 aperto.
 
@@ -3474,12 +3635,14 @@ Consultate L</seek> per qualche dettaglio riguardo la possibilitE<agrave> di
 mescolare letture e scritture.
 
 =item opendir DIRHANDLE,ESPR
+X<opendir>
 
 Apre una directory chiamata ESPR affinchE<eacute> sia possibile accedere ad essa con C<readdir>, 
 C<telldir>, C<seekdir>, C<rewinddir> e C<closedir>. Restituisce vero se l'operazione ha avuto successo.
 I DIRHANDLE hanno il loro spazio dei nomi separato da quello dei FILEHANDLE.
 
 =item ord ESPR
+X<ord> X<encoding>
 
 =item ord
 
@@ -3492,6 +3655,7 @@ Consultate L<perlunicode> e L<encoding> per ulteriori informazioni
 su Unicode.
 
 =item our ESPR
+X<our> X<globale>
 
 =item our ESPR TIPO
 
@@ -3499,17 +3663,25 @@ su Unicode.
 
 =item our TIPO ESPR : ATTRIBUTI
 
-C<our> dichiara le variabili indicate come globali valide, nel blocco 
-che le include, file, o C<eval>. CiE<ograve> significa che le regole 
-di scoping sono le stesse della dichiarazione "my", ma non viene 
-creata una variabile locale. Se E<egrave> indicato piE<ugrave> di un 
-valore, la lista deve essere inclusa tra parentesi. La dichiarazione 
-C<our> non ha alcun effetto semantico a meno che non sia attivo 
-"use strict vars", nel qual caso essa consente di utilizzare la 
-variabile globale dichiarata senza qualificarla con un nome di package. 
-(Ma solo all'interno dello scope lessicale della dichiarazione C<our>. 
-In questo essa differisce da "use vars", il cui scope E<egrave> a 
-livello di package).
+C<our> associa un nome elementare con una variabile di package nel corrente
+package per usarla all'itenro dello scope corrente. Quando E<egrave> in
+vigore C<use strict 'vars'>, C<our> vi permette di dichiarare variabili globali
+senza qualificarle con i nomi dei package, all'interno dello scope lessicale
+della dichiarazione C<our>. CosE<igrave> C<our> differisce da "use vars",
+il cui scope E<egrave> a livello di package
+
+A differenza di C<my>, che alloca sia dello spazio per una variabile sia
+associa un nome elementare con quello spazio per un suo uso all'interno dello
+scope corrente, C<our> associa un nome elementare con una variabile di package
+nel package corrente, per un suo uso all'interno dello scope corrente. In altre
+parole, C<our> ha le stesse regole di scope di C<my>, ma non crea necessariamente
+una variabile.
+
+Se E<egrave> indicato piE<ugrave> di un valore, la lista deve essere
+inclusa tra parentesi.
+
+    our $pippo;
+    our($pluto, $paperino);
 
 Un dichiarazione C<our> dichiara una variabile globale che sarE<agrave> 
 visibile su tutto il suo scope lessicale, persino attraverso i limiti 
@@ -3522,12 +3694,15 @@ CiE<ograve> significa che E<egrave> valido il seguente comportamento:
     $pluto = 20;
 
     package Pluto;
-    print $pluto;	# stampa 20
+    print $pluto;	# stampa 20, visto che si riferisce a $Pippo::pluto
 
-Sono permesse multiple dichiarazioni C<our> all'interno dello stesso 
-scope lessicale, se si trovano all'interno di differenti package. Se 
-si trovano nello stesso package, Perl genererE<agrave> degli 
-avvertimenti solo se li avete richiesti.
+Sono permesse multiple dichiarazioni C<our> con lo stesso nome all'interno dello stesso 
+scope lessicale, se si trovano all'interno di differenti package. Se si trovano nello
+stesso package, Perl genererE<agrave> degli avvertimenti solo se li avete richiesti,
+proprio come delle multiple dichiarazioni di C<my>. Diversamente da una seconda
+dichiarazione C<my>, che legherE<agrave> il nome ad una nuova variabile, una seconda
+dichiarazione C<our> nello stesso package, nello stesso scope, E<egrave>
+solamente ridondante.
 
     use warnings;
     package Pippo;
@@ -3538,7 +3713,8 @@ avvertimenti solo se li avete richiesti.
     our $pluto = 30;	# dichiara $Pluto::pluto per il resto dello scope lessicale
     print $pluto;	# stampa 30
 
-    our $pluto;		# genera un warning
+    our $pluto;		# genera un warning ma non ha altri effetti
+    print $pluto;	# stampa ancora 30
 
 Una dichiarazione C<our> puE<ograve> anche avere una lista di 
 attributi associata ad essa.
@@ -3575,6 +3751,7 @@ associati con la variabile; questo significa che C<our $x : unique> ha anche l'e
 di C<our @x : unique; our %x : unique>. Questo potrebbe essere soggetto a cambiamenti.
 
 =item pack TEMPLATE,LISTA
+X<pack>
 
 Prende una LISTA di valori e la converte in una stringa utilizzando 
 le regole fornite da TEMPLATE. La stringa risultante E<egrave> la 
@@ -4029,6 +4206,7 @@ Esempi:
 Lo stesso template puE<ograve> in genere venire usato anche in unpack().
 
 =item package SPAZIONOMI
+X<package> X<modulo> X<namespace>
 
 =item package
 
@@ -4068,13 +4246,14 @@ package, sui moduli, e sulle classi. Consultate L<perlsub> per
 ulteriori informazioni sullo scope.
 
 =item pipe HANDLEDILETTURA,HANDLEDISCRITTURA
+X<pipe>
 
 Apre una coppia di pipe connesse, come fa la corrispondente 
 chiamata di sistema. Va notato che se impostate un ciclo di 
 processi connessi tramite pipe, puE<ograve> avvenire uno 
 stallo anche se siete molto prudenti. In aggiunta, notate 
 che le pipe del Perl utilizzando il buffer di IO, dunque 
-potreste aver bisogno di settare C<$|> per svuotare il vostro 
+potreste aver bisogno di impostare C<$|> per svuotare il vostro 
 HANDLEDISCRITTURA dopo ogni comando, a seconda dell'applicazione.
 
 Consultate L<IPC::Open2>, L<IPC::Open3> e 
@@ -4087,6 +4266,7 @@ il descrittore di file appena aperto, come determinato
 dal valore di $^F. Si veda L<perlvar/$^F>.
 
 =item pop ARRAY
+X<pop> X<stack>
 
 =item pop
 
@@ -4102,13 +4282,14 @@ C<@ARGV> nel corpo principale del programma, e dall'array C<@_>
 nelle subroutine, proprio come C<shift>.
 
 =item pos SCALARE
+X<pos> X<match, position>
 
 =item pos
 
 Restituisce la posizione per la variabile in questione, per la 
 quale l'ultima ricerca C<m//g> ha trovato qualcosa (se la variabile 
 non E<egrave> specificata, viene usata C<$_>). Va notato che 0 E<egrave>
-un valido scostamento del match, mentre C<undef> indica che la posizione della
+un valido scostamento del match. C<undef> indica che la posizione della
 ricerca E<egrave> stata reimpostata (di solito a causa del fallimento di un match ma puE<ograve> 
 anche essere perchE<eacute> non E<egrave> stato ancora effettuato alcun match sullo scalare).
 C<pos> accede direttamente alla locazione usata dal motore delle espressioni regolari per 
@@ -4118,6 +4299,7 @@ nelle espressioni regolari. Il match non reimposta lo scostamento a cusa di un C
 il ritorno da C<pos> non cambierE<agrave> nemmeno in questo caso. Consultate L<perlre> e L<perlop>.
 
 =item print FILEHANDLE LISTA
+X<print>
 
 =item print LISTA
 
@@ -4150,14 +4332,16 @@ meno che non desideriate terminare gli argomenti da stampare
 con la corrispondente parentesi di chisura, inserite un C<+> o 
 mettere parentesi attorno a tutti gli argomenti.
 
-Va notato che, se i FILEHANDLE che utilizzate sono contenuti 
-in un array o in un'altra espressione, dovrete utilizzare un 
-blocco che ne restituisca il valore:
+Va notato che se tenete i FILEHANDLE in un array, o comunque usate
+delle espressioni piE<ugrave> complesse di una semplice variabile
+scalare per accederli, dovete usare un blocco che restituisca il 
+filehandle:
 
     print { $files[$i] } "cose da stampare\n";
     print { $OK ? STDOUT : STDERR } "cose da stampare\n";
 
 =item printf FILEHANDLE FORMATO,LISTA
+X<printf>
 
 =item printf FORMATO,LISTA
 
@@ -4175,6 +4359,7 @@ C<printf> quando un semplice C<print> andrebbe bene. L'istruzione
 C<print> E<egrave> piE<ugrave> efficiente e meno soggetta ad errori.
 
 =item prototype FUNZIONE
+X<prototype>
 
 Restituisce il prototipo di una funzione come stringa (oppure C<undef> 
 se la funzione non ha prototipo). FUNZIONE E<egrave> un riferimento a, 
@@ -4189,6 +4374,7 @@ si comporta proprio come una funzione Perl. Altrimenti, viene restituita
 la stringa che descrive il prototipo equivalente.
 
 =item push ARRAY,LISTA
+X<push>, X<stack>
 
 Tratta ARRAY come uno stack, e aggiunge i valori di LISTA alla fine 
 di ARRAY. La lunghezza di ARRAY viene aumentata della lunghezza di 
@@ -4198,8 +4384,8 @@ LISTA. Ha lo stesso effetto di
         $ARRAY[++$#ARRAY] = $valore;
     }
 
-ma E<egrave> piE<ugrave> efficiente. Restituisce il nuovo numero di 
-elementi nell'array.
+ma E<egrave> piE<ugrave> efficiente. Restituisce il numero di 
+elementi che sono nell'array dopo l'esecuzione della C<push>.
 
 =item q/STRINGA/
 
@@ -4215,6 +4401,7 @@ Sono delle virgolette generalizzate. Consultate L<perlop/"Regexp Quote-Like Oper
 ["Operatori analoghi a quelli di quoting delle espressioni regolari", NdT].
 
 =item quotemeta ESPR
+X<quotemeta> X<metacarattere>
 
 =item quotemeta
 
@@ -4222,13 +4409,14 @@ Restituisce il valore di ESPR, con tutti i caratteri non-"parola"
 preceduti da un backslash. (Il che signfica che tutti i caratteri 
 che non rientrano in C</[A-Za-z_0-9]/> saranno preceduti da un 
 backslash nella stringa restituita, indipendentemente da qualsiasi 
-settaggio del locale). Questa E<egrave> la funzione interna che 
+impostazione del locale). Questa E<egrave> la funzione interna che 
 implementa il C<\Q> all'interno delle stringhe delimitate da doppi 
 apici.
 
 Se ESPR viene omesso, quotemeta() usa C<$_>.
 
-=item rand ESPR 
+=item rand ESPR
+X<rand> X<random>
 
 =item rand
 
@@ -4256,6 +4444,7 @@ versione di Perl E<egrave> stata probabilmente compilata con un
 numero sbagliato di RANDBITS).
 
 =item read FILEHANDLE,SCALARE,LUNGHEZZA,SCOSTAMENTO
+X<read>
 
 =item read FILEHANDLE,SCALARE,LUNGHEZZA
 
@@ -4288,6 +4477,7 @@ C<:encoding>: in quel caso puE<ograve> essere letto pressochE<eacute> qualsiasi
 carattere.
 
 =item readdir DIRHANDLE
+X<readdir>
 
 Restituisce il prossimo elemento della directory aperta tramite 
 C<opendir>. Se usato in un contesto lista, restituisce tutti gli 
@@ -4306,6 +4496,7 @@ stare effettuando il test sul file sbagliato.
     closedir DIR;
 
 =item readline ESPR
+X<readline> X<gets> X<fgets>
 
 Legge dal filehandle il cui typeglob E<egrave> contenuto in ESPR. 
 In contesto scalare, ogni chiamata legge e restituisce la prossima 
@@ -4347,6 +4538,7 @@ assicurarsi che C<readline> sia andato a buon fine.
     }
 
 =item readlink ESPR
+X<readlink>
 
 =item readlink
 
@@ -4356,6 +4548,7 @@ Se c'E<egrave> qualche errore di sistema, restituisce il valore
 indefinito e assegna C<$!> (errno). Se ESPR viene omessa, essa usa C<$_>.
 
 =item readpipe ESPR
+X<readpipe>
 
 ESPR viene eseguita come un comando di sistema. Viene restituito lo 
 standard output del comando che viene raccolto. In un contesto 
@@ -4369,6 +4562,7 @@ C<qx/ESPR/> viene discusso con maggiore dettaglio in
 L<perlop/"I/O Operators"> ["Operatori di I/O", NdT].
 
 =item recv SOCKET,SCALARE,LUNGHEZZA,FLAG
+X<recv>
 
 Riceve un messaggio su di un socket. Tenta di ricevere dati per un 
 numero di caratteri pari a LUNGHEZZA nella variabile SCALARE dallo 
@@ -4392,15 +4586,15 @@ In maniera analoga per la direttiva C<:encoding>: in quel caso
 puE<ograve> essere letto piE<ugrave> o meno qualsiasi carattere.
 
 =item redo ETICHETTA
+X<redo>
 
 =item redo
 
 Il comando C<redo> fa ripartire il blocco del ciclo senza valutare di 
 nuovo l'espressione condizionale. Il blocco C<continue>, se presente, 
 non viene eseguito. Se l'ETICHETTA viene omessa, il comando si riferisce 
-al ciclo piE<ugrave> interno che lo include. Questo comando viene usato 
-di norma da quei programmi che voglio ingannare loro stessi a proposito 
-dell'input:
+al ciclo piE<ugrave> interno che lo include. Sono quei programmi che vogliono
+ingannare loro stessi a proposito dell'input, ad usare di solito questo comando:
 
     # un semplice programma che rimuove i commenti da codice Pascal
     # (attenzione: si assume che le stringhe non contengano { oppure } )
@@ -4432,6 +4626,7 @@ Consultate anche L</continue> per una illustrazione di come lavorano
 C<last>, C<next> e C<redo>.
 
 =item ref ESPR
+X<ref> X<reference> X<riferimento>
 
 =item ref
 
@@ -4458,13 +4653,11 @@ ad un operatore C<typeof>.
     unless (ref($r)) {
         print "r non e` proprio un riferimento.\n";
     }
-    if (UNIVERSAL::isa($r, "HASH")) { # per le subclassi
-        print "r e` un riferimento a qualcosa che e` un (isa) hash.\n";
-    }
 
 Consultate anche L<perlref>.
 
 =item rename VECCHIONOME,NUOVONOME
+X<rename> X<move> X<mv> X<ren>
 
 Cambia il nome di un file; l'eventuale file NUOVONOME giE<agrave> esistente 
 viene sovrascritto. Restituisce vero in caso di successo, falso negli altri 
@@ -4479,6 +4672,7 @@ Per i dettagli, controllate L<perlport> e la manpage rename(2) o l'equivalemente
 sulla documentazione del vostro sistema.
 
 =item require VERSIONE
+X<require>
 
 =item require ESPR
 
@@ -4504,7 +4698,7 @@ fuorvianti. Al suo posto dovrebbe essere usata la versione numerica.
     require 5.6.1;      # uguale
     require 5.006_001;  # uguale; preferibile per compatibilitE<agrave> all'indietro
 
-Usata diversamente, require richiede che un file di libreria esterno venga 
+Usata diversamente, C<require> richiede che un file di libreria esterno venga 
 incluso, se non lo E<egrave> stato in precedenza. Il file viene incluso con 
 il meccanismo do-FILE, che essenzialmente E<egrave> una variante di C<eval>. 
 Ha semantiche simili alla seguente subroutine:
@@ -4557,7 +4751,7 @@ In altre parole, se provate questo:
         require Pippo::Pluto;    # una splendida bareword
 
 La funzione require cercherE<agrave> in realtE<agrave> il file 
-"F<Foo/Bar.pm>" nelle directory specificate nell'array C<@INC>.
+"F<Pippo/Pluto.pm>" nelle directory specificate nell'array C<@INC>.
 
 Ma se provate questa:
 
@@ -4618,7 +4812,7 @@ oppure:
         ...
     }
 
-Se l'hook E<egrave> un oggetto, deve fornire un metodo INC, che verrE<agrave> 
+Se l'hook E<egrave> un oggetto, deve fornire un metodo INC che verrE<agrave> 
 chiamato come sopra, ed a cui verrE<agrave> passato l'oggetto stesso come 
 primo parametro. (Va notato che dovete indicare il nome completo della sub, 
 poichE<eacute> esso viene sempre forzato dentro il package C<main>). Di seguito 
@@ -4647,14 +4841,15 @@ alla fine) ed E<egrave> per questo ambigua per perl a tempo di compilazione.
 In assenza di use strict 'subs' (che genera errore) viene trattata come se
 fosse inclusa tra virgolette. [NdT]
 
-(**) letterlamente aggancio, questo termine indica la procedura di codificare 
-un programma che permetta all'utente di espenderlo. Ad esempio il funzionamento 
-dei plugin di <programma con plugin> E<egrave> permesso grazie a degli hook.
+(**) letterlamente aggancio, questo termine indica la procedura di codificare
+un programma che permetta all'utente di espenderlo. Ad esempio il funzionamento
+dei plugin di <programma con plugin> E<egrave> permesso grazie a degli hook. [NdT]
 
-(***) letteralmente santificato, consacrato, si intende di un oggetto che 
-E<egrave> stato legato al nome di un package. Si veda la funzione bless.
+(***) letteralmente santificato, consacrato, si intende di un oggetto che
+E<egrave> stato legato al nome di un package. Si veda la funzione bless. [NdT]
 
 =item reset ESPR
+X<reset>
 
 =item reset
 
@@ -4681,6 +4876,7 @@ scope, quindi probabilmente la cosa migliore E<egrave> utilizzare variabili
 lessicali. Si veda L</my>.
 
 =item return ESPR
+X<return>
 
 =item return
 
@@ -4695,6 +4891,7 @@ indefinito in contesto scalare, e (ovviamente) nulla in contesto vuoto.
 do FILE restituiscono automaticamente il valore dell'ultima espressione valutata).
 
 =item reverse LISTA
+X<reverse> X<rev> X<invertire>
 
 In un contesto di lista, restituisce una lista di valori 
 contenente gli elementi di LISTA in ordine inverso. In un contesto 
@@ -4718,19 +4915,22 @@ su un hash grande, ad esempio un file DBM.
     %per_nome = reverse %per_indirizzo;	    # Inverte l'hash
 
 =item rewinddir DIRHANDLE
+X<rewinddir>
 
 Imposta la posizione corrente di DIRHANDLE all'inizio della directory 
 per la funzione C<readdir>.
 
-=item rindex STR,SUBSTR,POSIZIONE
+=item rindex STR,SOTTOSTR,POSIZIONE
+X<rindex>
 
-=item rindex STR,SUBSTR
+=item rindex STR,SOTTOSTR
 
-Funziona come index(), solo che restituisce la posizione dell'ULTIMA 
-occorrenza di SUBSTR in STR. Se viene specificata una POSIZIONE, 
-restituisce l'ultima occorrenza entro quella posizione.
+Funziona come index(), solo che restituisce la posizione dell'I<ultima> 
+occorrenza di SOTTOSTR in STR. Se viene specificata una POSIZIONE, 
+restituisce l'ultima occorrenza che inizia a oppure entro quella posizione.
 
 =item rmdir NOMEFILE
+X<rmdir> X<rd> X<directory, cancellare>
 
 =item rmdir
 
@@ -4743,6 +4943,7 @@ C<$!> (errno). Se NOMEFILE viene omesso, viene usato C<$_>.
 L'operatore di sostituzione. Consultate L<perlop>.
 
 =item scalar ESPR
+X<scalar> X<contesto>
 
 Forza ESPR ad essere interpretata in un contesto scalare e restituisce 
 il valore di ESPR.
@@ -4775,6 +4976,7 @@ Consultate L<perlop> per maggiori dettagli sugli operatori unari e
 sull'operatore virgola.
 
 =item seek FILEHANDLE,POSIZIONE,DA_DOVE
+X<seek> X<fseek> X<filehandle, posizione>
 
 Imposta la posizione nel FILEHANDLE, proprio come la funzione C<fseek> della 
 libreria C<stdio>. FILEHANDLE puE<ograve> essere un'espressione il cui valore 
@@ -4823,13 +5025,15 @@ particolarmente bizzose), ci potrebbe essere bisogno di qualcosa di simile a:
     }
 
 =item seekdir DIRHANDLE,POS
+X<seekdir>
 
 Imposta su DIRHANDLE la posizione corrente per la routine C<readdir>. 
 POS dev'essere un valore restituito da C<telldir>. Riguardo a possibili 
-compattazioni di directiry, ha gli stessi avvertimenti della corrispondente 
-routine della libreria di sistema.
+compattazioni di directiry, C<seekdir> ha gli stessi avvertimenti della
+corrispondente routine della libreria di sistema.
 
 =item select FILEHANDLE
+X<select> X<filehandle, default>
 
 =item select
 
@@ -4858,6 +5062,7 @@ preferendo scrivere l'ultimo esempio come:
     STDERR->autoflush(1);
 
 =item select RBITS,WBITS,EBITS,TIMEOUT
+X<select>
 
 Questa funzione invoca la chiamata di sistema select(2) con le maschere 
 di bit specificate, che possono essere costruite utilizzando C<fileno> e 
@@ -4928,6 +5133,7 @@ o <FH>) con C<select>, tranne per come viene permesso da POSIX, ed anche in quel
 caso solo su sistemi POSIX. In quel caso dovete usare C<sysread>.
 
 =item semctl ID,SEMNUM,CMD,ARG
+X<semctl>
 
 Chiama la funzione C<semctl> del System V IPC. Probabilmente dovrete prima 
 dichiarare
@@ -4943,20 +5149,22 @@ che possono essere creati utilizzando C<pack("s!",(0)x$nsem)>.
 Consultate anche la documentazione di L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::Semaphore>.
 
 =item semget CHIAVE,NSEM,FLAG
+X<semget>
 
 Chiama la funzione semget del System V IPC. Restituisce l'id del semaforo, o il 
 valore indefinito se si verifica un errore. Consultate anche la documentazione di 
 L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::SysV::Semaphore>.
 
 =item semop CHIAVE,STRINGAOPZ
+X<semop>
 
 Chiama la funzione semop del System V IPC, per compiere operazioni con i semafori 
 quali segnalazione ed attesa. STRINGAOPZ dev'essere un array compattato di strutture 
 semop. Ciascuna struttura semop puE<ograve> essere generata utilizzando 
-C<pack("s!3", $numsem, $opsem, $flagsem)>. Il numero di operazioni sui semafori 
-E<egrave> implicitamente fornito dalla lunghezza di STRINGAOPZ. Restituisce vero in 
-caso di successo, oppure falso nel caso si verifichi un errore. Ad esempio, il 
-seguente codice attende sul semaforo $numsem dell'id di semaforo $idsem:
+C<pack("s!3", $numsem, $opsem, $flagsem)>. La lunghezza di STRINGAOPZ implica il
+numero di operazioni sui semafori. Restituisce vero in caso di successo, oppure falso
+nel caso si verifichi un errore. Ad esempio, il seguente codice attende sul semaforo
+$numsem dell'id di semaforo $idsem:
 
     $opsem = pack("s!3", $numsem, -1, 0);
     die "Problema con il semaforo: $!\n" unless semop($idsem, $opsem);
@@ -4965,6 +5173,7 @@ Per inviare un segnale al semaforo, sostituite C<-1> con C<1>. Consultate anche
 la documentazione di L<perlipc/"SysV IPC">, C<IPC::SysV> e C<IPC::SysV::Semaphore>.
 
 =item send SOCKET,MSG,FLAG,DEST
+X<send>
 
 =item send SOCKET,MSG,FLAG
 
@@ -4987,6 +5196,7 @@ non su byte. In maniera analoga per la direttiva C<:encoding>: in quel caso
 puE<ograve> essere inviato pressochE<eacute> qualsiasi carattere.
 
 =item setpgrp PID,PGRP
+X<setpgrp> X<gruppo>
 
 Imposta il gruppo corrente del processo per il PID specificato, 
 C<0> per il processo corrente. Genera un errore bloccante se E<egrave> 
@@ -4997,6 +5207,7 @@ di C<setpgrp> non accetta alcun argomento, dunque solamente
 C<setpgrp(0,0>)> E<egrave> portabile. Consultate anche C<POSIX::setsid()>.
 
 =item setpriority QUALE,CHI,PRIORITE<Agrave>
+X<setpriority> X<priorita`> X<nice> X<renice>
 
 Imposta la prioritE<agrave> corrente per un processo, un 
 gruppo di processi, o un utente. (Consultate setpriority(2)).
@@ -5004,13 +5215,22 @@ Genera un errore bloccante se utilizzata su una macchina che
 non implementa setpriority(2).
 
 =item setsockopt SOCKET,LIVELLO,NOMEOPZ,VALOREOPZ
+X<setsockopt>
 
 Imposta l'opzione richiesta del socket. Restituisce il valore 
-indefinito se si verifica un errore. VALOREOPZ puE<ograve> 
-essere specificato come C<undef> se non desiderate passare un 
-argomento.
+indefinito se si verifica un errore. Per LIVELLO e NOMEOPZ usate le costanti
+intere fornite dal modulo C<Socket>. Anche i valori per LIVELLO possono essere
+ottenuti da getprotobyname. VALOREOPZ potrebbe essere o una stringa compattata
+oppure un intero. Un intero VALOREOPZ E<egrave> un modo stenografico per dire
+pack("i", VALOREOPZ).
+
+Un esempio che disabilita l'algoritmo di Nagle per un socket:
+
+    use Socket qw(IPPROTO_TCP TCP_NODELAY);
+    setsockopt($socket, IPPROTO_TCP, TCP_NODELAY, 1);
 
 =item shift ARRAY
+X<shift>
 
 =item shift
 
@@ -5029,6 +5249,7 @@ C<unshift> fanno all'estremitE<agrave> sinistra di un array
 ciE<ograve> che C<pop> and C<push> fanno alla parte destra.
 
 =item shmctl ID,CMD,ARG
+X<shmctl>
 
 Chiama la funzione shmctl del System V IPC. Probabilmente prima dovrete 
 dichiarare
@@ -5043,6 +5264,7 @@ altrimenti l'effettivo valore restituito. Consultate anche L<perlipc/"SysV IPC">
 e la documentazione di C<IPC::SysV>.
 
 =item shmget CHIAVE,DIMENSIONE,FLAG
+X<shmget>
 
 Chiama la funzione shmget del System V IPC. Restituisce l'id del 
 segmento di memoria condivisa, o un valore indefinito se si verifica 
@@ -5050,6 +5272,8 @@ un errore. Consultate anche la documentazione di L<perlipc/"SysV IPC">
 e C<IPC::SysV>.
 
 =item shmread ID,VAR,POS,DIMENSIONE
+X<shmread>
+X<shmwrite>
 
 =item shmwrite ID,STRINGA,POS,DIMENSIONE
 
@@ -5068,6 +5292,7 @@ L<perlipc/"SysV IPC">, la documentazione di C<IPC::SysV> e il
 modulo C<IPC::Shareable> su CPAN.
 
 =item shutdown SOCKET,COME
+X<shutdown>
 
 Chiude la connessione ad un socket nella maniera indicata da 
 COME, che ha lo stesso significato dell'omonima chiamata di 
@@ -5085,6 +5310,7 @@ perchE<eacute> rende invalido il descrittore di file in
 tutte le copie del processo ottenute tramite C<fork>.
 
 =item sin ESPR
+X<sin> X<seno> X<asin> X<arcoseno>
 
 =item sin
 
@@ -5097,6 +5323,7 @@ C<Math::Trig::asin>, oppure usare questa relazione:
     sub asin { atan2($_[0], sqrt(1 - $_[0] * $_[0])) }
 
 =item sleep ESPR
+X<sleep> X<pausa>
 
 =item sleep
 
@@ -5124,6 +5351,7 @@ standard a partire da Perl 5.8) puE<ograve> esservi di aiuto.
 Consultate anche la funzione C<pause> del modulo POSIX.
 
 =item socket SOCKET,DOMINIO,TIPO,PROTOCOLLO
+X<socket>
 
 Apre un socket del tipo specificato e lo collega al filehandle 
 SOCKET. DOMINIO, TIPO e PROTOCOLLO sono specificati come per la 
@@ -5138,6 +5366,7 @@ il descrittore di file appena aperto, come determinato dal valore di
 $^F. Consultate L<perlvar/$^F>.
 
 =item socketpair SOCKET1,SOCKET2,DOMINIO,TIPO,PROTOCOLLO
+X<socketpair>
 
 Crea una coppia di socket senza nome, nello specificato dominio, 
 del tipo specificato. DOMINIO, TIPO e PROTOCOLLO sono specificati 
@@ -5164,6 +5393,7 @@ su localhost nel caso che il vostro sistema implementi i socket
 ma non socketpair.
 
 =item sort NOMESUB LISTA
+X<sort> X<qsort> X<quicksort> X<mergesort>
 
 =item sort BLOCCO LISTA
 
@@ -5199,7 +5429,7 @@ controproducente dichiarare $a e $b come lessicali.
 
 In entrambi i casi la subroutine non puE<ograve> 
 essere ricorsiva. I valori da confrontare sono sempre 
-passati per riferimento, quindi non modificateli.
+passati per riferimento, quindi non dovrebbero essere modificati.
 
 Inoltre, non potte uscire dal blocco o dalla subroutine
 di ordinamento usando uno degli operatori di controllo del
@@ -5209,12 +5439,26 @@ Quando C<use locale> E<egrave> attivo, C<sort LISTA>
 ordina la lista secondo il riscontro del "locale" corrente.
 Consultate L<perllocale>.
 
+sort() restituisce gli alias alla lista originaria, cosE<igrave>
+come una variabile indice del ciclo for restituisce degli alias agli
+elementi della lista.
+
+CioE<egrave>, modificare un elemento di una lista restituita da sort()
+(per esempio, in un C<foreach>, C<map> o C<grep>) modifica proprio
+l'elemento della lista originare
+
+much as a for loop's index
+variable aliases the list elements.  That is, modifying an element of a
+list returned by sort() (for example, in a C<foreach>, C<map> or C<grep>)
+actually modifies the element in the original list.  This is usually
+something to be avoided when writing clear code.
+
 Perl 5.6 e le versioni precedenti usavano l'algoritmo
 quicksort per implementare l'ordinamento.
 Quell'algoritmo non era stabile, e I<avrebbe potuto>
 avere un comportamento quadratico.
 (Un ordinamento I<stabile> preserva l'ordine degli
-elementi in input che risultano uguali. BenchE<egrave>
+elementi in input che risultano uguali. BenchE<eacute>
 il tempo d'esecuzione di quicksort sia O(NlogN) in media
 su tutti gli array di lunghezza N, il tempo puE<ograve>
 essere O(N**2), ovvero comportarsi I<quadraticamente>,
@@ -5226,7 +5470,7 @@ che per alcuni input, su alcune piattaforme, il quicksort
 originale andava piE<ugrave> veloce. La versione 5.8 ha 
 una direttiva sort che consente un limitato controllo su sort. 
 Il suo blando controllo dell'algoritmo sottostante potrebbe
-scomparire nelle prossime versioni di perl, ma 
+scomparire nelle prossime versioni di Perl, ma 
 l'abilitE<agrave> di caratterizzare l'input e l'output
 in modi indipendenti dall'implementazione probabilmente
 non lo farE<agrave>. Consultate L<sort>.
@@ -5355,6 +5599,7 @@ il fatto che C<NaN != NaN>, per eliminare ogni C<NaN> dall'input.
     @risultati = sort { $a <=> $b } grep { $_ == $_ } @input;
 
 =item splice ARRAY,SCOSTAMENTO,LUNGHEZZA,LISTA
+X<splice>
 
 =item splice ARRAY,SCOSTAMENTO,LUNGHEZZA
 
@@ -5391,9 +5636,10 @@ Ad esempio, assumendo che le lunghezze degli array siano passate prima degli arr
 	}
 	return 1;
     }
-    if (&aeq($len,@foo[1..$len],0+@bar,@bar)) { ... }
+    if (&aeq($lungh,@pippo[1..$lungh],0+@pluto,@pluto)) { ... }
 
 =item split /PATTERN/,ESPR,LIMITE
+X<split>
 
 =item split /PATTERN/,ESPR
 
@@ -5531,6 +5777,7 @@ C<undef> al momento della restituzione dei risultati:
     # @campi e` (1, 'A', 2, undef, 3);
 
 =item sprintf FORMATO, LISTA
+X<sprintf>
 
 Restituisce una stringa formattata secondo le consuete convenzioni di C<printf> dalla funzione 
 di libreria C C<sprintf>. Guardate qui sotto per ulteriori dettagli e consultate 
@@ -5631,13 +5878,14 @@ Per esempio:
 
 =item flag "vettore"
 
-Il flag "vettore" C<v>, opzionalmente la stringa da utilizzare per unire i 
-valori. Questo flag dice al perl di interpretare la stringa fornita come un vettore di 
-interi, uno per ogni carattere nella stringa, separati da una stringa (un punto C<.> per 
-default). PuE<ograve> essere utile per stampare i valori ordinali dei caratteri in una 
-stringa arbitraria:
+Questo flag dice a perl di interpretare la stringa che E<egrave> stata fornita come
+un vettore di interi, uno per ogni carattere della stringa. Perl applica il formato ad
+ogni intero uno alla volta, poi unisce le stringhe risultanti con un separatore (un punto
+C<.> per default). PuE<ograve> essere utile per stampare i valori ordinali dei caratteri
+in stringhe arbitrarie:
 
-  printf "versione v%vd\n", $^V;     # la versione del Perl
+  printf "%vd", "AB\x{100}";           # stampa "65.66.256"
+  printf "versione v%vd\n", $^V;       # la versione del Perl
 
 Mettete un asterisco C<*> prima della C<v> per modificare la stringa da utilizzare al fine di 
 separare i numeri:
@@ -5667,6 +5915,7 @@ Se il campo ottenuto da C<*> E<egrave> negativo, ha lo stesso effetto del modifi
 C<->: giustificazione a destra.
 
 =item precisione, o larghezza massima
+X<precisione>
 
 Potete specificare una precisione (per argomenti numerici) o una larghezza 
 massima (per argomenti stringhe) utilizzando C<.> seguito da un numero.
@@ -5803,6 +6052,7 @@ decimale nei numeri non interi E<egrave> dipendente dall'impostazione LC_NUMERIC
 Consultate L<perllocale>.
 
 =item sqrt ESPR
+X<sqrt> X<radice> X<radice quadrata>
 
 =item sqrt
 
@@ -5813,14 +6063,15 @@ caricato il modulo standard Math::Complex.
     use Math::Complex;
     print sqrt(-2);    # stampa 1.4142135623731i
 
-=item srand EXPR
+=item srand ESPR
+X<srand> X<seed> X<randseed>
 
 =item srand
 
 Imposta il seme del generatore di numeri casuali per 
 l'operatore C<rand>.
 
-Lo scopo della funzione E<egrave> seminare ["seed" in iglese, NdT] 
+Lo scopo della funzione E<egrave> seminare ["to seed" in iglese, NdT] 
 la funzione C<rand> affinchE<eacute> possa produrre una sequenza 
 diversa ogni volta che lanciate il vostro programma.
 
@@ -5868,8 +6119,8 @@ valore per il seme (spesso C<time ^ $$> oppure
 C<time ^ ($$ + ($$ << 15))>), ma questo non E<egrave>
 piE<ugrave> necessario.
 
-Va notato che vi serve qualcosa di piE<ugrave> casuale del
-seme di default per usi inerenti la crittografia. 
+Comunque, per ragioni crittografiche, vi serve qualcosa
+di piE<ugrave> casuale del seme di default. 
 Costruire un checksum dell'output compresso di uno o 
 piE<ugrave> programmi che monitorano uno stato del
 sistema operativo che cambia di frequente E<egrave> il 
@@ -5891,6 +6142,7 @@ possono cadere preda della proprietE<agrave> matematica che
 un terzo delle volte. Quindi non fatelo.
 
 =item stat FILEHANDLE
+X<stat> X<file, status>
 
 =item stat ESPR
 
@@ -5991,7 +6243,7 @@ comunemente disponibili sono
 
     # Tipi di file. Non tutti sono necessariamente disponibili sul vostro sistema.
 
-    S_IFREG S_IFDIR S_IFLNK S_IFBLK S_ISCHR S_IFIFO S_IFSOCK S_IFWHT S_ENFMT
+    S_IFREG S_IFDIR S_IFLNK S_IFBLK S_IFCHR S_IFIFO S_IFSOCK S_IFWHT S_ENFMT
 
     # Le seguenti sono alias di compatibilita` per S_IRUSR, S_IWUSR, S_IXUSR.
 
@@ -6023,6 +6275,7 @@ costanti C<S_*>. Per ottenere l'informazione dello stato per un link simbolico, 
 funzione C<lstat> invece del file puntato dal link.
 
 =item study SCALARE
+X<study>
 
 =item study
 
@@ -6050,15 +6303,15 @@ prima di ogni linea che contiene un certo pattern:
 
     while (<>) {
         study;
-        print ".IX foo\n"       if /\bfoo\b/;
-        print ".IX bar\n"       if /\bbar\b/;
-        print ".IX blurfl\n"    if /\bblurfl\b/;
+        print ".IX pippo\n"       if /\bpippo\b/;
+        print ".IX pluto\n"       if /\bpluto\b/;
+        print ".IX paperino\n"    if /\bpaperino\b/;
         # ...
         print;
     }
 
-Cercando C</\bfoo\b>, verranno controllati solo le posizioni in C<$_> che
-contengono C<f>, poichE<eacute> essa E<egrave> piE<ugrave> rara di C<o>. 
+Cercando C</\bpippo\b>, verranno controllati solo le posizioni in C<$_> che
+contengono C<p>, poichE<eacute> essa E<egrave> piE<ugrave> rara di C<o>. 
 In generale, e fatta eccezione per i casi patologici, si ottiene un grande 
 vantaggio. L'unico problema E<egrave> se viene risparmiato piE<ugrave> tempo 
 di quanto se ne perde inizialmente per costruire la lista linkata.
@@ -6087,6 +6340,7 @@ corrispondenza:
     } 
 
 =item sub NOME BLOCCO
+X<sub>
 
 =item sub NOME (PROTO) BLOCCO
 
@@ -6103,6 +6357,7 @@ Consultate L<perlsub> e L<perlref> per dettagli sulle subroutine e i riferimenti
 e L<Attribute::Handlers> per maggiori informazioni sugli attributi.
 
 =item substr ESPR,SCOSTAMENTO,LUNGHEZZA,SOSTITUZIONE
+X<substr> X<sottostringa> X<mid> X<left> X<right>
 
 =item substr ESPR,SCOSTAMENTO,LUNGHEZZA
 
@@ -6140,17 +6395,8 @@ un valore da sostituire come quarto argomento. Questo permette di sostituire una
 restituisce ciE<ograve> che c'era in quella parte prima dell'operazione, proprio come fa 
 splice().
 
-Se il valore assegnabile restituito da substr viene usato dopo che la ESPR E<egrave> stata 
-cambiata in un qualche modo, il comportamento potrebbe non essere quello atteso ed E<egrave> 
-soggetto a cambiamenti. Questo avvertimento comprende codice come 
-C<print(substr($pippo,$a,$b)=$pluto)> oppure C<(substr($pippo,$a,$b)=$pluto)=$paperino> (dove 
-$pippo viene cambiato tramite l'assegnazione della sottostringa, e poi subst viene utilizzato di 
-nuovo), o dove viene creato un alias di una substr() tramite un ciclo C<foreach>, oppure viene 
-passata come parametro, oppure viene preso un riferimento ad essa e poi l'alias, il parametro, 
-oppure il riferimento dereferenziato viene utilizzato dopo che l'ESPR originale E<egrave> stato 
-cambiato, oppure viene assegnato e poi utilizzato un seconda volta.
-
 =item symlink VECCHIOFILE,NUOVOFILE
+X<symlink> X<link> X<link simbolico> X<link, simbolico>
 
 Crea un nuovo nome di file, collegato simbolicamente a quello vecchio. Restituisce C<1> in caso 
 di successo, C<0> altrimenti. Sui sistemi che non supportano i link simbolici, genera un 
@@ -6158,7 +6404,8 @@ errore bloccante a tempo di esecuzione. Per controllare ciE<ograve>, usate eval:
 
     $esiste_symlink = eval { symlink("",""); 1 };
 
-=item syscall LISTA
+=item syscall NUMERO,LISTA
+X<syscall> X<chiamata di sistema>
 
 Invoca la chiamata di sistema specificata come primo elemento della lsta, passando i rimanenti 
 elementi come argomenti alla chiamata di sistema. Se non implementata, produce un errore 
@@ -6192,6 +6439,7 @@ recuperare il numero di file dell'altro capo. Si puE<ograve> evitare questo prob
 utilizzando piuttosto C<pipe>.
 
 =item sysopen FILEHANDLE,NOMEFILE,MODALITE<Agrave>
+X<sysopen>
 
 =item sysopen FILEHANDLE,NOMEFILE,MODALITE<Agrave>,PERMESSI
 
@@ -6208,6 +6456,7 @@ disponibili. Potete mettere assieme diversi flag utilizzando il C<|>-operatore.
 Alcuni dei piE<ugrave> comuni valori sono C<O_RDONLY> per aprire il file in modalitE<agrave> di 
 sola lettura, C<O_WRONLY> per aprire il file in modalitE<agrave> di sola scrittura e C<O_RDWR>
 per aprire il file in modalitE<agrave> di lettura-scrittura.
+X<O_RDONLY> X<O_RDWR> X<O_WRONLY>
 
 Per ragioni storiche, alcuni valori funzionano su pressochE<eacute> tutti i sistemi supportati 
 dal perl: zero significa di sola lettura, uno significa di sola scrittura
@@ -6220,6 +6469,7 @@ perchE<eacute> MODALITE<Agrave> include il flag C<O_CREAT>), allora il valore di
 specifica i permessi del file appena creato. Se a C<sysopen> omettete l'argomento PERMESSI, il 
 Perl utilizza il valore ottale C<0666>. Questi valori dei permessi devono essere in ottale e 
 sono modificati dall'C<umask> del processo corrente.
+X<O_CREAT>
 
 Su molti sistemi, il flag C<O_EXCL> E<egrave> disponibile per aprire i file in modalitE<agrave> 
 esclusiva. Questo B<non> E<egrave> eseguire un lock: l'esclusivitE<agrave> significa in questo 
@@ -6227,10 +6477,12 @@ contesto che se il file esiste giE<agrave>, sysopen() fallisce. C<O_EXCL> potreb
 su filesystem di rete e non ha effetto a meno che venga impostato anche il flag C<O_CREAT>.
 Impostare C<O_CREAT|O_EXCL> impedisce che il file venga aperto se E<egrave> un link simbolico.
 Questo non offre protezione ai link simbolici nel percorso del file.
+X<O_EXCL>
 
 Talvolta potreste voler troncare un file giE<agrave> esistente. Questo puE<ograve> essere
 fatto utilizzando il flag C<O_TRUNC>. Il comportamento di C<O_TRUNC> con C<O_RDONLY> E<egrave>
 indefinito.
+X<O_TRUNC>
 
 C<0644> come argomento di C<sysopen> andrebbe usato raramente, se non mai, poichE<eacute> toglie 
 all'utente la possibilitE<agrave> di avere una umask piE<ugrave> permissiva. E<Egrave> meglio 
@@ -6245,6 +6497,7 @@ o forse usando la funzione POSIX::open().
 Consultate L<perlopentut> per una gentile, garbata spiegazione sul come aprire i file.
 
 =item sysread FILEHANDLE,SCALARE,LUNGHEZZA,SCOSTAMENTO
+X<sysread>
 
 =item sysread FILEHANDLE,SCALARE,LUNGHEZZA
 
@@ -6274,6 +6527,7 @@ sysread() sono in caratteri Unicode). Lo strato C<:encoding(...)> introduce impl
 strato C<:utf8>. Consultate L</binmode>, L</open> e la direttiva di C<open>, L<open>.
 
 =item sysseek FILEHANDLE,POSIZIONE,DA_DOVE
+X<sysseek> X<lseek>
 
 Imposta la posizione di sistema del FILEHANDLE in byte, usando la chiamata di sistema 
 lseek(2). FILEHANDLE puE<ograve> essere un'espressione il cui valore fornisce il nome del 
@@ -6303,6 +6557,7 @@ C<sysseek> restituisce vero in caso di successo e falso in caso di insuccesso, t
 nuova posizione puE<ograve> ancora essere determinata facilmente.
 
 =item system LISTA
+X<system> X<shell>
 
 =item system PROGRAMMA LISTA
 
@@ -6329,7 +6584,8 @@ C<wait>. Per ottenere il valore di uscita corrente, fate uno shift a destra di o
 di seguito). Consultate anche L</exec>. Questo I<non> E<egrave> quello che avete bisogno di 
 usare per catturare l'output da un comando, per questo dovreste usare soltanto le 
 virgolette inverse oppure C<qx//> come descritto in L<perlop/"`STRING`">. Un valore restituito 
-pari a -1 indica un insuccesso nel far eseguire il programma (esaminate $! per il motivo).
+pari a -1 indica un insuccesso nel far eseguire il programma oppure un errore della chiamata di
+sistema wait(2) (esaminate $! per il motivo).
 
 Come C<exec>, C<system> permette di mentire ad un programma riguardo al proprio nome se si usa 
 la sintassi C<system PROGRAMMA LISTA>. Di nuovo, si veda L</exec>.
@@ -6368,6 +6624,7 @@ codici che vengono restituiti saranno soggetti ai suoi vezzi e proprietE<agrave>
 L<perlop/"`STRING`"> e L</exec> per i dettagli.
 
 =item syswrite FILEHANDLE,SCALARE,LUNGHEZZA,SCOSTAMENTO
+X<syswrite>
 
 =item syswrite FILEHANDLE,SCALARE,LUNGHEZZA
 
@@ -6396,6 +6653,7 @@ introduce implicitamente lo strato C<:utf8>.
 Consultate L</binmode>, L</open> e la direttiva di C<open>, L<open>.
 
 =item tell FILEHANDLE
+X<tell>
 
 =item tell
 
@@ -6420,14 +6678,16 @@ stato manipolato da sysread(), syswrite() o sysseek(). Queste funzioni ignorano 
 buffer mentre tell() no.
 
 =item telldir DIRHANDLE
+X<telldir>
 
 Restituisce la posizione corrente delle routine C<readdir> su DIRHANDLE. Il valore 
 ottenuto puE<ograve> essere passato a C<seekdir> per accedere ad una particolare 
-locazione in una directory. Ha gli stessi avvertimenti sulla directory compaction 
-[compattazione della directory, NdT] della corrispondente routine della libreria di 
-sistema.
+locazione in una directory. C<telldir> ha gli stessi avvertimenti sulla directory
+compaction [compattazione della directory, NdT] della corrispondente routine della
+libreria di sistema.
 
 =item tie VARIABILE,NOMECLASSE,LISTA
+X<tie>
 
 Questa funziona collega una variabile ad una classe (un package), la quale 
 fornirE<agrave> l'implementazione per la variabile. VARIABILE E<egrave> il nome della 
@@ -6517,6 +6777,7 @@ F<Config> per delle interessanti implementazioni di C<tie>.
 Per ulteriori dettagli consultate L<perltie>, L<"tied VARIABLE"> ["VARIABILE legata", NdT].
 
 =item tied VARIABILE
+X<tied>
 
 Restituisce un riferimento all'oggetto a cui si riferisce VARIABILE (lo stesso valore 
 che originariamente era stato restituito dalla chiamata a C<tie> che ha legato la 
@@ -6524,6 +6785,7 @@ variabile al package.) Restituisce il valore indefinito se VARIABILE non E<egrav
 legata ad un package.
 
 =item time
+X<time> X<epoch>
 
 Restituisce il numero di secondi, senza tenere conto dei leap second 
 [secondi di aggiustamento, NdT], dalla data che il sistema considera essere l'epoch,
@@ -6538,6 +6800,7 @@ oppure se avete a disposizione gettimeofday(2), potreste essere in grado di util
 l'interfaccia C<syscall> del Perl. Consultate L<perlfaq8> per dettagli.
 
 =item times
+X<times>
 
 Restituisce una lista di quattro elementi dando il times utente e di sistema, in 
 secondi, per il processo corrente e per i figli di questo processo.
@@ -6551,6 +6814,7 @@ In un contesto scalare, C<times> restituisce C<$utente>.
 L'operatore di traslitterazione. Lo stesso che C<y///>. Consultate L<perlop>.
 
 =item truncate FILEHANDLE,LUNGHEZZA
+X<truncate>
 
 =item truncate ESPR,LUNGHEZZA
 
@@ -6562,6 +6826,7 @@ Il comportamento E<egrave> indefinito se LUNGHEZZA E<egrave> piE<ugrave> grande 
 lunghezza del file.
 
 =item uc ESPR
+X<uc> X<uppercase> X<in maiuscolo>
 
 =item uc
 
@@ -6575,6 +6840,7 @@ sulle lettere iniziali delle parole. Per quello, consultate C<ucfirst>.
 Se ESPR viene omessa, la funzione usa C<$_>.
 
 =item ucfirst ESPR
+X<ucfirst> X<uppercase>
 
 =item ucfirst
 
@@ -6587,10 +6853,11 @@ e L<perlunicode> per maggiori dettagli sul supporto per il locale e l'Unicode.
 Se ESPR viene omessa, la funzione usa C<$_>.
 
 =item umask ESPR
+X<umask>
 
 =item umask
 
-Setta l'umask per il processo a ESPR e restituisce il precedente valore.
+Imposta l'umask per il processo a ESPR e restituisce il precedente valore.
 Se ESPR viene omessa, restituisce solamente l'umask corrente.
 
 Il permesso Unix C<rwxr-x---> viene rappresentato come tre insiemi di tre bit oppure con 
@@ -6623,6 +6890,7 @@ E<egrave> una stringa di cifre ottali. Si veda anche L</oct> se tutto ciE<ograve
 si ha E<egrave> una stringa.
 
 =item undef ESPR
+X<undef> X<indefinito>
 
 =item undef
 
@@ -6650,6 +6918,7 @@ parametro. Esempi:
 Va notato che questo E<egrave> un operatore unario, non un operatore di lista.
 
 =item unlink LISTA
+X<unlink> X<delete> X<cancellare> X<rm>
 
 =item unlink
 
@@ -6659,14 +6928,16 @@ Cancella una lista di file. Restituisce il numero di file cancellati con success
     unlink @dacancellare;
     unlink <*.bak>;
 
-Nota: C<unlink> non cancellerE<agrave> le directory a meno che non siate superuser e non 
-venga bassato il flag B<-U> al Perl. Anche se queste condizioni risultano soddisfatte, 
-sappiate che effettuare un unlink su una directory poE<egrave> danneggiare seriamente il 
-vostro filesystem. Usate C<rmdir> al suo posto.
+Nota: C<unlink> non tenterE<agrave> di cancellare le directory a meno che non siate
+superuser e al Perl non venga passato il flag B<-U>. Anche se queste condizioni risultano
+soddisfatte, sappiate che effettuare un unlink su una directory poE<egrave> danneggiare
+seriamente il vostro filesystem. Infine, usare C<unlink> sulle directory non E<egrave>
+supportato su molti sistemi operativi. Usate C<rmdir> al suo posto.
 
 Se LISTA viene omessa, viene usato C<$_>.
 
 =item unpack TEMPLATE,ESPR
+X<unpack>
 
 C<unpack> E<egrave> l'inverso di C<pack>: prende una stringa e la espande in una lista di 
 valori. (In contesto scalare restituisce solamente il primo valore generato).
@@ -6721,11 +6992,13 @@ quella descritta da TEMPLATE, la parte in piE<ugrave> viene ignorata.
 Consultate L</pack> per ulteriori esempi e note.
 
 =item untie VARIABILE
+X<untie>
 
 Rompe il legame tra una variabile ed un package. (Si veda C<tie>).
 Non ha effetto se sulla variabile non E<egrave> stato fatto un C<tie>.
 
 =item unshift ARRAY,LISTA
+X<unshift>
 
 Fa l'opposto di uno C<shift>. Oppure l'opposto di un C<push>, a seconda di come lo si 
 guardi. Antepone una lista nella parte anteriore dell'array e restituisce il nuovo numero 
@@ -6738,6 +7011,7 @@ elementi preposti si trovano nel medesimo ordine. Usate C<reverse> per effettuar
 l'inversione.
 
 =item use Modulo VERSIONE LISTA
+X<use> X<modulo> X<import>
 
 =item use Modulo VERSIONE
 
@@ -6840,6 +7114,7 @@ In assenza di use strict 'subs' (che genera errore) viene trattata come se
 fosse inclusa tra virgolette. [NdT]
 
 =item utime LISTA
+X<utime>
 
 Cambia i tempi di accesso e di modifica su ogni file di una lista di file. I primi due 
 elementi della lista devono essere i tempi NUMERICI di accesso e modifica, in 
@@ -6870,6 +7145,7 @@ al passarlo come 0, e non avrE<agrave> lo stesso effetto descritto quando essi s
 undef. In questo caso verrE<agrave> fatto scattare un avvertimento per il valore indefinito.
 
 =item values HASH
+X<values>
 
 Restituisce una lista contenente tutti i valori dell'hash passato come parametro. 
 (In contesto scalare, restituisce il numero di valori).
@@ -6894,6 +7170,7 @@ modificare essi modifica i contenuti dell'hash:
 Consultate anche C<keys>, C<each> e C<sort>.
 
 =item vec ESPR,SCOSTAMENTO,NUMERO_DI_BIT
+X<vec> X<bit> X<bit vector>
 
 Tratta la stringa in ESPR come un vettore di bit confezionato con elementi di ampiezza 
 NUMERO_DI_BIT e restituisce il valore dell'elemento specificato da OFFSET come intero 
@@ -7133,6 +7410,7 @@ soprastante dovrebbe stampare la seguente tabella:
     vec($_, 3, 8) = 128 == 2147483648 00000000000000000000000000000001
 
 =item wait
+X<wait>
 
 Si comporta come la chiamata di sistema wait(2) presente sul vostro sistema: aspetta che 
 un processo figlio termini e restituisce il pid del processo terminato oppure C<-1> se 
@@ -7141,6 +7419,7 @@ restituito pari a C<-1> potrebbe significare che i processi figli sono stati rac
 automaticamente, come descritto in L<perlipc>.
 
 =item waitpid PID,FLAG
+X<waitpid>
 
 Attende che un particolare processo figlio abbia terminato e restituisce il pid del 
 processo deceduto oppure C<-1> se tale processo non esiste. Su alcuni sistemi, un valore 
@@ -7165,6 +7444,7 @@ processi figli sono stati automaticamente raccolti. Consultate L<perlipc> per i 
 per altri esempi.
 
 =item wantarray
+X<wantarray> X<contesto>
 
 Restituisce vero se il contesto della subroutine attualmente in esecuzione o C<eval> 
 si aspetta un valore di lista. Restituisce falso se il contesto si aspetta uno scalare.
@@ -7183,6 +7463,7 @@ Piuttosto, questa funzione si sarebbe dovuta chiamare wantlist()
 ["wantarray"="voglio un array" mentre "wantlist"="voglio una lista", NdT].
 
 =item warn LISTA
+X<warn> X<warning> X<STDERR>
 
 Genera un messaggio sullo STDERR, esattamente come c<die>, ma non esce e non solleva 
 un'eccezione.
@@ -7229,6 +7510,7 @@ carp() e cluck().
 =item write ESPR
 
 =item write
+X<write>
 
 Scrive un record formattato (possibilmente multi linea) al FILEHANDLE specificato, usando il 
 formato associato con quel file. Il formato di default per un file E<egrave> quello avente lo 
@@ -7244,7 +7526,7 @@ scritto. Di default, il formato sommitE<agrave>-della-pagina E<egrave> il nome d
 cui E<egrave> aggiunto "_TOP" [sommitE<agrave>, NdT], ma puE<ograve> essere dinamicamente 
 impostato al formato di propria scelta assegnando il nome alla variabile C<$^> mentre il 
 filehandle viene selezionato. Il numero di linee rimanenti sulla pagina corrente si trova nella 
-variabile C<$->, la quale puE<ograve> essere settata a C<0> per forzare una nuova pagina.
+variabile C<$->, la quale puE<ograve> essere impostata a C<0> per forzare una nuova pagina.
 
 Se FILEHANLDE non E<egrave> specificato, l'output va sul canale di output di default corrente, 
 il quale comincia come STDOUT ma puE<ograve> essere cambiato dall'operatore C<select>. Se il 
@@ -7264,7 +7546,7 @@ L'operatore di traslitterazione. Lo stesso che C<tr///>. Consultate L<perlop>.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfunc
 
@@ -7273,8 +7555,10 @@ L<http://pod2it.sourceforge.net/> .
 
 =head2 Traduttore
 
-Traduzione a cura di dree.
+Traduzione a cura di dree e molti altri.
 
 =head2 Revisore
 
 Revisione a cura di dree.
+
+=cut

@@ -491,7 +491,7 @@ un elemento iniziale vuoto alla lista.
 
 Nessuno.
 
-=head1 VEDI ANCHE
+=head1 SI VEDA ANCHE
 
 Questa E<egrave> solo una guida rapida. Per un corso piE<ugrave> approfondito sulle
 regex, guardate L<perlretut> e per la pagina di reference, guardate L<perlre>.
@@ -512,7 +512,7 @@ Ilya Zakharevich, Brad Hughes e Mike Giroux per tutti i loro utili commenti.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlrequick
 

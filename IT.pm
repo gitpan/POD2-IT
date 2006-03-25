@@ -3,37 +3,44 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
 
 my $pods = {
-	perlboot => '5.8.7',
-	perldata => '5.8.6',
-	perlembed => '5.8.6',
-	perlfaq1 => '5.8.7',
-	perlfaq2 => '5.8.7',
-	perlfaq3 => '5.8.7',
-	perlfaq4 => '5.8.7',
-	perlfaq5 => '5.8.7',
-	perlfaq6 => '5.8.7',
-	perlfaq7 => '5.8.7',
-	perlfaq8 => '5.8.7',
-	perlfaq9 => '5.8.7',
-	perlfork => '5.8.1',
-	perlfunc => '5.8.7',
-	perlintro => '5.8.7',
-	perllol => '5.8.6',
-	perlmod => '5.8.6',
-	perlnewmod => '5.8.7',
-	perlrequick => '5.8.7',
-	perlreref => '5.8.7',
-	perlstyle => '5.8.1',
-	perlthrtut => '5.8.1',
-	perlunicode => '5.8.2',
-	perluniintro => '5.8.2',
-	perlxstut => '5.8.6',
+	perl => '5.8.8',
+	perlboot => '5.8.8',
+	perlcheat => '5.8.8',
+	perldata => '5.8.8',
+	perlembed => '5.8.8',
+	perlfaq1 => '5.8.8',
+	perlfaq2 => '5.8.8',
+	perlfaq3 => '5.8.8',
+	perlfaq4 => '5.8.8',
+	perlfaq5 => '5.8.8',
+	perlfaq6 => '5.8.8',
+	perlfaq7 => '5.8.8',
+	perlfaq8 => '5.8.8',
+	perlfaq9 => '5.8.8',
+	perlfork => '5.8.8',
+	perlfunc => '5.8.8',
+	perlintro => '5.8.8',
+	perlipc => '5.8.8',
+	perllol => '5.8.8',
+	perlmod => '5.8.8',
+	perlmodinstall => '5.8.8',
+	perlmodstyle => '5.8.8',
+	perlnewmod => '5.8.8',
+	perlref => '5.8.8',
+	perlrequick => '5.8.8',
+	perlreref => '5.8.8',
+	perlstyle => '5.8.8',
+	perlsyn => '5.8.8',
+	perlthrtut => '5.8.8',
+	perlunicode => '5.8.8',
+	perluniintro => '5.8.8',
+	perlxstut => '5.8.8',
 };
 
 sub print_pods {
@@ -88,7 +95,6 @@ accessed with:
 
   %> perldoc POD2::IT::<podname>
 
-
 =head1 EXTENDING perldoc
 
 With the translated pods, unfortunately, the useful C<perldoc>'s C<-f> and C<-q> 
@@ -121,11 +127,13 @@ The patch lives under F<./patches/Perldoc.pm-3.14-patch> shipped in this
 distribution.
 
 Note that the patch is for version 3.14 of L<Pod::Perldoc|Pod::Perldoc>
-(included into Perl 5.8.7). If you have a previous Perl distro (but E<gt>=
-5.8.1) and you are impatient to apply the patch, please upgrade your
-L<Pod::Perldoc|Pod::Perldoc> module to 3.14! ;-) 
+(included into Perl 5.8.7 and Perl 5.8.8). If you have a previous Perl distro
+(but E<gt>= 5.8.1) and you are impatient to apply the patch, please upgrade
+your L<Pod::Perldoc|Pod::Perldoc> module to 3.14! ;-) 
 
 See C<search_perlfunc_re> API for more information.
+
+I<Note: Currently the bleadperl has been patched (changes #26202, #26191).>
 
 =head1 API
 
@@ -207,6 +215,13 @@ POD2::IT package is currently maintained by Enrico Sorcinelli <bepi at perl.it>
 
 =head1 SEE ALSO
 
-L<perl>.
+L<POD2::FR>, L<POD2::LT>, L<perl>.
+
+=head1 COPYRIGHT AND LICENCE
+
+Copyright (C) 2004-2006 Perl.it / Perl Mongers Italia
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself. 
 
 =cut

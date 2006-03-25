@@ -5,6 +5,8 @@ perlmod - moduli Perl (pacchetti e tabelle dei simboli)
 =head1 DESCRIZIONE
 
 =head2 Pacchetti
+X<pacchetto> X<spazio dei nomi> X<variabile, globale> X<variabile globale>
+X<globale>
 
 Perl mette a disposizione un meccanismo in cui spazi dei nomi alternativi
 fanno in modo che le variabili dei pacchetti non facciano a botte con le
@@ -42,6 +44,7 @@ una stringa come C<"Ma $tu'ndo vai">, in realtE<agrave> state accedendo alla
 variabile C<$tu::ndo>, ossia alla variabile C<$ndo> nel pacchetto C<tu>,
 il che probabilmente non E<egrave> quel che intendete. Utilizzate le parentesi
 graffe per eliminare l'ambiguitE<agrave>, come in C<"Ma ${tu}'ndo vai">.
+X<::> X<'>
 
 I pacchetti possono, a loro volta, contenere separatori di pacchetto,
 come in C<$ESTERNO::INTERNO::variabile>. Ad ogni modo, ciE<ograve> non implica alcunchE<eacute>
@@ -63,6 +66,7 @@ a quelli per cui sono stati concepiti. Se avete pacchetti chiamati
 C<m>, C<s> o C<y>, allora non potete utilizzare la forma qualificata
 di un identificatore, perchE<eacute> sarebbe interpretata rispettivamente
 come un pattern match, una sostituzione o una translitterazione.
+X<variabile, punteggiatura>
 
 Le variabili che cominciano con underscore una volta erano forzate
 all'interno del pacchetto C<main>, ma abbiamo deciso che era meglio,
@@ -92,6 +96,8 @@ Consultate L<perlsub> per altre questioni sul campo d'azione relative a
 my() e local(), e L<perlref> riguardo alle chiusure [closures, N.d.T.].
 
 =head2 Tabelle dei Simboli
+X<tabella dei simboli> X<stash> X<%::> X<%main::> X<typeglob> X<glob>
+X<alias>
 
 La tabella dei simboli per un pacchetto viene memorizzata nell'hash con
 il nome del pacchetto ed una coppia di punto e virgola giustapposti. La tabella
@@ -192,6 +198,7 @@ la dereferenziazione esplicita delle variabili.
 
 Un altro utilizzo delle tabelle dei simboli lo si ha per realizzare
 scalari "costanti".
+X<costante> X<scalare, costante>
 
     *PI = \3.14159265358979;
 
@@ -272,6 +279,7 @@ Questa differenza ha anche implicazioni nell'uso del qualificatore
 SUPER:: (consultate L<perlobj>).
 
 =head2 BEGIN, CHECK, INIT e END
+X<BEGIN> X<CHECK> X<INIT> X<END>
 
 Quattro blocchi di codice chiamati in maniera speciale vengono eseguiti
 all'inizio ed alla fine di un programma Perl in esecuzione: C<BEGIN>, 
@@ -324,6 +332,7 @@ All'interno di un blocco C<END>, la variabile C<$?> contiene il valore
 che il programma sta per passare a C<exit()>. Potete modificare C<$?> per
 modificare il valore di uscita del programma. Attenzione a non cambiare
 C<$?> per sbaglio (ad esempio lanciando qualcosa utilizzando C<system>).
+X<$?>
 
 I blocchi C<CHECK> e C<INIT> sono utili per cattuare la transizione fra
 la fase di compilazione e quella di esecuzione nel programma principale.
@@ -376,6 +385,7 @@ Il seguente programma B<controlla_begin> rende infine tutto chiaro:
   __END__
 
 =head2 Classi Perl
+X<classe> X<@ISA>
 
 Non esiste alcuna sintassi speciale per le classi in Perl, ma un pacchetto
 puE<ograve> comportarsi come una classe se mette a disposizione subroutine che
@@ -387,6 +397,7 @@ variabile globale a livello di pacchetto, un una variabile lessicale).
 Per maggiori dettagli consultate L<perltoot> e L<perlobj>.
 
 =head2 Moduli Perl
+X<modulo>
 
 Un modulo E<egrave> solamente un insieme di funzioni correlate in un file di
 libreria, ossia un pacchetto Perl con lo stesso nome del file. Viene
@@ -415,7 +426,7 @@ F<Qualche/Modulo.pm> e cominciate con questo modello:
         # imposta la versione per il controllo della stessa
         $VERSION     = 1.00;
         # se si sta utilizzando RCS/CVS, questa potrebbe essere migliore
-        $VERSION = sprintf "%d.%03d", q$Revision: 1.4 $ =~ /(\d+)/g;
+        $VERSION = sprintf "%d.%03d", q$Revision: 1.5 $ =~ /(\d+)/g;
 
         @ISA         = qw(Exporter);
         @EXPORT      = qw(&funz1 &funz2 &funz4);
@@ -574,6 +585,10 @@ autocaricamento, l'utente puE<ograve> dire semplicemente C<use POSIX>
 per avere tutto.
 
 =head2 Rendere il vostro modulo sicuro per il multithreading
+X<sicuro per il multithreading> X<threadsafe> X<thread safe>
+X<modulo, sicuro per il multithreading>
+X<modulo, threadsafe> X<modulo, thread safe>
+X<CLONE> X<CLONE_SKIP> X<thread> X<ithread>
 
 A partire dalla versione 5.6.0 Perl ha supportato un nuovo tipo
 di thread chiamato thread di interprete (ithreads). Questi thread
@@ -601,6 +616,24 @@ dare maggiore visibilitE<agrave> sullo stato della clonazione.
 Se volete utilizzare C<CLONE> su tutti gli oggetti avrete bisogno di
 tenerne traccia per ciascun pacchetto. CiE<ograve> puE<ograve> essere ottenuto semplicemente
 utilizzando una hash e la funzione Scalar::Util::weaken().
+
+A partire dalla versione 5.8.7, Perl supporta anche la subroutine speciale
+C<CLONE_SKIP>. Come C<CLONE>, C<CLONE_SKIP> viene chiamata una volta per
+pacchetto; diversamente, viene chiamata appena prima che parta il processo
+di clonazione, e nel contesto del thread padre. Se restituisce un valore
+vero, allora nessun oggetto di quella classe verrE<agrave> clonato o, piuttosto,
+verrE<agrave> copiato come valore indefinito e non associato a nessuna
+classe. In questo modo viene fornito un meccanismo semplice per rendere
+un modulo robusto rispetto ai thread; basta aggiungere
+C<sub CLONE_SKIP { 1 }> all'inizio della classe, e C<DESTROY()> verrà
+ora chiamata solo una volta per oggetto. Chiaramente, se il thread
+figlio ha bisogno di utilizzare questi oggetti, è necessario utilizzare un
+approccio più sofisticato.
+
+Come C<CLONE>, C<CLONE_SKIP> viene oggi come oggi chiamata senza altri
+parametri se non il pacchetto che la sta chiamando, sebbene questo possa
+cambiare. In maniera simile, per consentire espansioni future, il valore
+di ritorno dovrebbe essere un singolo valore fra C<0> e C<1>.
 
 =head1 VEDETE ANCHE
 

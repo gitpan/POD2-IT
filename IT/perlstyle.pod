@@ -48,7 +48,7 @@ Nessuno spazio prima del punto e virgola.
 
 =item *
 
-Punto e virgola omesso in "corti" blocchi di codice da una riga.
+Punto e virgola omesso in blocchi di codice "corti" da una riga.
 
 =item *
 
@@ -76,7 +76,7 @@ Uno spazio dopo ogni virgola.
 
 =item *
 
-Linee lunghe spezzate dopo un operatore (eccetto per "and" e "or").
+Linee lunghe spezzate dopo un operatore (eccetto per C<and> e C<or>).
 
 =item *
 
@@ -122,7 +122,7 @@ E<egrave> meglio di
 
     $verboso && print "Avvio analisi\n";
 
-perchE<eacute> il punto principale non E<egrave> se l'utente ha scritto B<-> o no.
+perchE<eacute> il punto principale non E<egrave> se l'utente abbia scritto B<-> o meno.
 
 Inoltre, solo perchE<eacute> un operatore vi lascia sottintendere degli
 argomenti di default, non vuol dire che dovete utilizzare i default.
@@ -180,7 +180,7 @@ particolare funzionalitE<agrave> E<egrave> stata implementata in una versione de
 potete controllare C<$]> (C<$PERL_VERSION> usando C<English>) per
 verificare che ci sia. Il modulo C<Config> inoltre vi dE<agrave> la possibilitE<agrave>
 di interrogare i valori determinati dal programma B<Configure>
-quando il Perl E<egrave> stato installato.
+quando E<egrave> stato installato il Perl.
 
 =item *
 
@@ -190,9 +190,9 @@ avete un grosso problema.
 =item *
 
 Anche se identificatori corti come $sonoqui sono ok, utilizzate i trattini bassi
-per separare le parole. E<Egrave> generalmente piE<ugrave> facile leggere $nomi_come_questi
-che $NomiComeQuesti, specialmente per chi non parla il vostro stesso linguaggio.
-E<Egrave> anche una semplice regola che E<egrave> coerente con NOMI_COME_QUESTI.
+per separare le parole. E<Egrave> generalmente piE<ugrave> facile leggere C<$nomi_come_questi>
+che C<$NomiComeQuesti>, specialmente per chi non parla il vostro stesso linguaggio.
+E<Egrave> anche una semplice regola che E<egrave> coerente con C<NOMI_COME_QUESTI>.
 
 I nomi dei package sono spesso un'eccezione a questa regola. Il Perl 
 si riserva informalmente i nomi di modulo in minuscolo per le direttive
@@ -212,7 +212,7 @@ lo scope o la natura di una variabile. Ad esempio:
     $tutto_minuscolo    variabili di funzione my() o local()
 
 I nomi di funzioni e metodi sembrano andare meglio tutti in minuscolo.
-Ad es. $obj-E<gt>as_string().
+Ad es. C<$obj-E<gt>as_string()>.
 
 Potete utilizzare un trattino basso iniziale per indicare che una variabile
 o funzione non dovrebbe essere utilizzata al di fuori del package che
@@ -235,7 +235,7 @@ di lista per evitare eccessive "e commerciali" e parentesi.
 =item *
 
 Usate gli "here documents" [C<print E<lt>E<lt>FINE>, NdT] invece di 
-ripetere tante istruzioni print().
+ripetere tante istruzioni C<print()>.
 
 =item *
 
@@ -254,10 +254,10 @@ caso troppo lunghe per stare su una riga.
 =item *
 
 Controllate sempre il valore restituito dalle chiamate di sistema.
-Dei buoni messaggi di errore dovrebbero andare su STDERR, includere
+Dei buoni messaggi di errore dovrebbero andare su C<STDERR>, includere
 il nome del programma che ha causato il problema, la chiamata di sistema
 fallita ed i suoi argomenti, e (MOLTO IMPORTANTE) dovrebbe contenere
-l'errore standard ritornato dal sistema operativo per capire cosa non
+l'errore standard restituito dal sistema operativo per capire cosa non
 E<egrave> andato bene. Di seguito un esempio molto semplice ma sufficientemente
 esplicativo:
 
@@ -283,6 +283,31 @@ Considerate... beh, lasciamo stare.
 
 =item *
 
+Provate a documentare il vostro codice e ad usare la formattazione Pod in maniera coerente.
+Ecco le convezioni che di solito ci si aspetta:
+
+=over 4
+
+=item *
+
+usate C<CE<lt>E<gt>> per i nomi di funzioni, variabili e moduli (e piE<ugrave>
+in generale qualsiasi cosa che puE<ograve> essere considerata parde del codice, come i filehandle
+oppure degli specifici valori). Va notato che i nomi delle funzioni sono considerati piE<ugrave>
+leggibili con le parentesi dopo il nome, cioE<egrave> come in C<funzione()>.
+
+=item *
+
+usate C<BE<lt>E<gt>> per i nomi dei comandi come B<cat> oppure B<grep>.
+
+=item *
+
+usate C<FE<lt>E<gt>> oppure C<CE<lt>E<gt>> per i nomi dei file. C<FE<lt>E<gt>> dovrebbe
+essere il solo codice Pod per i nomi di file, ma dato che molti formattatori di Pod lo
+visualizzano in corsivo, i path di Unix e Windows con i loro slash e backslash
+[barre e barre inverse, NdT] possono essere meno leggibili e meglio riprodotti con C<CE<lt>E<gt>>.
+
+=item *
+
 Siate coerenti.
 
 =item *
@@ -295,7 +320,7 @@ Comportatevi bene.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlsytle
 
@@ -304,8 +329,10 @@ L<http://pod2it.sourceforge.net/> .
 
 =head2 Traduttore
 
-Traduzione a cura di Aldo Calpini.
+Traduzione a cura di Aldo "dada" Calpini.
 
 =head2 Revisore
 
 Revisione a cura di dree.
+
+=cut

@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq8 - Interazione con il Sistema ($Revision: 1.17 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq8 - Interazione con il Sistema ($Revision: 1.19 $, $Date: 2006/02/09 04:30:02 $)
 
 =head1 DESCRIZIONE
 
@@ -38,25 +38,26 @@ Provate con i seguenti moduli:
 
 =item Tastiera
 
-    Term::Cap			Distribuzione perl standard
-    Term::ReadKey		CPAN
-    Term::ReadLine::Gnu		CPAN
-    Term::ReadLine::Perl	CPAN
-    Term::Screen		CPAN
+	Term::Cap		Distribuzione perl standard
+	Term::ReadKey		CPAN
+	Term::ReadLine::Gnu	CPAN
+	Term::ReadLine::Perl	CPAN
+	Term::Screen		CPAN
 
 =item Schermo
 
-    Term::Cap			Distribuzione perl standard
-    Curses			CPAN
-    Term::ANSIColor		CPAN
+	Term::Cap		Distribuzione perl standard
+	Curses			CPAN
+	Term::ANSIColor		CPAN
 
 =item Mouse
 
-    Tk				CPAN
+	Tk			CPAN
 
 =back
 
-Alcuni di questi casi specifici sono mostrati di seguito.
+Alcuni di questi casi specifici sono mostrati quali esempi in altre risposte
+in questa sezione della perlfaq.
 
 =head2 Come faccio a stampare qualcosa a colori?
 
@@ -287,9 +288,9 @@ Se prevedete che i caratteri raggiungano il vostro device quando li
 stampate con print(), vorrete certamente impostare il flush automatico
 per tale filehandle. Potete servirvi di select() e della variabile C<$|>
 per controllare il flush automatico (consultate L<perlvar/$E<verbar>>)
-e L<perlfunc/select>, oppure L<perlfaq5>, ``Come faccio a terminare le
+e L<perlfunc/select>, oppure L<perlfaq5>, "Come faccio a terminare le
 operazioni di I/O in corso o a privare del buffer un filehandle di
-output? PerchE<eacute> devo fare questo?''):
+output? PerchE<eacute> devo fare questo?"):
 
     $vecchioh = select(DEV);
     $| = 1;
@@ -424,11 +425,11 @@ Non si puE<ograve> "intercettare" un carattere di controllo. Quello che
 avviene E<egrave> che il carattere genera un segnale che viene inviato al
 gruppo di processi del terminale in foreground, che potete intercettare nel
 vostro processo. I segnali sono documentati nella sezione L<perlipc/"Signals"> ["Segnali", NdT]
-o nella sezione ``Signals'' del Camel.
+o nella sezione "Signals" del Camel.
 
-Potete impostare i valori dell'hash %SIG in modo che siano le funzioni che 
-volete che si occupano del segnale. Dopo che il perl ha catturato il segnale, 
-cerca in %SIG una chiave con lo stesso nome del segnale, poi chiama il valore 
+Potete impostare i valori dell'hash %SIG in modo che siano le funzioni che
+volete che si occupano del segnale. Dopo che il perl ha catturato il segnale,
+cerca in %SIG una chiave con lo stesso nome del segnale, poi chiama il valore
 della subroutine per quella chiave.
 
 	# come una subroutine anonima
@@ -441,21 +442,15 @@ della subroutine per quella chiave.
 	
 	# oppure il nome della funzione come una stringa
 	
-	$SIG{INT} = "ahi"; 
+	$SIG{INT} = "ahi";
 
-Le versioni di Perl precedenti alla 5.8 avevano nel proprio sorgente C dei gestori 
-di segnali che intercettavano il segnale ed, eventualmente, eseguivano una 
-funzione Perl da voi messa in %SIG. Questo vE<iacute>ola le regole della gestione dei 
-segnali a quel livello causando un core dump del perl. A partire dalla versione 
-5.8.0, il perl cerca in %SIG *dopo* che il segnale E<egrave> stato catturato, 
-piuttosto che nel mentre il segnale venga catturato. Le precendeti versioni di 
+Le versioni di Perl precedenti alla 5.8 avevano nel proprio sorgente C dei gestori
+di segnali che intercettavano il segnale ed, eventualmente, eseguivano una
+funzione Perl da voi messa in %SIG. Questo vE<iacute>ola le regole della gestione dei
+segnali a quel livello causando un core dump del perl. A partire dalla versione
+5.8.0, il perl cerca in %SIG *dopo* che il segnale E<egrave> stato catturato,
+piuttosto che nel mentre il segnale venga catturato. Le precendeti versioni di
 questa domanda erano non corrette.
-Perl versions before 5.8 had in its C source code signal handlers which
-would catch the signal and possibly run a Perl function that you had set
-in %SIG.  This violated the rules of signal handling at that level
-causing perl to dump core. Since version 5.8.0, perl looks at %SIG
-*after* the signal has been caught, rather than while it is being caught.
-Previous versions of this answer were incorrect.
 
 =head2 Come modifico il file delle shadow password su un sistema Unix?
 
@@ -472,7 +467,7 @@ ulteriori dettagli).
 Ponendo che il vostro programma sia in esecuzione con sufficienti permessi,
 dovreste essere in grado di impostare la data e l'ora del sistema
 eseguendo il programma date(1). (Non E<egrave> possibile impostare l'ora 
-solamente per un processo.) Questo sistema funziona sotto Unix, MS-DOS,
+solamente per un processo). Questo sistema funziona sotto Unix, MS-DOS,
 Windows, e NT; l'equivalente VMS E<egrave> set time.
 
 In ogni caso, se volete semplicemente cambiare il vostro fuso orario,
@@ -699,8 +694,8 @@ i file temporanei:
     use IPC::Open3;
     use Symbol qw(gensym);
     use IO::File;
-    local *CATTURAOUT = IO::File->new_tempfile;
-    local *CATTURAERR = IO::File->new_tempfile;
+    local *CATTURAOUT = IO::File->new_tmpfile;
+    local *CATTURAERR = IO::File->new_tmpfile;
     my $pid = open3(gensym, ">&CATTURAOUT", ">&CATTURAERR", "cmd");
     waitpid($pid, 0);
     seek $_, 0, 0 for \*CATTURAOUT, \*CATTURAERR;
@@ -713,7 +708,7 @@ temporanei... quello che segue dovrebbe funzionare allo stesso modo, senza deadl
     use IPC::Open3;
     use Symbol qw(gensym);
     use IO::File;
-    local *CATTURAERR = IO::File->new_tempfile;
+    local *CATTURAERR = IO::File->new_tmpfile;
     my $pid = open3(gensym, \*CATTURAOUT, ">&CATTURAERR", "cmd");
     while( <CATTURAOUT> ) {}
     waitpid($pid, 0);
@@ -1250,8 +1245,8 @@ con B<make perl> e otterrete una nuova versione binaria di F<perl> con
 la vostra estensione linkata in esso.
 
 Consultate L<ExtUtils::MakeMaker> per maggiori dettagli sulle estensione di
-configurazione. Si veda anche la domanda successiva, ``Qual E<egrave> la
-differenza tra require e use?''.
+configurazione. Si veda anche la domanda successiva, "Qual E<egrave> la
+differenza tra require e use?".
 
 =head2 Qual E<egrave> la differenza tra require e use?
 
@@ -1327,7 +1322,7 @@ utilizzano il modulo Socket (C<use Socket;>).
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
@@ -1344,7 +1339,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq8
 
@@ -1358,3 +1353,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di dree.
+
+=cut

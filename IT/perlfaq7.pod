@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.17 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.18 $, $Date: 2006/02/12 17:02:20 $)
 
 =head1 DESCRIZIONE
 
@@ -38,7 +38,7 @@ sono specificatori di tipo:
     \  ottiene un riferimento a qualcosa.
 
 Va notato che <FILE> non E<egrave> uno specificatore di tipo per i file e nemmeno
-il nome dell'handle. E<egrave> l'operatore C<< <> >> applicato all'handle FILE
+il nome dell'handle. E<Egrave> l'operatore C<< <> >> applicato all'handle FILE.
 Legge una linea (o meglio, un record--consultate la voce $/ in L</perlvar/$/>)
 dall'handle FILE se in un contesto scalare, oppure tutte le linee se in un
 contesto di lista. Quando si apre, si chiude, o si esegue un'operazione
@@ -61,7 +61,7 @@ virgolette:
     pluto => roba           'pluto' => roba
 
 Il punto e virgola finale in un blocco E<egrave> opzionale, cosE<igrave> come
-la virgola finale in una lista. E<egrave> buono stile (vedete L<perlstyle>)
+la virgola finale in una lista. E<Egrave> buono stile (vedete L<perlstyle>)
 metterli, fatta eccezione per il codice costituito da una sola linea:
 
     if ($ops) { exit 1 }
@@ -187,7 +187,7 @@ Se cercate qualcosa un po' piE<ugrave> rigoroso, provate L<perltoot>.
 
 =head2 Come si crea un modulo?
 
-(contributed by brian d foy)
+(contributo di brian d foy)
 
 L<perlmod>, L<perlmodlib>, L<perlmodstyle> spiegano i moduli in tutti i 
 sanguinolenti particolari. L<perlnewmod> dE<agrave> una breve panoramica del 
@@ -288,26 +288,42 @@ di sola lettura. Non conosco gli interpreti Python successivi. Per approfondimen
 
 =head2 Cos'E<egrave> il suicidio di variabile e come si puE<ograve> prevenire?
 
+Questo problema E<egrave> stato risolto nel perl 5.004_05, dunque prevenirlo significa
+aggiornare la vostra versione di perl. ;)
+
 Il suicidio di variabile si ha quando (temporaneamente o permanentemente) si
-perde il valore di una variabile. E<eacute> causato da questioni di
+perde il valore di una variabile. E<Egrave> causato da questioni di
 visibilitE<agrave> frutto dell'interazione tra my() e local() o con le
 chiusure o con variabili che sono iteratori alias per foreach() e con 
 argomenti di subroutine. Di solito era facile perdere inavvertitamente il
 valore di una variabile in questa modo, ora perE<ograve> E<egrave> piE<ugrave>
 difficile. Prendete questo codice:
 
-     my $f = "pippo";
+     my $f = 'pippo';
      sub T {
-       while ($i++ < 3) { my $f = $f; $f .= "pluto"; print $f, "\n" }
+       while ($i++ < 3) { my $f = $f; $f .= 'pluto'; print $f, "\n" }
      }
      T;
      print "Infine $f\n";
 
+Se state avendo a che fare con il suicidio di variabile, quel C<my $f> nella subroutine
+non tira su una nuova copia di C<$f>, il cui valore E<egrave> C<pippo>. L'output
+mostra che all'interno della subroutine, il valore di C<$f> oltrepassa i limiti
+quando non dovrebbe, come in questo output:
+
+	pippopluto
+	pippoplutopluto
+	pippoplutoplutopluto
+	Infine pippo
+
 La $f a cui E<egrave> stato aggiunto "pluto" per tre volte dovrebbe essere una
-nuova $f (C<my $f> dovrebbe creare una nuova variabile locale ogni volta che
-si compie il ciclo). Ad ogni modo non E<egrave> cosE<igrave>. Questo era un 
-errore, ora risolto nelle ultime versioni (testato con 5.004_05, 5.005_03 e
-5.005_56). 
+nuova $f. C<my $f> dovrebbe creare una nuova variabile locale ogni volta che
+si compie il ciclo. L'output che ci si aspetta E<egrave>:
+
+	pippopluto
+	pippopluto
+	pippopluto
+	Infine pippo
 
 =head2 Come faccio a passare/restituire una {Funzione, FileHandle, Array, Hash, Metodo, Espressione Regolare}?
 
@@ -315,7 +331,7 @@ Fatta eccezione per le espressioni regolari, dovete passare un riferimento a
 questi oggetti. Consultate L<perlsub/"Pass by Reference"> ["Passato per Riferimento", NdT]
 per tale particolare questione, e L<perlref> per informazioni sui riferimenti.
 
-Consultate il sottostante paragrafo ``Passaggio di espressioni regolari'',
+Consultate il sottostante paragrafo "Passaggio di espressioni regolari",
 per avere informazioni sul passaggio di espressioni regolari. 
 
 =over 4
@@ -435,46 +451,60 @@ nella distribuzione standard di perl).
 
 =head2 Come si crea una variabile statica?
 
-Come per molte cose che riguardano il Perl, c'E<egrave> piE<ugrave> di un modo
-per farlo. CiE<ograve> che in altri linguaggi E<egrave> una "variabile statica"
-in Perl potrebbe essere una variabile privata ad una funzione
-(una variabile che E<egrave> visibile in una sola funzione, e mantiene
-il suo valore tra una chiamata e l'altra), oppure una variabile
-privata ad un file (visibile soltanto alle funzioni contenute nel
-file in cui essa E<egrave> stata dichiarata).
+(contributo di brian d foy)
 
-Ecco il codice per implementare una variabile privata ad una funzione:
+Perl non ha le variabili "statiche", alle quali si puE<ograve> avere accesso solo
+dalla funzione nella quale sono dichiarate. PerE<ograve> potete ottenere lo
+stesso effetto con le variabili lessicali.
+
+Potete simulare una variabile statica usando una variabile lessicale che
+va al di fuori dello scope. In questo esempio, si definisce la subroutine C<contatore>
+che usa la variabile lessicale C<$contatore>. Dato che lo inserite in un blocco BEGIN,
+C<$contatore> E<egrave> definito a tempo di compilazione, ma esso va anche fuori dallo
+scope alla fine del blocco BEGIN. Il blocco BEGIN assicura anche che la subroutine e
+il valore che essa usa sia definito a tempo di compilazione di modo che la subroutine
+sia pronta all'uso proprio come ogni altra subroutine, e si possa inserire questo codice
+nella stessa posizione come per le altre subroutine nel testo del programma (ovvero, di
+solito, alla fine del codice). La subroutine C<contatore> ha ancora un riferimento ai dati e
+questa E<egrave> la sola maniera che avete per accedere al valore (ed ogni volta che lo
+fate, ne incrementate il valore). I dati nella porzione di memoria definita da C<$contatore>
+E<egrave> privata per C<contatore>.
 
     BEGIN {
-        my $contatore = 42;
-        sub contatore_precedente { return --$contatore }
-        sub contatore_successivo { return $contatore++ }
+        my $contatore = 1;
+        sub contatore { $contatore++ }
     }
 
-Ora contatore_precedente() e contatore_successivo() condividono una variabile privata $contatore,
-che E<egrave> stata inizializzata durante la compilazione.
+    my $partenza = contatore();
 
-Per dichiarare una variabile privata ad un file, farete ancora uso di my(),
-ponendo la dichiarazione all'inizio del file, nel blocco piE<ugrave> esterno.
-Ponete che questo sia il file Pax.pm:
+    .... # codice che chiama contatore();
 
-    package Pax;
-    my $inizio = scalar(localtime(time()));
+    my $fine = contatore();
 
-    sub cominciato { return $inizio }
+Nell'esempio precedente, avete creato una variabile privata per una funzione
+perch<eacute> solo una funzione si E<egrave> il suo riferimento. Potreste definire
+funzioni multiple mentre la variabile E<egrave> nello scope, ed ogni funzione
+puE<ograve> condividere la variabile "privata". Non E<egrave> davvero "statica" perchE<eacute>
+potete accedervi dal di fuori della funzione finchE<eacute> la variabile lessicale E<egrave>
+nello scope e potete anche creare riferimenti ad essa. In questo esempio, C<incrementa_contatore> e
+C<restituisci_contatore> condividono la variabile. Una funzione incrementa il valore e l'altra
+semplicemente lo restituisce. Entrambe possono accedere a C<$contatore> e visto che esso E<egrave>
+andato al di fuori dello scope, non c'E<egrave> altro modo per accedervi. 
 
-Quando C<use Pax> oppure C<require Pax> caricano questo modulo, la variabile
-sarE<agrave> inizializzata. Non sarE<agrave> distrutta dal garbage collector
-come avviene per la maggior parte delle variabili che non sono piE<ugrave>
-visibili, perchE<egrave> la funzione cominciato() se ne occupa, ma nessun
-altro puE<ograve> ispezionarne il contenuto. Non si chiama $Pax::inizio
-perchE<egrave> la sua visibilitE<agrave> non E<egrave> legata al package.
-La sua visibilitE<agrave> coincide con il file. Potenzialmente potreste
-avere diversi package nello stesso file che accedono alla stessa variabile,
-ma un altro file con lo stesso package non potrebbe accederle.
+    BEGIN {
+        my $contatore = 1;
+        sub incrementa_contatore  { $contatore++ }
+        sub restituisci_contatore { $contatore }
+    }
+
+Per dichiarare una variabile privata per un file, potete usare ancora una
+variabile lessicale. Un file E<egrave> anche uno scope, dunque una variabile
+lessicale definita nel file non puE<ograve> essere vista da qualsiasi altro file.
 
 Consultate L<perlsub/"Persistent Private Variables"> ["Variabili Private Persistenti", NdT]
-per dettagli.
+per maggiori informazioni. La discussione sulle chiusure in L<perlref> potrebbe aiutarvi
+anche se non abbiamo usato le subroutine anonime in questa risposta. 
+Consultate L<perlsub/"Persistent Private Variables"> per i dettagli.
 
 =head2 Qual E<egrave> la differenza tra visibilitE<agrave> dinamica e visibilitE<agrave> lessicale (o statica)? Qual E<egrave> la differenza tra local() e my()?
 
@@ -946,7 +976,7 @@ di solito per le subroutine --, probabilmente volete usare solo hard reference.
 
 =head2 Cosa significa "bad interpreter" ["interprete non valido", NdT]?
 
-(contributed by brian d foy)
+(contributo di brian d foy)
 
 Il messaggio "bad interpreter" deriva dalla shell, non dal perl. Il messaggio
 vero e proprio puE<ograve> variare a seconda della vostra piattaforma, shell e
@@ -978,10 +1008,10 @@ sarE<agrave> necessario modificare la vostra shebang.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
-Questa documentazione E<egrave>  libera; potete ridistribuirla e/o modificarla
+Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
 Indipendentemente dalle modalitE<agrave> di distribuzione, tutti gli esempi di
@@ -995,7 +1025,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq7
 
@@ -1009,3 +1039,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di dree.
+
+=cut

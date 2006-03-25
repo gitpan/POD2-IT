@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq5 - File e Formati ($Revision: 1.19 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq5 - File e Formati ($Revision: 1.22 $, $Date: 2006/02/11 03:50:44 $)
 
 =head1 DESCRIZIONE
 
@@ -8,6 +8,7 @@ Questa sezione tratta l'I/O e tutto ciE<ograve> che inizia per "f": filehandle,
 flushing, formati, e footer.
 
 =head2 Come faccio a terminare le operazioni di I/O in corso o a privare del buffer un filehandle di output? PerchE<eacute> devo fare questo?
+X<flush> X<buffer> X<unbuffer> X<autoflush>
 
 Il Perl non supporta esattamente l'output privo di buffer (salvo nel caso
 in cui possiate eseguire C<syswrite(OUT, $char, 1)>) benchE<eacute> supporti
@@ -54,15 +55,17 @@ cosa per cui li usate. Potete usare IO::Handle:
 oppure IO::Socket:
 
     use IO::Socket;          # questa E<egrave> tipo una pipe?
-    my $sock = IO::Socket::INET->new( 'www.esempio.com:80' ) ;
+    my $sock = IO::Socket::INET->new( 'www.esempio.com:80' );
     $sock->autoflush();
 
 =head2 Come si cambia una riga di un file/cancella una riga di un file/inserisce una riga nel mezzo di un file/aggiunge all'inizio di un file?
+X<file, editing>
 
 Usate il modulo Tie::File, che E<egrave> incluso nella distribuzione
 standard fin dal Perl 5.8.0.
 
 =head2 Come si conta il numero di righe di un file?
+X<file, contare righe> X<righe> X<riga>
 
 Un modo efficente ed elegante E<egrave> quello di contare i caratteri di
 ritorno a capo nel file. Il seguente programma usa una caratteristica di
@@ -82,6 +85,7 @@ Questo presuppone che non si facciano giochetti con l'uso di tr sul ritorno
 a capo.
 
 =head2 Come posso usare l'opzione del Perl C<-i> dall'interno di un programma?
+X<-i> X<in-place>
 
 C<-i> imposta il valore della variabile Perl C<$^I>, che a sua volta influisce 
 sul comportamento di C<< <> >>; consultate L<perlrun> per maggiori dettagli.
@@ -107,6 +111,7 @@ lasciando una copia del dato originale da qualunque file in un nuovo
 file C<.c.orig>.
 
 =head2 Come posso copiare un file?
+X<copy> X<file, copy>
 
 (contributo di brian d foy)
 
@@ -123,6 +128,7 @@ il file originale, aprire il file di destinazione, poi scrivere
 sul file di destinazione quello che avete letto nell'originale.
 
 =head2 Come si crea un file temporaneo?
+X<file, temporaneo>
 
 Se non vi serve conoscere il nome del file, potete usare C<open()> con 
 C<undef> al posto del nome del file. La funzione C<open()> crea un file 
@@ -176,10 +182,11 @@ piE<ugrave> file temporanei in un unico processo, usate un contatore:
     }
 
 =head2 Come posso manipolare file contenenti record a lunghezza fissa?
+X<lunghezza fissa> X<file, record a lunghezza fissa>
 
-Il modo piE<ugrave> efficiente E<egrave> usare pack() e unpack(). E<egrave>
+Il modo piE<ugrave> efficiente E<egrave> usare pack() e unpack(). E<Egrave>
 piE<ugrave> veloce rispetto all'uso di substr() quando si ricevono molte,
-molte stringhe. E<egrave> piE<ugrave> lento se se ne ricevono poche.
+molte stringhe. E<Egrave> piE<ugrave> lento se se ne ricevono poche.
 
 Ecco un pezzo di codice d'esempio per dividere in pezzi e poi rimettere
 insieme alcune linee di input in formato fisso, in questo caso dall'output
@@ -206,6 +213,7 @@ come gruppo oppure interarvi con un for. Evita anche di inquinare il programma c
 variabili globali e l'utilizzo di riferimenti simbolici.
 
 =head2 Come posso rendere un filehandle locale ad una subroutine? Come faccio a passare filehandle tra subroutine? Come faccio a creare un array di filehandle?
+X<filehandle, locale> X<filehandle, passare> X<filehandle, riferimento>
 
 Con la versione 5.6 di perl, open() crea automaticamente handle per file e
 directory sotto forma di riferimenti se gli viene passata una variabile
@@ -234,6 +242,7 @@ Se volete creare molti handle anonimi, dovreste controllare i moduli Symbol
 e IO::Handle.
 
 =head2 Come posso utilizzare un filehandle in maniera indiretta?
+X<filehandle, indiretta>
 
 Utilizzare un filehandle in maniera indiretta significa usare qualcosa di
 diverso da un simbolo in un luogo dove E<egrave> richiesto un filehandle
@@ -333,24 +342,32 @@ E<egrave> la sintassi degli operatori fondamentali. Il gioco degli oggetti
 non vi E<egrave> di alcun aiuto qui.
 
 =head2 Come posso impostare un formato di fine pagina da utilizzare con write()?
+X<footer>
 
 Non c'E<egrave> un modo predefinito per fare ciE<ograve>, ma L<perlform>
 contiene un paio di tecniche che rendono la cosa possibile all'hacker
 intrepido.
 
 =head2 Come posso scrivere su una stringa con write()?
+X<write, su una stringa>
 
 Per una funzione swrite(), consultate L<perlform/"Accessing Formatting
 Internals">.
 
 =head2 Come posso mostrare dei numeri con l'aggiunta delle virgole?
+X<number, commify>
+
+(contributo di brian d foy e Benjamin Goldberg)
 
 [a differenza dell'Italia, nei paesi anglosassoni, il separatore delle
 migliaia E<egrave> la virgola mentre quello dei decimali E<egrave> il
 punto, NdT]
 
+Potete utilizzare L<Number::Format> per separare il numero in porzioni piE<ugrave> piccole. 
+Gestisce correttamente il locale, per quelli fra voi che vogliano inserire dei punti 
+(o qualsiasi altra cosa vi chiedano di usare, veramente).
+
 Questa subroutine aggiungerE<agrave> le virgole al vostro numero:
-This subroutine will add commas to your number:
 
 	sub virgolante {
 	   local $_  = shift;
@@ -377,10 +394,11 @@ E<Egrave> piE<ugrave> semplice vederla con i commenti:
     )/$1,/xg;
 
 =head2 Come posso tradurre le tilde (~) nel nome di un file?
+X<tilde> X<tilde espansione>
 
 Utilizzate l'operatore (glob()) <>, documentato in L<perlfunc>. Le vecchie
 versioni di Perl richiedono che abbiate installato una shell che espande
-le ~. Le versioni piE<ugrave> recenti di Perl contengono direttamente questa
+le tilde. Le versioni piE<ugrave> recenti di Perl contengono direttamente questa
 caratteristica al loro interno. Il modulo File::KGlob (disponibile da CPAN)
 offre una funzionalitE<agrave> di glob piE<ugrave> portabile.
 
@@ -399,6 +417,7 @@ All'interno di Perl, potete utilizzare direttamente questo codice:
 	}ex;
 
 =head2 Come mai quando apro un file in lettura e scrittura il suo contenuto viene eliminato?
+X<clobber> X<lettura-scrittura> X<clobbering> X<truncate> X<truncating>
 
 PerchE<eacute> state utilizzando qualcosa di simile a quanto di seguito
 indicato, che tronca il file e I<poi> vi consente l'accesso ad esso in
@@ -477,6 +496,7 @@ Consultate anche anche il nuovo L<perlopentut> se ne siete in possesso
 (nuovo nella versione 5.6).
 
 =head2 Come mai a volte ottengo un "Argument list too long" [lista degli argomenti troppo lunga, NdT] quando uso E<lt>*E<gt>?
+X<argument list too long>
 
 L'operatore C<< <> >> effettua un'operazione di globbing [espansione degli 
 argomenti, NdT] (guardate sopra). Nelle versioni di Perl precedenti alla
@@ -493,34 +513,34 @@ oppure servitevi di un modulo come File::KGlob, che non usa la shell per
 effettuare l'espansione.
 
 =head2 C'E<egrave> un bug/leak [perdita di memoria, NdT] in glob()?
+X<glob>
 
 A causa dell'attuale implementazione su alcuni sistemi operativi, quando
 utilizzate in contesto scalare la funzione glob() o il suo alias costituito
 dalle parentesi angolari, potreste causare una perdita di memoria e/o un
-comportamento imprevedibile. E<egrave> dunque meglio utilizzare glob()
+comportamento imprevedibile. E<Egrave> dunque meglio utilizzare glob()
 solamente in contesto di lista.
 
 =head2 Come posso aprire un file contenente un ">" all'inizio o degli spazi alla fine?
+X<filename, caratteri speciali>
 
-Di norma perl ignora gli spazi posti alla fine dei nomi dei file, ed
+(contributo di Brian McCauley)
+
+La speciale forma a due argomenti della funzione open() del Perl 
+ignora gli spazi posti alla fine dei nomi dei file, ed
 interpreta in maniera speciale alcuni caratteri posti all'inizio (oppure
-un "|" posto alla fine).
+un "|" posto alla fine). Nelle vecchie versioni di Perl questa era la sola
+versione di open() e dunque essa E<egrave> assai comune in codice e libri datati.
 
-La versione a tre argomenti di open() vi permette di specificare il modo, 
-separatamente dal nome del file. La funzione open() tratta i caratteri
-speciali e lo spazio bianco nel nome del file in maniera letterale:
+A meno di non aver un particolare motivo per usare la forma a due argomenti,
+dovreste usare la forma di open() a tre argomenti che non tratta alcun
+carattere nel filename come speciale.
 
-    open FILE, "<", "  file  ";  # il nome del file E<egrave> "   file   "
-    open FILE, ">", ">file";     # il nome del file E<egrave> ">file"
-
-PuE<ograve> tuttavia essere molto piE<ugrave> chiaro utilizzare sysopen():
-
-    use Fcntl;
-    $percorsocattivo = "<<<qualcosa di realmente malvagio  ";
-    sysopen (FH, $percorsocattivo, O_WRONLY | O_CREAT | O_TRUNC)
-	or die "non riesco ad aprire $percorsocattivo: $!";
+	open FILE, "<", "  file  ";  # il nome del file e` "   file   "
+	open FILE, ">", ">file";     # il nome del file e` ">file"
 
 =head2 Come posso rinominare in modo efficace un file?
+X<rename> X<mv> X<move> X<file, rename> X<ren>
 
 Se il vostro sistema operativo supporta una valida utility mv(1) oppure
 il suo equivalente funzionale, quanto segue funziona:
@@ -536,6 +556,7 @@ metainformazioni quali permessi, dati, informazioni sull'inode, ecc.
 Le nuove versioni di File::Copy esportano un funzione move().
 
 =head2 Come si puE<ograve> fare il lock di un file?
+X<lock> X<file, lock> X<flock>
 
 La funzione integrata in Perl, flock() (vedete L<perlfunc> per i dettagli),
 chiamerE<agrave> flock(2) se esiste, fcntl(2) se non esiste (sulle versioni
@@ -574,7 +595,7 @@ modificati anche da programmi che non usano flock(). Le automobili che si
 fermano con il semaforo rosso vanno d'accordo tra loro ma non con le
 automobili che non si fermano con il semaforo rosso. Per i dettagli vedete
 perlport, la specifica documentazione del vostro port oppure le vostre
-manpage locali, specifiche per il sistema. E<egrave> meglio che si assuma
+manpage locali, specifiche per il sistema. E<Egrave> meglio che si assuma
 un comportamento tradizionale se si stanno scrivendo programmi portabili
 (Se non lo si sta facendo, ci si dovrebbe sentire, come sempre, perfettamente
 liberi di scriversi le proprie idiosincrasie di sistema (a volte chiamate 
@@ -588,10 +609,11 @@ L<perlopentut/"File Locking"> se ce l'avete (nuovo per il 5.6).
 =back
 
 =head2 PerchE<eacute> non si puE<ograve> fare solamente open(FH, ">file.lock")?
+X<lock, lockfile race condition>
 
 Una parte comune di codice B<DA NON USARE> E<egrave> questa:
 
-    sleep(3) while -e "file.lock";    # PER FAVORE NON SI USI
+    sleep(3) while -e "file.lock";   # PER FAVORE NON SI USI
     open(LCK, "> file.lock");        # QUESTO CODICE NON CORRETTO
 
 Questa E<egrave> una classica race condition: si impiegano due passi per
@@ -609,6 +631,7 @@ coinvolgono link(), ma questi tendono a implicare del busy-wait, anch'esso
 poco desiderabile.
 
 =head2 Non riesco ancora ad ottenere il lock. Voglio solo incrementare un numero nel file. Come faccio?
+X<contatore> X<file, contatore>
 
 Non vi ha mai detto nessuno che i contatori di accesso sulle pagine web
 sono inutili? Non contano gli accessi reali, sono una perdita di tempo e
@@ -635,6 +658,7 @@ Se il numero di accessi non fa colpo sui vostri amici, potete provare ad
 impressionarli con il codice. :-)
 
 =head2 Tutto ciE<ograve> che voglio fare E<egrave> aggiungere un po' di testo alla fine di un file. Devo comunque usare i lock?
+X<append> X<file, append>
 
 Se vi trovate su un sistema che implementa correttamente flock() ed
 utilizzate il codice di esempio per aggiungere dati ad un file da
@@ -667,6 +691,7 @@ sistema anche se il buffer iniziale era vuoto. Ci potrebbero essere alcuni
 sistemi dove questa probabilitE<agrave> E<egrave> ridotta a zero.
 
 =head2 Come modifico, accedendovi in maniera casuale, un file binario?
+X<file, binary patch>
 
 Se state semplicemente tentando di modificare una parte di un file binario,
 in molti casi qualcosa di semplice come ciE<ograve> che segue funziona:
@@ -690,10 +715,11 @@ Il locking e la gestione degli errori sono lasciati come esercizi al
 lettore. Non dimenticatevene o ve ne pentirete.
 
 =head2 Come faccio ad ottenere il timestamp [1] di un file, in perl?
+X<timestamp> X<file, timestamp>
 
 Se volete sapere quando E<egrave> stata l'ultima volta in cui il file
 E<egrave> stato letto, scritto o ha subito una modifica dei suoi meta-dati
-(proprietario, ecc.), usate le operazioni di test dei file B<-M>, B<-A> o
+(proprietario, ecc.), usate le operazioni di test dei file B<-A>, B<-M> o
 B<-C>, che sono documentate in L<perlfunc>. Esse recuperano l'etE<agrave>
 del file in giorni, espressa con un numero in virgola mobile (misurata dal
 momento di inizio del vostro programma). Alcune piattaforme potrebbero non
@@ -727,6 +753,7 @@ in questo caso, come viene spiegato nel testo della FAQ, l'orario di accesso,
 scrittura o modifica dei metadati, NdT
 
 =head2 Come si imposta il timestamp [1] di un file, in perl?
+X<timestamp> X<file, timestamp>
 
 Usate la funzione utime() documentata in L<perlfunc/utime>. A titolo di
 esempio, ecco un piccolo programma che copia gli istanti di lettura e
@@ -756,6 +783,7 @@ in questo caso, come viene spiegato nel testo della FAQ, l'orario di accesso,
 scrittura o modifica dei metadati, NdT
 
 =head2 Come faccio a stampare piE<ugrave> di un file alla volta?
+X<print, su molteplici file>
 
 Per connettere un filehandle a diversi filehandle di output, potete usare i
 moduli IO::Tee o Tie::FileHandle::Multiplex.
@@ -766,6 +794,7 @@ volta.
     for $fh (FH1, FH2, FH3) { print $fh "qualsiasi cosa\n" }
 
 =head2 Come posso leggere un intero file tutto in una volta?
+X<slurp> X<file, slurping>
 
 Potete usare il modulo File::Slurp per fare questo in un solo passo.
 
@@ -821,6 +850,7 @@ Il terzo argomento verifica la dimensione in byte dei dati sul filehandle
 INPUT e legge quel numero di byte nel buffer $variabile.
 
 =head2 Come posso leggere un file per paragrafi?
+X<file, leggere per paragrafi>
 
 Usate la varaibile C<$/> (vedete L<perlvar> per i dettagli). Potete sia
 impostarla a C<""> per eliminare i paragrafi vuoti (C<"abc\n\n\n\ndef">,
@@ -832,6 +862,7 @@ S<C<"fred\n \nvariecose\n\n">> E<egrave> un paragrafo, ma C<"fred\n\nvariecose\n
 sono due.
 
 =head2 Come posso leggere un singolo carattere da un file? E dalla tastiera?
+X<getc> X<file, leggere un singolo carattere alla volta>
 
 Per la maggior parte dei filehandle potete usare la funzione integrata
 C<getc()>, ma essa non funzionerE<agrave> (facilmente) per il terminale.
@@ -966,6 +997,7 @@ FIONREAD richiede che il filehandle sia connesso ad un flusso, ossia socket,
 pipe, e periferiche tty funzionano, ma semplici file I<no>.
 
 =head2 Come posso realizzare C<tail -f> in perl?
+X<tail>
 
 Per prima cosa provate
 
@@ -994,6 +1026,7 @@ legge un altro po'. Insaponare, risciacquare, ripetere.
 C'E<egrave> inoltre un modulo File::Tail su CPAN.
 
 =head2 Come faccio a dup()licare un filehandle in Perl?
+X<dup>
 
 Se controllate L<perlfunc/open>, vedrete che svariati dei modi in cui si
 puE<ograve> chiamare open() dovrebbero andare bene. Ad esempio:
@@ -1015,6 +1048,7 @@ Il controllo degli errori, come sempre, E<egrave> lasciato al lettore come
 esercizio.
 
 =head2 Come faccio a chiudere un descrittore di file tramite numero?
+X<file, chiudere dei descrittori di file>
 
 Dovrebbe essere raramente necessario, visto che per i file handle creati
 dal Perl bisogna usare la funzione close(), anche quando sono ottenuti per
@@ -1034,6 +1068,7 @@ Oppure, usate la funzionalitE<agrave> fdopen(3S) della funzione open():
      }
 
 =head2 PerchE<eacute> non posso usare "C:\temp\fanfaluca" nei path DOS? PerchE<eacute> "C:\temp\fanfaluca.exe" non funziona?
+X<nomefile, questioni DOS>
 
 Ops! Avete appena messo un carattere di tabulazione e un form-feed 
 [avanzamento di linea, NdT] nel nome di quel di file! Ricordate che 
@@ -1053,6 +1088,7 @@ tanto per menzionarne qualcuno. Inoltre, i path POSIX sono piE<ugrave>
 portabili. 
 
 =head2 PerchE<eacute> glob("*.*") non ottiene tutti i file?
+X<glob>
 
 PerchE<eacute> anche nelle versioni per sistemi non-Unix, la funzione glob
 di Perl segue gli standard Unix per la semantica del "globbing". Dovete
@@ -1077,6 +1113,7 @@ directory, non del file). Se cercate di scrivere sul file, i permessi del
 file sono quelli che comandano, se siete autorizzati a farlo.
 
 =head2 Come posso prendere una riga a caso da un file?
+X<file, prendere una riga a caso>
 
 Ecco un algoritmo tratto dal Camel Book:
 
@@ -1122,7 +1159,7 @@ Se il vostro array contiene delle linee, stampatele e basta:
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
@@ -1139,7 +1176,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq5
 
@@ -1153,3 +1190,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di Marco Allegretti.
+
+=cut

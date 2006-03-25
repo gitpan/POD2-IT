@@ -6,6 +6,21 @@ Legenda:
    * = incompatible changes
    - = removed feature
 
+0.11 Sat Mar 25 12:00:00 2006
+	+ Added perl.pod [raffaellog, dree]
+	+ Added perlboot.pod [dree, dakkar, osfameron]
+	+ Added perlcheat.pod [frodo72, dree]
+	+ Added perlipc.pod translation [frodo72]
+	+ Added perlmodinstall.pod [raffaellog]
+	+ Added perlmodstyle.pod [raffaellog, dree]
+	+ Added perlref.pod [ludan, dree, frodo72]
+	+ Added perlrequick.pod [dree, shishii]
+	+ Added perlsyn.pod [kral, frodo72, dree]
+	+ Added resources/update-and-notify.pl script [frod72] 
+	! Updated all translated pods to 5.8.8 [dree, frodo72]
+	! Minor fixes to all pods
+	! Added 'COPYRIGHT AND LICENCE' section to IT.pm [bepi]
+
 0.10 Sat Nov 19 12:00:00 2005
 	+ Added perlmod.pod translation [frodo72]
 	+ Added perldata.pod translation [frodo72]

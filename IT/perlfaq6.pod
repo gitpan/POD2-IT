@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq6 - Espressioni Regolari ($Revision: 1.13 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq6 - Espressioni Regolari ($Revision: 1.14 $, $Date: 2006/02/11 03:50:44 $)
 
 =head1 DESCRIZIONE
 
@@ -14,6 +14,8 @@ scalare E<egrave> un numero/naturale/intero/in virgola mobile?", per essere
 precisi).
 
 =head2 Come posso sperare di usare le espressioni regolari senza creare codice illeggibile e non manutenibile?
+X<regex, leggibile> X<regexp, leggibile>
+X<espressione regolare, leggibile> X</x>
 
 Ci sono tre tecniche che posso rendere le espressioni regolari manutenibili
 e comprensibili.
@@ -73,6 +75,7 @@ affinchE<eacute> sia interpretato letteralmente:
 =back
 
 =head2 Sto avendo dei problemi nel fare il match su piE<ugrave> di una linea. Cosa c'E<egrave> di sbagliato?
+X<regex, multilinea> X<regexp, multilinea> X<espressione regolare, multilinea>
 
 O non avete piE<ugrave> di una linea nella stringa che state prendendo in
 considerazione (verosimilmente), oppure non state usando il modificatore/i
@@ -130,6 +133,7 @@ END [fine, NdT] nel paragrafo:
     }
 
 =head2 Come posso tirar fuori le linee tra due pattern che sono loro stessi su linee diverse?
+X<..>
 
 Potete usare l'esotico operatore C<..> (documentato in L<perlop>):
 
@@ -139,7 +143,7 @@ Se volevate il testo e non le linee, avreste dovuto usare:
 
     perl -0777 -ne 'print "$1\n" while /INIZIO(.*?)FINE/gs' file1 file2 ...
 
-Ma se volete occorrenze innestate [inglese ``nested'', NdT] di
+Ma se volete occorrenze innestate [inglese "nested", NdT] di
 C<INIZIO> e C<FINE>, vi scontrerete con il problema descritto nella
 domanda contenuta in questa sezione a proposito della ricerca di
 corrispondenze di testo bilanciato.
@@ -155,6 +159,8 @@ Ecco un altro esempio d'uso di C<..>:
     }
 
 =head2 Ho messo un'espressione regolare in $/ ma non ha funzionato. Cosa c'E<egrave> di sbagliato?
+X<$/, regex in> X<$INPUT_RECORD_SEPARATOR, regex in>
+X<$RS, regex in>
 
 Fino a Perl 5.8.0, $/ deve essere una stringa. Questo potrebbe cambiare nel
 5.10, ma non ci sperate. Fino ad allora, potete usare questi esempi se davvero
@@ -197,6 +203,8 @@ alla fine.
        }
 
 =head2 Come posso effettuare delle sostituzioni non tenendo conto di maiuscole e minuscole nel lato sinistro e tenendone invece conto nel lato destro?
+X<replace, case preserving> X<sostituire, case preserving>
+X<sostituzione, case preserving> X<s, case preserving>
 
 Ecco una deliziosa soluzione a-la Perl di Larry Rosler. Essa sfrutta le
 proprietE<agrave> a livello di bit dello xor sulle stringhe ASCII
@@ -290,6 +298,7 @@ sostituzione.
     }
 
 =head2 Come si puE<ograve> far fare a C<\w> un match del set di caratteri nazionale?
+X<\w>
 
 Inserite C<use locale;> nel vostro script. La classe di caratteri \w E<egrave>
 presa dal locale corrente.
@@ -297,6 +306,7 @@ presa dal locale corrente.
 Consultate L<perllocale> per dettagli.
 
 =head2 Come si puE<ograve> creare una versione localizzata di C</[a-zA-Z]/>?
+X<alpha>
 
 Potete utilizzare la sintassi POSIX per le classi di caratteri
 C</[[:alpha:]]/>, documentata in L<perlre>.
@@ -309,6 +319,7 @@ che E<egrave> contenuto in \W con aggiunte le cifre e l'underscore,
 o C</[\W\d_]/>.
 
 =head2 Come si puE<ograve> fare il quote di una variabile da usare in una regex?
+X<regex, escaping> X<regexp, escaping> X<espressione regolare, escaping>
 
 Il parser del Perl espanderE<agrave> i riferimenti a $variabile e @variabile
 in espressioni regolari a meno che il delimitatore sia un singolo quote [un
@@ -342,6 +353,7 @@ sia trattato come un carattere regolare, cosicchE<eacute> C<P.> possa
 trovare una C<P> seguita da un punto.
 
 =head2 A cosa serve realmente C</o>?
+X</o>
 
 L'uso di una variabile in un match di un'espressione regolare forza una
 rivalutazione (e probabilmente ricompilazione) ogni qualvolta ci si imbatte
@@ -428,6 +440,8 @@ Una piccola modifica rimuove anche i commenti C++:
     s#/\*[^*]*\*+([^/*][^*]*\*+)*/|//[^\n]*|("(\\.|[^"\\])*"|'(\\.|[^'\\])*'|.[^/"'\\]*)#defined $2 ? $2 : ""#gse;
 
 =head2 Posso usare le espressioni regolari di Perl per fare il match di testo bilanciato?
+X<regex, fare il match di testo bilanciato> X<regexp, fare il match di testo bilanciato>
+X<espressione regolare, fare il match di testo bilanciato>
 
 Storicamente, le espressioni regolari di Perl non erano in grado di fare
 il match di testo bilanciato. Dalle piE<ugrave> recenti versioni di perl,
@@ -457,6 +471,7 @@ Il modulo C::Scan su CPAN contiene anch'esso tali subroutine per uso
 interno, ma non sono documentate.
 
 =head2 Cosa significa che un'espressione regolare E<egrave> avida (greedy)? Come posso evitarlo?
+X<greedy> X<avida>
 
 La maggior parte delle persone pensano che le espressioni regolari avide
 effettuino piE<ugrave> match possibili. Tecnicamente parlando, sono
@@ -480,6 +495,7 @@ si trovi nella linea che segue, come fareste se steste giocando con una
 patata bollente.
 
 =head2 Come faccio ad elaborare ciascuna parola di ogni linea?
+X<parola>
 
 Usate la funzione split:
 
@@ -494,7 +510,7 @@ Notate che non si tratta di una parola nel senso della lingua inglese
 raggruppamento di caratteri consecutivi che non sono spazi.
 
 Per lavorare solo con sequenze alfanumeriche (che includono il carattere
-underscore (``_'', NdT) ), potreste considerare l'utilizzo di
+underscore ("_", NdT) ), potreste considerare l'utilizzo di
 
     while (<>) {
         foreach $parola (m/(\w+)/g) {
@@ -532,10 +548,13 @@ Se volete che l'output sia ordinato, consultate L<perlfaq4>:
 "Come si ordina un hash (opzionalmente per valore invece che per chiave)?"
 
 =head2 Come posso fare un match approssimato?
+X<match, approssimato> X<matching, approssimato>
 
 Date un'occhiata al modulo String::Approx disponibile su CPAN.
 
 =head2 Come posso fare, in maniera efficiente, un match di piE<ugrave> espressioni regolari alla volta?
+X<regex, efficienza> X<regexp, efficienza>
+X<espressione regolare, efficienza>
 
 (contributo di brian d foy )
 
@@ -646,22 +665,29 @@ Queste non stringhe effettueranno il match con /\Bam\B/
 
 
 =head2 PerchE<eacute> utilizzare $&, $` o $' rallenta il mio programma?
+X<$MATCH> X<$&> X<$POSTMATCH> X<$'> X<$PREMATCH> X<$`>
 
 (contributo di Anno Siegel)
 
-Quando Perl si accorge che vi occorre una di queste variabili, ovunque nel 
-vostro programma, le fornisce in ogni operazione di 'pattern matching' 
+Quando Perl si accorge che vi occorre una di queste variabili, ovunque nel
+vostro programma, le fornisce in ogni operazione di 'pattern matching'
 [corrispondenza/ricerca di uno schema, NdT].
-Questo significa che su ogni pattern match, l'intera stringa verrE<agrave> 
-copiata, una parte di essa in $`, un'altra in $& e un'altra in $'. 
-Dunque la penalitE<agrave> E<egrave> estremamente severa con stringhe lunghe e pattern di cui 
-si ha spesso un match. Se potete, evitate di usare $&, $' e $`, ma se non potete 
-evitarlo, una volta che le avete usate allora usatele quanto volete, perchE<eacute> ne avete 
+Questo significa che su ogni pattern match, l'intera stringa verrE<agrave>
+copiata, una parte di essa in $`, un'altra in $& e un'altra in $'.
+Dunque la penalitE<agrave> E<egrave> estremamente severa con stringhe lunghe e pattern di cui
+si ha spesso un match. Se potete, evitate di usare $&, $' e $`, ma se non potete
+evitarlo, una volta che le avete usate allora usatele quanto volete, perchE<eacute> ne avete
 giE<agrave> pagato il prezzo. Tenete presente che alcuni algoritmi
 apprezzano molto l'uso di queste variabili. A partire dalla versione 5.005,
 la variabile $& non E<egrave> cosE<igrave> "costosa" quanto le altre due.
 
+A partire dal Perl 5.6.1, le variabili speciali @- e @+ possono rimpiazzare come funzionalitE<agrave>
+$`, $& e $'. Questi array contengono dei puntatori all'inizio e fine di ogni match (consultate perlvar
+per l'intera faccenda), dunque vi danno essenzialmente la stessa informazione ma senza rischiare di
+copiare troppe stringhe.
+
 =head2 A cosa serve C<\G> in un'espressione regolare?
+X<\G>
 
 Usate l'anchor C<\G> per iniziare il prossimo match sulla stessa stringa
 dove E<egrave> finito l'ultimo match. Il motore delle espressioni regolari,
@@ -749,6 +775,7 @@ l'espressione regolare, il perl non reinizializza pos() ed il match
 successivo inizia alla stessa posizione per tentare un pattern differente.
 
 =head2 Le espressioni regolari del Perl sono DFA o NFA? Sono aderenti allo standard POSIX?
+X<DFA> X<NFA> X<POSIX>
 
 Nonostante sia vero che le espressioni regolari del Perl assomiglino ai
 DFA (Deterministic Finite Automata, Automa Deterministico a Stati Finiti)
@@ -768,6 +795,7 @@ L<perlfaq2>).
 usati in precedenza nella stessa espressione, come in C</(d)1/>.
 
 =head2 Cosa c'E<egrave> di sbagliato ad usare grep o map in un contesto vuoto? 
+X<grep>
 
 Il problema E<egrave> che grep costruisce una lista, senza badare al
 contesto. Questo significa che lascerete a Perl tutti i grattacapi
@@ -781,6 +809,8 @@ riconosce il contesto in cui viene utilizzato - in contesto
 vuoto non viene costruita alcuna lista.
 
 =head2 Come posso effettuare il match di stringhe contenenti caratteri multibyte?
+X<regex, e caratteri multibyte> X<regexp, e caratteri multibyte>
+X<espressione regolare, e caratteri multibyte>
 
 A partire da Perl 5.6, il Perl ha avuto un certo livello di supporto ai
 caratteri multibyte. Si raccomanda il Perl 5.8 o successivo. Le raccolte di
@@ -885,7 +915,7 @@ C<\Q>...C<\E>, documentato in L<perlre>.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
 Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
@@ -902,7 +932,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq6
 
@@ -916,3 +946,5 @@ Traduzione a cura di Michele Beltrame.
 =head2 Revisore
 
 Revisione a cura di Michele Beltrame.
+
+=cut

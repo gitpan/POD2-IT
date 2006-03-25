@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq3 - Strumenti di Programmazione ($Revision: 1.17 $, $Date: 2005/11/19 00:21:49 $)
+perlfaq3 - Strumenti di Programmazione ($Revision: 1.19 $, $Date: 2006/02/11 03:50:43 $)
 
 =head1 DESCRIZIONE
 
@@ -34,7 +34,7 @@ L<perltoc>.
 =head2 Come posso usare Perl interattivamente?
 
 L'approccio tipico consiste nel servirsi del Perl debugger, descritto nella
-man page perldebug(1), su un programma ``vuoto'', ad esempio:
+man page perldebug(1), su un programma "vuoto", ad esempio:
 
    perl -de 42
 
@@ -52,10 +52,10 @@ finalmente una shell completa di tutte le caretteristiche, che si comporti
 come ci si aspetta da una normale  attivitE<agrave> di shell. PerE<ograve>,
 la Shell Perl userE<agrave> la sintassi 
 e la funzionalitE<agrave> del Perl per le istruzioni di controllo del
-flusso ed altre cose. Potete ottenere psh da http://www.focusresearch.com/gregor/psh/ .
+flusso ed altre cose. Potete ottenere psh da http://sourceforge.net/projects/psh/ .
 
 Zoidberg E<egrave> un progetto simile, e fornisce una shell scritta in
-perl, configurata in perl e gestita in perl. E<egrave> inesa come una
+perl, configurata in perl e gestita in perl. E<Egrave> intesa come una
 shell di login ed un ambiente di sviluppo. PuE<ograve> essere trovata
 presso http://zoidberg.sf.net/ o presso il mirror CPAN piE<ugrave>
 vicino a voi.
@@ -91,8 +91,14 @@ con File::Find che fa parte della libreria standard.
     use File::Find;
     my @file;    
 
-    find sub { push @file, $File::Find::name if -f _ && /\.pm$/ },
-         @INC;    
+    find(
+      sub {
+      	push @files, $File::Find::name
+      		if -f $File::Find::name && /\.pm$/
+      	},
+
+      @INC
+      );   
 
         print join "\n", @file;
 
@@ -220,14 +226,11 @@ http://people.ssh.fi/mtr/genscript/ .
 
 =head2 Esite una versione di ctags per Perl?
 
-Le recenti versioni di ctags fanno molte piE<ugrave> cose di quante ne
-facevano le vecchie versioni. EXUBERANT CTAGS E<egrave> disponibile su
-http://ctags.sourceforge.net/ e svolge un buon lavoro nel creare file di tag
-per codice perl.
+(contributo di brian d foy)
 
-Ce n'E<egrave> anche una versione semplice, su
-http://www.cpan.org/authors/id/TOMC/scripts/ptags.gz che puE<ograve> fare
-la magia. PuE<ograve> essere semplice plasmarla come si vuole. 
+Gli exuberant ctags supportano Perl: http://ctags.sourceforge.net/
+
+Potete provare anche pltags: http://www.mscha.com/pltags.zip
 
 =head2 Esiste un IDE o un editor Perl per Windows? 
 
@@ -236,7 +239,7 @@ puE<ograve> creare.
 
 Se utilizzate Unix, avete giE<agrave> un IDE--Unix. La filosofia UNIX E<egrave>
 la filosofia di diversi piccoli strumenti che singolarmente fanno una cosa e la
-fanno bene. E<eacute> una sorta di cassetta degli attrezzi di un falegname.
+fanno bene. E<Egrave> una sorta di cassetta degli attrezzi di un falegname.
 
 Se volete un IDE, date un'occhiata a quelli che seguono (in ordine alfabetico, 
 non in ordine di preferenza):
@@ -245,42 +248,66 @@ non in ordine di preferenza):
 
 =item Eclipse
 
+http://e-p-i-c.sf.net/
+
 L'Eclipse Perl Integration Project [Progetto per l'Integrazione di Perl ed Eclipse, NdT] 
 integra funzioni di editing/debugging con Eclipse.
 
-Il sito web del progetto E<egrave> http://e-p-i-c.sf.net/
+=item Enginsite
+
+http://www.enginsite.com/
+
+Perl Editor da EngInSite E<egrave> un completo ambiente integrato di sviluppo (IDE)
+per creare, testare ed effettuare il debug di script Perl; for creating, testing, and  debugging  Perl scripts;
+il programma funziona su Windows 9x/NT/2000/XP o successivi.
 
 =item Komodo
 
+http://www.ActiveState.com/Products/Komodo/
+
 L'IDE multi piattaforma e multi linguaggio di Activestate (dall'ottobre 2004 per Windows, 
 Linux e Solaris), ha il supporto Perl, include un debugger di espressioni regolari e un
-debugging remoto ( http://www.ActiveState.com/Products/Komodo/ ).
+debugging remoto.
 
 =item Open Perl IDE
 
-( http://open-perl-ide.sourceforge.net/ ) Open Perl IDE E<egrave> un ambiente
-integrato di sviluppo per scrivere e fare il debugging di script in Perl
-mediante l'ActivePerl sotto Windows 95/98/NT/2000.
+http://open-perl-ide.sourceforge.net/
+
+Open Perl IDE E<egrave> un ambiente integrato di sviluppo per scrivere e fare il debugging
+di script in Perl mediante l'ActivePerl di ActiveState su Windows 95/98/NT/2000.
 
 =item OptiPerl
 
-( http://www.optiperl.com/ ) E<egrave> un IDE Windows con un ambiente CGI
-simulato, include un debugger e un editor syntax highlighting [evidenziatore 
-di sintassi, NdT].
+http://www.optiperl.com/
+
+OptiPerl E<egrave> un IDE Windows con un ambiente CGI simulato, include un debugger e un
+editor syntax highlighting [evidenziatore di sintassi, NdT].
 
 =item PerlBuilder
 
-( http://www.solutionsoft.com/perl.htm ) E<egrave> un ambiente integrato di
+http://www.solutionsoft.com/perl.htm
+
+PerlBuilder E<egrave> un ambiente integrato di
 sviluppo per Windows che supporta lo sviluppo Perl.
 
 =item visiPerl+
 
-( http://helpconsulting.net/visiperl/ ) da Help Consulting, per Windows.
+http://helpconsulting.net/visiperl/
+
+Da Help Consulting, per Windows.
 
 =item Visual Perl
 
-( http://www.activestate.com/Products/Visual_Perl/ )
+http://www.activestate.com/Products/Visual_Perl/
+
 Visual Perl E<egrave> un plugin per Visual Studio.NET da ActiveState.
+
+=item Zeus
+
+http://www.zeusedit.com/lookmain.html
+
+Zeus per Windows E<egrave> un altro editor/IDE multi linguaggio per Win32
+che ha un supporto per il Perl:
 
 =back
 
@@ -304,7 +331,9 @@ Se state usando MacOS, valgono le stesse considerazioni. Con MacPerl
 (per un ambiente Classic) c'E<eacute> un semplice editor. Editor esterni
 popolari sono BBEdit ( http://www.bbedit.com/ ) o Alpha
 ( http://www.his.com/~jguyer/Alpha/Alpha8.html ). Anche gli utenti di MacOS X possono
-usare gli editor Unix.
+usare gli editor Unix. Neil Bowers (la persona che sta dietro a Geekcruises)
+ha un elenco di editor per Mac che sono in grado di gestire Perl
+( http://www.neilbowers.org/macperleditors.html ).
 
 =over 4
 
@@ -499,14 +528,14 @@ http://www-users.cs.umn.edu/%7Eamundson/perl/perltk/toc.html .
 Il massimo E<egrave> trovare un algoritmo migliore. Spesso la differenza
 E<egrave> notevole. Potreste controllare il capitolo 8 del Camel Book, che
 contiene alcuni trucchi per migliorare l'efficienza. Anche il libro di Jon
-Bentley, ``Programming Pearls'' (non E<egrave> un errore di battitura!),
+Bentley, "Programming Pearls" (non E<egrave> un errore di battitura!),
 contiene buoni suggerimenti sull'ottimizzazione. Per quanto riguarda i
 benchmark, il consiglio si riassume in: realizzate dei benchmark e fate
 profiling per essere sicuri di ottimizzare nel punto giusto, cercate degli
 algoritmi migliori anzichE<eacute> mettere a punto i dettagli, e quando
 tutti i tentativi falliscono, considerate la possibilitE<agrave> di comprare
 hardware piE<ugrave> veloce. Potreste voler leggere la risposta alla
-precedente domanda ``Come effettuo il profiling dei miei programmi Perl?''
+precedente domanda "Come effettuo il profiling dei miei programmi Perl?"
 se non l'avete giE<agrave> fatto.
 
 Un approccio diverso consiste nell'applicare le tecniche di Autoloading
@@ -744,16 +773,6 @@ su di essi con cautela.
 Consultate
 http://www.cpan.org/modules/by-category/15_World_Wide_Web_HTML_HTTP_CGI/ .
 
-Un prodotto commerciale, non libero, ``The Velocity Engine for Perl'' [Il
-Motore di VelocitE<agrave> per Perl, NdT], (http://www.binevolve.com/ o
-http://www.binevolve.com/velocigen/ ) vale la pena di essere visto. Vi 
-permetterE<agrave> di incrementare la performance dei votri programmi Perl,
-eseguendo i programmi fino a 25 volte piE<ugrave> velocemente di un normale
-CGI in Perl se eseguiti in modalitE<agrave> Perl persistente, oppure 4 o 5 
-volte piE<ugrave> veloci senza alcuna modifica ai vostri programmi CGI
-esistenti. Delle copie di valutazione pienamente funzionanti sono disponibili
-sul sito web.
-
 =head2 Come posso nascondere il codice sorgente del mio programma Perl?
 
 Cancellatelo. :-) Seriamente, ci sono un certo numero di (per lo piE<ugrave>
@@ -796,9 +815,9 @@ nuovo, questo non riguarda solo Perl.
 Se siete preoccupati che le persone traggano profitto dal vostro
 codice, allora la conclusione E<egrave> che niente darE<agrave> piE<ugrave>
 sicurezza legale di una licenza restrittiva. Fornite una licenza al vostro
-software e tempestatelo di frasi minacciose del tipo ``Questo E<egrave>
+software e tempestatelo di frasi minacciose del tipo "Questo E<egrave>
 software inedito di proprietE<agrave> della ditta XYZ. L'accesso ad esso
-non vi dE<agrave> il permesso di usarlo bla bla bla.'' Non siamo avvocati
+non vi dE<agrave> il permesso di usarlo bla bla bla." Non siamo avvocati
 naturalmente, dunque dovreste consultare un legale per essere sicuri
 che la stesura della vostra licenza reggerE<agrave> in tribunale.
 
@@ -815,8 +834,8 @@ velocitE<agrave> visto che la maggior parte delle soluzioni semplicemente
 ingloba un interprete Perl nel prodotto finale (ma consultate
 L<Come posso rendere piE<ugrave> veloce il mio programma scritto in Perl?>).
 
-Il Perl Archive Toolkit (http://par.perl.org/index.cgi) E<egrave> l'analogo Perl 
-del JAR di Java. E<Egrave> disponibile gratuitamente su CPAN (http://search.cpan.org/dist/PAR/).
+Il Perl Archive Toolkit ( http://par.perl.org/index.cgi ) E<egrave> l'analogo Perl 
+del JAR di Java. E<Egrave> disponibile gratuitamente su CPAN ( http://search.cpan.org/dist/PAR/ ).
 
 Lo spazio dei nomi B::*, spesso chiamato "il compilatore Perl", in realtE<agrave> E<egrave> un 
 modo per i programmatori Perl di sbirciare nelle proprie interiora piuttosto che creare versioni 
@@ -827,15 +846,14 @@ eseguito come un usuale script Perl.
 Ci sono anche alcuni prodotti commerciali che vi potrebbero andar bene, 
 sebbene ne dobbiate acquistare una licenza.
 
-Il Perl Dev Kit (http://www.activestate.com/Products/Perl_Dev_Kit/) da 
+Il Perl Dev Kit ( http://www.activestate.com/Products/Perl_Dev_Kit/ ) da 
 ActiveState puE<ograve> "Turn your Perl programs into ready-to-run
 executables for HP-UX, Linux, Solaris and Windows." [Convertire i vostri programmi 
 Perl in eseguibili pronti da usare per HP-UX, Linux, Solaris e Windows,", NdT]
 
-Perl2Exe (http://www.indigostar.com/perl2exe.htm) E<egrave> un programma a linea di 
+Perl2Exe ( http://www.indigostar.com/perl2exe.htm ) E<egrave> un programma a linea di 
 comando per convertire degli script perl in file eseguibili. Produce eseguibili per le 
 piattaforme Windows e unix.
-
 
 =head2 Come si puE<ograve> compilare il Perl dentro Java?
 
@@ -855,7 +873,7 @@ Per OS/2 usate semplicemente
     extproc perl -S -vostri_switch
 
 come prima linea nel file C<*.cmd> (C<-S> E<egrave> necessario a causa di un
-bug nella gestione di `extproc' in cmd.exe). Per il DOS dovrete anzitutto
+bug nella gestione di "extproc" in cmd.exe). Per il DOS dovrete anzitutto
 creare un batch file corrisposndente e codificare tutto in
 C<ALTERNATIVE_SHEBANG> (consultate il file F<INSTALL> nella distribuzione
 sorgente per maggiori informazioni).
@@ -949,7 +967,7 @@ L'uso di qq(), q() e qx() anzichE<eacute> dei "doppi apici", 'singoli apici' e
 `apici inversi' potrebbe rendere gli one-liner piE<ugrave> semplici da 
 scrivere.
 
-Non c'E<egrave> una soluzione generale. E<eacute> una situazione confusa.
+Non c'E<egrave> una soluzione generale. E<Egrave> una situazione confusa.
 
 [Parte di questa risposta E<egrave> un contributo di Kenneth Albanowski.]
 
@@ -957,9 +975,9 @@ Non c'E<egrave> una soluzione generale. E<eacute> una situazione confusa.
 
 Per quanto riguarda i moduli, procuratevi CGI o LWP da CPAN. Per i libri di
 testo, consultate i due specifici indicati nella domanda riguardante i libri.
-Per problemi e domande relative al web, come ``PerchE<eacute> mi capitano
-errori 500'' oppure ``PerchE<eacute> non funziona dal browser quando funziona
-benissimo dalla linea di comando'', consultate le guide alla risoluzione dei
+Per problemi e domande relative al web, come "PerchE<eacute> mi capitano
+errori 500" oppure "PerchE<eacute> non funziona dal browser quando funziona
+benissimo dalla linea di comando", consultate le guide alla risoluzione dei
 problemi ed i riferimenti in L<perlfaq9> o nella CGI MetaFAQ (NdT: in lingua
 inglese):
 
@@ -969,14 +987,14 @@ inglese):
 
 Un buon punto di partenza E<egrave> L<perltoot>, mentre L<perlobj>,
 L<perlboot>, L<perltoot>, L<perltooc> e L<perlbot> potete usare come
-riferimenti. (Se si sta usando un Perl molto vecchio, potreste non
-averli tutti, provate http://www.perldoc.com/ ma prendete in considerazione
-l'aggiornamento del vostro perl.)
+riferimenti.
 
 Un buon libro sulla OO in Perl E<egrave> "Object-Oriented Perl" di Damian
-Conway della Manning Publications, http://www.manning.com/Conway/index.html
+Conway della Manning Publications oppure "Learning Perl
+References, Objects, & Modules" di Randal Schwartz e Tom
+Phoenix da O'Reilly Media.
 
-=head2 Dove posso imparare qualcosa sul linking del C con il Perl? [h2xs, xsubpp]
+=head2 Dove posso imparare qualcosa sul linking del C con il Perl?
 
 Se volete chiamare codice C da Perl, partite con L<perlxstut>, andando avanti
 con L<perlxs>, L<xsubpp> e L<perlguts>. Se desiderate chiamare Perl da C,
@@ -984,6 +1002,12 @@ allora leggete L<perlembed>, L<perlcall> e L<perlguts>. Non dimenticate che
 si puE<ograve> imparare molto dando un'occhiata a come gli autori dei moduli
 di estesione esistenti hanno scritto il loro codice ed hanno risolto i loro
 problemi.
+
+Potreste non aver bisogno di tutta la potenza di XS. Il modulo Inline::C vi
+permette di mettere codice C direttamente nei vostri sorgenti Perl. Il modulo
+si occupa di tutta la magia per fare funzionare le cose. Dovete ancora imparare
+almeno un po' delle API del perl ma non avrete a che fare con la complessitE<agrave>
+dei file di supporto XS.
 
 =head2 Ho letto le pagine di manuale perlembed, perlguts, ecc., ma non riesco ad incapsulare l'interprete perl nel mio programma C, dove sbaglio?
 
@@ -1002,7 +1026,7 @@ d'errore:
     perl programma 2>messaggi_diagnostici.out
     splain [-v] [-p] messaggi_diagnostici.out
 
-oppure modificare il vostro programma affinchE<egrave> spieghi i messaggi
+oppure modificare il vostro programma affinchE<eacute> spieghi i messaggi
 per voi:
 
     use diagnostics;
@@ -1019,10 +1043,10 @@ modulo di estensione. Per maggiori informazioni vedete ExtUtils::MakeMaker.
 
 =head1 AUTORE E COPYRIGHT
 
-Copyright (c) 1997-2005 Tom Christiansen, Nathan Torkington e altri autori menzionati.
+Copyright (c) 1997-2006 Tom Christiansen, Nathan Torkington e altri autori menzionati.
 Tutti i diritti riservati.
 
-Questa documentazione E<egrave>  libera; potete ridistribuirla e/o modificarla
+Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
 Indipendentemente dalle modalitE<agrave> di distribuzione, tutti gli esempi di
@@ -1036,7 +1060,7 @@ cortese ma non E<egrave> obbligatorio.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlfaq3
 
@@ -1049,4 +1073,6 @@ Traduzione a cura di Michele Beltrame.
 
 =head2 Revisore
 
-Revisione a cura di Michele Beltrame.
+Revisione a cura di Michele Beltrame e dree.
+
+=cut

@@ -5,6 +5,7 @@ perldata - Tipi di dato in Perl
 =head1 DESCRIZIONE
 
 =head2 Nomi di variabile
+X<variabile, nome> X<nome di variabile> X<tipo di dati> X<tipo>
 
 Perl ha tre tipi di dati incorporati: scalari, array di scalari e
 array associativi di scalari, meglio noti come "hash". Uno scalare
@@ -31,6 +32,7 @@ L<perlmod/Packages> per maggiori dettagli). E<Egrave> possibile
 sostituire, al posto di un semplice identificatore, un'espressione che
 produca dinamicamente un riferimento al valore. Il tutto viene descritto
 con maggior dettaglio piE<ugrave> avanti ed in L<perlref>.
+X<identificatore>
 
 Perl ha anche le sue variabili incorporate i cui nomi non seguono
 queste regole. Queste variabili hanno nomi strani, per cui non c'E<egrave> il
@@ -42,11 +44,13 @@ In aggiunta, parecchie variabili speciali che danno accesso nella
 sezione piE<ugrave> interna di Perl hanno nomi che contengono caratteri di
 punteggiatura o di controllo. Tutte queste variabili sono documentate
 in L<perlvar>.
+X<variabile, incorporata>
 
 I valori scalari hanno sempre nomi con C<$>, anche quando si
 riferiscono ad uno scalare che fa parte di un array o di una hash. Il
 simbolo C<$> lavora, semanticamente, come l'articolo determinativo "il",
 nel senso che denota il fatto che ci si aspetta un singolo valore.
+X<scalare>
 
     $giorni         # Il semplice valore scalare "giorni"
     $giorni[28]     # Il ventinovesimo elemento dell'array @giorni
@@ -57,20 +61,23 @@ Interi array (e I<slice> [porzioni, N.d.T.] di array ed hash) sono
 indicati con C<@>, che ha una funzione molto simile alle parole
 italiane "questi" o "quelli", nel senso che indica che ci si aspettano
 piE<ugrave> valori.
-
+X<array>
 
     @giorni            # ($giorni[0], $giorni[1], ..., $giorni[n])
     @giorni[3, 4, 5]   # corrisponde a ($giorni[3], $giorni[4], $giorni[5])
     @giorni{'a', 'c'}  # corrisponde a ($giorni{'a'}, $giorni{'c'})
 
 Le hash intere sono denotate da C<%>:
+X<hash>
 
     %giorni    # ($chiave1, $valore1, $chiave2, $valore2, ...)
 
 
 In aggiunta, le subroutine hanno nomi che iniziano con C<&>,
 sebbene ciE<ograve> sia opzionale quando non dia adito ad ambiguitE<agrave>, esattamente
-come la parola I<fare> E<egrave> ridondante in italiano. Gli elementi della
+come la parola I<proprio> E<egrave> ridondante in italiano [quando usata
+come rafforzativo, ad esempio in "sono proprio felice", N.d.T.].
+Gli elementi della
 tabella dei simboli possono essere richiamati con un C<*> iniziale, ma
 questo non vi interessa ancora (o probabilmente non vi interesserE<agrave> mai :-).
 
@@ -82,7 +89,8 @@ per quanto possa contare, per un I<filehandle>, per un I<handle> di
 directory, per il nome di una I<sub>, di un formato o anche di
 un'etichetta. CiE<ograve> implica che C<$tizio> e C<@tizio> sono due variabili
 distinte, ed anche che C<$caio[1]> E<egrave> parte di C<@caio> ma non di C<$caio>.
-Potrebbe sembrarvi un po' strano ma va bene cosE<igrave>, perchE<eacute> E<Egrave> strano.
+Potrebbe sembrarvi un po' strano ma va bene cosE<igrave>, perchE<eacute> E<egrave> strano.
+X<spazio dei nomi>
 
 A causa del fatto che i nomi delle variabili iniziano sempre
 con C<$>, C<@> o C<%>, le parole "riservate" non sono di fatto
@@ -98,6 +106,8 @@ maiuscole e minuscole I<E<egrave>> importante -- "SEMPRONIO", "Sempronio" e
 "sempronio" sono tutti nomi differenti. I nomi che iniziano con una
 lettera o un I<underscore> possono anche contenere cifre numeriche
 e I<underscore>.
+X<identificatore, sensibilita a maiuscole e minuscole>
+X<maiuscole e minuscole>
 
 E<Egrave> possibile rimpiazzare questi nomi alfanumerici con
 un'espressione che restituisce un riferimento al tipo appropriato.
@@ -113,6 +123,7 @@ esempio, C<$$> E<egrave> l'identificativo del processo corrente).
 
 
 =head2 Contesto
+X<contesto> X<contesto scalare> X<contesto lista>
 
 L'interpretazione di operazioni e valori in Perl a volte dipende
 dai requisiti del contesto intorno all'operazione o al valore. Ci
@@ -174,6 +185,7 @@ la vostra funzione.
 
 
 =head2 Valori scalari
+X<scalare> X<numero> X<stringa> X<riferimento>
 
 Tutti i dati in Perl sono scalari, array di scalari, o hash di
 scalari. Uno scalare puE<ograve> contenere un singolo valore di tre tipi
@@ -202,6 +214,7 @@ la stringa I<nulla> o il numero 0 (ovvero il suo equivalente stringa
 "0"). Il contesto booleano E<egrave> solo una variante speciale del contesto
 scalare, dove non viene mai effettuata alcuna conversione verso una
 stringa o un numero.
+X<booleano> X<bool> X<vero> X<falso> X<verita>
 
 Ci sono in realtE<agrave> due varietE<agrave> di stringhe I<nulle> (a volte
 dette stringhe "vuote"), una definita ed una indefinita. La versione
@@ -217,6 +230,8 @@ descritti in L<perlref>. Potete utilizzare l'operatore C<defined()>
 per determinare se un valore scalare E<egrave> definito (la cosa non
 ha significato su array o hash), e l'operatore C<undef()> per
 produrre un valore indefinito.
+X<definito> X<indefinito> X<undef> X<null> X<nullo> X<stringa, nullo>
+X<stringa, nulla>
 
 Per stabilire se una data stringa E<egrave> un valore numerico valido e non
 nullo, E<egrave> di solito sufficiente confrontarlo sia con lo 0 numerico che
@@ -255,6 +270,7 @@ di allungamento non ripristinerE<agrave> i valori che si trovavano in
 quegli elementi. (Era cosE<igrave> in Perl 4, ma questo comportamento E<egrave>
 stato cambiato per essere sicuri che i distruttori venissero
 chiamati quando ci si attendeva che lo fossero).
+X<$#> X<array, lunghezza>
 
 Potete anche guadagnare qualche minuscola frazione di efficienza
 allungando un array in anticipo quando sapete che diventerE<agrave> grande.
@@ -280,6 +296,7 @@ che non impostano il valore di C<$[> non hanno piE<ugrave> bisogno di
 preoccuparsi se un altro file ne ha alterato il valore. (In altre
 parole, l'utilizzo di C<$[> E<egrave> scoraggiato). In generale potete
 dunque assumere che
+X<$[>
 
     scalar(@qualcosa) == $#qualcosa + 1;
 
@@ -301,6 +318,7 @@ valutando %HASH in contesto scalare restituisce C<"1/16"> che
 significa che solo una di sedici caselle E<egrave> stata utilizzata, e
 presumibilmente contiene tutti e 10.000 gli elementi. Si suppone
 che questo non accada.
+X<hash, contesto scalare> X<hash, casella> X<casella> X<bucket>
 
 Potete prenotare spazio per una hash con un'assegnazione alla
 funzione C<keys()>. Questa operazione arrotonda il numero di
@@ -309,6 +327,7 @@ caselle allocate alla potenza di 2 immediatamente superiore:
     keys(%utenti) = 1000;		# alloca 1024 caselle
 
 =head2 Costruttori di valori scalari
+X<scalare, letterale> X<scalare, costante>
 
 I letterali numerici possono essere specificati in uno qualsiasi dei
 seguenti formati interi o a virgola mobile:
@@ -320,7 +339,7 @@ seguenti formati interi o a virgola mobile:
     4_294_967_296       # l'underscore aumenta la leggibilita`
     0xff                # esadecimale
     0xdead_beef         # piu` esadecimale
-    0377                # ottale
+    0377                # ottale (solo cifre, inizia con 0)
     0b011011            # binario
 
 E<Egrave> consentito utilizzare I<underscore> fra le cifre
@@ -329,6 +348,7 @@ raggruppare le cifre binarie a tre a tre (come nell'impostazione
 del modo dei file in stile Unix, ad esempio 0b110_100_100), o
 a quattro a quattro (per rappresentare metE<agrave> di ottetti, come in
 0b1010_0110), o in altri gruppi.
+X<numero, letterale>
 
 Le stringhe letterali sono usualmente delimitate da un apice
 singolo o doppio. Entrambi lavorano molto similmente alle virgolette
@@ -340,6 +360,7 @@ in stile C per il I<backslash> si applicano per generare caratteri
 speciali come a-capo, tabulazioni, ecc., cosE<igrave> come forme piE<ugrave> esotiche.
 Consultate L<perlop/"Quote and Quote-like Operators"> per averne
 una lista.
+X<stringa, letterale>
 
 Le rappresentazioni esadecimali, ottali o binarie in stringhe letterali
 non sono automaticamente convertite alla loro rappresentazione
@@ -358,6 +379,7 @@ scalari, agli array ed alle C<slice> di array o di hash. (In altre
 parole, i nomi che cominciano con C<$> o C<@>, seguiti da
 un'espressione fra parentesi facoltativa). Il seguente frammento
 di codice stampa "Il prezzo ammonta a $100":
+X<interpolazione>
 
     $Prezzo = '$100';	                     # non interpolato
     print "Il prezzo ammonta a $Prezzo.\n";	# interpolato
@@ -373,6 +395,7 @@ all'interno di una stringa per separare il nome della variabile da
 una successiva coppia di due-punti o da un apostrofo, poichE<eacute>
 queste verrebbero altrimenti trattate come separatori di
 I<package>:
+X<interpolazione>
 
     $chi = "Larry";
     print PASSWD "${chi}::0:0:Superuser:/:/bin/perl\n";
@@ -389,10 +412,13 @@ all'interno di un indice di hash. Nessuno dei due ha bisogno
 di virgolette. Nel nostro esempio di prima, C<$giorni['Feb']> puE<ograve>
 essere riscritto come C<$giorni{Feb}>, e le virgolette sarebbero
 sottintese. D'altra parte, qualsiasi cosa piE<ugrave> complicata come
-indice verrE<agrave> interpretata come espressione.
+indice verrE<agrave> interpretata come espressione. Questo significa ad
+esempio che C<$versione{2.0}++> E<egrave> equivalente a
+C<$versione{2}++>, non a C<$versione{'2.0'}++>.
 
 
 =head3 Stringhe di Versione
+X<stringhe di versione>, X<vstring> X<v-string>
 
 B<Nota>: l'uso delle Stringhe di Versione (I<v-string>) E<egrave> scoraggiato.
 Non saranno disponibili dopo Perl 5.8, i vantaggi marginali dati
@@ -432,6 +458,8 @@ C<v65.66> e C<65.66.67> continuano ad essere sempre I<v-string>.
 
 
 =head3 Letterali Speciali
+X<letterali speciali> X<__END__> X<__DATA__> X<END> X<DATA>
+X<end> X<data> X<^D> X<^Z>
 
 I letterali __FILE__, __LINE__ e __PACKAGE__ sono speciali e
 rappresentano nell'ordine il nome del file sorgente corrente, il
@@ -441,6 +469,7 @@ solo come I<token> separati, non vengono interpolati all'interno
 delle stringhe. Se non esiste un I<package> corrente (a causa
 della mancanza della direttiva C<package>), __PACKAGE__ ha valore
 C<undef>.
+X<__FILE__> X<__LINE__> X<__PACKAGE__> X<line> X<file> X<package>
 
 I due caratteri di controllo ^D e ^Z, insieme ai token __END__ e
 __DATA__, possono essere utilizzati per indicicare la conclusione
@@ -465,6 +494,7 @@ viene incontrato (durante la compilazione), in un punto in cui il
 corrispondente I<token> __DATA__ (o __END__) non E<egrave> stato ancora incontrato.
 
 =head3 Bareword
+X<bareword>
 
 Una parola che non ha altra interpretazione nella grammatica Perl viene
 considerata come se fosse una stringa con virgolette, e viene detta
@@ -485,6 +515,7 @@ in piE<ugrave>, un blocco piE<ugrave> interno puE<ograve> disabilitare tale coma
 C<no strict 'subs'>.
 
 =head3 Delimitatore di Unione di Array
+X<array, interpolazione> X<interpolazione, array> X<$">
 
 Gli array e le slice sono interpolate, all'interno di stringhe racchiuse
 da virgolette doppie, unendo gli elementi con il delimitatore specificato
@@ -515,6 +546,7 @@ sono state spostate in L<perlop/Quote and Quote-like Operators> [Virgolette
 ed Operatori Similari, N.d.T.].
 
 =head2 Costruttori di Valori di Lista
+X<lista>
 
 I valori di una lista sono denotati separando i singoli valori utilizzando
 delle virgole (e racchiudendo la lista fra parentesi, laddove le
@@ -526,18 +558,18 @@ In un contesto in cui non viene richiesta una lista di valori, il valore
 che risulta dalla lista E<egrave> semplicemente quello dell'elemento finale,
 proprio come con l'operatore I<virgola> nel linguaggio C. Ad esempio:
 
-    @pippo = ('cc', '-E<Egrave>, $pluto);
+    @pippo = ('cc', '-E', $pluto);
 
 assegna l'intera lista all'array c<@pippo>, ma d'altra parte:
 
-    $pippo = ('cc', '-E<Egrave>, $pluto);
+    $pippo = ('cc', '-E', $pluto);
 
 assenga alla variabile scalare C<$pippo> il valore della variabile C<$pluto>.
 Osservate che il valore di un array reale, valutato in contesto
 scalare, si traduce nella lunghezza dell'array; il seguente frammento
 assegna dunque il valore 3 alla variabile C<$pippo>:
 
-    @pippo = ('cc', '-E<Egrave>, $pluto);
+    @pippo = ('cc', '-E', $pluto);
     $pippo = @pippo;                # $pippo viene posta a 3
 
 Potete opzionalmente inserire una virgola prima della parentesi di
@@ -757,6 +789,7 @@ quadre occorre utilizzare parentesi graffe. Ad esempio:
     print "Il nome di Darwin e' ", $scienziati{"Darwin"}, "\n";
 
 =head2 Slice
+X<slice> X<array, slice> X<hash, slice>
 
 Il metodo piE<ugrave> comune di accedere ad un array o ad una hash E<egrave> un
 elemento alla volta. Potete indicizzare anche una lista per
@@ -834,6 +867,7 @@ del nome dell'array o della hash indica se volete ottenere un valore
 singolare (ossia, uno scalare) o plurale (una lista).
 
 =head2 Typeglob e Filehandle
+X<typeglob> X<filehandle> X<*>
 
 Perl utilizza un tipo interno detto I<typeglob> per contenere un intero
 elemento della tabella dei simboli. Il prefisso di una typeglob E<egrave> un

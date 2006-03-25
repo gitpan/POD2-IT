@@ -375,7 +375,7 @@ Esattamente come in C:
         ...
     }
 
-In Perl si ha raramente bisogno del ciclo for C-style, poichE<eacute>
+In Perl si ha raramente bisogno del ciclo for in stile C, poichE<eacute>
 il Perl fornisce un metodo piE<ugrave> veloce per iterare su una lista:
 C<foreach>.
 
@@ -682,14 +682,13 @@ vi darE<agrave> buoni consigli.
 
 =head1 AUTORE
 
-Kirrily "Skud" Robert <skud@cpan.org>, tradotto da
-Stefano Rodighiero <larsen@perlmonk.org>
+Kirrily "Skud" Robert <skud@cpan.org>
 
 =head1 TRADUZIONE
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlintro
 
@@ -698,8 +697,10 @@ L<http://pod2it.sourceforge.net/> .
 
 =head2 Traduttore
 
-Traduzione a cura di Stefano Rodighiero E<lt>larsen at perlmonk.orgE<gt>.
+Traduzione a cura di Stefano Rodighiero E<lt>larsen at perl.itE<gt>.
 
 =head2 Revisore
 
-Revisione a cura di Stefano Rodighiero E<lt>larsen at perlmonk.orgE<gt>.
+Revisione a cura di dree.
+
+=cut

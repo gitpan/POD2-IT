@@ -870,7 +870,7 @@ appearing in I<Linux Magazine> and used with permission.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlboot
 
@@ -884,3 +884,5 @@ Traduzione a cura di dree.
 =head2 Revisore
 
 Revisione a cura di Gianni Ceccarelli e Hakim Cassimally.
+
+=cut

@@ -1187,11 +1187,6 @@ web Apache. Oracle, Binary Evolution, ActiveState, e la nsapi_perl
 di Ben Sugars hanno utilizzato questo modello per i plugin Perl di
 Oracle, Netscape e Internet Information Server.
 
-22 Luglio 1998
-
-Traduzione italiana a cura del progetto pod2it
-( http://pod2it.sourceforge.net )
-
 =head1 COPYRIGHT
 
 Copyright (C) 1995, 1996, 1997, 1998 Doug MacEachern e Jon Orwant. Tutti

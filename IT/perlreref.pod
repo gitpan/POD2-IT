@@ -332,7 +332,7 @@ Dettagli sulle regex, impostazioni locali e internazionalizzazione.
 
 =item *
 
-I<Mastering Regular Expressions> (2nd edition) di Jeffrey Friedl
+I<Mastering Regular Expressions> di Jeffrey Friedl
 (F<http://regex.info/>) Riferimenti completi e dettagliati sull'argomento.
 
 =back
@@ -352,7 +352,7 @@ per preziosi consigli.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlreref
 
