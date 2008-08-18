@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq8 - Interazione con il Sistema ($Revision: 1.19 $, $Date: 2006/02/09 04:30:02 $)
+perlfaq8 - Interazione con il Sistema ($Revision: 1.20 $, $Date: 2006/05/22 21:08:57 $)
 
 =head1 DESCRIZIONE
 
@@ -1227,7 +1227,7 @@ Decomprimete i sorgenti in una zona temporanea.
 
 =item 3
 
-make
+    make
 
 =item 4
 

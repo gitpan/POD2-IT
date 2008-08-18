@@ -571,7 +571,7 @@ In generale, binmode() dovrebbe essere chiamato dopo open() ma prima  che qualsi
 altra operazione di I/O sia compiuta sul filehandle. Chiamare binmode() causa che 
 tutte le operazioni di output (e forse di input) non concluse sul filehandle vengano 
 completate. Un'eccezione a ciE<ograve> E<egrave> rappresentata dallo strato 
-C<:encoding>, che cambia la condifica predefinita di caratteri per l'handle, consultate 
+C<:encoding>, che cambia la codifica predefinita di caratteri per l'handle, consultate 
 L<open>. A volte E<egrave> necessario impostare lo strato C<:encoding> nel mezzo delle 
 operazioni sul filehandle ed esso non causa il completamento delle operazioni di I/O in 
 corso. Inoltre C<:encoding> implicitamente spinge lo strato C<:utf8> in cima a se stesso, 
@@ -590,7 +590,7 @@ quel singolo carattere E<egrave> un CARRIAGE RETURN su Mac OS ed un LINE FEED su
 sulla maggior parte dei file VMS). In altri sistemi quali OS/2, DOS e le varie versioni 
 di MS-Windows, il vostro programma vede C<\n> come un semplice C<\cJ>, ma ciE<ograve> che 
 in realtE<agrave> viene memorizzato nei file di testo E<egrave> una coppia di caratteri 
-C<\cM\cJ>. CiE<ograve> singnifica che, se non usate binmode() su tali sistemi, le 
+C<\cM\cJ>. CiE<ograve> significa che, se non usate binmode() su tali sistemi, le 
 sequenze che su disco sono C<\cM\cJ> verranno convertite in C<\n> al momento dell'input, 
 ed ogni eventuali C<\n> nel vostro programma verrE<agrave> convertito in C<\cM\cJ> al 
 momento dell'output. Questo E<egrave> ciE<ograve> che desiderate per i file di testo, 
@@ -619,7 +619,7 @@ package NOMECLASSE. Se NOMECLASSE viene omesso, viene usato il package corrente.
 che un C<bless> [letteralmente benedizione, consacrazione, NdT] E<egrave> spesso l'ultima 
 cosa in un costruttore, restituisce per convenienza il riferimento. Usate sempre la versione 
 a due argomenti se una classe derivata potrebbe ereditare la funzione che effettua il bless.
-Consultate L<perltoot> e L<perlobj> per maggiori dettagli sull'operazione di bless 
+consultate L<perltoot> e L<perlobj> per maggiori dettagli sull'operazione di bless 
 (e i blessing) degli oggetti.
 
 Prendete sempre in considerazione il fatto di effettuare il bless di oggetti nelle 
@@ -643,7 +643,7 @@ il valore indefinito. In un contesto di lista, restituisce
     ($package, $nomefile, $linea) = caller;
 
 Con ESPR, restituisce dell'informazione addizionale che il debugger utilizza per 
-stampare una traccia dello stack. Il valor di ESPR indica quanti record di attivazione 
+stampare una traccia dello stack. Il valore di ESPR indica quanti record di attivazione 
 risalire prima di quello corrente.
 
     ($package, $nomefile, $linea, $subroutine, $ha_argomenti,
@@ -772,7 +772,7 @@ codifica nativa.
 Va notato che le parentesi sono necessarie quando usate chomp() su qualsiasi cosa che non sia una 
 variabile semplice. CiE<ograve> deriva dal fatto che C<chomp $cwd = `pwd`;> E<egrave> 
 interpretato come C<(chomp $cwd) = `pwd`;>, anzichE<eacute> come C<chomp( $cwd = `pwd` )>, come 
-vi potreste aspettare. Similmente, C<chomp $a, $b> E<egrave> interpreato come C<chomp($a), $b> 
+vi potreste aspettare. Similmente, C<chomp $a, $b> E<egrave> interpretato come C<chomp($a), $b> 
 anzichE<eacute> come C<chomp($a, $b)>.
 
 =item chop VARIABILE
@@ -986,14 +986,14 @@ Non c'E<egrave> una funzione di decifratura. Questa funzione non E<egrave>
 per nulla utile alla crittografia (per questa cosa, date un'occhiata ai moduli
 F<Crypt> sul vostro mirror CPAN piE<ugrave> vicino) e il nome "crypt" [cripta, NdT]
 E<egrave> un po' un termine improprio. Il suo uso principale E<Egrave> invece
-quello di controllare se due parti di testo sono le stessem senza dover
+quello di controllare se due parti di testo sono le stesse senza dover
 trasmettere o immagazzinare il testo stesso. Un esempio E<egrave> controllare
 se viene fornita una password corretta. E<Egrave> il digest della password ad
 essere immagazzinato e non la password stessa. L'utente digita una password
 che viene sottoposta a crypt() con il medesimo digest memorizzato quale seme.
 Se i due digest corrispondono, la password E<egrave> corretta.
 
-Quando effetuate la verifica di una stringa digest esistente, dovreste usare il 
+Quando effettuate la verifica di una stringa digest esistente, dovreste usare il 
 digest come seme (come C<crypt($chiaro, $digest) eq $digest>). La parte 
 SEME usata per creare il digest E<egrave> visibile come parte del digest.
 Questo assicura che crypt() calcolerE<agrave> l'hash della nuova stringa
@@ -1375,7 +1375,7 @@ alternative.
 =item do SUBROUTINE(LISTA)
 X<do>
 
-Questa formadi chiamata a subroutine E<egrave> deprecata. Consultate L<perlsub>.
+Questa forma di chiamata a subroutine E<egrave> deprecata. Consultate L<perlsub>.
 
 =item do ESPR
 X<do>
@@ -1410,7 +1410,7 @@ operatori C<use> e C<require> che eseguono anche un controllo automatico
 degli errori e sollevano un'eccezione se ci fosse un problema.
 
 Potreste gradire l'utilizzo di C<do> per leggere in un file di configurazione 
-di un proramma. Il controllo manuale degli errori puE<ograve> essere fatto in 
+di un programma. Il controllo manuale degli errori puE<ograve> essere fatto in 
 questo modo:
 
     # legge nei file di configurazione: prima in quelli di sistema poi in quelli utente
@@ -1433,8 +1433,8 @@ Questa funzione causa un immediato core dump. Si veda anche l'opzione da
 linea di comando B<-u> in L<perlrun>, che fa la stessa cosa. Principalmente 
 E<egrave> fatta in modo che possiate usare il programma B<undump> (non 
 fornito) per trasformare il vostro core dump in un eseguibile binario, 
-dopo aver inzializzato tutte le vostre variabili all'inizio del programma. 
-Quando il nuovo binario viene eseguito, inzierE<agrave> con l'eseguire un 
+dopo aver inizializzato tutte le vostre variabili all'inizio del programma. 
+Quando il nuovo binario viene eseguito, inizierE<agrave> con l'eseguire un 
 C<goto ETICHETTA> (con tutte le restrizioni di cui soffre C<goto>). 
 Pensate ad esso come ad un goto con un core dump nel mezzo, e poi una 
 reincarnazione. Se C<ETICHETTA> viene omesso, ricomincia il programma da 
@@ -1503,7 +1503,7 @@ seguente codice funzionerE<agrave>:
 
 Il seguente codice stampa l'ambiente come il programma
 printenv(1), con l'unica differenza che lo fa in
-un'ordine differente:
+un ordine differente:
 
     while (($key,$value) = each %ENV) {
         print "$key=$value\n";
@@ -1514,7 +1514,7 @@ Consultate anche C<keys>, C<values> e C<sort>.
 =item eof FILEHANDLE
 X<eof>
 X<fine del file>
-Xfine-del-file>
+X<fine-del-file>
 
 =item eof ()
 
@@ -1528,7 +1528,7 @@ poi esegue una C<ungetc> su di esso, dunque ciE<ograve> non E<egrave>
 molto utile in un contesto interattivo). Non leggete da un file di 
 terminale (oppure non chiamate C<eof(FILEHANDLE)> su di esso) dopo che 
 si E<egrave> raggiunta la fine-del-file. Se lo fate, i tipi di file 
-quali i terminali potrebbero perdere la condizione di file-del-file.
+quali i terminali potrebbero perdere la condizione di fine-del-file.
 
 Un C<eof> senza un argomento utilizza l'ultimo file letto. L'uso di 
 C<eof()> con parentesi vuote, E<egrave> molto differente. Si riferisce 
@@ -1557,7 +1557,7 @@ determinerE<agrave> solo la file dell'ultimo file. Esempi:
 
     # inserisce delle lineette appena prima dell'ultima linea dell'ultimo file
     while (<>) {
-        if (eof()) {		# controlla la fine dell'utimo file
+        if (eof()) {		# controlla la fine dell'ultimo file
             print "--------------\n";
 	}
 	print;
@@ -1619,7 +1619,7 @@ avvertimenti all'interno del BLOCCO o ESPR utilizzando
 S<C<no warnings 'all'>>. Consultate L</warn>, L<perlvar>, L<warnings> e 
 L<perllexwarn>. 
 
-Va notato che, dato che C<eval> cattura gli errori altrimenti blocanti, 
+Va notato che, dato che C<eval> cattura gli errori altrimenti bloccanti, 
 E<egrave> utile per determinare se una particolare caratteristica (quale 
 C<socket> o C<symlink>) E<egrave> implementata. E<Egrave> anche il 
 meccanismo di cattura delle eccezioni, dove l'operatore die viene usato 
@@ -1644,7 +1644,7 @@ Esempi:
     eval '$risposta =';	# imposta $@
 
 Usare la forma C<eval{}> per catturare le eccezioni nelle librerie, presenta
-qualche complicanza. A causa del corrente, opinabilmente non corretto, stato degli hook di 
+qualche complicazione. A causa del corrente, opinabilmente non corretto, stato degli hook di 
 C<__DIE__>, potreste non voler innescare alcun hook 
 per quei C<__DIE__> che il codice utente potrebbe aver installato. Per 
 questo scopo si puE<ograve> utilizzare il costrutto C<local $SIG{__DIE__}>, 
@@ -1658,7 +1658,7 @@ Questo ha un significato speciale, dato che gli hook di C<__DIE__>
 possono chiamare C<die> un'altra volta, e ciE<ograve> ha l'effetto di 
 cambiare i loro messaggi d'errore:
 
-    # gli hook di __DIE__ pssono modificare i messaggi d'errore
+    # gli hook di __DIE__ possono modificare i messaggi d'errore
     {
        local $SIG{'__DIE__'} =
               sub { (my $x = $_[0]) =~ s/pippo/pluto/g; die $x };
@@ -1684,7 +1684,7 @@ cosa si sta esaminando quando:
 I casi 1 e 2 qua sopra, hanno un comportamento identico: essi eseguono 
 il codice contenuto nella variabile $x. (Sebbene il caso 2 ha delle 
 virgolette che sono ingannevoli che fanno sE<igrave> che il lettore si 
-chieda cos'altro stia accadendno (nulla)). I casi 3 e 4, similmente,  
+chieda cos'altro stia accadendo (nulla)). I casi 3 e 4, similmente,  
 si comportano allo stesso modo: eseguono il codice in C<'$x'>, che non fa 
 altro che restituire il valore di $x. (Il caso 4 E<egrave> preferibile 
 solamente per ragioni visuali, ma ha anche il vantaggio di compilare a 
@@ -1714,7 +1714,7 @@ restituisce falso solo se il comando non esiste I<ed> E<egrave> eseguito
 direttamente invece che tramite la shell dei comandi di sistema 
 (vedete qui sotto).
 
-PoichE<eacute> E<egrave> un comune errore l'usare C<exec> invece di 
+PoichE<eacute> E<egrave> un comune errore usare C<exec> invece di 
 C<system>, il Perl avvisa se non c'E<egrave> un'istruzione che segue che 
 non sia C<die>, C<warn> o C<exit> (se viene impostato C<-w>, ma questo lo 
 si fa sempre). Se I<davvero> si vuol far seguire C<exec> con qualche altra 
@@ -1770,7 +1770,7 @@ contengono degli spazi.
 
     exec @arg;               # soggetto agli escape della shell
                                 # if @args == 1
-    exec { $arg[0] } @arg;  # sicuro anche con una lista di un arogmento
+    exec { $arg[0] } @arg;  # sicuro anche con una lista di un argomento
 
 La prima versione, quella senza l'oggetto indiretto, ha eseguito il 
 programma I<echo> passandogli un argomento C<"sorpresa">. La seconda 
@@ -1810,7 +1810,7 @@ Un elemento di un hash o di un array puE<ograve> essere vero solo
 se E<egrave> definito e definito solo se esiste, ma il viceversa 
 non necessariamente mantiene il valore vero.
 
-Data un'espressione che specifichi il nome di una subrotuine, 
+Data un'espressione che specifichi il nome di una subroutine, 
 restituisce vero se la subroutine specificata E<egrave> stata 
 dichiarata, anche se E<egrave> indefinita. Menzionare il nome di 
 una subroutine per exists o defined non conta come il dichiararla. 
@@ -1910,7 +1910,7 @@ Implementa la funzione fcntl(2). Probabilmente prima dovrete dichiarare
 
     use Fcntl;
 
-per ottenere le giuste definzioni delle costanti. 
+per ottenere le giuste definizioni delle costanti. 
 
 Il trattamento degli argomenti e la restituzione di 
 valore funziona come nella C<ioctl> piE<ugrave> sotto.
@@ -1920,7 +1920,7 @@ Per esempio:
     fcntl($filehandle, F_GETFL, $packed_return_buffer)
 	or die "impossibile eseguire fcntl F_GETFL: $!";
 
-No dovete controllare il valore restituito da C<fnctl> con C<defined>.
+Non dovete controllare il valore restituito da C<fnctl> con C<defined>.
 Come C<ioctl>, esso mappa uno C<0> restituito dalla chiamata di 
 sistema in uno C<"0 ma vero"> in Perl. Questa stringa E<egrave> vera 
 in un contesto booleano e C<0> in un contesto numerico. Essa viene anche 
@@ -1994,7 +1994,7 @@ nel portare il lavoro a termine).
 OPERAZIONE E<egrave> una di queste: LOCK_SH, LOCK_EX o LOCK_UN, 
 combinate eventualmente con LOCK_NB. Queste costanti sono 
 tradizionalmente i valori 1, 2, 8 e 4, ma potete usare i nomi 
-simbolici se li importate dal modulo Fcntl, sia indivudualmente 
+simbolici se li importate dal modulo Fcntl, sia individualmente 
 sia come gruppo, usando il tag ':flock'. LOCK_SH richiede un lock 
 condiviso, LOCK_EX richiede un lock esclusivo e LOCK_UN rilascia 
 un lock richiesto precedentemente. Se su LOCK_NB viene effettuato 
@@ -2067,7 +2067,7 @@ Restituisce il pid del figlio al processo genitore, C<0> al processo figlio,
 oppure C<undef> se la chiamata non ha successo. I descrittori dei file (ed 
 a volte anche i lock su tali descrittori) vengono condivisi, mentre tutto 
 il resto viene copiato. Sulla maggior parte dei sistemi che supportano 
-fork(), l'efficienze E<egrave> stata molto curata (per esempio, usando la 
+fork(), l'efficienza E<egrave> stata molto curata (per esempio, usando la 
 tecnologia copy-on-write [copia-su-scrittura, NdT] sulle pagine dati), 
 facendo di essa il paradigma dominante per il multitasking negli ultimi 
 decenni.
@@ -2134,7 +2134,7 @@ compilatore di formato.
 
 Prestate attenzione se mettete tra virgolette doppie alla 
 descrizione, visto che un carattere C<@> puE<ograve> 
-assumere il significato di inzio del un nome di array. 
+assumere il significato di inizio del un nome di array. 
 C<formline> restituisce sempre vero. Consultate L<perlform> 
 per altri esempi.
 
@@ -2371,7 +2371,7 @@ Per le funzioni I<gethost*()>, se la variabile C<h_errno> E<egrave> supportata i
 restituita attraverso C<$?> se la chiamata di funzione fallisce. Il valore C<@addrs> restituito da 
 una chiamata che ha avuto successo E<egrave> una lista di indirizzi grezza, restituita dalla 
 corrispondente chiamata della libreria di sistema. In ambito Internet, ogni indirizzo E<egrave> 
-lungo 4 byte e potete effetturare unpack su esso scrivendo qualcosa come:
+lungo 4 byte e potete effettuare unpack su esso scrivendo qualcosa come:
 
     ($a,$b,$c,$d) = unpack('C4',$ind[0]);
 
@@ -2385,7 +2385,7 @@ La libreria Socket rende questo un po' piE<ugrave> facile:
     $strind = inet_ntoa($indint);
 
 Se siete stanchi di tenere a mente quali valori corrispondono a quali elementi della lista 
-restituita, vengono fornite delle interfaccie per nome nei moduli standard: C<File::stat>, 
+restituita, vengono fornite delle interfacce per nome nei moduli standard: C<File::stat>, 
 C<Net::hostent>, C<Net::netent>, C<Net::protoent>, C<Net::servent>, C<Time::gmtime>, C<Time::localtime> 
 e C<User::grent>. Queste si sovrappongono alle normali funzioni interne, fornendo versioni che 
 restituiscono oggetti con i nomi appropriati per ogni campo. Per esempio:
@@ -2634,7 +2634,7 @@ X<index> X<indexOf> X<InStr>
 
 La funzione index cerca una stringa in un'altra, ma senza comportarsi 
 in maniera simile ad una wildcard [carattere jolly, NdT], come fa invece 
-una ricerca tramite regular expression. Essa restituisce la posizione 
+una ricerca tramite espressione regolare. Essa restituisce la posizione 
 della prima occorrenza di SOTTOSTR in STR, a partire da POSIZIONE. Se 
 POSIZIONE viene omessa, C<index> inizia a cercare dall'inizio della stringa. 
 La POSIZIONE prima dell'inizio della stringa oppure dopo la sua fine
@@ -2686,7 +2686,7 @@ C<ioctl>.
 Il valore restituito da C<ioctl> (e C<fnctl>) E<egrave> di seguito
 descritto:
 
-	se l'SO restituisce:		allora Perl restituisce:
+	se il SO restituisce:		allora Perl restituisce:
     		1			 valore indefinito
     		0	 		stringa "0 ma vera"
 	qualsiasi altra cosa		    quel numero
@@ -3062,7 +3062,7 @@ vero.
 Con C<{> cominciano sia i blocchi che i riferimenti a
 hash, quindi C<map { ...> puE<ograve> essere sia l'inizio
 di map BLOCK LIST che l'inizio di map EXPR, LIST.
-PoichE<aacute> perl non guarda avanti alla ricerca della
+PoichE<eacute> perl non guarda avanti alla ricerca della
 C<}> di chiusura, deve formulare una congettura a 
 proposito di ciE<ograve> con cui ha a che fare, basandosi
 su quello che trova subito dopo C<{>. 
@@ -3141,7 +3141,7 @@ Chiama la funzione msgrcv del System V IPC, allo scopo di ricevere un messaggio 
 coda ID e memorizzarlo nella variabile VAR, con una dimensione massima del messaggio di 
 DIMENSIONE. E<Egrave> importante notare che, quando un messaggio viene ricevuto, la prima 
 cosa in VAR sarE<agrave> il tipo del messaggio nella forma di un intero long, seguita 
-dal reale messaggio. Questo impacchettament puE<ograve> venire aperto con 
+dal reale messaggio. Questo impacchettamento puE<ograve> venire aperto con 
 C<unpack("l! a*")>. Questo provoca un taint sulla variabile  [il dato in essa contenuto 
 viene indicato come potenzialmente dannoso, NdT]. 
 Restituisce vero in caso di successo, oppure falso se si verifica un errore. 
@@ -3152,7 +3152,7 @@ C<IPC::SysV::Msg>.
 X<msgsnd>
 
 Chiama la funzione msgsnd del System V IPC, allo scopo di spedire il messaggio MSG nella 
-coda di messaggi ID. MSG deve inziare con un intero long nativo che indica il tipo di 
+coda di messaggi ID. MSG deve iniziare con un intero long nativo che indica il tipo di 
 messaggio, ed essere seguito dalla lunghezza del messaggio effettivo, ed infine dal messaggio 
 stesso. Questo tipo di impacchettamento puE<ograve> essere ottenuto utilizzando 
 C<pack("l! a*", $tipo, $messaggio)>. Restituisce vero in caso di successo, o falso se si 
@@ -3227,8 +3227,8 @@ Interpreta ESPR come una stringa ottale, e restituisce il valore
 corrispondente. (Se per caso ESPR inizia con C<0x>, viene interpretata come 
 una stringa esadecimale. Se ESPR inizia con C<0b>, viene interpretata come 
 una stringa binaria. Qualsiasi spazio bianco che faccia da prefisso viene 
-ingnorato in tuti e tre i casi). Il seguente codice E<egrave> in grado di 
-gestire decimali, binari, ottali ed esacimali nella notazione standard di 
+ignorato in tutti e tre i casi). Il seguente codice E<egrave> in grado di 
+gestire decimali, binari, ottali ed esadecimali nella notazione standard di 
 Perl o di C:
 
     $val = oct($val) if $val =~ /^0/;
@@ -3257,7 +3257,7 @@ X<open> X<pipe> X<file, aprire> X<fopen>
 
 Apre il file con nome ESPR, e gli associa FILEHANDLE.
 
-(Quella che segue E<egrave>egue una documentazione completa di open(): 
+(Quella che segue E<egrave> una documentazione completa di open(): 
 per un'introduzione piE<ugrave> semplice prendete in considerazione la 
 lettura L<perlopentut>).
 
@@ -3334,7 +3334,7 @@ significa la lettura di STDIN mentre C<< '>-' >> l'apertura di STDOUT.
 Potete usare i tre parametri per aprire specifici "strati" di IO (altrimenti 
 noti come "disciplines" [letteralmente "ordini, discipline", NdT]) che 
 verranno applicati all'handle, i quali modificano il funzionamento di come 
-input e output vengono processatti (consultate L<open> e L<PerlIO> per 
+input e output vengono processati (consultate L<open> e L<PerlIO> per 
 ulteriori dettagli). Per esempio
 
   open(FH, "<:utf8", "file")
@@ -3374,7 +3374,7 @@ che apre un filehandle su un file temporaneo anonimo. Inoltre, l'utilizzo di
 qualcosa sul file temporaneo. Avrete la necessitE<egrave> di utilizzare seek() 
 per effettuare la lettura.
 
-A partire dalla version 5.8.0, il perl E<egrave> stato compilato usando PerlIO di default.
+A partire dalla versione 5.8.0, il perl E<egrave> stato compilato usando PerlIO di default.
 A meno che voi non abbiate cambiato questo aspetto (cioE<egrave> Configure -Uuseperlio),
 potete aprire i filehandle in file "in memoria" mantenuti entro scalari Perl tramite:
 
@@ -3410,7 +3410,7 @@ Esempio:
     open(EXTRACT, "|sort >Tmp$$")		# $$ e` il pid del nostro processo
 	or die "Impossibile avviare sort: $!";
 
-    # in memory files
+    # file in memoria
     open(MEMORY,'>', \$var)
 	or die "Impossibile aprire il file in memoria: $!";
     print MEMORY "pippo!\n";			# l'output andra` a finire in $var
@@ -3542,7 +3542,7 @@ equivalenti:
 Nell'ultimo esempio, in ogni blocco di codice viene mostrata la pipe come 
 "list form" [un elenco di parametri, NdT], non supportato da alcuna 
 piattaforma. Una buona regola E<egrave>: se il vostro sistema operativo 
-ha una vera C<fork()> (in altre parole, se E<egrave> UNIX) putete usare la 
+ha una vera C<fork()> (in altre parole, se E<egrave> UNIX) potete usare la 
 list form.
 
 Consultate L<perlipc/"Safe Pipe Opens"> ["Apertura sicura di pipe", NdT] 
@@ -3567,7 +3567,7 @@ Il nome del file passato nella chiamata alla open() nella versione con 2 argomen
 di redirezione verranno onorati. Questa proprietE<agrave>, nota come 
 "magic open" ["apertura magica", NdT], puE<ograve> spesso essere usata con 
 buoni esiti. Un utente potrebbe specificare un nomefile tipo 
-F<"rsh cat file |">, oppure voi potreste cambiare alcuni particolari nomifle 
+F<"rsh cat file |">, oppure voi potreste cambiare alcuni particolari nomifile 
 in base alle necessitE<agrave>:
 
     $nomefile =~ s/(.*\.gz)\s*$/gzip -dc < $1|/;
@@ -3600,7 +3600,7 @@ ha esattamente le restrizioni opposte.
 Se volete una "vera" C<open> in stile C (consultate L<open(2)> sul vostro sistema), 
 dovrete usare la funzione C<sysopen>, la quale non implica questo genere di "magia" 
 (ma potrebbe usare alcuni differenti filemode rispetto alla open() del Perl, i 
-quali sono mappati alla fopen() del C). Questa E<egrave> un'altra possibilita per 
+quali sono mappati alla fopen() del C). Questa E<egrave> un'altra possibilitE<agrave> per 
 proteggere meglio il vostro nome file dalle interpretazioni. 
 Per esempio:
 
@@ -3625,7 +3625,7 @@ da tale scope:
 	my $handle = new IO::File;
 	open($handle, "miofile") or die "miofile: $!";
 	$primo = <$handle>
-	    or return ();     # Qui viene chiuso autimaticamente.
+	    or return ();     # Qui viene chiuso automaticamente.
 	mung $primo or die "mung fallito";	# Oppure qui.
 	return $primo, <$handle> if $TUTTO;	# Oppure qui.
 	$primo;					# Oppure qui.
@@ -3664,7 +3664,7 @@ X<our> X<globale>
 =item our TIPO ESPR : ATTRIBUTI
 
 C<our> associa un nome elementare con una variabile di package nel corrente
-package per usarla all'itenro dello scope corrente. Quando E<egrave> in
+package per usarla all'interno dello scope corrente. Quando E<egrave> in
 vigore C<use strict 'vars'>, C<our> vi permette di dichiarare variabili globali
 senza qualificarle con i nomi dei package, all'interno dello scope lessicale
 della dichiarazione C<our>. CosE<igrave> C<our> differisce da "use vars",
@@ -3764,10 +3764,10 @@ Il TEMPLATE E<egrave> una sequenza di caratteri che forniscono l'ordine
 ed il tipo dei valori, come indicato di seguito:
 
     a	Una stringa con dati binari arbitrari, sara` completata da null.
-    A	Una stringa tesuale (ASCII), sara` completata da spazi.
-    Z	Una stringa terminata da null (ASCIZ), sara` completata da null.
-    b	Una stringa di bit (ordine ascendente dei bit all'interno di ciascun bye, come vec()).
-    B	Una stringa di bit (ordine discendente dei bit all'interno di ciascun bye).
+    A	Una stringa testuale (ASCII), sara` completata da spazi.
+    Z	Una stringa terminata da null (ASCII), sara` completata da null.
+    b	Una stringa di bit (ordine ascendente dei bit all'interno di ciascun byte, come vec()).
+    B	Una stringa di bit (ordine discendente dei bit all'interno di ciascun byte).
     h	Una stringa esadecimale (nybble basso per primo).
     H	Una stringa esadecimale (nybble alto per primo).
 
@@ -3805,14 +3805,14 @@ ed il tipo dei valori, come indicato di seguito:
 	  (Questi 'short' e 'long' sono _esattamente_ di 16 bit
            ed _esattamente_ di 32 bit, rispettivamente).
 
-    q	Un quad con segnp (64-bit).
+    q	Un quad con segno (64-bit).
     Q	Un quad senza segno.
 	  (I quad sono disponibili solo se il vostro sistema
            supporta gli interi a 64 bit, _e_ se Perl e`
            stato compilato per supportarli.
            In caso contario verra` generato un errore bloccante).
 
-    j   Un intero con sengo (un intero di Perl, IV).
+    j   Un intero con segno (un intero di Perl, IV).
     J   Un intero senza segno (un intero senza segno di Perl, UV).
 
     f	Un numero in virgola mobile in singola precisione, in formato nativo.
@@ -3883,7 +3883,7 @@ sostituiti da 45.
 
 =item *
 
-I tipi C<a>, C<A>, and C<Z> prelevano solamente un valore, ma lo 
+I tipi C<a>, C<A>, e C<Z> prelevano solamente un valore, ma lo 
 compattano come una stringa della lunghezza specificata, completando 
 con null o spazi se necessario. Al momento di scompattare, C<A> 
 rimuove eventuali spazi e null all'inizio, C<Z> rimuove tutto dopo il 
@@ -3915,7 +3915,7 @@ Se la lunghezza della stringa in input non E<egrave> divisibile
 esattamente per 8, la parte rimanente viene compattata come se la 
 stringa in input fosse completata di byte null alla fine. 
 In maniera analoga, al momento di utilizzare unpack() i bit "extra" 
-vengono ingorati.
+vengono ingoiati.
 
 Se la stringa in input a pack() E<egrave> piE<ugrave> lunga di 
 quanto necessario, i byte in piE<ugrave> vengono ignorati. Un C<*> 
@@ -3964,7 +3964,7 @@ un valore temporaneo (che puE<ograve> potenzialmente essere
 deallocato prima che utilizziate il risultato compattato). Il tipo 
 C<P> compatta un puntatore ad una struttura della dimensione 
 indicata dalla lunghezza. Viene creato un puntatore a NULL che il 
-corrispondentente valore per C<p> o C<P> E<egrave> C<undef>. 
+corrispondente valore per C<p> o C<P> E<egrave> C<undef>. 
 Un comportamento simile si ha con unpack().
 
 =item *
@@ -3983,7 +3983,7 @@ compattamento degli interi, quali C<n> (per stringhe Java), c<w>
 Per C<pack>, la I<stringa-elemento> deve, al momento, essere C<"A*">, C<"a*"> 
 oppure C<"Z*">. Con C<unpack> la lunghezza della stringa E<egrave> 
 ottenuta da I<lunghezza-elemento>, ma se inserite il carattere '*' 
-viene ingorata. Per tutti gli altri codici, C<unpack> applica il valore della 
+viene ignorata. Per tutti gli altri codici, C<unpack> applica il valore della 
 lunghezza all'elemento successivo, che non deve avere un conteggio delle ripetizioni.
 
     unpack 'C/a', "\04Gurusamy";        restituisce 'Guru'
@@ -3996,7 +3996,7 @@ C<unpack>.
 L'aggiunta di un conteggio a I<lunghezza-elemento> non E<egrave> 
 probabilmente di alcuna utilitE<agrave>, a meno che la lettera non 
 sia C<A>, C<a> o C<Z>. Compattare con una I<lunghezza-elemento> di 
-C<a> o C<Z> puE<ograve> causare l'inserimento di catteri C<"\000">, 
+C<a> o C<Z> puE<ograve> causare l'inserimento di caratteri C<"\000">, 
 che Perl non considera legali all'interno delle stringhe numeriche.
 
 =item *
@@ -4014,7 +4014,7 @@ questa maniera
 	print length(pack("l")), " ", length(pack("l!")), "\n";
 
 Anche C<i!> e C<I!> funzionano, ma solo per questioni di completezza; 
-essi sono identici a C<i> and C<I>.
+essi sono identici a C<i> e C<I>.
 
 Le reali dimensioni (in byte) degli short, int, long e long long 
 nativi sui sistemi dove Perl E<egrave> stato compilato sono 
@@ -4027,14 +4027,14 @@ disponibili anche tramite L<Config>:
        print $Config{longlongsize}, "\n";
 
 (C<$Config{longlongsize}> risulterE<agrave> non definito se il 
-vostro sistema non supporta i long lon).
+vostro sistema non supporta i long long).
 
 =item *
 
 I formati interi C<s>, C<S>, C<i>, C<I>, C<l>, C<L>, C<j> e C<J> 
 sono intrinsecamente non portabili tra diversi processori e sistemi 
 operativi, poichE<eacute> essi obbediscono all'ordine dei byte ed 
-al tipo di endian locali. Per esempio, un intero di 4 byte 0x12345678 
+al tipo di endian locale. Per esempio, un intero di 4 byte 0x12345678 
 (305419896 in decimale) viene ordinato nativamente (ordinato e gestito 
 dai registri della CPU) in byte come:
 
@@ -4215,7 +4215,7 @@ allo spazio dei nomi specificato. Lo scope della dichiarazione
 del package parte dalla dichiarazione stessa fino alla fine 
 del blocco, file, o eval che la include (esattamente come per 
 l'operatore C<my>). Tutti gli identificatori dinamici non 
-esplicitamente qualificati apparterrano a questo spazio dei 
+esplicitamente qualificati apparterranno a questo spazio dei 
 nomi. Un'istruzione che dichiara un package influisce solo 
 sulle variabili dinamiche, incluse quelle dichiarate con 
 C<local>, ma I<non> su quelle lessicali, cioE<egrave> create 
@@ -4225,7 +4225,7 @@ C<require> o C<user>. Potete passare ad un package in piE<ugrave>
 di un punto; tale dichiarazione determina semplicemente quale 
 tabella dei simboli viene usata dal compilatore per la fine del 
 blocco in cui ci trova. Potete far riferimento a variabili e 
-filehandle in altri package prefissandoli con il nome del 
+filehandle in altri package anteponendovi il nome del 
 package ed un doppio simbolo di due punti: C<$Package::Variable>. 
 Se il nome del package E<egrave> vuoto, viene considerato il 
 package C<main>. Dunque, C<$::sail> equivale a C<$main::sail> 
@@ -4295,7 +4295,7 @@ anche essere perchE<eacute> non E<egrave> stato ancora effettuato alcun match su
 C<pos> accede direttamente alla locazione usata dal motore delle espressioni regolari per 
 immagazzinare lo scostamento, dunque fare un assegnamento a C<pos> cambierE<agrave> lo
 scostamento e influenzerE<agrave> la C<\G> zero-width assertion [asserzione di ampiezza zero, NdT]
-nelle espressioni regolari. Il match non reimposta lo scostamento a cusa di un C<m//gc> fallito,
+nelle espressioni regolari. Il match non reimposta lo scostamento a causa di un C<m//gc> fallito,
 il ritorno da C<pos> non cambierE<agrave> nemmeno in questo caso. Consultate L<perlre> e L<perlop>.
 
 =item print FILEHANDLE LISTA
@@ -4329,7 +4329,7 @@ ritroverE<agrave> una o piE<ugrave> d'una delle sue espressioni
 valutate in contesto di lista. State anche attenti a non far 
 seguire una parentesi di apertura alla parola chiave print, a 
 meno che non desideriate terminare gli argomenti da stampare 
-con la corrispondente parentesi di chisura, inserite un C<+> o 
+con la corrispondente parentesi di chiusura, inserite un C<+> o 
 mettere parentesi attorno a tutti gli argomenti.
 
 Va notato che se tenete i FILEHANDLE in un array, o comunque usate
@@ -4406,7 +4406,7 @@ X<quotemeta> X<metacarattere>
 =item quotemeta
 
 Restituisce il valore di ESPR, con tutti i caratteri non-"parola" 
-preceduti da un backslash. (Il che signfica che tutti i caratteri 
+preceduti da un backslash. (Il che significa che tutti i caratteri 
 che non rientrano in C</[A-Za-z_0-9]/> saranno preceduti da un 
 backslash nella stringa restituita, indipendentemente da qualsiasi 
 impostazione del locale). Questa E<egrave> la funzione interna che 
@@ -4486,7 +4486,7 @@ elementi, restituisce il valore indefinito in contesto scalare
 oppure una lista nulla in contesto lista.
 
 Se avete in mente di utilizzare i valori restituiti da C<readdir> 
-per dei test su file, fareste meglio a prependere la directory in 
+per dei test su file, fareste meglio ad anteporre la directory in 
 questione. Altrimenti, visto che non viene cambiata la directory 
 corrente (C<chdir>) nella directory che si sta leggendo, potreste 
 stare effettuando il test sul file sbagliato.
@@ -4666,7 +4666,7 @@ casi.
 Il comportamente di questa funzione varia in maniera piuttosto casuale a 
 seconda dell'implementazione del vostro sistema. Per esempio, di solito non 
 funziona se utilizzata attraverso file system diversi, anche se il comando 
-di sistem I<mv> a volte compensa questa carenza. Altre restrizioni includono 
+di sistema I<mv> a volte compensa questa carenza. Altre restrizioni includono 
 il funzionamento o meno su directory, file aperti, o file preesistenti. 
 Per i dettagli, controllate L<perlport> e la manpage rename(2) o l'equivalemente 
 sulla documentazione del vostro sistema.
@@ -4781,10 +4781,10 @@ inserendo del codice Perl direttamente nell'array @INC. Ci sono tre tipi
 di hook: riferimenti a subroutine, riferimenti ad array e oggetti blessed (***).
 
 I riferimenti a subroutine sono il caso piE<ugrave> semplice. Quando il 
-sistema di inclusione esamina @NIC ed incontra una subroutine, essa viene 
+sistema di inclusione esamina @INC ed incontra una subroutine, essa viene 
 chiamata con due parametri: il primo E<egrave> un riferimento a se stessa, 
 il secondo E<egrave> il nome del file da includere (es. "F<Pippo/Pluto.pm>"). 
-La soubroutine deve restituire C<undef> oppure un filehandle, dal quale 
+La subroutine deve restituire C<undef> oppure un filehandle, dal quale 
 verrE<agrave> letto il file da includere. Se viene restituito C<undef>, 
 C<require> esaminerE<agrave> i rimanenti elementi di @INC.
 
@@ -4841,8 +4841,8 @@ alla fine) ed E<egrave> per questo ambigua per perl a tempo di compilazione.
 In assenza di use strict 'subs' (che genera errore) viene trattata come se
 fosse inclusa tra virgolette. [NdT]
 
-(**) letterlamente aggancio, questo termine indica la procedura di codificare
-un programma che permetta all'utente di espenderlo. Ad esempio il funzionamento
+(**) letteralmente aggancio, questo termine indica la procedura di codificare
+un programma che permetta all'utente di espanderlo. Ad esempio il funzionamento
 dei plugin di <programma con plugin> E<egrave> permesso grazie a degli hook. [NdT]
 
 (***) letteralmente santificato, consacrato, si intende di un oggetto che
@@ -5029,7 +5029,7 @@ X<seekdir>
 
 Imposta su DIRHANDLE la posizione corrente per la routine C<readdir>. 
 POS dev'essere un valore restituito da C<telldir>. Riguardo a possibili 
-compattazioni di directiry, C<seekdir> ha gli stessi avvertimenti della
+compattazioni di directory, C<seekdir> ha gli stessi avvertimenti della
 corrispondente routine della libreria di sistema.
 
 =item select FILEHANDLE
@@ -5122,12 +5122,6 @@ E<egrave> disponibile alcun dato, con conseguente bloccaggio a causa di una succ
 PuE<ograve> essere evitato utilizzando sempre il flag O_NONBLOCK sul socket. Si vedano 
 select(2) and fcntl(2) per ulteriori dettagli.
 
-Note: on some Unixes, the select(2) system call may report a socket file
-descriptor as "ready for reading", when actually no data is available,
-thus a subsequent read blocks. It can be avoided using always the
-O_NONBLOCK flag on the socket. See select(2) and fcntl(2) for further
-details.
-
 B<ATTENZIONE>: Non si dovrebbe tentare di mescolare l'I/O con buffer (come C<read>
 o <FH>) con C<select>, tranne per come viene permesso da POSIX, ed anche in quel 
 caso solo su sistemi POSIX. In quel caso dovete usare C<sysread>.
@@ -5140,7 +5134,7 @@ dichiarare
 
     use IPC::SysV;
 
-per ottenere le definzioni di costante corrette. Se CMD E<egrave> IPC_STAT 
+per ottenere le definizioni di costante corrette. Se CMD E<egrave> IPC_STAT 
 o GETALL, allora ARG deve essere una variabile, che conserverE<agrave> la struttura 
 semid_ds restituita o l'array di valori del semaforo. Restituisce dei valori come fa C<ioctl>: il valore 
 indefinito in caso di errore, C<"0 ma vero"> in caso di zero o altrimenti
@@ -5184,7 +5178,7 @@ destinazione DEST, nel qual caso viene effettuata una C<sendto>.
 Restituisce il numero di caratteri inviati, oppure il valore 
 indefinito in caso di errore. La chiamata di sistema C sendmsg(2) 
 non E<egrave> attualmente implementata. Consultate
-L<perlipc/"UDP: Message Passing"> ["UPD: Passaggio di messaggi", NdT] 
+L<perlipc/"UDP: Message Passing"> ["UDP: Passaggio di messaggi", NdT] 
 per degli esempi.
 
 Notate i I<caratteri>: a seconda dello stato del socket, possono 
@@ -5202,7 +5196,7 @@ Imposta il gruppo corrente del processo per il PID specificato,
 C<0> per il processo corrente. Genera un errore bloccante se E<egrave> 
 usata su una macchina che non implementa la chiamata POSIX 
 setpgid(2) o la chiamata BSD setpgrp(2). Se gli argomenti vengono 
-pmessi, li imposta di default a C<0,0>. Va notato che la versione BSD 4.2 
+messi, li imposta di default a C<0,0>. Va notato che la versione BSD 4.2 
 di C<setpgrp> non accetta alcun argomento, dunque solamente 
 C<setpgrp(0,0>)> E<egrave> portabile. Consultate anche C<POSIX::setsid()>.
 
@@ -5256,7 +5250,7 @@ dichiarare
 
     use IPC::SysV;
 
-per ottenere le definzioni di costante corrette. Se CMD E<egrave> 
+per ottenere le definizioni di costante corrette. Se CMD E<egrave> 
 C<IPC_STAT>, allora ARG deve essere una variabile che conserverE<agrave> 
 la struttura C<shmid_ds> restituita. Restituisce dei valori come fa ioctl: 
 il valore indefinito in caso di errore, "C<0> ma vero" in caso di zero o 
@@ -5284,7 +5278,7 @@ disconnettendosi. Durante la lettura, VAR deve essere una
 variabile che conterrE<agrave> i dati letti. Durante la 
 scrittura, se STRINGA E<egrave> troppo lunga, saranno usati 
 solo un numero di byte pari a DIMENSIONE; se STRINGA E<egrave> 
-troppo corta, dei null verrano scritti per rimepire un numero 
+troppo corta, dei null verranno scritti per riempire un numero 
 di byte pari a DIMENSIONE. Restituisce vero se ha successo 
 oppure falso se si E<egrave> verificato un errore. shmread() 
 effettua un taint sulla variabile. Consultate anche 
@@ -5380,7 +5374,7 @@ il descrittore di file appena aperto, come determinato dal valore di
 $^F. Consultate L<perlvar/$^F>.
 
 Alcuni sistemi definiscono C<pipe> in termini di C<socketpair>, 
-nel quale una chiamama a C<pipe(Rdr, Wtr)> E<egrave> essenzialmente:
+nel quale una chiamata a C<pipe(Rdr, Wtr)> E<egrave> essenzialmente:
 
     use Socket;
     socketpair(Rdr, Wtr, AF_UNIX, SOCK_STREAM, PF_UNSPEC);
@@ -5431,7 +5425,7 @@ In entrambi i casi la subroutine non puE<ograve>
 essere ricorsiva. I valori da confrontare sono sempre 
 passati per riferimento, quindi non dovrebbero essere modificati.
 
-Inoltre, non potte uscire dal blocco o dalla subroutine
+Inoltre, non potete uscire dal blocco o dalla subroutine
 di ordinamento usando uno degli operatori di controllo del
 ciclo descritti in L<perlsyn> o con C<goto>.
 
@@ -5446,12 +5440,6 @@ elementi della lista.
 CioE<egrave>, modificare un elemento di una lista restituita da sort()
 (per esempio, in un C<foreach>, C<map> o C<grep>) modifica proprio
 l'elemento della lista originare
-
-much as a for loop's index
-variable aliases the list elements.  That is, modifying an element of a
-list returned by sort() (for example, in a C<foreach>, C<map> or C<grep>)
-actually modifies the element in the original list.  This is usually
-something to be avoided when writing clear code.
 
 Perl 5.6 e le versioni precedenti usavano l'algoritmo
 quicksort per implementare l'ordinamento.
@@ -5919,7 +5907,7 @@ X<precisione>
 
 Potete specificare una precisione (per argomenti numerici) o una larghezza 
 massima (per argomenti stringhe) utilizzando C<.> seguito da un numero.
-Per i numeri decimali, con l'eccezione di 'g' e 'G', questo indifca il numero di cifre 
+Per i numeri decimali, con l'eccezione di 'g' e 'G', questo indica il numero di cifre 
 decimali da visualizzare (il default E<egrave> 6), ad esempio:
 
   # gli esempi sono suscettibili di variazioni in base al sistema operativo
@@ -6200,7 +6188,7 @@ utilizzare (s)printf usando un C<"%o">.
     printf "I permessi sono %04o\n", $modalita & 07777;
 
 In un contesto scalare, C<stat> restituisce un valore booleano che indica il 
-successo o l'insuccesso e, in caso di succcesso, imposta l'informazione associata con lo 
+successo o l'insuccesso e, in caso di successo, imposta l'informazione associata con lo 
 speciale filehandle C<_>.
 
 Il modulo File::stat fornisce un conveniente meccanismo di accesso mediante nome:
@@ -6230,7 +6218,7 @@ modalitE<agrave> simboliche, dal modulo Fcntl:
 Potete scrivere le ultime due utilizzando gli operatori C<-u> e C<-d>. Le costanti C<S_IF*> 
 comunemente disponibili sono
 
-    # Permessi: lettura, scrittura, eseczuione, per l'utente, gruppo, altri.
+    # Permessi: lettura, scrittura, esecuzione, per l'utente, gruppo, altri.
 
     S_IRWXU S_IRUSR S_IWUSR S_IXUSR
     S_IRWXG S_IRGRP S_IWGRP S_IXGRP
@@ -6318,7 +6306,7 @@ di quanto se ne perde inizialmente per costruire la lista linkata.
 
 Va notato che se dovete cercare stringhe che non conoscerete se non quando
 il programma sarE<agrave> eseguito, potete costruire l'intero loop come una
-stringa, e valutar quest'ultima per evitare la ricompilazione dei
+stringa, e valutare quest'ultima per evitare la ricompilazione dei
 pattern tutte le volte. Messo assieme alla pratica di rendere indefinito
 C<$/> per leggere interi file come fossero un solo record, il tutto puE<ograve>
 risultare molto veloce, spesso piE<ugrave> veloce di fgrep(1). Il codice che
@@ -6407,7 +6395,7 @@ errore bloccante a tempo di esecuzione. Per controllare ciE<ograve>, usate eval:
 =item syscall NUMERO,LISTA
 X<syscall> X<chiamata di sistema>
 
-Invoca la chiamata di sistema specificata come primo elemento della lsta, passando i rimanenti 
+Invoca la chiamata di sistema specificata come primo elemento della lista, passando i rimanenti 
 elementi come argomenti alla chiamata di sistema. Se non implementata, produce un errore 
 bloccante. Gli argomenti sono interpretati come segue: se un dato argomento E<egrave> numerico, 
 l'argomento E<egrave> passato come un intero. Se non lo E<egrave>, viene passato il puntatore al 
@@ -6428,9 +6416,9 @@ Va notato che il Perl supporta il passaggio fino ad un massimo di 14 argomenti p
 chiamata di sistema, che in pratica di solito dovrebbe essere sufficiente.
 
 Syscall restituisce qualunque valore sia stato restituito dalla chiamata di sistema che essa ha 
-invocato. Se la chiamata di sistema fallice, C<syscall> restituisce C<-1> ed imposta C<$!> 
+invocato. Se la chiamata di sistema fallisce, C<syscall> restituisce C<-1> ed imposta C<$!> 
 (errno). Va notato che alcune chiamate di sistema possono legittimamente restituire C<-1>. 
-La maniera approrpiata per gestire tali chiamate E<egrave> quella di assegnare C<$!=0;> 
+La maniera appropriata per gestire tali chiamate E<egrave> quella di assegnare C<$!=0;> 
 prima della chiamata e controllare il valore di C<$!> se syscall restituisce C<-1>.
 
 C'E<egrave> un problema con C<syscall(&SYS_pipe)>: essa restituisce il numero di file 
@@ -6631,7 +6619,7 @@ X<syswrite>
 =item syswrite FILEHANDLE,SCALARE
 
 Tenta di scrivere un numero di caratteri di informazioni, pari a LUNGHEZZA, dalla variabile 
-SCALARE al FIELHANDLE specificato, usando la chiamata di sistema write(2). Se LUNGHEZZA 
+SCALARE al FILEHANDLE specificato, usando la chiamata di sistema write(2). Se LUNGHEZZA 
 non E<egrave> specificata, scrive l'intero SCALARE. Elude l'IO con buffer, dunque 
 mescolarla con i vari read (oltre a C<sysread()>), C<print>, C<write>, C<seek>, C<tell> o 
 C<eof>, potrebbe causare confusione visto che lo stdio di solito utilizza un buffer per i 
@@ -6896,7 +6884,7 @@ X<undef> X<indefinito>
 
 Rende indefinito il valore di ESPR, che deve essere un lvalue [un valore che puE<ograve> 
 trovarsi a sinistra di un operatore di assegnamento, NdT]. Si usa solo su un valore 
-scalare, un array (utilizzando C<@>), un hash (utilizzando C<%>), una subrotuine 
+scalare, un array (utilizzando C<@>), un hash (utilizzando C<%>), una subroutine 
 (utilizzando C<&>), oppure un typeglob (utilizzando C<*>). (C<undef $hash{$chiave}> 
 probabilmente non farE<agrave> ciE<ograve> che ci si aspetta su molte variabili 
 predefinite o valori di liste DBM, dunque non fatelo; si veda L<delete>). 
@@ -6930,7 +6918,7 @@ Cancella una lista di file. Restituisce il numero di file cancellati con success
 
 Nota: C<unlink> non tenterE<agrave> di cancellare le directory a meno che non siate
 superuser e al Perl non venga passato il flag B<-U>. Anche se queste condizioni risultano
-soddisfatte, sappiate che effettuare un unlink su una directory poE<egrave> danneggiare
+soddisfatte, sappiate che effettuare un unlink su una directory puE<ograve> danneggiare
 seriamente il vostro filesystem. Infine, usare C<unlink> sulle directory non E<egrave>
 supportato su molti sistemi operativi. Usate C<rmdir> al suo posto.
 
@@ -7079,7 +7067,7 @@ Inoltre, c'E<egrave> una distinzione tra omettere LISTA (C<import> chiamata senz
 argomenti) ed un'esplicita LISTA vuota C<()> (C<import> non E<egrave> chiamata). Va 
 notato che non c'E<egrave> alcuna virgola dopo VERSIONE!
 
-Siccome quest'interfaccia E<egrave> molto aperta, i pragma (direttive del compilatore) 
+Siccome questa interfaccia E<egrave> molto aperta, i pragma (direttive del compilatore) 
 sono anch'essi implementati in questo modo. Le direttive implementate al momento sono:
 
     use constant;
@@ -7236,7 +7224,7 @@ stessa maniera sia su elaboratori big-endian che little-endian.
     vec($pippo, 94,  1) = 1;		# 'PerlPerlPerl'
                                         # 'l' e` "\x6c"
 
-Per trasformare un vettore di bit in una striga o lista di 0 e 1, si usino queste:
+Per trasformare un vettore di bit in una stringa o lista di 0 e 1, si usino queste:
 
     $numero_di_bit = unpack("b*", $vettore);
     @numero_di_bit = split(//, unpack("b*", $vettore));
@@ -7432,7 +7420,7 @@ Se si afferma
 	$figlio = waitpid(-1, WNOHANG);
     } until $figlio > 0;
 
-poi E<egrave> possibile eseguire un wait non bloccante per tutti i processi zombi 
+poi E<egrave> possibile eseguire un wait non bloccante per tutti i processi zombie 
 pendenti. Il wait non bloccante E<egrave> disponibile su elaboratori che supportano sia 
 la chiamata di sistema waitpid(2) che quella wait4(2). Comunque, l'attendere per un 
 particolare pid con FLAG di C<0> E<egrave> implementato ovunque. (Il Perl emula la 
@@ -7477,7 +7465,7 @@ C<"Warning: Something's wrong"> ["Attenzione: Qualcosa E<egrave> andato storto",
 
 Se E<egrave> stato installato un handler di C<$SIG{__WARN__}>, non viene visualizzato 
 alcun messaggio. E<Egrave> compito dell'handler occuparsi del messaggio nella maniera che 
-ritene opportuna (ad esempio, convertendolo in una C<die>). La maggior parte degli 
+ritiene opportuna (ad esempio, convertendolo in una C<die>). La maggior parte degli 
 handler devono quindi occuparsi di visualizzare i warning che non sono preparati a 
 gestire, chiamando C<warn> di nuovo all'interno dell'handler stesso. Va notato che questa 
 E<egrave> una procedure sicura, che non creerE<agrave> un ciclo senza fine, 

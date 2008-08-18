@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq3 - Strumenti di Programmazione ($Revision: 1.19 $, $Date: 2006/02/11 03:50:43 $)
+perlfaq3 - Strumenti di Programmazione ($Revision: 1.20 $, $Date: 2006/11/28 14:25:36 $)
 
 =head1 DESCRIZIONE
 
@@ -40,7 +40,7 @@ man page perldebug(1), su un programma "vuoto", ad esempio:
 
 A questo punto potete scrivere del codice Perl, e verrE<agrave> subito
 eseguito. Potete anche esaminare la tabella dei simboli, ottenere backtrace
-dello stack, controlloare i valori delle variabili, impostare breakpoint, ed
+dello stack, controllare i valori delle variabili, impostare breakpoint, ed
 effettuare altre operazioni tipiche dei debugger simbolici.
 
 =head2 C'E<egrave> una shell Perl?

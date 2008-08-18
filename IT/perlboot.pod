@@ -115,7 +115,7 @@ nell'esempio del cortile:
     }
 
     @pascolo = qw(Mucca Mucca Cavallo Pecora Pecora);
-    froeach $animale (@pascolo) {
+    foreach $animale (@pascolo) {
       $animale->parla;
     }
 
@@ -653,7 +653,7 @@ Andiamo a modificare il metodo C<nome> per notare la differenza:
       : $cosa->articolo()." $cosa senza nome"; # e` una classe
   }
 
-Qui, l'operatore C<?:> E<egrave> comodo per selezionare o la deferenziazione,
+Qui, l'operatore C<?:> E<egrave> comodo per selezionare o la dereferenziazione
 o la stringa derivata. Ora possiamo usare il metodo sia per un'istanza sia per
 una classe. Da notare che ho cambiato il nome del primo parametro
 in C<$cosa> per sottolineare che vogliamo sapere I<cosa> E<egrave> stato passato:
@@ -705,7 +705,7 @@ Addestriamo i nostri animali a mangiare:
   }
   { package Pecora;
     @ISA = qw(Animale);
-    sub sound { "beeee" }
+    sub suono { "beeee" }
     sub articolo { "una" }
   }
 
@@ -789,9 +789,8 @@ rimanere lo stesso, dunque C<parla> funziona ancora come prima.
 
 =head2 Un cavallo di un altro colore
 
-Avere tutti i nostri cavalli di colore marrone sarebbe
-noioso. Aggiungiamo dunque un metodo o due per ottenere e modificare il
-colore.
+Avere tutti i nostri cavalli di colore marrone sarebbe noioso. Aggiungiamo
+dunque un metodo o due per ottenere e modificare il colore.
 
   ## in Animale
   sub colore {

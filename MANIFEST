@@ -16,6 +16,7 @@ IT/perlintro.pod
 IT/perlrequick.pod
 IT/perlstyle.pod
 IT/perlthrtut.pod
+IT/perlfaq.pod
 IT/perlfaq1.pod
 IT/perlfaq2.pod
 IT/perlfaq3.pod
@@ -32,6 +33,7 @@ IT/perl.pod
 IT/perlmodinstall.pod
 IT/perlmodstyle.pod
 IT/perlsyn.pod
+IT/perlvar.pod
 IT/perlembed.pod
 IT/perllol.pod
 IT/perlxstut.pod
@@ -42,3 +44,9 @@ IT/perlnewmod.pod
 IT/perlref.pod
 IT/perlipc.pod
 IT/perlcheat.pod
+IT/perlpacktut.pod
+IT/perlsub.pod
+IT/perltoot.pod
+IT/perlbot.pod
+IT/perlopentut.pod
+IT/perlbook.pod

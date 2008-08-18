@@ -242,7 +242,7 @@ nella stessa directory dove si trova msvcrt.lib, di modo che il
 compilatore puE<ograve> trovarla da solo. msvcrt.lib E<egrave> posta di solito nella
 directory lib del compilatore Visual C (ad esempio, C:/DevStudio/VC/lib).
 
-Perl mette a disposizione alcuni sistemi speicali per scrivere degli
+Perl mette a disposizione alcuni sistemi speciali per scrivere degli
 script di test in maniera semplice, ma solo per questo script creeremo
 il nostro script di test da soli. Create un file chiamato C<ciao>
 come segue [il percorso all'eseguibile C<perl> E<egrave> stato cambiato per

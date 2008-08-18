@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq4 - Manipolazione dei dati ($Revision: 1.32 $, $Date: 2006/02/14 17:40:46 $)
+perlfaq4 - Manipolazione dei dati ($Revision: 1.33 $, $Date: 2006/12/04 16:45:26 $)
 
 =head1 DESCRIZIONE
 
@@ -903,7 +903,7 @@ separate. Tuttavia per voi questo potrebbe non avere importanza.
 
 In questa espressione regolare, l'alternativa [|, NdT] effettua un match o
 all'inizio o alla fine della stringa dato che le ancore [^ e $, NdT] hanno
-una precedenza piEa<ugrave> bassa rispetto all'alternativa. Con l'opzione
+una precedenza piE<ugrave> bassa rispetto all'alternativa. Con l'opzione
 C</g>, la sostituzione effettua tutti i possibili match, dunque li
 ottiene entrambi. Ricordate, i ritorni a capo a fine linea trovano corrispondenza
 in C<\s+> e l'ancora C<$> puE<ograve> effettuare il match sulla parte fisica

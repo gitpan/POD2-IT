@@ -426,7 +426,7 @@ F<Qualche/Modulo.pm> e cominciate con questo modello:
         # imposta la versione per il controllo della stessa
         $VERSION     = 1.00;
         # se si sta utilizzando RCS/CVS, questa potrebbe essere migliore
-        $VERSION = sprintf "%d.%03d", q$Revision: 1.5 $ =~ /(\d+)/g;
+        $VERSION = sprintf "%d.%03d", q$Revision: 1.6 $ =~ /(\d+)/g;
 
         @ISA         = qw(Exporter);
         @EXPORT      = qw(&funz1 &funz2 &funz4);
@@ -651,7 +651,7 @@ maggiori informazioni su come scrivere moduli di estensione.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perlmod
 

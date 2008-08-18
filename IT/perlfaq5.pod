@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq5 - File e Formati ($Revision: 1.22 $, $Date: 2006/02/11 03:50:44 $)
+perlfaq5 - File e Formati ($Revision: 1.25 $, $Date: 2008/03/31 21:14:13 $)
 
 =head1 DESCRIZIONE
 
@@ -248,8 +248,8 @@ Utilizzare un filehandle in maniera indiretta significa usare qualcosa di
 diverso da un simbolo in un luogo dove E<egrave> richiesto un filehandle
 Di seguito sono riportati alcuni modi per ottenere un filehandle indiretto:
 
-    $fh =   UN_FH;       # parola senza virgolette; E<egrave> ostile a stict subs
-    $fh =  "UN_FH";      # E<egrave> ostile a strict-refs; solo nello stesso package
+    $fh =   UN_FH;       # parola senza virgolette; e` ostile a strict subs
+    $fh =  "UN_FH";      # e` ostile a strict-refs; solo nello stesso package
     $fh =  *UN_FH;       # typeglob
     $fh = \*UN_FH;       # reference ad un typeglob (bless-abile)
     $fh =  *UN_FH{IO};   # IO::Handle blessed dal typeglob *UN_FH
@@ -553,7 +553,7 @@ di ritorno), e poi cancellate quello vecchio. Semanticamente, ciE<ograve>
 non E<egrave> equivalente all'utilizzo di rename(), che preserva
 metainformazioni quali permessi, dati, informazioni sull'inode, ecc.
 
-Le nuove versioni di File::Copy esportano un funzione move().
+Le nuove versioni di File::Copy esportano una funzione move().
 
 =head2 Come si puE<ograve> fare il lock di un file?
 X<lock> X<file, lock> X<flock>
@@ -599,7 +599,7 @@ manpage locali, specifiche per il sistema. E<Egrave> meglio che si assuma
 un comportamento tradizionale se si stanno scrivendo programmi portabili
 (Se non lo si sta facendo, ci si dovrebbe sentire, come sempre, perfettamente
 liberi di scriversi le proprie idiosincrasie di sistema (a volte chiamate 
-caratteristiche"). L'aderenza alle faccende di portabilitE<agrave> senza
+"caratteristiche"). L'aderenza alle faccende di portabilitE<agrave> senza
 originalitE<agrave> non dovrebbe influenzare la maniera con cui portate a
 termine il vostro lavoro).
 
@@ -732,17 +732,17 @@ umani.
 Ecco un esempio:
 
     $ultima_scrittura_in_secondi = (stat($file))[9];
-    printf "il file %s E<egrave> stato aggiornato il %s\n", $file,
+    printf "il file %s e` stato aggiornato il %s\n", $file,
      scalar localtime($ultima_scrittura_in_secondi);
 
 Se preferite qualcosa di piE<ugrave> leggibile, usate il modulo File::stat
 (parte della distribuzione standard nelle versioni 5.004 e successive):
 
-    # il controllo degli errori E<egrave> lasciato al lettore come esercizio
+    # il controllo degli errori e` lasciato al lettore come esercizio
     use File::stat;
     use Time::localtime;
     $stringa_data = ctime(stat($file)->mtime);
-    print "il file $file E<egrave> stato aggiornato il $stringa_data\n";
+    print "il file $file e` stato aggiornato il $stringa_data\n";
 
 L'approccio di POSIX::strftime() ha il vantaggio di essere, in teoria,
 indipendente dalle impostazioni di locali correnti. Consultate L<perllocale>

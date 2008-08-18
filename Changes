@@ -6,6 +6,17 @@ Legenda:
    * = incompatible changes
    - = removed feature
 
+0.12 Mon Aug 18 00:00:00 2008
+	+ Added perlpacktut.pod [polettix, dree]
+	+ Added perlsub.pod [polettix, dree]
+	+ Added perltoot.pod [raffaellog, dree]
+	+ Added perlbot.pod [raffaellog, dree] 
+	+ Added perlopentut.podi [polettix, dree]
+	+ Added perlbook.pod [ludan, dree] 
+	+ Added perlfaq.pod [polettix, dree]
+	+ Added perlvar.pod [polettix, shishii]
+	! Minor fixes to all pods
+
 0.11 Sat Mar 25 12:00:00 2006
 	+ Added perl.pod [raffaellog, dree]
 	+ Added perlboot.pod [dree, dakkar, osfameron]

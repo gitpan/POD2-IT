@@ -459,7 +459,7 @@ in Perl:
     for (my $i = 0; $i < @ary1; $i++) {
        for (my $j = 0; $j < @ary2; $j++) {
           if ($ary1[$i] > $ary2[$j]) {
-   	       last; # non si puE<ograve> andare su quello esterno :-(
+   	       last; # non si puo` andare su quello esterno :-(
           }
           $ary1[$i] += $ary2[$j];
        }
@@ -699,7 +699,7 @@ come in
 
     =item spippola($)
 
-    La funzione spippola() si comportera` nella piE<ugrave> spettacolare
+    La funzione spippola() si comportera` nella piu` spettacolare
     delle forme che possiate mai immaginare, senza nemmeno escludere
     forme pirotecniche cibernetiche.
 

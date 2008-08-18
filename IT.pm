@@ -3,17 +3,20 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 use base qw(Exporter);
 our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
 
 my $pods = {
 	perl => '5.8.8',
+	perlbook => '5.8.8',
 	perlboot => '5.8.8',
+	perlbot => '5.8.8',
 	perlcheat => '5.8.8',
 	perldata => '5.8.8',
 	perlembed => '5.8.8',
+	perlfaq => '5.8.8',
 	perlfaq1 => '5.8.8',
 	perlfaq2 => '5.8.8',
 	perlfaq3 => '5.8.8',
@@ -32,14 +35,19 @@ my $pods = {
 	perlmodinstall => '5.8.8',
 	perlmodstyle => '5.8.8',
 	perlnewmod => '5.8.8',
+	perlopentut => '5.8.8',
+	perlpacktut => '5.8.8',
 	perlref => '5.8.8',
 	perlrequick => '5.8.8',
 	perlreref => '5.8.8',
 	perlstyle => '5.8.8',
+	perlsub => '5.8.8',
 	perlsyn => '5.8.8',
 	perlthrtut => '5.8.8',
+	perltoot => '5.8.8',
 	perlunicode => '5.8.8',
 	perluniintro => '5.8.8',
+	perlvar => '5.8.8',
 	perlxstut => '5.8.8',
 };
 
@@ -133,7 +141,7 @@ your L<Pod::Perldoc|Pod::Perldoc> module to 3.14! ;-)
 
 See C<search_perlfunc_re> API for more information.
 
-I<Note: Currently the bleadperl has been patched (changes #26202, #26191).>
+I<Note: Perl 5.10 already contains this functionality, so you don't have to apply any patch.>
 
 =head1 API
 
@@ -219,7 +227,7 @@ L<POD2::FR>, L<POD2::LT>, L<perl>.
 
 =head1 COPYRIGHT AND LICENCE
 
-Copyright (C) 2004-2006 Perl.it / Perl Mongers Italia
+Copyright (C) 2004-2008 Perl.it / Perl Mongers Italia
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

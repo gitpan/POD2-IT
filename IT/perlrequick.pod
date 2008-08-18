@@ -78,7 +78,7 @@ Un metacarattere puE<ograve> essere matchato inserendo un backslash prima di lui
     'C:\WIN32' =~ /C:\\WIN/;                       # matcha
     "/usr/bin/perl" =~ /\/usr\/local\/bin\/perl/;  # matcha
 
-Nell'ultima regex, le successive slash C<'/'> (N.di T. rispetto alla prima)
+Nell'ultima regex, le successive slash C<'/'> [rispetto alla prima, NdT]
 sono anche precedute da backslash, perchE<eacute> sono usato per delimitare 
 la regex.
 
@@ -125,9 +125,9 @@ Nell'ultima asserzione (statement), anche se C<'c'> E<egrave> il primo carattere
 nella classe, il primissimo punto dove la regex puE<ograve> effettuare il match
 E<egrave> C<'a'>.
 
-    /[yY][eE][sS]/; # matcha 'yes' in modalitE<agrave> case-insensitive
-                    # 'yes', 'Yes', 'YES', etc.
-    /yes/i;         # anche questo matcha 'yes' in modalitE<agrave> case-insensitive way
+    /[yY][eE][sS]/; # matcha 'yes' in modalita` case-insensitive
+                    # 'yes', 'Yes', 'YES', ecc.
+    /yes/i;         # anche questo matcha 'yes' in modalita` case-insensitive way
 
 [sE<igrave>, NdT]
 
@@ -164,7 +164,7 @@ carattere, o il match fallisce. Dunque
     /[^a]at/;  # non matcha 'aat' or 'at', ma matcha
                # tutti gli altri 'bat', 'cat, '0at', '%at', etc.
     /[^0-9]/;  # matcha un carattere non numerico
-    /[a^]at/;  # matcha 'aat' o '^at'; qui '^' E<egrave> normale
+    /[a^]at/;  # matcha 'aat' o '^at'; qui '^' e` normale
 
 Il Perl ha diverse abbreviazioni per le classi di caratteri comuni:
 
@@ -216,7 +216,7 @@ e un carattere di non-parola C<\w\W> o C<\W\w>:
 
     $x = "Housecat catenates house and cat"; [Casagatto concatena casa e gatto, NdT]
     $x =~ /\bcat/;    # matcha cat in 'catenates'
-    $x =~ /cat\b/;  	 # matcha cat in 'housecat'
+    $x =~ /cat\b/;    # matcha cat in 'housecat'
     $x =~ /\bcat\b/;  # matcha 'cat' alla fine della stringa
 
 Nell'ultimo esempio la fine della stringa viene considerata un 
@@ -342,9 +342,9 @@ Qui ci sono alcuni esempi:
 
     /[a-z]+\s+\d*/;  # matcha una parola formata da lettere minuscole, almeno uno spazio, e
                      # un numero qualsiasi di cifre
-    /(\w+)\s+\1/;    # matcha parole doppie separate da uno o piE<ugrave> spazi di lunghezza 
-	 					   # arbitraria
-    $year =~ /\d{2,4}/;  # si assicura che l'anno sia almeno di 2 cifre ma non piE<ugrave>
+    /(\w+)\s+\1/;    # matcha parole doppie separate da uno o piu` spazi di lunghezza 
+	 	     # arbitraria
+    $year =~ /\d{2,4}/;  # si assicura che l'anno sia almeno di 2 cifre ma non piu`
                          # di 4 cifre
     $year =~ /\d{4}|\d{2}/;    # un match migliore; scarta date con 3 cifre
 
@@ -355,7 +355,7 @@ mentre si sta ancora permettendo alla regex di mathcare. Dunque abbiamo
     $x =~ /^(.*)(at)(.*)$/; # matcha,
                             # $1 = 'the cat in the h'
                             # $2 = 'at'
-                            # $3 = ''   (0 matches)
+                            # $3 = ''   (0 match)
 
 Il primo quantificatore C<.*> cattura quanto piE<ugrave> della stringa E<egrave> possibile
 mentre la regex continua a matchare. Il secondo quantificatore C<.*> non ha 
@@ -378,7 +378,7 @@ sostituzione di variabile una volta sola. Se non si vuole del tutto alcuna
 sostituzione. si usi lo speciale delimitatore C<m''>:
 
     $pattern = 'Seuss';
-    m'$pattern'; # matches '$pattern', not 'Seuss'
+    m'$pattern'; # effettua un match di '$pattern', non di 'Seuss'
 
 Il modificatore globale C<//g> permette agli operatori di matching di
 matchare all'interno di una stringa il numero piE<ugrave> alto di volte possibile.
@@ -458,7 +458,7 @@ C<s'''>, allora la regex e la sostituzione sono trattate come stringhe single qu
 
 C<split /regex/, stringa> divide la C<stringa> in una lista di sottostringhe
 e restituisce tale lista. La regex determina la sequenza di caratteri
-per i quali la C<stringa> �divisa. Per esempio, per dividere una stringa in parole, 
+per i quali la C<stringa> viene divisa. Per esempio, per dividere una stringa in parole, 
 si usi
 
     $x = "Calvin and Hobbes";

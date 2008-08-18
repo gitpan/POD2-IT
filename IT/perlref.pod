@@ -794,14 +794,14 @@ come utilizzarli per creare oggetti.
 
 La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
-   perl -MPOD2::IT -e print_pod perlmod
+   perl -MPOD2::IT -e print_pod perlref
 
 Per maggiori informazioni sul progetto di traduzione in italiano si veda
 L<http://pod2it.sourceforge.net/> .
 
 =head2 Traduttore
 
-Traduzione a cura di ludan.
+Traduzione a cura di Daniele Ludovici.
 
 =head2 Revisore
 

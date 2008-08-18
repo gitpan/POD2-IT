@@ -975,7 +975,7 @@ ragguagli sui typeglob e la sintassi C<*pippo{COSA}>.
 
 =head2 Versione
 
-La versione su cui si basa questa traduzione è ottenibile con:
+La versione su cui si basa questa traduzione E<egrave> ottenibile con:
 
    perl -MPOD2::IT -e print_pod perldata
 
