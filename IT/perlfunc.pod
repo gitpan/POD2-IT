@@ -5664,7 +5664,7 @@ i campi nulli in coda vengono omessi (cosa
 che i potenziali utilizzatori di C<pop> farebbero bene
 a ricordare).
 Se LIMITE E<egrave> negativo, allora viene trattato come
-se fosse stato specificato un valore di LIMIT
+se fosse stato specificato un valore di LIMITE
 arbitrariamente grande. Va notato che dividere una ESPR
 che vale stringa vuota, restituisce sempre una lista 
 vuota, qualunque sia il LIMITE specificato.

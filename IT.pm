@@ -3,10 +3,10 @@ package POD2::IT;
 use 5.005;
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 use base qw(Exporter);
-our @EXPORT = qw(print_pod print_pods search_perlfunc_re);
+our @EXPORT = qw(print_pod print_pods search_perlfunc_re new pod_dirs);
 
 my $pods = {
 	perl => '5.8.8',
@@ -38,6 +38,7 @@ my $pods = {
 	perlopentut => '5.8.8',
 	perlpacktut => '5.8.8',
 	perlref => '5.8.8',
+	perlreftut => '5.8.8',
 	perlrequick => '5.8.8',
 	perlreref => '5.8.8',
 	perlstyle => '5.8.8',
@@ -50,6 +51,16 @@ my $pods = {
 	perlvar => '5.8.8',
 	perlxstut => '5.8.8',
 };
+
+sub new {
+	return __PACKAGE__;
+}
+
+sub pod_dirs {
+	( my $mod = __PACKAGE__ . '.pm' ) =~ s|::|/|g;
+	( my $dir = $INC{$mod} ) =~ s/\.pm\z//;
+	return $dir;
+}
 
 sub print_pods {
 	print_pod(sort keys %$pods);
@@ -149,6 +160,16 @@ The package exports following functions:
 
 =over 4
 
+=item * C<new>
+
+Added for compatibilty with Perl 5.10.1's C<perldoc>.
+Used by L<Pod::Perldoc> in order to return translation package name.
+
+=item * C<pod_dirs>
+
+Added for compatibilty with Perl 5.10.1's C<perldoc>.
+Used by L<Pod::Perldoc> in order to find out where to look for translated pods.
+
 =item * C<print_pods>
 
 Prints all translated pods and relative Perl original version.
@@ -227,7 +248,7 @@ L<POD2::FR>, L<POD2::LT>, L<perl>.
 
 =head1 COPYRIGHT AND LICENCE
 
-Copyright (C) 2004-2008 Perl.it / Perl Mongers Italia
+Copyright (C) 2004-2009 Perl.it / Perl Mongers Italia
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

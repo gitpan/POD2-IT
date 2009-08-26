@@ -1,4 +1,4 @@
-POD2::IT version 0.12
+POD2::IT version 0.13
 =====================
 
 POD2::IT - Italian translation of Perl core documentation.
@@ -9,15 +9,8 @@ See pod2it.sf.net for more details about the project.
 
 CHANGES FROM PREVIOUS VERSION
 
-	+ Added perlpacktut.pod [polettix, dree]
-	+ Added perlsub.pod [polettix, dree]
-	+ Added perltoot.pod [raffaellog, dree]
-	+ Added perlbot.pod [raffaellog, dree]
-	+ Added perlopentut.podi [polettix, dree]
-	+ Added perlbook.pod [ludan, dree]
-	+ Added perlfaq.pod [polettix, dree]
-	+ Added perlvar.pod [polettix, shishii]
-	! Minor fixes to all pods
+	+ Added perlreftut.pod [larsen, polettix, bepi]
+	! Fixes to perlfunc.pod, perlfaq2, perlfaq6 and perlfaq9 [dree]
 
 See 'Changes' file for complete history revisions.
 
@@ -42,7 +35,7 @@ TheHobbit & others.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2004-2008 Perl.it / Perl Mongers Italia
+Copyright (C) 2004-2009 Perl.it / Perl Mongers Italia
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

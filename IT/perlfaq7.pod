@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.18 $, $Date: 2006/02/12 17:02:20 $)
+perlfaq7 - Questioni Generali Sul Linguaggio Perl ($Revision: 1.19 $, $Date: 2009/01/26 17:06:25 $)
 
 =head1 DESCRIZIONE
 
@@ -1015,7 +1015,7 @@ Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
 Indipendentemente dalle modalitE<agrave> di distribuzione, tutti gli esempi di
-codice in questo file sono rilasciati al pubblico demanio. Potete, e siete
+codice in questo file sono rilasciati al pubblico dominio. Potete, e siete
 incoraggiati a farlo, utilizzare il presente codice o qualunque forma
 derivata da esso nei vostri programmi per divertimento o per profitto.
 Un semplice commento nel codice che dia riconoscimento alle FAQ sarebbe

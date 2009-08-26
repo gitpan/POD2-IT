@@ -9,10 +9,10 @@ resources/lineeguida.pod
 resources/podenc.pl
 resources/update-and-notify.pl
 t/00base.t
-META.yml                                 Module meta-data (added by MakeMaker)
 IT/perlboot.pod
 IT/perlfork.pod
 IT/perlintro.pod
+IT/perlreftut.pod
 IT/perlrequick.pod
 IT/perlstyle.pod
 IT/perlthrtut.pod
@@ -50,3 +50,4 @@ IT/perltoot.pod
 IT/perlbot.pod
 IT/perlopentut.pod
 IT/perlbook.pod
+META.yml                                 Module meta-data (added by MakeMaker)

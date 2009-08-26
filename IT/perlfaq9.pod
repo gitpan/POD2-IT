@@ -1,6 +1,6 @@
 =head1 NOME
 
-perlfaq9 - Programmazione di rete ($Revision: 1.18 $, $Date: 2006/02/11 03:50:44 $)
+perlfaq9 - Programmazione di rete ($Revision: 1.19 $, $Date: 2009/01/26 17:06:25 $)
 
 =head1 DESCRIZIONE
 
@@ -441,7 +441,7 @@ essere ragionevolmente certi che l'indirizzo E<egrave> reale.
 Una strategia correlata, meno vulnerabile alla contraffazione, E<egrave>
 dare all'utente un PIN (personal ID number: numero di identificazione
 personale). Registrate l'indirizzo e il PIN (meglio se casuale) per l'uso
-futuro. Nella mail che inviate, chiedete all'utente di di includere il PIN
+futuro. Nella mail che inviate, chiedete all'utente di includere il PIN
 nella sua risposta. Se perE<ograve> la mail torna indietro, o il messaggio
 viene incluso in una mail di risposta automatica tipo "Sono in vacanza",
 il PIN ci sarE<agrave> comunque. Quindi il meglio E<egrave> chiedere di
@@ -667,7 +667,7 @@ Questa documentazione E<egrave> libera; potete ridistribuirla e/o modificarla
 secondo gli stessi termini applicati al Perl.
 
 Indipendentemente dalle modalitE<agrave> di distribuzione, tutti gli esempi di
-codice in questo file sono rilasciati al pubblico demanio. Potete, e siete
+codice in questo file sono rilasciati al pubblico dominio. Potete, e siete
 incoraggiati a farlo, utilizzare il presente codice o qualunque forma
 derivata da esso nei vostri programmi per divertimento o per profitto.
 Un semplice commento nel codice che dia riconoscimento alle FAQ sarebbe
